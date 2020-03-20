@@ -5,6 +5,12 @@ public class Ganancias {
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
+	
+	/**
+	 * identificador de las ganancias
+	 */
+	private long id;
+	
 	/**
 	 * la cantidad de dinero que se hizo
 	 */
@@ -20,6 +26,10 @@ public class Ganancias {
 	 */
 	private int año;
 
+	/**
+	 * el id del operador 
+	 */
+	private long idOperador;
 	
 	/* ****************************************************************
 	 * 			Métodos 
@@ -29,7 +39,7 @@ public class Ganancias {
 	 * método constructor sin argumentos
 	 */
 	public Ganancias() {
-		
+		this.id = 0;
 	}
 	
 	/**
@@ -37,11 +47,14 @@ public class Ganancias {
 	 * @param cantidad - cantidad de dinero que se registro ese mes
 	 * @param mes - mes del año
 	 * @param año - el año de la ganacia
+	 * @param idOperador - el id del operador
 	 */
-	public Ganancias(long cantidad, int mes, int año) {
+	public Ganancias(long id, long cantidad, int mes, int año, long idOperador) {
+		this.id = id;
 		this.cantidad = cantidad;
 		this.mes = mes;
 		this.año = año;
+		this.idOperador = idOperador;
 	}
 
 	/**
@@ -85,5 +98,33 @@ public class Ganancias {
 	public void setAño(int año) {
 		this.año = año;
 	}
-	
+
+	/**
+	 * @return idOperador
+	 */
+	public long getIdOperador() {
+		return idOperador;
+	}
+
+	/**
+	 * @param idOperador - el id del operador
+	 */
+	public void setIdOperador(long idOperador) {
+		this.idOperador = idOperador;
+	}
+
+	/**
+	 * @return id
+	 */
+	public long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id - el id de las ganacias
+	 */
+	public void setId(long id) {
+		this.id = id;
+	}
+
 }
