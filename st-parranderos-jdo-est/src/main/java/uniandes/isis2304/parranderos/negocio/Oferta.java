@@ -10,29 +10,34 @@ public class Oferta {
 	 *****************************************************************/
 	
 	/**
-	 * 
+	 * id de la oferta
 	 */
 	private long id;
 	
 	/**
-	 * 
+	 * precio de la oferta
 	 */
 	private long precio;
 	
 	/**
-	 * 
+	 * tipo de periodo de la oferta (DIAS, MESES, SEMESTRES)
 	 */
 	private String periodo;
 	
 	/**
-	 * 
+	 * reservas de la oferta
 	 */
 	private List<Object []> reservas;
 	
 	/**
-	 * 
+	 * servicios que ofrece la oferta
 	 */
 	private List<Object []> servicios;
+	
+	/**
+	 * vivienda que ofrece la oferta
+	 */
+	private long idVivienda;
 	
 	/* ****************************************************************
 	 * 			Métodos 
@@ -47,6 +52,7 @@ public class Oferta {
 		this.periodo = "";
 		this.reservas = new LinkedList<Object []> ();
 		this.servicios = new LinkedList<Object []> ();
+		this.idVivienda = 0;
 	}
 
 	/**
@@ -56,13 +62,15 @@ public class Oferta {
 	 * @param periodo
 	 * @param reservas
 	 * @param servicios
+	 * @param idVivienda
 	 */
-	public Oferta(long id, long precio, String periodo) {
+	public Oferta(long id, long precio, String periodo, long idVivienda) {
 		this.id = id;
 		this.precio = precio;
 		this.periodo = periodo;
 		this.reservas = new LinkedList<Object []> ();
 		this.servicios = new LinkedList<Object []> ();
+		this.idVivienda = idVivienda;
 	}
 	
 
@@ -134,6 +142,20 @@ public class Oferta {
 	 */
 	public void setServicios(List<Object[]> servicios) {
 		this.servicios = servicios;
+	}
+	
+	/**
+	 * @return idVivienda
+	 */
+	public long getIdVivienda() {
+		return idVivienda;
+	}
+	
+	/**
+	 * @param idVivienda - id de la vivienda de la oferta
+	 */
+	public void setIdVivienda(long idVivienda) {
+		this.idVivienda = idVivienda;
 	}
 	
 	
