@@ -41,6 +41,7 @@ public class Apartamento extends Vivienda{
 	 * @param numeroHabitaciones - el numero de habitaciones del apartamento
 	 * @param direccion -  direccion de la vivienda
 	 * @param cupos - cupos disponibles de la vivienda
+	 * @param id - id de la vivienda
 	 * @param idOperador - el operador dueño de la vivienda
 	 */
 	public Apartamento(long id, String direccion, int cupos, long idOperador, double area, boolean amoblado, int numeroHabitaciones) {
