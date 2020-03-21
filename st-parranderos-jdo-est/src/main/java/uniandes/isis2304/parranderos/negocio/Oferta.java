@@ -1,5 +1,6 @@
 package uniandes.isis2304.parranderos.negocio;
 
+import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,29 +11,39 @@ public class Oferta {
 	 *****************************************************************/
 	
 	/**
-	 * 
+	 * el identificador de la oferta
 	 */
 	private long id;
 	
 	/**
-	 * 
+	 * el precio que tiene la oferta
 	 */
 	private long precio;
 	
 	/**
-	 * 
+	 * el periodo de la oferta (DIAS,MESES,SEMESTRES)
 	 */
 	private String periodo;
 	
 	/**
-	 * 
+	 * las reservas que se le han hecho a la oferta
 	 */
 	private List<Object []> reservas;
 	
 	/**
-	 * 
+	 * los servicios que tiene la oferta
 	 */
 	private List<Object []> servicios;
+	
+	/**
+	 * la fecha de inicio de la oferta
+	 */
+	private Timestamp fechaInicio;
+	
+	/**
+	 * fecha final de la oferta
+	 */
+	private Timestamp fechaFin;
 	
 	/* ****************************************************************
 	 * 			Métodos 
@@ -51,20 +62,23 @@ public class Oferta {
 
 	/**
 	 * Constructor con valores
-	 * @param id
-	 * @param precio
-	 * @param periodo
-	 * @param reservas
-	 * @param servicios
+	 * @param id - id de la oferta
+	 * @param precio - precio de la oferta
+	 * @param periodo - periodo de la oferta
+	 * @param fechaInicio - fecha de inicio de la oferta
+	 * @param fechaFin - fecha en la que se acaba la oferta
 	 */
-	public Oferta(long id, long precio, String periodo) {
+	public Oferta(long id, long precio, String periodo,
+			Timestamp fechaInicio, Timestamp fechaFin) {
+		super();
 		this.id = id;
 		this.precio = precio;
 		this.periodo = periodo;
 		this.reservas = new LinkedList<Object []> ();
 		this.servicios = new LinkedList<Object []> ();
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
 	}
-	
 
 	/**
 	 * @return the id
