@@ -1,6 +1,6 @@
 package uniandes.isis2304.parranderos.negocio;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
 
