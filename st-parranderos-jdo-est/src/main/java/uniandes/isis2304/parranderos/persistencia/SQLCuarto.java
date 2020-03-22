@@ -21,6 +21,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import uniandes.isis2304.parranderos.negocio.Apartamento;
+import uniandes.isis2304.parranderos.negocio.Cuarto;
 
 
 /**
@@ -29,7 +30,7 @@ import uniandes.isis2304.parranderos.negocio.Apartamento;
  * 
  * @author Germán Bravo
  */
-class SQLApartamento extends SQLVivienda
+class SQLCuarto extends SQLVivienda
 {
 	/* ****************************************************************
 	 * 			Constantes
@@ -49,65 +50,66 @@ class SQLApartamento extends SQLVivienda
 	 * Constructor
 	 * @param pa - El Manejador de persistencia de la aplicación
 	 */
-	public SQLApartamento (PersistenciaAlohandes pa)
+	public SQLCuarto (PersistenciaAlohandes pa)
 	{
 		super(pa);
 	}
 
 	/**
-	 * Crea y ejecuta la sentencia SQL para adicionar un APARTAMENTO a la base de datos de Alohandes
-	 * @param area - 
-	 * @param amoblado - 
-	 * @param numeroHabitaciones - 
+	 * Crea y ejecuta la sentencia SQL para adicionar un CUARTO a la base de datos de Alohandes
+	 * @param bañoPrivado - 
+	 * @param cuartoPrivado - 
+	 * @param esquema - 
+	 * @param mensaje - 
 	 * @return El número de tuplas insertadas 
 	 */
-	public long adicionarApartamento (PersistenceManager pm, long idApartamento, String direccion, int cupos, long idOperador, double area, boolean amoblado, int numeroHabitaciones)
+	public long adicionarCuarto (PersistenceManager pm, long idCuarto, String direccion, int cupos, long idOperador, boolean bañoPrivado, boolean cuartoPrivado, String esquema, String mensaje)
 	{
-		super.adicionarVivienda(pm, idApartamento, direccion, cupos, idOperador);
-		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaApartamento () + "(id, area, amoblado, numeroHabitaciones) values (? ,? ,? ,?)");
-		q.setParameters(area, amoblado, numeroHabitaciones );
+		super.adicionarVivienda(pm, idCuarto, direccion, cupos, idOperador);
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaCuarto () + "(id, bañoPrivado, cuartoPrivado, esquema, mensaje) values (? ,? ,? ,? ,?)");
+		q.setParameters(idCuarto, bañoPrivado, cuartoPrivado, esquema, mensaje );
 		return (long) q.executeUnique();
 	}
 
 	/**
-	 * Crea y ejecuta la sentencia SQL para eliminar un APARTAMENTO de la base de datos de Alohandes, por su identificador
+	 * Crea y ejecuta la sentencia SQL para eliminar un CUARTO de la base de datos de Alohandes, por su identificador
 	 * @param pm - El manejador de persistencia
-	 * @param idApartamento - El identificador de la Apartamento
+	 * @param idCuarto - El identificador de la Cuarto
 	 * @return EL número de tuplas eliminadas
 	 */
-	public long eliminarApartamentoPorId (PersistenceManager pm, long idApartamento)
+	public long eliminarCuartoPorId (PersistenceManager pm, long idCuarto)
 	{
-		return super.eliminarViviendaPorId(pm, idApartamento);
+		return super.eliminarViviendaPorId(pm, idCuarto);
 	}
 
 	/**
-	 * Crea y ejecuta la sentencia SQL para encontrar la información de un APARTAMENTO de la 
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de un CUARTO de la 
 	 * base de datos de Alohandes, por su identificador
 	 * @param pm - El manejador de persistencia
-	 * @param idApartamento - El identificador de la Apartamento
-	 * @return El objeto APARTAMENTO que tiene el identificador dado
+	 * @param idCuarto - El identificador de la Cuarto
+	 * @return El objeto CUARTO que tiene el identificador dado
 	 */
-	public Apartamento darApartamentoPorId (PersistenceManager pm, long idApartamento)
+	public Cuarto darCuartoPorId (PersistenceManager pm, long idCuarto)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaApartamento () + " NATURAL JOIN "+ pa.darTablaVivienda() 
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaCuarto () + " NATURAL JOIN "+ pa.darTablaVivienda() 
 		+"WHERE id = ?");
-		q.setResultClass(Apartamento.class);
-		q.setParameters(idApartamento);
-		return (Apartamento) q.executeUnique();
+		q.setResultClass(Cuarto.class);
+		q.setParameters(idCuarto);
+		return (Cuarto) q.executeUnique();
 	}
 
 
 	/**
-	 * Crea y ejecuta la sentencia SQL para encontrar la información de LOS(AS) Apartamentos de la
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de LOS(AS) Cuartos de la
 	 * base de datos de Alohandes
 	 * @param pm - El manejador de persistencia
-	 * @return Una lista de objetos Apartamento
+	 * @return Una lista de objetos Cuarto
 	 */
-	public List<Apartamento> darApartamentos (PersistenceManager pm)
+	public List<Cuarto> darCuartos (PersistenceManager pm)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaApartamento () + " NATURAL JOIN "+ pa.darTablaVivienda() );
-		q.setResultClass(Apartamento.class);
-		return (List<Apartamento>) q.executeList();
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaCuarto () + " NATURAL JOIN "+ pa.darTablaVivienda() );
+		q.setResultClass(Cuarto.class);
+		return (List<Cuarto>) q.executeList();
 	}
 
 
