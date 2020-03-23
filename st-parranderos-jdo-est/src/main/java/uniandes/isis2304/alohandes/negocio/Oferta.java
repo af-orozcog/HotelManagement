@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Oferta {
+public class Oferta implements VOOferta{
 	
 	/* ****************************************************************
 	 * 			Atributos

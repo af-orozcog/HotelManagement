@@ -1,6 +1,6 @@
 package uniandes.isis2304.alohandes.negocio;
 
-public class Ganancias {
+public class Ganancias implements VOGanancias{
 	
 	/* ****************************************************************
 	 * 			Atributos

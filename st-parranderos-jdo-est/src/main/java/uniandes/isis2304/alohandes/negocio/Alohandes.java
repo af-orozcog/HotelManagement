@@ -724,7 +724,7 @@ public class Alohandes
 	{
 		log.info ("Generando los VO de Ganancias");
 	    List<VOGanancias> voGanancias = new LinkedList<VOGanancias> ();
-	    for (Ganancias tb : pa.darGananciass ())
+	    for (Ganancias tb : pa.darGanancias ())
 	    {
 	    	voGanancias.add (tb);
 	    }

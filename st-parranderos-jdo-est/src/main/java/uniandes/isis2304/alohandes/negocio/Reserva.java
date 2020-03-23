@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Reserva {
+public class Reserva implements VOReserva{
 
 	/* ****************************************************************
 	 * 			Atributos
