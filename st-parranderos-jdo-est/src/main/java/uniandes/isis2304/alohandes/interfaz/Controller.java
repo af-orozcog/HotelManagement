@@ -438,7 +438,7 @@ public class Controller {
 
 	public static void main(String[] args) {
 		Controller controler = new Controller();
-		String log4jConfPath = "/path/to/log4j.properties";
+		String log4jConfPath = "./path/to/log4j.properties";
 		PropertyConfigurator.configure(log4jConfPath);
 		controler.run();
 	}
