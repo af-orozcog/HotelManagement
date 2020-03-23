@@ -21,6 +21,7 @@ import uniandes.isis2304.alohandes.negocio.Cliente;
 import uniandes.isis2304.alohandes.negocio.Cuarto;
 import uniandes.isis2304.alohandes.negocio.Oferta;
 import uniandes.isis2304.alohandes.negocio.Operador;
+import uniandes.isis2304.alohandes.negocio.Reserva;
 import uniandes.isis2304.alohandes.negocio.Seguro;
 import uniandes.isis2304.alohandes.negocio.Servicio;
 import uniandes.isis2304.alohandes.negocio.Vivienda;
@@ -101,6 +102,8 @@ public class Controller {
 				
 				break;
 			case 5:
+				req6(sc);
+				
 				break;
 			case 12:
 				fin = true;
@@ -110,9 +113,36 @@ public class Controller {
 		}
 	}
 
+	private void req6(Scanner sc) {
+		interfaz.printMessage("Ingrese el nombre del operador a eliminar una propuesta");
+		String nombre = sc.next();
+		interfaz.printMessage("Ingrese el tipo de operador a eliminar una propuesta (Escriba HOTELERIA o VIVIENDA_UNIVERSITARIA o PERSONA_NATURAL según sea el caso)");
+		String tipo = sc.next();
+		
+		Operador operador = mundo.darOperadorPorNombre(nombre, tipo);
+		
+		interfaz.printMessage("Las ofertas del operador son:");
+		List<Oferta> ofertas = mundo.darOfertasPorOperador(operador.getId());
+		for (Oferta oferta : ofertas) {
+			interfaz.printMessage("Oferta id: "+oferta.getId() + " - " + oferta.toString());
+		}
+		
+		interfaz.printMessage("Ingrese el id de la oferta a eliminar");
+		mundo.eliminarOfertaPorId(sc.nextLong());
+	}
+	
 	private void req5(Scanner sc) {
-		interfaz.printMessage("Ingrese el nombre del cliente a eliminar reserva");
+		interfaz.printMessage("Ingrese el nombre del cliente a eliminar una reserva");
 		Cliente cliente = mundo.darClientePorNombre(sc.next());
+		
+		interfaz.printMessage("Las reservas del cliente son:");
+		List<Reserva> reservas = mundo.darReservasPorCliente(cliente.getId());
+		for (Reserva reserva : reservas) {
+			interfaz.printMessage("Reserva id: "+reserva.getId() + " - " + reserva.toString());
+		}
+		
+		interfaz.printMessage("Ingrese el id de la reserva a eliminar");
+		mundo.eliminarReservaPorId(sc.nextLong());
 	}
 
 	private void req4(Scanner sc) {

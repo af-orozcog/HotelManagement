@@ -962,6 +962,18 @@ public class Alohandes
 		log.info ("Generando los VO de Reserva: " + voReserva.size() + " existentes");
 		return voReserva;
 	}
+	
+	/**
+	 * Encuentra todas las reservas de un cliente
+	 * @param idCliente Identificador del cliente
+	 * @return Todas las reservas del cliente buscado
+	 */
+	public List<Reserva> darReservasPorCliente(long idCliente) {
+		log.info("Buscando reservas del cliente con id: " + idCliente);
+		List<Reserva> reservas = pa.darReservasPorCliente(idCliente);
+		log.info("Encontrado reservas del cliente");
+		return reservas;
+	}
 
 	/* ****************************************************************
 	 * 			Métodos para manejar los(as) OFERTA
@@ -1047,6 +1059,18 @@ public class Alohandes
 		log.info("Buscando ofertas con servicos");
 		List<Oferta> ofertas = pa.darOfertasConServicios(lista);
 		log.info("Encontrado ofertas");
+		return ofertas;
+	}
+	
+	/**
+	 * Encuentra todas las reservas de un operador
+	 * @param idOperador Identificador del operador
+	 * @return Todas las reservas del operador buscado
+	 */
+	public List<Oferta> darOfertasPorOperador(long idOperador) {
+		log.info("Buscando ofertas del operador con id: " + idOperador);
+		List<Oferta> ofertas = pa.darOfertasPorOperador(idOperador);
+		log.info("Encontrado ofertas del operador");
 		return ofertas;
 	}
 
@@ -1196,4 +1220,6 @@ public class Alohandes
 		log.info ("Limpiando la BD de Alohandes: Listo!");
 		return borrrados;
 	}
+
+
 }

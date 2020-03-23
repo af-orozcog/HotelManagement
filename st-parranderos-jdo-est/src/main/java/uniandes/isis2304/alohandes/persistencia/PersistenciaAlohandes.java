@@ -1568,6 +1568,15 @@ public class PersistenciaAlohandes
 	{
 		return sqlReserva.darReservas(pmf.getPersistenceManager());
 	}
+	
+	/**
+	 * Encuentra todas las reservas de un cliente
+	 * @param idCliente Identificador del cliente
+	 * @return Todas las reservas del cliente buscado
+	 */
+	public List<Reserva> darReservasPorCliente(long idCliente) {
+		return sqlReserva.darReservasPorCliente(pmf.getPersistenceManager(), idCliente);
+	}
 
 	/* ****************************************************************
 	* 			Métodos para manejar los(as) OFERTAS
@@ -1670,6 +1679,16 @@ public class PersistenciaAlohandes
 	public List<Oferta> darOfertasConServicios(ArrayList<String> lista) {
 		return sqlOferta.darOfertasConServicos(pmf.getPersistenceManager(), lista);
 	}
+	
+	/**
+	 * Encuentra todas las ofertas de un operador
+	 * @param idOperador Identificador del operador
+	 * @return Todas las ofertas del operador buscado
+	 */
+	public List<Oferta> darOfertasPorOperador(long idOperador) {
+		return sqlOferta.darOfertasPorOperador(pmf.getPersistenceManager(), idOperador);
+	}
+
 
 	/* ****************************************************************
 	* 			Métodos para manejar los(as) SERVICIOS
@@ -1874,5 +1893,6 @@ public class PersistenciaAlohandes
         }
 		
 	}
+
 
  }
