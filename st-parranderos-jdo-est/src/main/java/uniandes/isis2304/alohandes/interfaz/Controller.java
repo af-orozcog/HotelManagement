@@ -1,24 +1,46 @@
 package uniandes.isis2304.alohandes.interfaz;
 
+import java.io.FileReader;
 import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.stream.JsonReader;
 
 import uniandes.isis2304.alohandes.negocio.Alohandes;
 
 public class Controller {
 
+	/** Logger para escribir la traza de la ejecución. */
+
+	private static Logger log = Logger.getLogger(InterfazAlohandes.class.getName());
+	
 	// Componente vista (consola)
 	private InterfazAlohandes interfaz;
 	
 	// Componente modelo (logica de la aplicacion)
 	private Alohandes mundo;
 
+	private static final String CONFIG_TABLAS = "./src/main/resources/config/TablasBD.json"; 
+
+	/** Objeto JSON con los nombres de las tablas de la base de datos que se quieren utilizar. */
+	private JsonObject tableConfig;
+	
 	/**
 	 * Metodo constructor
 	 */
 	public Controller()
 	{
 		interfaz = new InterfazAlohandes();
-		mundo = new Alohandes();
+		
+		tableConfig = openConfig ("Tablas BD", CONFIG_TABLAS);
+		mundo = new Alohandes(tableConfig);
 	}
 	
 	/**
@@ -90,9 +112,37 @@ public class Controller {
 		}
 	}
 	
+	/**
+	 * Lee datos de configuraciÃ³n para la aplicaciÃ³, a partir de un archivo JSON o con valores por defecto si hay errores.
+	 * @param tipo - El tipo de configuraciÃ³n deseada
+	 * @param archConfig - Archivo Json que contiene la configuraciÃ³n
+	 * @return Un objeto JSON con la configuraciÃ³n del tipo especificado
+	 * 			NULL si hay un error en el archivo.
+	 */
+	private JsonObject openConfig (String tipo, String archConfig)
+	{
+		JsonObject config = null;
+		try 
+		{
+			Gson gson = new Gson( );
+			FileReader file = new FileReader (archConfig);
+			JsonReader reader = new JsonReader ( file );
+			config = gson.fromJson(reader, JsonObject.class);
+			log.info ("Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: " + tipo);
+		} 
+		catch (Exception e)
+		{
+			//			e.printStackTrace ();
+			log.info ("NO se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido");			
+			JOptionPane.showMessageDialog(null, "No se encontrÃ³ un archivo de configuraciÃ³n de interfaz vÃ¡lido: " + tipo, "Parranderos App", JOptionPane.ERROR_MESSAGE);
+		}	
+		return config;
+	}
 	
 	public static void main(String[] args) {
 		Controller controler = new Controller();
+		String log4jConfPath = "/path/to/log4j.properties";
+		PropertyConfigurator.configure(log4jConfPath);
 		controler.run();
 	}
 }
