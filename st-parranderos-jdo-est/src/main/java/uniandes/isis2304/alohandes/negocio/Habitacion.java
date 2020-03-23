@@ -2,7 +2,7 @@ package uniandes.isis2304.alohandes.negocio;
 
 import java.util.List;
 
-public class Habitacion extends Vivienda{
+public class Habitacion extends Vivienda implements VOHabitacion{
 	
 	/* ****************************************************************
 	 * 			Atributos

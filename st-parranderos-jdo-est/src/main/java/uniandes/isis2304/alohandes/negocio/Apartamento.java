@@ -1,6 +1,6 @@
 package uniandes.isis2304.alohandes.negocio;
 
-public class Apartamento extends Vivienda {
+public class Apartamento extends Vivienda implements VOApartamento{
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/

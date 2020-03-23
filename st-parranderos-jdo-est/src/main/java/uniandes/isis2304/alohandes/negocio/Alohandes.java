@@ -660,7 +660,7 @@ public class Alohandes
 	{
 		log.info ("Generando los VO de Persona_Natural");
 	    List<VOPersona_Natural> voPersona_Natural = new LinkedList<VOPersona_Natural> ();
-	    for (Persona_Natural tb : pa.darPersona_Naturals ())
+	    for (Persona_Natural tb : pa.darPersona_Naturales ())
 	    {
 	    	voPersona_Natural.add (tb);
 	    }

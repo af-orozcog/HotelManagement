@@ -3,7 +3,7 @@ package uniandes.isis2304.alohandes.negocio;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Vivienda {
+public class Vivienda implements VOVivienda{
 
 	/* ****************************************************************
 	 * 			Atributos
