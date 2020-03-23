@@ -1500,6 +1500,11 @@ public class PersistenciaAlohandes
 	    }
 	}
 
+	public Oferta darOfertaPorId ( long idOferta) {
+		return sqlOferta.darOfertaPorId(pmf.getPersistenceManager(),idOferta);
+	}
+	
+	
 	/**
 	* Método que elimina, de manera transaccional, una tupla en la tabla Oferta, dado el id
 	* Adiciona entradas al log de la aplicación
