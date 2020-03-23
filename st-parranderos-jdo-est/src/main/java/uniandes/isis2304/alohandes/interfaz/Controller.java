@@ -2,7 +2,9 @@ package uniandes.isis2304.alohandes.interfaz;
 
 import java.io.FileReader;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -15,9 +17,12 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
 import uniandes.isis2304.alohandes.negocio.Alohandes;
+import uniandes.isis2304.alohandes.negocio.Cliente;
 import uniandes.isis2304.alohandes.negocio.Cuarto;
+import uniandes.isis2304.alohandes.negocio.Oferta;
 import uniandes.isis2304.alohandes.negocio.Operador;
 import uniandes.isis2304.alohandes.negocio.Seguro;
+import uniandes.isis2304.alohandes.negocio.Servicio;
 import uniandes.isis2304.alohandes.negocio.Vivienda;
 
 public class Controller {
@@ -81,10 +86,20 @@ public class Controller {
 				req2(sc);
 				break;
 			case 2:
+				interfaz.printMessage("Es un operador o un cliente? (1 o 2)");
+				int t2 = sc.nextInt();
+				if(t2 == 1)
+					req1(sc);
+				else if(t2 == 2)
+					req3(sc);
 				break;
 			case 3:
+				req4(sc);
 				break;
 			case 4:
+				interfaz.printMessage("Ingrese el id de la reserva a eliminar");
+				long idReserva = sc.nextLong();
+				mundo.eliminarReservaPorId(idReserva);
 				break;
 			case 5:
 				break;
@@ -93,6 +108,63 @@ public class Controller {
 				sc.close();
 				break;
 			}
+		}
+	}
+
+	private void req4(Scanner sc) {
+		interfaz.printMessage("Ingresar");
+
+		interfaz.printMessage("Ingrese el año de inicio de la reserva");
+		int añoIn = sc.nextInt();
+		interfaz.printMessage("Ingrese el mes de inicio de la reserva");
+		int mesIn = sc.nextInt();
+		interfaz.printMessage("Ingrese el dia de inicio de la reserva");
+		int diaIn = sc.nextInt();
+
+		interfaz.printMessage("Ingrese el año de fin de la reserva");
+		int añoFin = sc.nextInt();
+		interfaz.printMessage("Ingrese el mes de fin de la reserva");
+		int mesFin = sc.nextInt();
+		interfaz.printMessage("Ingrese el dia de fin de la reserva");
+		int diaFin = sc.nextInt();
+
+		Timestamp inicio = new Timestamp(añoIn, mesIn, diaIn, 0, 0, 0, 0);
+		Timestamp fin = new Timestamp(añoFin, mesFin, diaFin, 0, 0, 0, 0);
+
+		interfaz.printMessage("Ingrese el nombre del usuario que va a realizar la reserva");
+		Cliente usuario = mundo.darClientePorNombre(sc.next());
+		
+		interfaz.printMessage("Ya sabe con que oferta quiere realizar la reserva? (Y/N)");
+		boolean sabe = sc.next().equalsIgnoreCase("Y");
+		
+		if(sabe) {
+		interfaz.printMessage("Ingrese el id de la oferta que se quiere reservar");
+		long idOferta = sc.nextLong();
+
+		String periodoArrendamiento = mundo.darOfertaPorId(idOferta).getPeriodo();
+		interfaz.printMessage("Dar duración de la reserva en " + periodoArrendamiento +" (Escribir número entero)");
+		int duracion = sc.nextInt();
+
+		mundo.adicionarReserva(inicio, fin, duracion, periodoArrendamiento, idOferta, usuario.getId());
+		}
+		else {
+			interfaz.printMessage("Algún servicio en específico? (Y/N)");
+			boolean servicios = sc.next().equalsIgnoreCase("Y");
+			
+			ArrayList<String> lista = new ArrayList<String>();
+			while(servicios) {
+				interfaz.printMessage("Escriba el servicio que desea");
+				lista.add(sc.next());
+				interfaz.printMessage("Desea más servicios? (Y/N");
+				servicios = sc.next().equalsIgnoreCase("Y");
+			}
+			
+			List<Oferta> ofertas = mundo.darOfertasConServicios(lista);
+			interfaz.printMessage("Las siguientes ofertas están disponibles: ");
+			for (Oferta oferta : ofertas) {
+				interfaz.printMessage(oferta.toString() + "ID OFERTA: " + oferta.getId());
+			}
+			
 		}
 	}
 
@@ -171,26 +243,72 @@ public class Controller {
 		if(periodo.equalsIgnoreCase("DIAS") && !es)
 			interfaz.printMessage("ERROR DE PERIDO, No se puede elegir DIAS si no es esporadico");
 		else {
-			interfaz.printMessage("Ingrese el año de inicio del propuesta");
+			interfaz.printMessage("Ingrese el año de inicio de la propuesta");
 			int añoIn = sc.nextInt();
-			interfaz.printMessage("Ingrese el mes de inicio del propuesta");
+			interfaz.printMessage("Ingrese el mes de inicio de la propuesta");
 			int mesIn = sc.nextInt();
-			interfaz.printMessage("Ingrese el dia de inicio del propuesta");
+			interfaz.printMessage("Ingrese el dia de inicio de la propuesta");
 			int diaIn = sc.nextInt();
 
-			interfaz.printMessage("Ingrese el año de fin del propuesta");
+			interfaz.printMessage("Ingrese el año de fin de la propuesta");
 			int añoFin = sc.nextInt();
-			interfaz.printMessage("Ingrese el mes de fin del propuesta");
+			interfaz.printMessage("Ingrese el mes de fin de la propuesta");
 			int mesFin = sc.nextInt();
-			interfaz.printMessage("Ingrese el dia de fin del propuesta");
+			interfaz.printMessage("Ingrese el dia de fin de la propuesta");
 			int diaFin = sc.nextInt();
 
 			Timestamp fechaInicio = new Timestamp(añoIn, mesIn, diaIn, 0, 0, 0, 0);
 			Timestamp fechaFin = new Timestamp(añoFin, mesFin, diaFin, 0, 0, 0, 0);
 
-			mundo.adicionarOferta(precio, periodo, idVivienda, fechaInicio, fechaFin);
+			Oferta oferta = mundo.adicionarOferta(precio, periodo, idVivienda, fechaInicio, fechaFin);
+
+			interfaz.printMessage("Desea adicionar servicios? (Y/N)"); 
+			boolean servicio = sc.next().equalsIgnoreCase("Y");
+			while(servicio) {
+				interfaz.printMessage("El servicio ya existe está registrado? (Y/N))");
+				boolean reg = sc.next().equalsIgnoreCase("Y");
+
+				long idServicio;
+				if(reg) {
+					interfaz.printMessage("Ingrese el id del servicio");
+					idServicio = sc.nextLong();
+				}
+				else {
+					idServicio = registrarServicio(sc).getId();
+				}
+
+				interfaz.printMessage("El precio del servicio ya está incluido en la oferta? (Y/N)");
+				boolean incluido = sc.next().equalsIgnoreCase("Y");
+				mundo.adicionarIncluye(oferta.getId(), idServicio, incluido);
+				
+				interfaz.printMessage("Desea seguir adicionando servicios? (Y/N)"); 
+				servicio = sc.next().equalsIgnoreCase("Y");
+			}
 		}
 
+	}
+
+	private Servicio registrarServicio(Scanner sc) {
+		interfaz.printMessage("Ingrese el nombre del servicio");
+		String nombre = sc.next();
+		interfaz.printMessage("Ingrese el costo del servicio");
+		long costo = sc.nextLong();
+		return mundo.adicionarServicio(nombre, costo);
+	}
+
+	private void req3(Scanner sc) {
+		interfaz.printMessage("Escriba el nombre");
+		String nombre = sc.next();
+		interfaz.printMessage("Escriba el email");
+		String email = sc.next();
+		interfaz.printMessage("Escriba el numero");
+		String numero = sc.next();
+		interfaz.printMessage("Escriba el documento");
+		String documento = sc.next();
+		interfaz.printMessage("Escriba el tipo de cliente de alguna de las opciones\n PROFESOR, EMPLEADO, EGRESADO, ESTUDIANTE, PADRE, NO_RELACIONADO, VECINO ");
+		String tipoCliente = sc.next();
+
+		mundo.adicionarCliente(nombre, email, numero, documento, tipoCliente);
 	}
 
 	private Vivienda crearVivienda(Scanner sc, Operador operador, boolean es) {

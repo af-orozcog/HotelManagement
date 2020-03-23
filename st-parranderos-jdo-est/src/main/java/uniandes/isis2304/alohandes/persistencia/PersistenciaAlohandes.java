@@ -21,6 +21,7 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -541,6 +542,14 @@ public class PersistenciaAlohandes
 		return sqlVivienda.darViviendas(pmf.getPersistenceManager());
 	}
 
+	/**
+	 * Método que retorna la Vivienda con el id buscado
+	 * @return La Vivienda con el id buscado
+	 */
+	public Vivienda darViviendaPorId(long idVivienda) {
+		return sqlVivienda.darViviendaPorId(pmf.getPersistenceManager(), idVivienda);
+	}
+	
 	/* ****************************************************************
 	* 			Métodos para manejar los(as) HABITACIONS
 	*****************************************************************/
@@ -1468,6 +1477,14 @@ public class PersistenciaAlohandes
 	{
 		return sqlCliente.darClientes(pmf.getPersistenceManager());
 	}
+	
+	/**
+	 * Método que busca una tupla en Cliente según su nombre
+	 * @return El objeto Cliente con el nombre buscado
+	 */
+	public Cliente buscarClientePorNombre(String nombreCliente) {
+		return sqlCliente.darClientePorNombre(pmf.getPersistenceManager(), nombreCliente);
+	}
 
 	/* ****************************************************************
 	* 			Métodos para manejar los(as) RESERVAS
@@ -1593,6 +1610,11 @@ public class PersistenciaAlohandes
 	    }
 	}
 
+	/**
+	 * Método que retorna la oferta con el id buscado
+	 * @param idOferta Identificador de la oferta buscada
+	 * @return Oferta con el id buscado
+	 */
 	public Oferta darOfertaPorId ( long idOferta) {
 		return sqlOferta.darOfertaPorId(pmf.getPersistenceManager(),idOferta);
 	}
@@ -1638,6 +1660,15 @@ public class PersistenciaAlohandes
 	public List<Oferta> darOfertas ()
 	{
 		return sqlOferta.darOfertas(pmf.getPersistenceManager());
+	}
+	
+	/**
+	 * Retorna un grupo de ofertas que cumplan con los servicios pedidos
+	 * @param lista Servicios requeridos
+	 * @return lista de Ofertas con los servicios requeridos
+	 */
+	public List<Oferta> darOfertasConServicios(ArrayList<String> lista) {
+		return sqlOferta.darOfertasConServicos(pmf.getPersistenceManager(), lista);
 	}
 
 	/* ****************************************************************
@@ -1843,4 +1874,5 @@ public class PersistenciaAlohandes
         }
 		
 	}
+
  }

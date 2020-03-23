@@ -10,7 +10,7 @@ public class InterfazAlohandes {
 		System.out.println("(2) RF3.Registrar usuario");
 		System.out.println("(3) RF4.Registrar reserva");
 		System.out.println("(4) RF5.Cancelar una reserva");
-		System.out.println("(5) RF6.Retirar una reserva");
+		System.out.println("(5) RF6.Retirar una propuesta");
 		
 		System.out.println("---------------------------------------------------");
 		System.out.println("(6) RFC1.MOSTRAR EL DINERO RECIBIDO POR CADA PROVEEDOR DE ALOJAMIENTO DURANTE EL AÑO ACTUAL Y EL AÑO CORRIDO");

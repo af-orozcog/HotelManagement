@@ -16,6 +16,7 @@
 package uniandes.isis2304.alohandes.persistencia;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -122,6 +123,23 @@ class SQLOferta
 		q.setResultClass(Oferta.class);
 		return (List<Oferta>) q.executeList();
 	}
+
+	public List<Oferta> darOfertasConServicos(PersistenceManager pm, ArrayList<String> lista) {
+		
+		List<Oferta> ofertas = darOfertas(pm);
+		for (String servicio : lista) {
+			Query q = pm.newQuery(SQL, "SELECT DISTINCT * FROM " + pa.darTablaOferta ()+" o, " + pa.darTablaIncluye() + " i, " + pa.darTablaServicio() + "s "
+					+ "WHERE o.id = i.idoferta AND i.idservicio = s.id AND s.nombre <> " + servicio);
+			q.setResultClass(Oferta.class);
+			List<Oferta> eliminar = q.executeList();
+			for (Oferta el : eliminar) {
+				ofertas.remove(el);
+			}
+		}
+		
+		return ofertas;
+	}
+
 
 
 }

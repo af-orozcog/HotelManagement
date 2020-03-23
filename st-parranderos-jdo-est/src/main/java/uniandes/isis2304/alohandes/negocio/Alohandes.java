@@ -19,6 +19,7 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -140,6 +141,19 @@ public class Alohandes
 		}
 		log.info ("Generando los VO de Vivienda: " + voVivienda.size() + " existentes");
 		return voVivienda;
+
+	}
+	
+	/**
+	 * Encuentra la vivienda con el Id buscado en Alohandes
+	 * Adiciona entradas al log de la aplicacion
+	 * @return Un objeto tipo Vivienda con el id buscado
+	 */
+	public Vivienda darViviendaPorId(long idVivienda) {
+		log.info("Buscando Vivienda con Id: " + idVivienda);
+		Vivienda vivienda = pa.darViviendaPorId(idVivienda);
+		log.info("Encontrada Vivienda: " + vivienda);
+		return vivienda;
 	}
 
 	/* ****************************************************************
@@ -871,6 +885,18 @@ public class Alohandes
 		log.info ("Generando los VO de Cliente: " + voCliente.size() + " existentes");
 		return voCliente;
 	}
+	
+	/**
+	 * Encuentra un Cliente por su nombre
+	 * Adiciona entradas al log de la aplicación
+	 * @return Objeto Cliente con el nombre buscado
+	 */
+	public Cliente darClientePorNombre( String nombreCliente ) {
+		log.info("Buscanod el cliente con nombre: " + nombreCliente);
+		Cliente cliente = pa.buscarClientePorNombre(nombreCliente);
+		log.info("Encontrade el Cliente: " + cliente);
+		return cliente;
+	}
 
 	/* ****************************************************************
 	 * 			Métodos para manejar los(as) RESERVA
@@ -998,6 +1024,30 @@ public class Alohandes
 		}
 		log.info ("Generando los VO de Oferta: " + voOferta.size() + " existentes");
 		return voOferta;
+	}
+	
+	/**
+	 * Encuentra una oferta según su id en Alohandes
+	 * Adiciona entradas al log de la aplicación
+	 * @return un objeto tipo Oferta con el id buscado
+	 */
+	public Oferta darOfertaPorId(long idOferta) {
+		log.info("Buscando Oferta con id: " + idOferta);
+		Oferta oferta = pa.darOfertaPorId(idOferta);
+		log.info("Encontrada oferta: " + oferta);
+		return oferta;
+	}
+	
+	/**
+	 * Retorna un grupo de ofertas que cumplan con los servicios pedidos
+	 * @param lista Servicios requeridos
+	 * @return lista de Ofertas con los servicios requeridos
+	 */
+	public List<Oferta> darOfertasConServicios(ArrayList<String> lista) {
+		log.info("Buscando ofertas con servicos");
+		List<Oferta> ofertas = pa.darOfertasConServicios(lista);
+		log.info("Encontrado ofertas");
+		return ofertas;
 	}
 
 	/* ****************************************************************

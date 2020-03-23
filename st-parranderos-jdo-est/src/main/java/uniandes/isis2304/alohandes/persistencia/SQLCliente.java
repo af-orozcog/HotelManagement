@@ -104,6 +104,20 @@ class SQLCliente
 		return (Cliente) q.executeUnique();
 	}
 
+	/**
+	* Crea y ejecuta la sentencia SQL para encontrar la información de un CLIENTE de la 
+	* base de datos de Alohandes, por su nombre
+	* @param pm - El manejador de persistencia
+	* @param nombreCliente - El identificador de la Cliente
+	* @return El objeto CLIENTE que tiene el nombre dado
+	*/
+	public Cliente darClientePorNombre (PersistenceManager pm, String nombreCliente)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaCliente () + " WHERE nombre = ?");
+		q.setResultClass(Cliente.class);
+		q.setParameters(nombreCliente);
+		return (Cliente) q.executeUnique();
+	}
 
 	/**
 	* Crea y ejecuta la sentencia SQL para encontrar la información de LOS(AS) Clientees de la
