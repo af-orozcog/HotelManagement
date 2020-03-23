@@ -49,7 +49,7 @@ public class Hoteleria extends Operador implements VOHoteleria{
 	 */
 	public Hoteleria(long id, String nombre, String email, String numero, String tipoHoteleria,
 			Timestamp horaApertura, Timestamp horaCierre) {
-		super(id,nombre,email,numero);
+		super(id,nombre,email,numero,"HOTELERIA");
 		this.tipoHoteleria = tipoHoteleria;
 		this.horaApertura = horaApertura;
 		this.horaCierre = horaCierre;

@@ -51,6 +51,7 @@ import uniandes.isis2304.alohandes.negocio.Seguro;
 import uniandes.isis2304.alohandes.negocio.Servicio;
 import uniandes.isis2304.alohandes.negocio.Usuario;
 import uniandes.isis2304.alohandes.negocio.Vivienda;
+import uniandes.isis2304.alohandes.negocio.ViviendaUniversitaria;
 
 /**
  * Clase para el manejador de persistencia del proyecto Alohandes
@@ -568,7 +569,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	  	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	    	return null;
 	   }
 	    finally
@@ -601,7 +602,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	    	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	        return -1;
 	    }
 	    finally
@@ -651,7 +652,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	  	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	    	return null;
 	   }
 	    finally
@@ -684,7 +685,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	    	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	        return -1;
 	    }
 	    finally
@@ -734,7 +735,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	  	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	    	return null;
 	   }
 	    finally
@@ -767,7 +768,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	    	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	        return -1;
 	    }
 	    finally
@@ -817,7 +818,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	  	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	    	return null;
 	   }
 	    finally
@@ -850,7 +851,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	    	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	        return -1;
 	    }
 	    finally
@@ -900,7 +901,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	  	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	    	return null;
 	   }
 	    finally
@@ -933,7 +934,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	    	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	        return -1;
 	    }
 	    finally
@@ -966,7 +967,7 @@ public class PersistenciaAlohandes
 	* @param x - x de Operador
 	* @return El objeto Operador adicionado. null si ocurre alguna Excepción
 	*/
-	public Operador adicionarOperador(String nombre, String email, String numero)
+	public Operador adicionarOperador(String nombre, String email, String numero, String tipoOperador)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 	    Transaction tx=pm.currentTransaction();
@@ -974,17 +975,17 @@ public class PersistenciaAlohandes
 	    {
 	        tx.begin();
 	        long idOperador = nextval ();
-	        long tuplasInsertadas = sqlOperador.adicionarOperador(pm, idOperador, nombre, email, numero);
+	        long tuplasInsertadas = sqlOperador.adicionarOperador(pm, idOperador, nombre, email, numero, tipoOperador);
 	        tx.commit();
 
 	        log.trace ("Inserción de vivienda: " + idOperador + ": " + tuplasInsertadas + " tuplas insertadas");
 
-	        return new Operador(idOperador, nombre, email, numero);
+	        return new Operador(idOperador, nombre, email, numero, tipoOperador);
 	    }
 	    catch (Exception e)
 	    {
 //	  	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	    	return null;
 	   }
 	    finally
@@ -1017,7 +1018,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	    	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	        return -1;
 	    }
 	    finally
@@ -1040,6 +1041,89 @@ public class PersistenciaAlohandes
 	}
 
 	/* ****************************************************************
+	* 			Métodos para manejar los(as) VIVIENDAS_UNIVERSITARIAS
+	*****************************************************************/
+
+	/**
+	* Método que inserta, de manera transaccional, una tupla en la tabla Vivienda_Universitaria
+	* Adiciona entradas al log de la aplicación
+	* @param x - x de Operador
+	* @return El objeto Operador adicionado. null si ocurre alguna Excepción
+	*/
+	public ViviendaUniversitaria adicionarViviendaUniversitaria(String nombre, String email, String numero)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+	    Transaction tx=pm.currentTransaction();
+	    try
+	    {
+	        tx.begin();
+	        long idOperador = nextval ();
+	        long tuplasInsertadas = sqlOperador.adicionarOperador(pm, idOperador, nombre, email, numero, "VIVIENDA_UNIVERSITARIA");
+	        tx.commit();
+
+	        log.trace ("Inserción de vivienda: " + idOperador + ": " + tuplasInsertadas + " tuplas insertadas");
+
+	        return new ViviendaUniversitaria(idOperador, nombre, email, numero);
+	    }
+	    catch (Exception e)
+	    {
+//	  	e.printStackTrace();
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+	    	return null;
+	   }
+	    finally
+	    {
+	        if (tx.isActive())
+	        {
+	            tx.rollback();
+	        }
+	        pm.close();
+	    }
+	}
+
+	/**
+	* Método que elimina, de manera transaccional, una tupla en la tabla Operador, dado el id
+	* Adiciona entradas al log de la aplicación
+	* @param idViviendaUniversitaria - el id
+	* @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción
+	*/
+	public long eliminarViviendaUniversitariaPorId (long idViviendaUniversitaria)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+	    Transaction tx=pm.currentTransaction();
+	    try
+	    {
+	        tx.begin();
+	        long resp = sqlOperador.eliminarOperadorPorId(pm, idViviendaUniversitaria);
+	        tx.commit();
+	        return resp;
+	    }
+	    catch (Exception e)
+	    {
+//	    	e.printStackTrace();
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+	        return -1;
+	    }
+	    finally
+	    {
+	        if (tx.isActive())
+	        {
+	            tx.rollback();
+	        }
+	        pm.close();
+	    }
+	}
+
+	/**
+	* Método que consulta todas las tuplas en la tabla ViviendaUniversitaria
+	* @return La lista de objetos Operador, construidos con base en las tuplas de la tabla OPERADOR
+	*/
+	public List<ViviendaUniversitaria> darViviendasUniversitarias ()
+	{
+		return sqlOperador.darViviendasUniversitarias(pmf.getPersistenceManager());
+	}
+	
+	/* ****************************************************************
 	* 			Métodos para manejar los(as) HOTELERIAS
 	*****************************************************************/
 
@@ -1049,7 +1133,7 @@ public class PersistenciaAlohandes
 	* @param x - x de Hoteleria
 	* @return El objeto Hoteleria adicionado. null si ocurre alguna Excepción
 	*/
-	public Hoteleria adicionarHoteleria(String nombre, String email, String numero, String tipoHoteleria, LocalTime horaApertura, LocalTime horaCierre)
+	public Hoteleria adicionarHoteleria(String nombre, String email, String numero, String tipoHoteleria, Timestamp horaApertura, Timestamp horaCierre)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 	    Transaction tx=pm.currentTransaction();
@@ -1067,7 +1151,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	  	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	    	return null;
 	   }
 	    finally
@@ -1100,7 +1184,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	    	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	        return -1;
 	    }
 	    finally
@@ -1123,7 +1207,7 @@ public class PersistenciaAlohandes
 	}
 
 	/* ****************************************************************
-	* 			Métodos para manejar los(as) PERSONA_NATURALS
+	* 			Métodos para manejar los(as) PERSONA_NATURALES
 	*****************************************************************/
 
 	/**
@@ -1155,7 +1239,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	  	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	    	return null;
 	   }
 	    finally
@@ -1188,7 +1272,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	    	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	        return -1;
 	    }
 	    finally
@@ -1238,7 +1322,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	  	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	    	return null;
 	   }
 	    finally
@@ -1271,7 +1355,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	    	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	        return -1;
 	    }
 	    finally
@@ -1321,7 +1405,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	  	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	    	return null;
 	   }
 	    finally
@@ -1354,7 +1438,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	    	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	        return -1;
 	    }
 	    finally
@@ -1386,7 +1470,7 @@ public class PersistenciaAlohandes
 	* @param x - x de Reserva
 	* @return El objeto Reserva adicionado. null si ocurre alguna Excepción
 	*/
-	public Reserva adicionarReserva(LocalDateTime inicio, int duracion, String periodoArrendamiento, long idUsuario, long idOferta)
+	public Reserva adicionarReserva(Timestamp inicio, Timestamp fin, int duracion, String periodoArrendamiento, long idUsuario, long idOferta)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 	    Transaction tx=pm.currentTransaction();
@@ -1394,17 +1478,17 @@ public class PersistenciaAlohandes
 	    {
 	        tx.begin();
 	        long idReserva = nextval ();
-	        long tuplasInsertadas = sqlReserva.adicionarReserva(pm, idReserva, inicio, duracion, periodoArrendamiento, idUsuario, idOferta);
+	        long tuplasInsertadas = sqlReserva.adicionarReserva(pm, idReserva, inicio, fin, duracion, periodoArrendamiento, idUsuario, idOferta);
 	        tx.commit();
 
 	        log.trace ("Inserción de vivienda: " + idReserva + ": " + tuplasInsertadas + " tuplas insertadas");
 
-	        return new Reserva(idReserva, inicio, duracion, periodoArrendamiento, idUsuario, idOferta);
+	        return new Reserva(idReserva, inicio, fin, periodoArrendamiento, idUsuario, idOferta);
 	    }
 	    catch (Exception e)
 	    {
 //	  	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	    	return null;
 	   }
 	    finally
@@ -1437,7 +1521,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	    	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	        return -1;
 	    }
 	    finally
@@ -1487,7 +1571,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	  	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	    	return null;
 	   }
 	    finally
@@ -1520,7 +1604,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	    	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	        return -1;
 	    }
 	    finally
@@ -1572,7 +1656,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	  	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	    	return null;
 	   }
 	    finally
@@ -1605,7 +1689,7 @@ public class PersistenciaAlohandes
 	    catch (Exception e)
 	    {
 //	    	e.printStackTrace();
-	    	log.error ("Exception : " + e.getMessage() + "RAYALPISOENE" + darDetalleException(e));
+	    	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 	        return -1;
 	    }
 	    finally

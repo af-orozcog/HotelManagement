@@ -67,7 +67,7 @@ class SQLPersona_Natural extends SQLOperador
 	*/
 	public long adicionarPersona_Natural (PersistenceManager pm, long idPersona_Natural, String nombre, String email, String numero, String documento, String tipoPersona)
 	{
-		super.adicionarOperador(pm, idPersona_Natural, nombre, email, numero);
+		super.adicionarOperador(pm, idPersona_Natural, nombre, email, numero,"PERSONA_NATURAL");
 	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaPersona_Natural () + "(id, documento, tipoPersona) values (? ,? ,?)");
 	   q.setParameters( idPersona_Natural, documento, tipoPersona );
 	    return (long) q.executeUnique();

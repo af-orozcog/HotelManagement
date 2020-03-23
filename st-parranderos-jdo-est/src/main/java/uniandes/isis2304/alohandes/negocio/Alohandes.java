@@ -485,10 +485,10 @@ public class Alohandes
 	* @param numero - numero del Operador
 	* @return El objeto Operador adicionado. null si ocurre alguna Excepción
 	*/
-	public Operador adicionarOperador (String nombre, String email, String numero)
+	public Operador adicionarOperador (String nombre, String email, String numero, String tipoOperador)
 	{
 	log.info ("Adicionando nuevo(a) Operador ");
-	Operador operador = pa.adicionarOperador(nombre, email, numero);
+	Operador operador = pa.adicionarOperador(nombre, email, numero, tipoOperador);
 	log.info ("Adicionando Operador: " + operador);
 	return operador;
 	}
@@ -538,6 +538,69 @@ public class Alohandes
 	}
 
 	/* ****************************************************************
+	* 			Métodos para manejar los(as) VIVIENDA_UNIVERSITARIA
+	*****************************************************************/
+	/**
+	* Adiciona de manera persistente un ViviendaUniversitaria
+	* Adiciona entradas al log de la aplicación
+	* @param nombre - nombre del Operador
+	* @param email - email del Operador
+	* @param numero - numero del Operador
+	* @return El objeto Operador adicionado. null si ocurre alguna Excepción
+	*/
+	public ViviendaUniversitaria adicionarViviendaUniversitaria (String nombre, String email, String numero)
+	{
+	log.info ("Adicionando nuevo(a) ViviendaUniversitaria ");
+	ViviendaUniversitaria viviendaUniversitaria = pa.adicionarViviendaUniversitaria(nombre, email, numero);
+	log.info ("Adicionando ViviendaUniversitaria: " + viviendaUniversitaria);
+	return viviendaUniversitaria;
+	}
+
+	/**
+	 * Elimina un ViviendaUniversitaria por su id
+	 * Adiciona entradas al log de la aplicación
+	 * @param id - El id de la ViviendaUniversitaria a eliminar
+	 * @return El número de tuplas eliminadas
+	 */
+	public long eliminarViviendaUniversitariaPorId (long idViviendaUniversitaria)
+	{
+		log.info ("Eliminando ViviendaUniversitaria por id: " + idViviendaUniversitaria);
+	    long resp = pa.eliminarViviendaUniversitariaPorId(idViviendaUniversitaria);
+	    log.info ("Eliminando ViviendaUniversitaria por id: " + resp + " tuplas eliminadas");
+	    return resp;
+	}
+
+	/**
+	 * Encuentra todos los ViviendaUniversitaria en Alohandes
+	 * Adiciona entradas al log de la aplicación
+	 * @return Una lista de objetos ViviendaUniversitaria, llenos con su información básica
+	 */
+	public List<ViviendaUniversitaria> darViviendasUniversitarias ()
+	{
+		log.info ("Consultando ViviendaUniversitaria");
+	    List<ViviendaUniversitaria> viviendaUniversitaria = pa.darViviendasUniversitarias();
+	    log.info ("Consultando ViviendaUniversitaria: " + viviendaUniversitaria.size() + " existentes");
+	    return viviendaUniversitaria;
+	}
+
+	/**
+	 * Encuentra todos los Operador en Alohandes y los devuelve como una lista de VOOperador
+	 * Adiciona entradas al log de la aplicación
+	 * @return Una lista de objetos VOOperador llenos con su información básica
+	 */
+	public List<VOViviendaUniversitaria> darVOViviendaUniversitaria ()
+	{
+		log.info ("Generando los VO de ViviendaUniversitaria");
+	    List<VOViviendaUniversitaria> voViviendaUniversitaria = new LinkedList<VOViviendaUniversitaria> ();
+	    for (ViviendaUniversitaria tb : pa.darViviendasUniversitarias() )
+	    {
+	    	voViviendaUniversitaria.add (tb);
+	    }
+	    log.info ("Generando los VO de ViviendaUniversitaria: " + voViviendaUniversitaria.size() + " existentes");
+	    return voViviendaUniversitaria;
+	}
+	
+	/* ****************************************************************
 	* 			Métodos para manejar los(as) HOTELERIA
 	*****************************************************************/
 	/**
@@ -551,7 +614,7 @@ public class Alohandes
 	* @param horaCierre - horaCierre del Hoteleria
 	* @return El objeto Hoteleria adicionado. null si ocurre alguna Excepción
 	*/
-	public Hoteleria adicionarHoteleria (String nombre, String email, String numero, String tipoHoteleria, LocalTime horaApertura, LocalTime horaCierre)
+	public Hoteleria adicionarHoteleria (String nombre, String email, String numero, String tipoHoteleria, Timestamp horaApertura, Timestamp horaCierre)
 	{
 	log.info ("Adicionando nuevo(a) Hoteleria ");
 	Hoteleria hoteleria = pa.adicionarHoteleria(nombre, email, numero, tipoHoteleria, horaApertura, horaCierre);	
@@ -810,10 +873,10 @@ public class Alohandes
 	* @param idUsuario - idUsuario del Reserva
 	* @return El objeto Reserva adicionado. null si ocurre alguna Excepción
 	*/
-	public Reserva adicionarReserva (LocalDateTime inicio, int duracion, String periodoArrendamiento, long idOferta, long idUsuario)
+	public Reserva adicionarReserva (Timestamp inicio, Timestamp fin, int duracion, String periodoArrendamiento, long idOferta, long idUsuario)
 	{
 	log.info ("Adicionando nuevo(a) Reserva ");
-	Reserva reserva = pa.adicionarReserva(inicio, duracion, periodoArrendamiento, idUsuario, idOferta);
+	Reserva reserva = pa.adicionarReserva(inicio, fin, duracion, periodoArrendamiento, idUsuario, idOferta);
 	log.info ("Adicionando Reserva: " + reserva);
 	return reserva;
 	}
@@ -1001,7 +1064,7 @@ public class Alohandes
 	public Incluye adicionarIncluye (long idOferta, long idServicio, boolean incluido)
 	{
 	log.info ("Adicionando nuevo(a) Incluye ");
-	Incluye incluye = pa.adicionarIncluye (nombre);	
+	Incluye incluye = pa.adicionarIncluye(idServicio, idOferta, incluido);	
 	log.info ("Adicionando Incluye: " + incluye);
 	return incluye;
 	}

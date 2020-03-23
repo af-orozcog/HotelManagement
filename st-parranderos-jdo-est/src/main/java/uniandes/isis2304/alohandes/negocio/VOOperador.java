@@ -22,4 +22,14 @@ public interface VOOperador {
 	 * @param ganancias - la nueva lista de ganacias del operador
 	 */
 	public void setGanancias(List<Object[]> ganancias);
+	
+	/**
+	 * @return el tipo de operador
+	 */
+	public String getTipoOperador(); 
+	
+	/**
+	 * @param tipoOperador - el nuevo tipo operador
+	 */
+	public void setTipoOperador(String tipoOperador);
 }

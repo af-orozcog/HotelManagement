@@ -20,6 +20,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import uniandes.isis2304.alohandes.negocio.Operador;
+import uniandes.isis2304.alohandes.negocio.ViviendaUniversitaria;
 
 /**
  * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto BEBEDOR de Parranderos
@@ -67,9 +68,9 @@ class SQLOperador
 	* @param numero - 
 	* @return El número de tuplas insertadas 
 	*/
-	public long adicionarOperador (PersistenceManager pm, long idOperador, String nombre, String email, String numero)
+	public long adicionarOperador (PersistenceManager pm, long idOperador, String nombre, String email, String numero, String tipoOperador)
 	{
-	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaOperador () + "(id, nombre, email, numero) values (? ,? ,? ,?)");
+	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaOperador () + "(id, nombre, email, numero, tipo_operador) values (? ,? ,? ,? ,?)");
 	   q.setParameters( idOperador, nombre, email, numero );
 	    return (long) q.executeUnique();
 	}
@@ -114,6 +115,19 @@ class SQLOperador
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaOperador ());
 		q.setResultClass(Operador.class);
 		return (List<Operador>) q.executeList();
+	}
+	
+	/**
+	* Crea y ejecuta la sentencia SQL para encontrar la información de LOS(AS) ViviendasUniversitarias de la
+	* base de datos de Alohandes
+	* @param pm - El manejador de persistencia
+	* @return Una lista de objetos Operador
+	*/
+	public List<ViviendaUniversitaria> darViviendasUniversitarias (PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaOperador () + " WHERE tipo_operador = 'VIVIENDA_UNIVERSITARIA' ");
+		q.setResultClass(Operador.class);
+		return (List<ViviendaUniversitaria>) q.executeList();
 	}
 
 }

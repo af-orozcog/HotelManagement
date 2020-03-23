@@ -1,6 +1,6 @@
 package uniandes.isis2304.alohandes.negocio;
 
-public class ViviendaUniversitaria extends Operador{
+public class ViviendaUniversitaria extends Operador  implements VOViviendaUniversitaria{
 	
 	/* ****************************************************************
 	 * 			Métodos 
@@ -18,6 +18,6 @@ public class ViviendaUniversitaria extends Operador{
 	 * @param numero - el numero telefonico del usuario
 	 */
 	public ViviendaUniversitaria(long id, String nombre, String email, String numero) {
-		super(id,nombre,email,numero);
+		super(id,nombre,email,numero, "VIVIENDA_UNIVERSITARIA");
 	}
 }

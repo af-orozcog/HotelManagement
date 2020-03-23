@@ -15,6 +15,7 @@
 
 package uniandes.isis2304.alohandes.persistencia;
 
+import java.sql.Timestamp;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -56,42 +57,42 @@ class SQLHoteleria extends SQLOperador
 	}
 
 	/**
-	* Crea y ejecuta la sentencia SQL para adicionar un HOTELERIA a la base de datos de Alohandes
-	* @param idHoteleria - 
-	* @param nombre - 
-	* @param email - 
-	* @param numero - 
-	* @param tipoHoteleria - 
-	* @param horaApertura - 
-	* @param horaCierre - 
-	* @return El número de tuplas insertadas 
-	*/
-	public long adicionarHoteleria (PersistenceManager pm, long idHoteleria, String nombre, String email, String numero, String tipoHoteleria, LocalTime horaApertura, LocalTime horaCierre)
+	 * Crea y ejecuta la sentencia SQL para adicionar un HOTELERIA a la base de datos de Alohandes
+	 * @param idHoteleria - 
+	 * @param nombre - 
+	 * @param email - 
+	 * @param numero - 
+	 * @param tipoHoteleria - 
+	 * @param horaApertura - 
+	 * @param horaCierre - 
+	 * @return El número de tuplas insertadas 
+	 */
+	public long adicionarHoteleria (PersistenceManager pm, long idHoteleria, String nombre, String email, String numero, String tipoHoteleria, Timestamp horaApertura, Timestamp horaCierre)
 	{
-		super.adicionarOperador(pm, idHoteleria, nombre, email, numero);
-	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaHoteleria () + "(id, tipoHoteleria, horaApertura, horaCierre) values (? ,? ,? ,?)");
-	   q.setParameters( idHoteleria, nombre, email, numero, tipoHoteleria, horaApertura, horaCierre );
-	    return (long) q.executeUnique();
+		super.adicionarOperador(pm, idHoteleria, nombre, email, numero, "HOTELERIA");
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaHoteleria () + "(id, tipoHoteleria, horaApertura, horaCierre) values (? ,? ,? ,?)");
+		q.setParameters( idHoteleria, nombre, email, numero, tipoHoteleria, horaApertura, horaCierre );
+		return (long) q.executeUnique();
 	}
 
 	/**
-	* Crea y ejecuta la sentencia SQL para eliminar un HOTELERIA de la base de datos de Alohandes, por su identificador
-	* @param pm - El manejador de persistencia
-	* @param idHoteleria - El identificador de la Hoteleria
-	* @return EL número de tuplas eliminadas
-	*/
+	 * Crea y ejecuta la sentencia SQL para eliminar un HOTELERIA de la base de datos de Alohandes, por su identificador
+	 * @param pm - El manejador de persistencia
+	 * @param idHoteleria - El identificador de la Hoteleria
+	 * @return EL número de tuplas eliminadas
+	 */
 	public long eliminarHoteleriaPorId (PersistenceManager pm, long idHoteleria)
 	{
-	    return super.eliminarOperadorPorId(pm, idHoteleria);
+		return super.eliminarOperadorPorId(pm, idHoteleria);
 	}
 
 	/**
-	* Crea y ejecuta la sentencia SQL para encontrar la información de un HOTELERIA de la 
-	* base de datos de Alohandes, por su identificador
-	* @param pm - El manejador de persistencia
-	* @param idHoteleria - El identificador de la Hoteleria
-	* @return El objeto HOTELERIA que tiene el identificador dado
-	*/
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de un HOTELERIA de la 
+	 * base de datos de Alohandes, por su identificador
+	 * @param pm - El manejador de persistencia
+	 * @param idHoteleria - El identificador de la Hoteleria
+	 * @return El objeto HOTELERIA que tiene el identificador dado
+	 */
 	public Hoteleria darHoteleriaPorId (PersistenceManager pm, long idHoteleria)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaHoteleria () +" NATURAL JOIN "+ pa.darTablaOperador() +" WHERE id = ?");
@@ -102,11 +103,11 @@ class SQLHoteleria extends SQLOperador
 
 
 	/**
-	* Crea y ejecuta la sentencia SQL para encontrar la información de LOS(AS) Hotelerias de la
-	* base de datos de Alohandes
-	* @param pm - El manejador de persistencia
-	* @return Una lista de objetos Hoteleria
-	*/
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de LOS(AS) Hotelerias de la
+	 * base de datos de Alohandes
+	 * @param pm - El manejador de persistencia
+	 * @return Una lista de objetos Hoteleria
+	 */
 	public List<Hoteleria> darHotelerias (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaHoteleria () +" NATURAL JOIN " + pa.darTablaOperador());

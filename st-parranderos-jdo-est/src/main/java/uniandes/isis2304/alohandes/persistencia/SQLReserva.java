@@ -14,6 +14,7 @@
  */
 
 package uniandes.isis2304.alohandes.persistencia;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -54,51 +55,52 @@ class SQLReserva
 	 *****************************************************************/
 
 	/** 
-	* Constructor
-	* @param pa - El Manejador de persistencia de la aplicación
-	*/
+	 * Constructor
+	 * @param pa - El Manejador de persistencia de la aplicación
+	 */
 	public SQLReserva (PersistenciaAlohandes pa)
 	{
-	   this.pa = pa;
+		this.pa = pa;
 	}
 
 	/**
-	* Crea y ejecuta la sentencia SQL para adicionar un RESERVA a la base de datos de Alohandes
-	* @param idReserva - 
-	* @param inicio - 
-	* @param duracion - 
-	* @param periodoArrendamiento - 
-	* @param idUsuario - 
-	* @param idOferta - 
-	* @return El número de tuplas insertadas 
-	*/
-	public long adicionarReserva (PersistenceManager pm, long idReserva, LocalDateTime inicio, int duracion, String periodoArrendamiento, long idUsuario, long idOferta)
+	 * Crea y ejecuta la sentencia SQL para adicionar un RESERVA a la base de datos de Alohandes
+	 * @param idReserva - 
+	 * @param inicio - 
+	 * @param fin - 
+	 * @param duracion - 
+	 * @param periodoArrendamiento - 
+	 * @param idUsuario - 
+	 * @param idOferta - 
+	 * @return El número de tuplas insertadas 
+	 */
+	public long adicionarReserva (PersistenceManager pm, long idReserva, Timestamp inicio, Timestamp fin, int duracion, String periodoArrendamiento, long idUsuario, long idOferta)
 	{
-	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaReserva () + "(id, inicio, duracion, periodoArrendamiento, idUsuario, idOferta) values (? ,? ,? ,? ,? ,?)");
-	   q.setParameters( idReserva, inicio, duracion, periodoArrendamiento, idUsuario, idOferta );
-	    return (long) q.executeUnique();
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaReserva () + "(id, inicio, fin, duracion, periodoArrendamiento, idUsuario, idOferta) values (? ,? ,? ,? ,? ,? ,?)");
+		q.setParameters( idReserva, inicio, duracion, periodoArrendamiento, idUsuario, idOferta );
+		return (long) q.executeUnique();
 	}
 
 	/**
-	* Crea y ejecuta la sentencia SQL para eliminar un RESERVA de la base de datos de Alohandes, por su identificador
-	* @param pm - El manejador de persistencia
-	* @param idReserva - El identificador de la Reserva
-	* @return EL número de tuplas eliminadas
-	*/
+	 * Crea y ejecuta la sentencia SQL para eliminar un RESERVA de la base de datos de Alohandes, por su identificador
+	 * @param pm - El manejador de persistencia
+	 * @param idReserva - El identificador de la Reserva
+	 * @return EL número de tuplas eliminadas
+	 */
 	public long eliminarReservaPorId (PersistenceManager pm, long idReserva)
 	{
-	    Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaReserva() + " WHERE id = ?");
-	    q.setParameters(idReserva);
-	    return (long) q.executeUnique();
+		Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaReserva() + " WHERE id = ?");
+		q.setParameters(idReserva);
+		return (long) q.executeUnique();
 	}
 
 	/**
-	* Crea y ejecuta la sentencia SQL para encontrar la información de un RESERVA de la 
-	* base de datos de Alohandes, por su identificador
-	* @param pm - El manejador de persistencia
-	* @param idReserva - El identificador de la Reserva
-	* @return El objeto RESERVA que tiene el identificador dado
-	*/
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de un RESERVA de la 
+	 * base de datos de Alohandes, por su identificador
+	 * @param pm - El manejador de persistencia
+	 * @param idReserva - El identificador de la Reserva
+	 * @return El objeto RESERVA que tiene el identificador dado
+	 */
 	public Reserva darReservaPorId (PersistenceManager pm, long idReserva)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaReserva () + " WHERE id = ?");
@@ -109,11 +111,11 @@ class SQLReserva
 
 
 	/**
-	* Crea y ejecuta la sentencia SQL para encontrar la información de LOS(AS) Reservas de la
-	* base de datos de Alohandes
-	* @param pm - El manejador de persistencia
-	* @return Una lista de objetos Reserva
-	*/
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de LOS(AS) Reservas de la
+	 * base de datos de Alohandes
+	 * @param pm - El manejador de persistencia
+	 * @return Una lista de objetos Reserva
+	 */
 	public List<Reserva> darReservas (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaReserva ());

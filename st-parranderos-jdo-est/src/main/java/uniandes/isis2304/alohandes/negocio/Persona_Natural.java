@@ -43,7 +43,7 @@ public class Persona_Natural extends Operador implements VOPersona_Natural{
 	 */
 	public Persona_Natural(long id, String nombre, String email, String numero, String tipoPersona,
 			String documento) {
-		super(id,nombre,email,numero);
+		super(id,nombre,email,numero,"PERSONA_NATURAL");
 		this.tipoPersona = tipoPersona;
 		this.documento = documento;
 	}
