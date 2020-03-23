@@ -97,9 +97,8 @@ public class Controller {
 				req4(sc);
 				break;
 			case 4:
-				interfaz.printMessage("Ingrese el id de la reserva a eliminar");
-				long idReserva = sc.nextLong();
-				mundo.eliminarReservaPorId(idReserva);
+				req5(sc);
+				
 				break;
 			case 5:
 				break;
@@ -109,6 +108,11 @@ public class Controller {
 				break;
 			}
 		}
+	}
+
+	private void req5(Scanner sc) {
+		interfaz.printMessage("Ingrese el nombre del cliente a eliminar reserva");
+		Cliente cliente = mundo.darClientePorNombre(sc.next());
 	}
 
 	private void req4(Scanner sc) {
