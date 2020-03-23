@@ -106,7 +106,7 @@ class SQLPersona_Natural extends SQLOperador
 	* @param pm - El manejador de persistencia
 	* @return Una lista de objetos Persona_Natural
 	*/
-	public List<Persona_Natural> darPersona_Naturals (PersistenceManager pm)
+	public List<Persona_Natural> darPersona_Naturales (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaPersona_Natural () + " NATURAL JOIN " + pa.darTablaOperador());
 		q.setResultClass(Persona_Natural.class);

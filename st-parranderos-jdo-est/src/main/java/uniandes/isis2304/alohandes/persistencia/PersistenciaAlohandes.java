@@ -1212,9 +1212,9 @@ public class PersistenciaAlohandes
 	* Método que consulta todas las tuplas en la tabla Persona_Natural
 	* @return La lista de objetos Persona_Natural, construidos con base en las tuplas de la tabla PERSONA_NATURAL
 	*/
-	public List<Persona_Natural> darPersona_Naturals ()
+	public List<Persona_Natural> darPersona_Naturales ()
 	{
-		return sqlPersona_Natural.darPersona_Naturals(pmf.getPersistenceManager());
+		return sqlPersona_Natural.darPersona_Naturales(pmf.getPersistenceManager());
 	}
 
 	/* ****************************************************************
@@ -1720,24 +1720,36 @@ public class PersistenciaAlohandes
 	}
  
 	/**
-	 * Método que encuentra el identificador de los servicios y cuántas ofertas sirve cada uno de ellos. Si una oferta se sirve en diferentes horarios,
-	 * cuenta múltiples veces
-	 * @return Una lista de arreglos de 2 números. El primero corresponde al identificador del servicio, el segundo corresponde al nombre del tipo de oferta
+	 * Elimina todas las tuplas de todas las tablas de la base de datos de Parranderos
+	 * Crea y ejecuta las sentencias SQL para cada tabla de la base de datos - EL ORDEN ES IMPORTANTE 
+	 * @return Un arreglo con 7 números que indican el número de tuplas borradas en las tablas
 	 */
-	public List<long []> darServiciosYCantidadOfertasIncluye ()
+	public long [] limpiarAlohandes ()
 	{
-		List<long []> resp = new LinkedList<long []> ();
-		List<Object []> tuplas =  sqlIncluye.darServiciosYCantidadOfertasIncluye (pmf.getPersistenceManager());
-        for ( Object [] tupla : tuplas)
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
         {
-			long [] datosResp = new long [2];
-			
-			datosResp [0] = ((BigDecimal) tupla [0]).longValue ();
-			datosResp [1] = ((BigDecimal) tupla [1]).longValue ();
-			resp.add (datosResp);
+            tx.begin();
+            long [] resp = sqlUtil.limpiarAlohandes(pm);
+            tx.commit ();
+            log.info ("Borrada la base de datos");
+            return resp;
         }
-        return resp;
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return new long[] {-1, -1, -1, -1, -1, -1, -1};
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+		
 	}
- 
-
  }

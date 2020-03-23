@@ -22,7 +22,6 @@ import javax.jdo.Query;
  * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto BAR de Parranderos
  * Nótese que es una clase que es sólo conocida en el paquete de persistencia
  * 
- * @author Germán Bravo
  */
 class SQLUtilH
 {
@@ -72,10 +71,10 @@ class SQLUtilH
 	/**
 	 * Crea y ejecuta las sentencias SQL para cada tabla de la base de datos - EL ORDEN ES IMPORTANTE 
 	 * @param pm - El manejador de persistencia
-	 * @return Un arreglo con 7 números que indican el número de tuplas borradas en las tablas GUSTAN, SIRVEN, VISITAN, BEBIDA,
-	 * TIPOBEBIDA, BEBEDOR y BAR, respectivamente
+	 * @return Un arreglo con 8 números que indican el número de tuplas borradas en las tablas INCLUYEN, RESERVA, CLIENTE, OFERTA,
+	 * SERVICIO, VIVIENDA, SEGURO Y OPERADOR, respectivamente
 	 */
-	public long [] limpiarParranderos (PersistenceManager pm)
+	public long [] limpiarAlohandes (PersistenceManager pm)
 	{
 		
 		Query qIncluye = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaIncluye());

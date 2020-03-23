@@ -15,7 +15,10 @@
 
 package uniandes.isis2304.alohandes.negocio;
 
+import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -482,10 +485,10 @@ public class Alohandes
 	* @param numero - numero del Operador
 	* @return El objeto Operador adicionado. null si ocurre alguna Excepción
 	*/
-	public Operador adicionarOperador (nombre, email, numero)
+	public Operador adicionarOperador (String nombre, String email, String numero)
 	{
 	log.info ("Adicionando nuevo(a) Operador ");
-	Operador operador = pa.adicionarOperador (nombre);	
+	Operador operador = pa.adicionarOperador(nombre, email, numero);
 	log.info ("Adicionando Operador: " + operador);
 	return operador;
 	}
@@ -509,10 +512,10 @@ public class Alohandes
 	 * Adiciona entradas al log de la aplicación
 	 * @return Una lista de objetos Operador, llenos con su información básica
 	 */
-	public List<Operador> darOperadors ()
+	public List<Operador> darOperadores ()
 	{
 		log.info ("Consultando Operador");
-	    List<Operador> operador = pa.darOperadors();
+	    List<Operador> operador = pa.darOperadores();
 	    log.info ("Consultando Operador: " + operador.size() + " existentes");
 	    return operador;
 	}
@@ -526,7 +529,7 @@ public class Alohandes
 	{
 		log.info ("Generando los VO de Operador");
 	    List<VOOperador> voOperador = new LinkedList<VOOperador> ();
-	    for (Operador tb : pa.darOperadors ())
+	    for (Operador tb : pa.darOperadores ())
 	    {
 	    	voOperador.add (tb);
 	    }
@@ -548,10 +551,10 @@ public class Alohandes
 	* @param horaCierre - horaCierre del Hoteleria
 	* @return El objeto Hoteleria adicionado. null si ocurre alguna Excepción
 	*/
-	public Hoteleria adicionarHoteleria (nombre, email, numero, tipoHoteleria, horaApertura, horaCierre)
+	public Hoteleria adicionarHoteleria (String nombre, String email, String numero, String tipoHoteleria, LocalTime horaApertura, LocalTime horaCierre)
 	{
 	log.info ("Adicionando nuevo(a) Hoteleria ");
-	Hoteleria hoteleria = pa.adicionarHoteleria (nombre);	
+	Hoteleria hoteleria = pa.adicionarHoteleria(nombre, email, numero, tipoHoteleria, horaApertura, horaCierre);	
 	log.info ("Adicionando Hoteleria: " + hoteleria);
 	return hoteleria;
 	}
@@ -613,10 +616,10 @@ public class Alohandes
 	* @param tipoPersona - tipoPersona del Persona_Natural
 	* @return El objeto Persona_Natural adicionado. null si ocurre alguna Excepción
 	*/
-	public Persona_Natural adicionarPersona_Natural (nombre, email, numero, documento, tipoPersona)
+	public Persona_Natural adicionarPersona_Natural (String nombre, String email, String numero, String documento, String tipoPersona)
 	{
 	log.info ("Adicionando nuevo(a) Persona_Natural ");
-	Persona_Natural persona_Natural = pa.adicionarPersona_Natural (nombre);	
+	Persona_Natural persona_Natural = pa.adicionarPersona_Natural(nombre, email, documento, numero, tipoPersona);	
 	log.info ("Adicionando Persona_Natural: " + persona_Natural);
 	return persona_Natural;
 	}
@@ -640,10 +643,10 @@ public class Alohandes
 	 * Adiciona entradas al log de la aplicación
 	 * @return Una lista de objetos Persona_Natural, llenos con su información básica
 	 */
-	public List<Persona_Natural> darPersona_Naturals ()
+	public List<Persona_Natural> darPersona_Naturales ()
 	{
 		log.info ("Consultando Persona_Natural");
-	    List<Persona_Natural> persona_Natural = pa.darPersona_Naturals();
+	    List<Persona_Natural> persona_Natural = pa.darPersona_Naturales();
 	    log.info ("Consultando Persona_Natural: " + persona_Natural.size() + " existentes");
 	    return persona_Natural;
 	}
@@ -677,10 +680,10 @@ public class Alohandes
 	* @param idOperador - idOperador del Ganancias
 	* @return El objeto Ganancias adicionado. null si ocurre alguna Excepción
 	*/
-	public Ganancias adicionarGanancias (cantidad, mes, año, idOperador)
+	public Ganancias adicionarGanancias (int cantidad, int mes, int año, long idOperador)
 	{
 	log.info ("Adicionando nuevo(a) Ganancias ");
-	Ganancias ganancias = pa.adicionarGanancias (nombre);	
+	Ganancias ganancias = pa.adicionarGanancias(cantidad, mes, año, idOperador);	
 	log.info ("Adicionando Ganancias: " + ganancias);
 	return ganancias;
 	}
@@ -704,10 +707,10 @@ public class Alohandes
 	 * Adiciona entradas al log de la aplicación
 	 * @return Una lista de objetos Ganancias, llenos con su información básica
 	 */
-	public List<Ganancias> darGananciass ()
+	public List<Ganancias> darGanancias ()
 	{
 		log.info ("Consultando Ganancias");
-	    List<Ganancias> ganancias = pa.darGananciass();
+	    List<Ganancias> ganancias = pa.darGanancias();
 	    log.info ("Consultando Ganancias: " + ganancias.size() + " existentes");
 	    return ganancias;
 	}
@@ -742,10 +745,10 @@ public class Alohandes
 	* @param tipoCliente - tipoCliente del Cliente
 	* @return El objeto Cliente adicionado. null si ocurre alguna Excepción
 	*/
-	public Cliente adicionarCliente (nombre, email, numero, documento, tipoCliente)
+	public Cliente adicionarCliente ( String nombre, String email, String numero, String documento, String tipoCliente)
 	{
 	log.info ("Adicionando nuevo(a) Cliente ");
-	Cliente cliente = pa.adicionarCliente (nombre);	
+	Cliente cliente = pa.adicionarCliente(nombre, email, numero, tipoCliente, documento);
 	log.info ("Adicionando Cliente: " + cliente);
 	return cliente;
 	}
@@ -807,10 +810,10 @@ public class Alohandes
 	* @param idUsuario - idUsuario del Reserva
 	* @return El objeto Reserva adicionado. null si ocurre alguna Excepción
 	*/
-	public Reserva adicionarReserva (inicio, duracion, periodoArrendamiento, idOferta, idUsuario)
+	public Reserva adicionarReserva (LocalDateTime inicio, int duracion, String periodoArrendamiento, long idOferta, long idUsuario)
 	{
 	log.info ("Adicionando nuevo(a) Reserva ");
-	Reserva reserva = pa.adicionarReserva (nombre);	
+	Reserva reserva = pa.adicionarReserva(inicio, duracion, periodoArrendamiento, idUsuario, idOferta);
 	log.info ("Adicionando Reserva: " + reserva);
 	return reserva;
 	}
@@ -870,10 +873,10 @@ public class Alohandes
 	* @param idVivienda - idVivienda del Oferta
 	* @return El objeto Oferta adicionado. null si ocurre alguna Excepción
 	*/
-	public Oferta adicionarOferta (precio, periodo, idVivienda)
+	public Oferta adicionarOferta ( int precio, String periodo, long idVivienda, Timestamp fechaInicio, Timestamp fechaFin)
 	{
 	log.info ("Adicionando nuevo(a) Oferta ");
-	Oferta oferta = pa.adicionarOferta (nombre);	
+	Oferta oferta = pa.adicionarOferta(precio, periodo, idVivienda, fechaInicio, fechaFin);
 	log.info ("Adicionando Oferta: " + oferta);
 	return oferta;
 	}
@@ -932,10 +935,10 @@ public class Alohandes
 	* @param costo - costo del Servicio
 	* @return El objeto Servicio adicionado. null si ocurre alguna Excepción
 	*/
-	public Servicio adicionarServicio (nombre, costo)
+	public Servicio adicionarServicio (String nombre, long costo)
 	{
 	log.info ("Adicionando nuevo(a) Servicio ");
-	Servicio servicio = pa.adicionarServicio (nombre);	
+	Servicio servicio = pa.adicionarServicio(nombre, costo);	
 	log.info ("Adicionando Servicio: " + servicio);
 	return servicio;
 	}
@@ -995,7 +998,7 @@ public class Alohandes
 	* @param incluido - incluido del Incluye
 	* @return El objeto Incluye adicionado. null si ocurre alguna Excepción
 	*/
-	public Incluye adicionarIncluye (idOferta, idServicio, incluido)
+	public Incluye adicionarIncluye (long idOferta, long idServicio, boolean incluido)
 	{
 	log.info ("Adicionando nuevo(a) Incluye ");
 	Incluye incluye = pa.adicionarIncluye (nombre);	
@@ -1006,13 +1009,15 @@ public class Alohandes
 	/**
 	 * Elimina un Incluye por su id
 	 * Adiciona entradas al log de la aplicación
+	 * @param idServicio 
+	 * @param idOferta 
 	 * @param id - El id del Incluye a eliminar
 	 * @return El número de tuplas eliminadas
 	 */
-	public long eliminarIncluyePorId (long idIncluye)
+	public long eliminarIncluyePorId (long idServicio, long idOferta)
 	{
-		log.info ("Eliminando Incluye por id: " + idIncluye);
-	    long resp = pa.eliminarIncluyePorId(idIncluye);
+		log.info ("Eliminando Incluye por ids: Servicio: " + idServicio + " - Oferta: " + idOferta);
+	    long resp = pa.eliminarIncluye(idServicio, idOferta);
 	    log.info ("Eliminando Incluye por id: " + resp + " tuplas eliminadas");
 	    return resp;
 	}
@@ -1022,10 +1027,10 @@ public class Alohandes
 	 * Adiciona entradas al log de la aplicación
 	 * @return Una lista de objetos Incluye, llenos con su información básica
 	 */
-	public List<Incluye> darIncluyes ()
+	public List<Incluye> darIncluye ()
 	{
 		log.info ("Consultando Incluye");
-	    List<Incluye> incluye = pa.darIncluyes();
+	    List<Incluye> incluye = pa.darIncluye();
 	    log.info ("Consultando Incluye: " + incluye.size() + " existentes");
 	    return incluye;
 	}
@@ -1039,7 +1044,7 @@ public class Alohandes
 	{
 		log.info ("Generando los VO de Incluye");
 	    List<VOIncluye> voIncluye = new LinkedList<VOIncluye> ();
-	    for (Incluye tb : pa.darIncluyes ())
+	    for (Incluye tb : pa.darIncluye())
 	    {
 	    	voIncluye.add (tb);
 	    }
