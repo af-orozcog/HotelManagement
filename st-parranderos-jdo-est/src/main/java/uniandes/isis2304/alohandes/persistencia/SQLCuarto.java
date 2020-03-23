@@ -60,14 +60,14 @@ class SQLCuarto extends SQLVivienda
 	 * @param bañoPrivado - 
 	 * @param cuartoPrivado - 
 	 * @param esquema - 
-	 * @param mensaje - 
+	 * @param menaje - 
 	 * @return El número de tuplas insertadas 
 	 */
-	public long adicionarCuarto (PersistenceManager pm, long idCuarto, String direccion, int cupos, long idOperador, boolean bañoPrivado, boolean cuartoPrivado, String esquema, String mensaje)
+	public long adicionarCuarto (PersistenceManager pm, long idCuarto, String direccion, int cupos, long idOperador, boolean bañoPrivado, boolean cuartoPrivado, String esquema, String menaje)
 	{
 		super.adicionarVivienda(pm, idCuarto, direccion, cupos, idOperador);
-		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaCuarto () + "(id, bañoPrivado, cuartoPrivado, esquema, mensaje) values (? ,? ,? ,? ,?)");
-		q.setParameters(idCuarto, bañoPrivado, cuartoPrivado, esquema, mensaje );
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaCuarto () + "(id, bañoPrivado, cuartoPrivado, esquema, menaje) values (? ,? ,? ,? ,?)");
+		q.setParameters(idCuarto, bañoPrivado, cuartoPrivado, esquema, menaje );
 		return (long) q.executeUnique();
 	}
 

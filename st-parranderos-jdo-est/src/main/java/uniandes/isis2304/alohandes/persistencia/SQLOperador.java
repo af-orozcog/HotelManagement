@@ -129,5 +129,20 @@ class SQLOperador
 		q.setResultClass(Operador.class);
 		return (List<ViviendaUniversitaria>) q.executeList();
 	}
+	
+	/**
+	* Crea y ejecuta la sentencia SQL para encontrar la información de un OPERADOR de la 
+	* base de datos de Alohandes, por su identificador
+	* @param pm - El manejador de persistencia
+	* @param idOperador - El identificador de la Operador
+	* @return El objeto OPERADOR que tiene el identificador dado
+	*/
+	public Operador darOperadorPorNombre (PersistenceManager pm, String nombre, String tipoOperador)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaOperador () + " WHERE nombre = ? AND tipo_operador = ?");
+		q.setResultClass(Operador.class);
+		q.setParameters(nombre,tipoOperador);
+		return (Operador) q.executeUnique();
+	}
 
 }

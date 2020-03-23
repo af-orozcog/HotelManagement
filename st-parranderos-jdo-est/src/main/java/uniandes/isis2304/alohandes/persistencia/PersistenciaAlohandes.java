@@ -883,7 +883,7 @@ public class PersistenciaAlohandes
 	* @param x - x de Cuarto
 	* @return El objeto Cuarto adicionado. null si ocurre alguna Excepción
 	*/
-	public Cuarto adicionarCuarto(String direccion, int cupos, long idOperador, boolean bañoPrivado, boolean cuartoPrivado, String esquema, String mensaje)
+	public Cuarto adicionarCuarto(String direccion, int cupos, long idOperador, boolean bañoPrivado, boolean cuartoPrivado, String esquema, String menaje)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 	    Transaction tx=pm.currentTransaction();
@@ -891,12 +891,12 @@ public class PersistenciaAlohandes
 	    {
 	        tx.begin();
 	        long idCuarto = nextval ();
-	        long tuplasInsertadas = sqlCuarto.adicionarCuarto(pm, idCuarto, direccion, cupos, idOperador, bañoPrivado, cuartoPrivado, esquema, mensaje);
+	        long tuplasInsertadas = sqlCuarto.adicionarCuarto(pm, idCuarto, direccion, cupos, idOperador, bañoPrivado, cuartoPrivado, esquema, menaje);
 	        tx.commit();
 
 	        log.trace ("Inserción de vivienda: " + idCuarto + ": " + tuplasInsertadas + " tuplas insertadas");
 
-	        return new Cuarto(idCuarto, direccion, cupos, idOperador, bañoPrivado, cuartoPrivado, esquema, mensaje);
+	        return new Cuarto(idCuarto, direccion, cupos, idOperador, bañoPrivado, cuartoPrivado, esquema, menaje);
 	    }
 	    catch (Exception e)
 	    {
@@ -1039,6 +1039,15 @@ public class PersistenciaAlohandes
 	{
 		return sqlOperador.darOperadores(pmf.getPersistenceManager());
 	}
+	
+	/**
+	 * Método que retorna el operador con el nombre y tipo buscados
+	 * @return Objeto Operador con el nombre y tipo buscados
+	 */
+	public Operador darOperadorPorNombre(String nombre, String tipoOperador) {
+		return sqlOperador.darOperadorPorNombre(pmf.getPersistenceManager(), nombre, tipoOperador);
+	}
+	
 
 	/* ****************************************************************
 	* 			Métodos para manejar los(as) VIVIENDAS_UNIVERSITARIAS
