@@ -1,10 +1,11 @@
 package uniandes.isis2304.alohandes.negocio;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Reserva {
+public class Reserva implements VOReserva{
 
 	/* ****************************************************************
 	 * 			Atributos
@@ -18,12 +19,12 @@ public class Reserva {
 	/**
 	 * inicio de la reserva
 	 */
-	private LocalDateTime inicio;
+	private Timestamp inicio;
 	
 	/**
 	 * duracion de la reserva
 	 */
-	private int duracion;
+	private Timestamp fin;
 	
 	/**
 	 * tipo de periodo de arrendamiento (DIAS, MESES, SEMESTRES)
@@ -49,7 +50,7 @@ public class Reserva {
 	 */
 	public Reserva() {
 		this.inicio = null;
-		this.duracion = 0;
+		this.fin = null;
 		this.periodoArrendamiento = "";
 		this.idUsuario = 0;
 		this.idOferta = 0;
@@ -63,12 +64,12 @@ public class Reserva {
 	 * @param idUsuario - el usuario dueño de la reserva
 	 * @param idOferta - la oferta de la reserva
 	 */
-	public Reserva(long id, LocalDateTime inicio, int duracion, String periodoArrendamiento, long idUsuario,
+	public Reserva(long id, Timestamp inicio, Timestamp fin, String periodoArrendamiento, long idUsuario,
 			long idOferta) {
 		super();
 		this.id = id;
 		this.inicio = inicio;
-		this.duracion = duracion;
+		this.fin = fin;
 		this.periodoArrendamiento = periodoArrendamiento;
 		this.idUsuario = idUsuario;
 		this.idOferta = idOferta;
@@ -91,29 +92,29 @@ public class Reserva {
 	/**
 	 * @return inicio
 	 */
-	public LocalDateTime getInicio() {
+	public Timestamp getInicio() {
 		return inicio;
 	}
 
 	/**
 	 * @param inicio - el inicio de la reserva
 	 */
-	public void setInicio(LocalDateTime inicio) {
+	public void setInicio(Timestamp inicio) {
 		this.inicio = inicio;
 	}
 
 	/**
 	 * @return duracion
 	 */
-	public int getDuracion() {
-		return duracion;
+	public Timestamp getFin() {
+		return fin;
 	}
 
 	/**
 	 * @param duracion - la duracion de la reserva
 	 */
-	public void setDuracion(int duracion) {
-		this.duracion = duracion;
+	public void setFin(Timestamp fin) {
+		this.fin = fin;
 	}
 
 	/**

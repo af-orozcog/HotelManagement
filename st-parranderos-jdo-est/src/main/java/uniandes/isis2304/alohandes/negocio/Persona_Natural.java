@@ -2,7 +2,7 @@ package uniandes.isis2304.alohandes.negocio;
 
 import java.time.LocalTime;
 
-public class Persona_Natural extends Operador{
+public class Persona_Natural extends Operador implements VOPersona_Natural{
 
 	/* ****************************************************************
 	 * 			Atributos

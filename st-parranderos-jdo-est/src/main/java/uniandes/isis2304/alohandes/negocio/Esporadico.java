@@ -1,6 +1,6 @@
 package uniandes.isis2304.alohandes.negocio;
 
-public class Esporadico extends Apartamento{
+public class Esporadico extends Apartamento implements VOEsporadico{
 	
 	/* ****************************************************************
 	 * 			Atributos

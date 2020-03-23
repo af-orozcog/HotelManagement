@@ -1,6 +1,6 @@
 package uniandes.isis2304.alohandes.negocio;
 
-public class Cuarto extends Vivienda{
+public class Cuarto extends Vivienda implements VOCuarto{
 	
 	/* ****************************************************************
 	 * 			Atributos

@@ -1,6 +1,6 @@
 package uniandes.isis2304.alohandes.negocio;
 
-public class Incluye
+public class Incluye implements VOIncluye
 {
 	/* ****************************************************************
 	 * 			Atributos

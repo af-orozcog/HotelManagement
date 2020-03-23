@@ -1,8 +1,8 @@
 package uniandes.isis2304.alohandes.negocio;
 
-import java.time.LocalTime;
+import java.sql.Timestamp;
 
-public class Hoteleria extends Operador{
+public class Hoteleria extends Operador implements VOHoteleria{
 	
 	/* ****************************************************************
 	 * 			Atributos
@@ -16,12 +16,12 @@ public class Hoteleria extends Operador{
 	/**
 	 * hora de apertura del hotel
 	 */
-	private LocalTime horaApertura;
+	private Timestamp horaApertura;
 	
 	/**
 	 * hora de cierre del hotel
 	 */
-	private LocalTime horaCierre;
+	private Timestamp horaCierre;
 	
 	/* ****************************************************************
 	 * 			Métodos 
@@ -48,7 +48,7 @@ public class Hoteleria extends Operador{
 	 * @param horaCierre - la hora de cierre
 	 */
 	public Hoteleria(long id, String nombre, String email, String numero, String tipoHoteleria,
-			LocalTime horaApertura, LocalTime horaCierre) {
+			Timestamp horaApertura, Timestamp horaCierre) {
 		super(id,nombre,email,numero);
 		this.tipoHoteleria = tipoHoteleria;
 		this.horaApertura = horaApertura;
@@ -72,28 +72,28 @@ public class Hoteleria extends Operador{
 	/**
 	 * @return horaApertura
 	 */
-	public LocalTime getHoraApertura() {
+	public Timestamp getHoraApertura() {
 		return horaApertura;
 	}
 
 	/**
 	 * @param horaApertura - la nueva hora de apertura
 	 */
-	public void setHoraApertura(LocalTime horaApertura) {
+	public void setHoraApertura(Timestamp horaApertura) {
 		this.horaApertura = horaApertura;
 	}
 
 	/**
 	 * @return horaCierre
 	 */
-	public LocalTime getHoraCierre() {
+	public Timestamp getHoraCierre() {
 		return horaCierre;
 	}
 
 	/**
 	 * @param horaCierre - la nueva hora de cierre
 	 */
-	public void setHoraCierre(LocalTime horaCierre) {
+	public void setHoraCierre(Timestamp horaCierre) {
 		this.horaCierre = horaCierre;
 	}
 	

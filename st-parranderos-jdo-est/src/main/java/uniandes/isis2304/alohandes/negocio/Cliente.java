@@ -2,7 +2,7 @@ package uniandes.isis2304.alohandes.negocio;
 
 import java.time.LocalTime;
 
-public class Cliente extends Operador{
+public class Cliente extends Operador implements VOCliente{
 
 	/* ****************************************************************
 	 * 			Atributos
