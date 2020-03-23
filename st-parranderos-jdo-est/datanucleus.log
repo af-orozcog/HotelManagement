@@ -576,3 +576,19 @@ Caused by: oracle.net.ns.NetException: Undefined Error
 	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:518)
 	... 41 more
 11:56:34,000 (main) ERROR [DataNucleus.Datastore] - Exception thrown creating StoreManager : Undefined Error
+20:44:59,521 (main) DEBUG [DataNucleus.General] - Using PluginRegistry org.datanucleus.plugin.NonManagedPluginRegistry
+20:44:59,557 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus.api.jdo version 5.1.7 at URL file:/C:/Users/Nicolás/Desktop/2020/Sistrans/iteraciones/st-parranderos-jdo-est/lib/datanucleus-api-jdo-5.1.7.jar.
+20:44:59,571 (main) DEBUG [DataNucleus.General] - Leyendo extension-points y extensiones del archivo de plug-in jar:file:/C:/Users/Nicol%c3%a1s/Desktop/2020/Sistrans/iteraciones/st-parranderos-jdo-est/lib/datanucleus-api-jdo-5.1.7.jar!/plugin.xml.
+20:44:59,580 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus version 5.1.10 at URL file:/C:/Users/Nicolás/Desktop/2020/Sistrans/iteraciones/st-parranderos-jdo-est/lib/datanucleus-core-5.1.10.jar.
+20:44:59,582 (main) DEBUG [DataNucleus.General] - Leyendo extension-points y extensiones del archivo de plug-in jar:file:/C:/Users/Nicol%c3%a1s/Desktop/2020/Sistrans/iteraciones/st-parranderos-jdo-est/lib/datanucleus-core-5.1.10.jar!/plugin.xml.
+20:44:59,597 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus.store.rdbms version 5.1.10 at URL file:/C:/Users/Nicolás/Desktop/2020/Sistrans/iteraciones/st-parranderos-jdo-est/lib/datanucleus-rdbms-5.1.10.jar.
+20:44:59,602 (main) DEBUG [DataNucleus.General] - Leyendo extension-points y extensiones del archivo de plug-in jar:file:/C:/Users/Nicol%c3%a1s/Desktop/2020/Sistrans/iteraciones/st-parranderos-jdo-est/lib/datanucleus-rdbms-5.1.10.jar!/plugin.xml.
+20:44:59,629 (main) DEBUG [DataNucleus.MetaData] - Analizando el MetaData "file:/C:/Users/Nicol%c3%a1s/Desktop/2020/Sistrans/iteraciones/st-parranderos-jdo-est/target/classes/META-INF/persistence.xml" con handler "persistence" (validar="false")
+20:51:44,309 (main) DEBUG [DataNucleus.General] - Using PluginRegistry org.datanucleus.plugin.NonManagedPluginRegistry
+20:51:44,343 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus.api.jdo version 5.1.7 at URL file:/C:/Users/Nicolás/Desktop/2020/Sistrans/iteraciones/st-parranderos-jdo-est/lib/datanucleus-api-jdo-5.1.7.jar.
+20:51:44,356 (main) DEBUG [DataNucleus.General] - Leyendo extension-points y extensiones del archivo de plug-in jar:file:/C:/Users/Nicol%c3%a1s/Desktop/2020/Sistrans/iteraciones/st-parranderos-jdo-est/lib/datanucleus-api-jdo-5.1.7.jar!/plugin.xml.
+20:51:44,363 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus version 5.1.10 at URL file:/C:/Users/Nicolás/Desktop/2020/Sistrans/iteraciones/st-parranderos-jdo-est/lib/datanucleus-core-5.1.10.jar.
+20:51:44,365 (main) DEBUG [DataNucleus.General] - Leyendo extension-points y extensiones del archivo de plug-in jar:file:/C:/Users/Nicol%c3%a1s/Desktop/2020/Sistrans/iteraciones/st-parranderos-jdo-est/lib/datanucleus-core-5.1.10.jar!/plugin.xml.
+20:51:44,378 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus.store.rdbms version 5.1.10 at URL file:/C:/Users/Nicolás/Desktop/2020/Sistrans/iteraciones/st-parranderos-jdo-est/lib/datanucleus-rdbms-5.1.10.jar.
+20:51:44,382 (main) DEBUG [DataNucleus.General] - Leyendo extension-points y extensiones del archivo de plug-in jar:file:/C:/Users/Nicol%c3%a1s/Desktop/2020/Sistrans/iteraciones/st-parranderos-jdo-est/lib/datanucleus-rdbms-5.1.10.jar!/plugin.xml.
+20:51:44,407 (main) DEBUG [DataNucleus.MetaData] - Analizando el MetaData "file:/C:/Users/Nicol%c3%a1s/Desktop/2020/Sistrans/iteraciones/st-parranderos-jdo-est/target/classes/META-INF/persistence.xml" con handler "persistence" (validar="false")

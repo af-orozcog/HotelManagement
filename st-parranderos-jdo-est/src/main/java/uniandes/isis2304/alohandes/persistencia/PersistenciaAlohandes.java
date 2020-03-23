@@ -36,14 +36,10 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import uniandes.isis2304.alohandes.negocio.Apartamento;
-import uniandes.isis2304.alohandes.negocio.Bar;
-import uniandes.isis2304.alohandes.negocio.Bebedor;
-import uniandes.isis2304.alohandes.negocio.Bebida;
 import uniandes.isis2304.alohandes.negocio.Cliente;
 import uniandes.isis2304.alohandes.negocio.Cuarto;
 import uniandes.isis2304.alohandes.negocio.Esporadico;
 import uniandes.isis2304.alohandes.negocio.Ganancias;
-import uniandes.isis2304.alohandes.negocio.Gustan;
 import uniandes.isis2304.alohandes.negocio.Habitacion;
 import uniandes.isis2304.alohandes.negocio.Hoteleria;
 import uniandes.isis2304.alohandes.negocio.Incluye;
@@ -53,10 +49,7 @@ import uniandes.isis2304.alohandes.negocio.Persona_Natural;
 import uniandes.isis2304.alohandes.negocio.Reserva;
 import uniandes.isis2304.alohandes.negocio.Seguro;
 import uniandes.isis2304.alohandes.negocio.Servicio;
-import uniandes.isis2304.alohandes.negocio.Sirven;
-import uniandes.isis2304.alohandes.negocio.TipoBebida;
 import uniandes.isis2304.alohandes.negocio.Usuario;
-import uniandes.isis2304.alohandes.negocio.Visitan;
 import uniandes.isis2304.alohandes.negocio.Vivienda;
 
 /**
@@ -106,7 +99,7 @@ public class PersistenciaAlohandes
 	/**
 	 * Atributo para el acceso a las sentencias SQL propias a PersistenciaAlohandes
 	 */
-	private SQLUtilH sqlUtil;
+	private SQLUtil sqlUtil;
 	
 	/**
 	* Atributo para el acceso a la tabla VIVIENDA de la base de datos
@@ -303,7 +296,7 @@ public class PersistenciaAlohandes
 		sqlOferta = new SQLOferta(this);
 		sqlServicio = new SQLServicio(this);
 		sqlIncluye = new SQLIncluye(this);	
-		sqlUtil = new SQLUtilH(this);
+		sqlUtil = new SQLUtil(this);
 	}
 
 	/**

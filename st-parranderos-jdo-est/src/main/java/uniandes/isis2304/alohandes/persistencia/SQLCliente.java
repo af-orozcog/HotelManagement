@@ -14,16 +14,12 @@
  */
 
 package uniandes.isis2304.alohandes.persistencia;
-
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import uniandes.isis2304.alohandes.negocio.Bebedor;
 import uniandes.isis2304.alohandes.negocio.Cliente;
-import uniandes.isis2304.alohandes.negocio.Usuario;
 
 /**
  * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto BEBEDOR de Parranderos
@@ -40,7 +36,7 @@ class SQLCliente
 	 * Cadena que representa el tipo de consulta que se va a realizar en las sentencias de acceso a la base de datos
 	 * Se renombra acá para facilitar la escritura de las sentencias
 	 */
-	private final static String SQL = PersistenciaParranderos.SQL;
+	private final static String SQL = PersistenciaAlohandes.SQL;
 
 	/* ****************************************************************
 	 * 			Atributos
@@ -48,7 +44,7 @@ class SQLCliente
 	/**
 	 * El manejador de persistencia general de la aplicación
 	 */
-	private PersistenciaAlohandes pa;
+	protected PersistenciaAlohandes pa;
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -69,14 +65,14 @@ class SQLCliente
 	* @param nombre - 
 	* @param email - 
 	* @param numero - 
-	* @param tipoCliente - 
-	* @param documento - 
+	* @param documento -
+	* @param tipoCliente
 	* @return El número de tuplas insertadas 
 	*/
-	public long adicionarCliente (PersistenceManager pm, long idCliente, String nombre, String email, String numero, String tipoCliente, String documento)
+	public long adicionarCliente (PersistenceManager pm, long idCliente, String nombre, String email, String numero, String documento, String tipoCliente)
 	{
-	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaCliente () + "(id, nombre, email, numero, tipoCliente, documento) values (? ,? ,? ,? ,? ,?)");
-	   q.setParameters( idCliente, nombre, email, numero, tipoCliente, documento );
+	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaCliente () + "(id, nombre, email, numero, documento, tipoCliente) values (? ,? ,? ,? ,? ,?)");
+	   q.setParameters( idCliente, nombre, email, numero, documento, tipoCliente );
 	    return (long) q.executeUnique();
 	}
 
@@ -110,7 +106,7 @@ class SQLCliente
 
 
 	/**
-	* Crea y ejecuta la sentencia SQL para encontrar la información de LOS(AS) Clientes de la
+	* Crea y ejecuta la sentencia SQL para encontrar la información de LOS(AS) Clientees de la
 	* base de datos de Alohandes
 	* @param pm - El manejador de persistencia
 	* @return Una lista de objetos Cliente
@@ -121,6 +117,5 @@ class SQLCliente
 		q.setResultClass(Cliente.class);
 		return (List<Cliente>) q.executeList();
 	}
-
 
 }

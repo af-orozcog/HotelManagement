@@ -22,7 +22,6 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import uniandes.isis2304.alohandes.negocio.Bebedor;
 import uniandes.isis2304.alohandes.negocio.Seguro;
 
 /**
@@ -40,7 +39,7 @@ class SQLSeguro
 	 * Cadena que representa el tipo de consulta que se va a realizar en las sentencias de acceso a la base de datos
 	 * Se renombra acá para facilitar la escritura de las sentencias
 	 */
-	private final static String SQL = PersistenciaParranderos.SQL;
+	private final static String SQL = PersistenciaAlohandes.SQL;
 
 	/* ****************************************************************
 	 * 			Atributos
