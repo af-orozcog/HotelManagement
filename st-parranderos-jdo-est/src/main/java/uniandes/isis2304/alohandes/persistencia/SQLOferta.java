@@ -25,7 +25,7 @@ import javax.jdo.Query;
 import uniandes.isis2304.alohandes.negocio.Ganancias;
 import uniandes.isis2304.alohandes.negocio.Oferta;
 import uniandes.isis2304.alohandes.negocio.Operador;
-import uniandes.isis2304.alohandes.negocio.Reserva;
+import uniandes.isis2304.alohandes.negocio.Oferta;
 
 /**
  * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto BEBEDOR de Parranderos
@@ -129,8 +129,9 @@ class SQLOferta
 		List<Oferta> ofertas = darOfertas(pm);
 		for (String servicio : lista) {
 			Query q = pm.newQuery(SQL, "SELECT DISTINCT * FROM " + pa.darTablaOferta ()+" o, " + pa.darTablaIncluye() + " i, " + pa.darTablaServicio() + "s "
-					+ "WHERE o.id = i.idoferta AND i.idservicio = s.id AND s.nombre <> " + servicio);
+					+ "WHERE o.id = i.idoferta AND i.idservicio = s.id AND s.nombre <> ?");
 			q.setResultClass(Oferta.class);
+			q.setParameters(servicio);
 			List<Oferta> eliminar = q.executeList();
 			for (Oferta el : eliminar) {
 				ofertas.remove(el);
@@ -141,5 +142,19 @@ class SQLOferta
 	}
 
 
+	/**
+	 * Crea y ejecuta la sentencia SQL para encontrar la informacion de todas las Ofertas de un
+	 * operador en la base de datos Alohandes
+	 * @param pm - El manejador de persistencia
+	 * @param idOperador Identificador del operador
+	 * @return Lista con todas las ofertas del operador buscado
+	 */
+	public List<Oferta> darOfertasPorOperador(PersistenceManager pm, long idOperador) {
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaOferta () +" o, "+ pa.darTablaVivienda() +" v, "
+				+ " o.idVivienda = v.id AND v.idOperador = ?");
+		q.setResultClass(Oferta.class);
+		q.setParameters(idOperador);
+		return (List<Oferta>) q.executeList();
+	}
 
 }
