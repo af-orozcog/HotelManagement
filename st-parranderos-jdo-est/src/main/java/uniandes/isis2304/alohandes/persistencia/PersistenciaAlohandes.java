@@ -188,6 +188,10 @@ public class PersistenciaAlohandes
 	 */
 	private REQC2 reqc2;
 
+	private boolean modoPerron;
+	
+	private long idPerron;
+	
 	
 	/* ****************************************************************
 	 * 			Métodos del MANEJADOR DE PERSISTENCIA
@@ -489,6 +493,8 @@ public class PersistenciaAlohandes
         {
             tx.begin();
             long idVivienda = nextval ();
+            if(modoPerron)
+            	idVivienda = idPerron;
             long tuplasInsertadas = sqlVivienda.adicionarVivienda(pm, idVivienda, direccion, cupos, idOperador);
             tx.commit();
             
@@ -511,6 +517,7 @@ public class PersistenciaAlohandes
             pm.close();
         }
 	}
+	
 
 	/**
 	 * Método que elimina, de manera transaccional, una tupla en la tabla Vivienda, dado el id
@@ -580,6 +587,8 @@ public class PersistenciaAlohandes
 	    {
 	        tx.begin();
 	        long idHabitacion = nextval ();
+	        if(modoPerron)
+            	idHabitacion = idPerron;
 	        long tuplasInsertadas = sqlHabitacion.adicionarHabitacion(pm, idHabitacion, direccion, cupos, idOperador, tipoHabitacion, categoria, capacidad, numero);
 	        tx.commit();
 
@@ -663,6 +672,8 @@ public class PersistenciaAlohandes
 	    {
 	        tx.begin();
 	        long idApartamento = nextval ();
+	        if(modoPerron)
+            	idApartamento = idPerron;
 	        long tuplasInsertadas = sqlApartamento.adicionarApartamento(pm, idApartamento, direccion, cupos, idOperador, area, amoblado, numeroHabitaciones);
 	        tx.commit();
 
@@ -746,6 +757,8 @@ public class PersistenciaAlohandes
 	    {
 	        tx.begin();
 	        long idEsporadico = nextval ();
+	        if(modoPerron)
+            	idEsporadico = idPerron;
 	        long tuplasInsertadas = sqlEsporadico.adicionarEsporadico(pm, idEsporadico, direccion, cupos, idOperador, area, amoblado, numeroHabitaciones, nochesAño, idSeguro);
 	        tx.commit();
 
@@ -829,6 +842,8 @@ public class PersistenciaAlohandes
 	    {
 	        tx.begin();
 	        long idSeguro = nextval ();
+	        if(modoPerron)
+            	idSeguro = idPerron;
 	        long tuplasInsertadas = sqlSeguro.adicionarSeguro(pm, idSeguro, empresa, monto, inicioSeguro, finSeguro);
 	        tx.commit();
 
@@ -912,6 +927,8 @@ public class PersistenciaAlohandes
 	    {
 	        tx.begin();
 	        long idCuarto = nextval ();
+	        if(modoPerron)
+            	idCuarto = idPerron;
 	        long tuplasInsertadas = sqlCuarto.adicionarCuarto(pm, idCuarto, direccion, cupos, idOperador, bañoPrivado, cuartoPrivado, esquema, menaje);
 	        tx.commit();
 
@@ -996,6 +1013,8 @@ public class PersistenciaAlohandes
 	    {
 	        tx.begin();
 	        long idOperador = nextval ();
+	        if(modoPerron)
+            	idOperador = idPerron;
 	        long tuplasInsertadas = sqlOperador.adicionarOperador(pm, idOperador, nombre, email, numero, tipoOperador);
 	        tx.commit();
 
@@ -1088,6 +1107,8 @@ public class PersistenciaAlohandes
 	    {
 	        tx.begin();
 	        long idOperador = nextval ();
+	        if(modoPerron)
+            	idOperador = idPerron;
 	        long tuplasInsertadas = sqlOperador.adicionarOperador(pm, idOperador, nombre, email, numero, "VIVIENDA_UNIVERSITARIA");
 	        tx.commit();
 
@@ -1171,6 +1192,8 @@ public class PersistenciaAlohandes
 	    {
 	        tx.begin();
 	        long idHoteleria = nextval ();
+	        if(modoPerron)
+            	idHoteleria = idPerron;
 	        long tuplasInsertadas = sqlHoteleria.adicionarHoteleria(pm, idHoteleria, nombre, email, numero, tipoHoteleria, horaApertura, horaCierre);
 	        tx.commit();
 
@@ -1259,6 +1282,8 @@ public class PersistenciaAlohandes
 	    {
 	        tx.begin();
 	        long idPersona_Natural = nextval ();
+	        if(modoPerron)
+            	idPersona_Natural = idPerron;
 	        long tuplasInsertadas = sqlPersona_Natural.adicionarPersona_Natural(pm, idPersona_Natural, nombre, email, numero, documento, tipoPersona);
 	        tx.commit();
 
@@ -1342,6 +1367,8 @@ public class PersistenciaAlohandes
 	    {
 	        tx.begin();
 	        long idGanancias = nextval ();
+	        if(modoPerron)
+            	idGanancias = idPerron;
 	        long tuplasInsertadas = sqlGanancias.adicionarGanancias(pm, idGanancias, cantidad, mes, año, idOperador);
 	        tx.commit();
 
@@ -1425,6 +1452,8 @@ public class PersistenciaAlohandes
 	    {
 	        tx.begin();
 	        long idCliente = nextval ();
+	        if(modoPerron)
+            	idCliente = idPerron;
 	        long tuplasInsertadas = sqlCliente.adicionarCliente(pm, idCliente, nombre, email, numero, tipoCliente, documento);
 	        tx.commit();
 
@@ -1516,6 +1545,8 @@ public class PersistenciaAlohandes
 	    {
 	        tx.begin();
 	        long idReserva = nextval ();
+	    	if(modoPerron)
+	    		idReserva = idPerron;
 	        long tuplasInsertadas = sqlReserva.adicionarReserva(pm, idReserva, inicio, fin, duracion, periodoArrendamiento, idUsuario, idOferta);
 	        tx.commit();
 
@@ -1608,6 +1639,8 @@ public class PersistenciaAlohandes
 	    {
 	        tx.begin();
 	        long idOferta = nextval ();
+	        if(modoPerron)
+            	idOferta = idPerron;
 	        long tuplasInsertadas = sqlOferta.adicionarOferta(pm, idOferta, precio, periodo, idVivienda, fechaInicio, fechaFin);
 	        tx.commit();
 
@@ -1722,6 +1755,8 @@ public class PersistenciaAlohandes
 	    {
 	        tx.begin();
 	        long idServicio = nextval ();
+	        if(modoPerron)
+            	idServicio = idPerron;
 	        long tuplasInsertadas = sqlServicio.adicionarServicio(pm, idServicio, nombre, costo);
 	        tx.commit();
 
@@ -1922,5 +1957,22 @@ public class PersistenciaAlohandes
 		return reqc2.ofertasPopulares(pmf.getPersistenceManager());
 	}
 	
-
+	/* ****************************************************************
+	 * 			Métodos para activar el modo perron pruebas :v
+	 *****************************************************************/
+	/**
+	 * 
+	 */
+	public void modoPruebas() {
+		modoPerron = true;
+	}
+	
+	/**
+	 * 
+	 * @param id
+	 */
+	public void asignarID(long id) {
+		idPerron = id;
+	}
+	
  }
