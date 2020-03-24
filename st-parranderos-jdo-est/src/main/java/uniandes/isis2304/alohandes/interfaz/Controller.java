@@ -105,7 +105,16 @@ public class Controller {
 				req6(sc);
 				
 				break;
-			case 12:
+				
+			case 6:
+				reqC1(sc);
+				
+				break;
+			case 7:
+				reqC2(sc);
+				
+				break;
+			case 8:
 				fin = true;
 				sc.close();
 				break;
@@ -113,6 +122,24 @@ public class Controller {
 		}
 	}
 
+	private void reqC2(Scanner sc) {
+		interfaz.printMessage("Lista de las 20 ofertas más populares");
+		List<Oferta> ofertas = mundo.reqc2();
+		for (Oferta oferta : ofertas) {
+			interfaz.printMessage("Id oferta: " + oferta.getId() + "Precio oferta: " + oferta.getPrecio());
+		}
+	}
+
+	private void reqC1(Scanner sc) {
+		interfaz.printMessage("Lista de los operadores con su nombre y el dinero ganado en el año actual y corrido");
+		List<Operador> operadores = mundo.darOperadores();
+		for (Operador operador : operadores) {
+			long actual = mundo.reqc1Actual(operador.getId());
+			long corrido = mundo.reqc1Corrido(operador.getId());
+			interfaz.printMessage("Operador nombre: " + operador.getNombre() + " - Año actual: " + actual + " - Año corrido: " + corrido);
+		}
+	}
+	
 	private void req6(Scanner sc) {
 		interfaz.printMessage("Ingrese el nombre del operador a eliminar una propuesta");
 		String nombre = sc.next();

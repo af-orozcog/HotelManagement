@@ -1201,8 +1201,30 @@ public class Alohandes
 		return voIncluye;
 	}
 
+	/* ****************************************************************
+	 * 			Métodos para manejar las consultas
+	 *****************************************************************/
 
-
+	public long reqc1Actual(long idOperador) {
+		log.info("Consultando dinero recibido en el año actual por el operador con id: " + idOperador);
+		long actual = pa.reqc1Actual(idOperador);
+		log.info("El dinero consultado fue:  " + actual);
+		return actual;
+	}
+	
+	public long reqc1Corrido(long idOperador) {
+		log.info("Consultando dinero recibido en el año corrido por el operador con id: " + idOperador);
+		long corrido = pa.reqc1Corrido(idOperador);
+		log.info("El dinero consultado fue:  " + corrido);
+		return corrido;	
+	}
+	
+	public List<Oferta> reqc2(){
+		log.info("Consultando las 20 ofertas más populares");
+		List<Oferta> ofertas = pa.reqc2();
+		log.info("Consultadas las 20 ofertas más populares");
+		return ofertas;
+		}
 
 	/* ****************************************************************
 	 * 			Métodos para administración
