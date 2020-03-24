@@ -4,12 +4,12 @@ public interface VOCliente {
 	/**
 	 * @return tipoHoteleria
 	 */
-	public String getTipoCliente();
+	public String getTipo_cliente();
 
 	/**
 	 * @param tipoCliente - el nuevo tipo de persona natural 
 	 */
-	public void setTipoCliente(String tipoCliente);
+	public void setTipo_cliente(String tipoCliente);
 
 	/**
 	 * @return documento

@@ -51,14 +51,14 @@ public class Cliente extends Usuario implements VOCliente{
 	/**
 	 * @return tipoHoteleria
 	 */
-	public String getTipoCliente() {
+	public String getTipo_cliente() {
 		return tipo_cliente;
 	}
 
 	/**
 	 * @param tipoCliente - el nuevo tipo de persona natural 
 	 */
-	public void setTipoCliente(String tipoCliente) {
+	public void setTipo_cliente(String tipoCliente) {
 		this.tipo_cliente = tipoCliente;
 	}
 
@@ -76,4 +76,60 @@ public class Cliente extends Usuario implements VOCliente{
 		this.documento = documento;
 	}
 
+	/**
+	 * @return el id del usuario
+	 */
+	public long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id - el nuevo id del usuario
+	 */
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return el nombre del usuario
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * @param nombre - el nuevo nombre del usuario
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	/**
+	 * @return la dirección de correo del usuario
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email - la nueva dirección de correo del usuario
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	/**
+	 * @return el numero del usuario
+	 */
+	public String getNumero() {
+		return numero;
+	}
+
+	/**
+	 * @param numero - el nuevo numero del usuario
+	 */
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+	
 }

@@ -76,14 +76,14 @@ public class Oferta implements VOOferta{
 	 * @param idVivienda - id de la vivienda de la oferta
 	 */
 	public Oferta(long id, long precio, String periodo,
-			Timestamp fechaInicio, Timestamp fechaFin, long idVivienda) {
+			Timestamp fechaInicio, Timestamp fechaFin, long vivienda) {
 		super();
 		this.id = id;
 		this.precio = precio;
 		this.periodo = periodo;
 		this.reservas = new LinkedList<Object []> ();
 		this.servicios = new LinkedList<Object []> ();
-		this.vivienda = idVivienda;
+		this.vivienda = vivienda;
 		this.fechainicio = fechaInicio;
 		this.fechafin = fechaFin;
 	}
@@ -161,15 +161,15 @@ public class Oferta implements VOOferta{
 	/**
 	 * @return idVivienda
 	 */
-	public long getIdVivienda() {
+	public long getVivienda() {
 		return vivienda;
 	}
 	
 	/**
 	 * @param idVivienda - id de la vivienda de la oferta
 	 */
-	public void setIdVivienda(long idVivienda) {
-		this.vivienda = idVivienda;
+	public void setVivienda(long vivienda) {
+		this.vivienda = vivienda;
 	}
 
 	

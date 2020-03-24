@@ -68,7 +68,7 @@ class SQLServicio
 	*/
 	public long adicionarServicio (PersistenceManager pm, long idServicio, String nombre, long costo)
 	{
-	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaServicio () + "(id, nombre, costo,incluido) values (? ,? ,?)");
+	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaServicio () + "(id, nombre, costo) values (? ,? ,?)");
 	   q.setParameters( idServicio, nombre, costo );
 	    return (long) q.executeUnique();
 	}

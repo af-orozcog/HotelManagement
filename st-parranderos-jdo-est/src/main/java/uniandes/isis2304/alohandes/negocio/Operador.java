@@ -84,15 +84,15 @@ public class Operador extends Usuario implements VOOperador{
 	/**
 	 * @return el tipo de operador
 	 */
-	public String getTipo_Operador() {
+	public String getTipo_operador() {
 		return tipo_operador;
 	}
 
 	/**
 	 * @param tipoOperador - el nuevo tipo operador
 	 */
-	public void setTipo_Operador(String tipo_Operador) {
-		this.tipo_operador = tipo_Operador;
+	public void setTipo_operador(String tipo_operador) {
+		this.tipo_operador = tipo_operador;
 	}
 	
 	@Override
