@@ -28,7 +28,7 @@ import uniandes.isis2304.alohandes.negocio.Esporadico;
  * 
  * @author Germán Bravo
  */
-class SQLEsporadico extends SQLApartamento
+class SQLEsporadico extends SQLVivienda
 {
 	/* ****************************************************************
 	 * 			Constantes
@@ -62,8 +62,7 @@ class SQLEsporadico extends SQLApartamento
 	public long adicionarEsporadico (PersistenceManager pm, long idEsporadico, String direccion, int cupos, long idOperador, 
 			double area, boolean amoblado, int numeroHabitaciones, int nochesAño, long idSeguro)
 	{
-		
-		super.adicionarApartamento(pm, idEsporadico, direccion, cupos, idOperador, area, amoblado, numeroHabitaciones);
+		super.adicionarVivienda(pm, idEsporadico, direccion, cupos, idOperador);
 		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaEsporadico () + "(id, area, numero_habitaciones, noches_año, seguro, amoblado) values (?, ?, ?, ?, ?,?)");
 		q.setParameters(idEsporadico,area,numeroHabitaciones, nochesAño, idSeguro ,amoblado);
 		return (long) q.executeUnique();
@@ -89,7 +88,7 @@ class SQLEsporadico extends SQLApartamento
 	 */
 	public Esporadico darEsporadicoPorId (PersistenceManager pm, long idEsporadico)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaEsporadico () + " NATURAL JOIN ("+ pa.darTablaVivienda() +" NATURAL JOIN " + pa.darTablaApartamento()+ ") "
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaEsporadico () + " NATURAL JOIN "+ pa.darTablaVivienda()
 		+"WHERE id = ?");
 		q.setResultClass(Esporadico.class);
 		q.setParameters(idEsporadico);
@@ -105,7 +104,7 @@ class SQLEsporadico extends SQLApartamento
 	 */
 	public List<Esporadico> darEsporadicos (PersistenceManager pm)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaEsporadico () + " NATURAL JOIN ("+ pa.darTablaVivienda() +" NATURAL JOIN " + pa.darTablaApartamento()+ ") ");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaEsporadico () + " NATURAL JOIN " + pa.darTablaVivienda());
 		q.setResultClass(Esporadico.class);
 		return (List<Esporadico>) q.executeList();
 	}
