@@ -36,30 +36,30 @@ public interface VOReserva {
 	/**
 	 * @return periodoArrendamiento
 	 */
-	public String getPeriodoArrendamiento();
+	public String getPeriodo_arrendamiento();
 
 	/**
 	 * @param periodoArrendamiento - el String de arrendamiento de la reserva
 	 */
-	public void setPeriodoArrendamiento(String periodoArrendamiento);
+	public void setPeriodo_arrendamiento(String periodo_arrendamiento);
 
 	/**
 	 * @return idUsuario
 	 */
-	public long getIdUsuario();
+	public long getCliente();
 
 	/**
 	 * @param idUsuario - el id del usuario de la reserva
 	 */
-	public void setIdUsuario(long idUsuario);
+	public void setCliente(long cliente);
 	
 	/**
 	 * @return idOferta
 	 */
-	public long getIdOferta();
+	public long getOferta();
 
 	/**
 	 * @param idOferta - el id de la oferta de la reserva
 	 */
-	public void setIdOferta(long idOferta);
+	public void setOferta(long Oferta);
 }

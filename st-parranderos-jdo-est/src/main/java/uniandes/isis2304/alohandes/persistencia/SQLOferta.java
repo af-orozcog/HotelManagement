@@ -107,14 +107,10 @@ class SQLOferta
 		System.out.println("cual es el re puto ID " + idOferta);
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaOferta () + " WHERE id = ?");
 		List<Oferta> ofe = darOfertas(pm);
-		if(ofe.size() == 0) System.out.println("why asfagfdfg");
-		for(Oferta of: ofe) {
-			System.out.println(of.getId());
-		}
-		q.setResultClass(Object.class);
+		q.setResultClass(Oferta.class);
 		q.setParameters(idOferta);
 		Oferta what = (Oferta)q.executeUnique();
-		if(what == null) System.out.println("WTDDDDFDFDFDD");
+		//if(what == null) System.out.println("WTDDDDFDFDFDD");
 		return what;
 	}
 
@@ -158,8 +154,8 @@ class SQLOferta
 	 * @return Lista con todas las ofertas del operador buscado
 	 */
 	public List<Oferta> darOfertasPorOperador(PersistenceManager pm, long idOperador) {
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaOferta () +" o, "+ pa.darTablaVivienda() +" v, "
-				+ " o.vivienda = v.id AND v.operador = ?");
+		Query q = pm.newQuery(SQL, "SELECT o.id,o.precio, o.periodo,o.vivienda,o.fechaInicio,o.fechaFin  FROM " + pa.darTablaOferta () +" o, "+ pa.darTablaVivienda() +" v "
+				+ " WHERE o.vivienda = v.id AND v.operador = ?");
 		q.setResultClass(Oferta.class);
 		q.setParameters(idOperador);
 		return (List<Oferta>) q.executeList();

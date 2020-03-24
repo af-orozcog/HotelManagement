@@ -120,43 +120,43 @@ public class Reserva implements VOReserva{
 	/**
 	 * @return periodoArrendamiento
 	 */
-	public String getPeriodoArrendamiento() {
+	public String getPeriodo_arrendamiento() {
 		return periodo_arrendamiento;
 	}
 
 	/**
 	 * @param periodoArrendamiento - el String de arrendamiento de la reserva
 	 */
-	public void setPeriodoArrendamiento(String periodoArrendamiento) {
-		this.periodo_arrendamiento = periodoArrendamiento;
+	public void setPeriodo_arrendamiento(String periodo_arrendamiento) {
+		this.periodo_arrendamiento = periodo_arrendamiento;
 	}
 
 	/**
 	 * @return idUsuario
 	 */
-	public long getIdUsuario() {
+	public long getCliente() {
 		return cliente;
 	}
 
 	/**
 	 * @param idUsuario - el id del usuario de la reserva
 	 */
-	public void setIdUsuario(long idUsuario) {
-		this.cliente = idUsuario;
+	public void setCliente(long cliente) {
+		this.cliente = cliente;
 	}
 	
 	/**
 	 * @return idOferta
 	 */
-	public long getIdOferta() {
+	public long getOferta() {
 		return oferta;
 	}
 
 	/**
 	 * @param idOferta - el id de la oferta de la reserva
 	 */
-	public void setIdOferta(long idOferta) {
-		this.oferta = idOferta;
+	public void setOferta(long Oferta) {
+		this.oferta = Oferta;
 	}
 	
 }

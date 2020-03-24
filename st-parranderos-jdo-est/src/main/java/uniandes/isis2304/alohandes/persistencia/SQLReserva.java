@@ -76,8 +76,8 @@ class SQLReserva
 	 */
 	public long adicionarReserva (PersistenceManager pm, long idReserva, Timestamp inicio, Timestamp fin, int duracion, String periodoArrendamiento, long idUsuario, long idOferta)
 	{
-		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaReserva () + "(id, inicio, fin, duracion, periodo_arrendamiento, usuario, oferta) values (? ,? ,? ,? ,? ,? ,?)");
-		q.setParameters( idReserva, inicio, duracion, periodoArrendamiento, idUsuario, idOferta );
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaReserva () + "(id, inicio, fin, periodo_arrendamiento, cliente, oferta) values (? ,? ,? ,? ,? ,?)");
+		q.setParameters( idReserva, inicio, fin, periodoArrendamiento, idUsuario, idOferta );
 		return (long) q.executeUnique();
 	}
 
