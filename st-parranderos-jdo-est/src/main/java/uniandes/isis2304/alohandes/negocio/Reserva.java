@@ -29,17 +29,17 @@ public class Reserva implements VOReserva{
 	/**
 	 * tipo de periodo de arrendamiento (DIAS, MESES, SEMESTRES)
 	 */
-	private String periodoArrendamiento;
+	private String periodo_arrendamiento;
 	
 	/**
 	 * el identificador del usuario.
 	 */
-	private long idUsuario;
+	private long cliente;
 	
 	/**
 	 * el identificador de la oferta.
 	 */
-	private long idOferta;
+	private long oferta;
 	
 	/* ****************************************************************
 	 * 			Métodos 
@@ -51,9 +51,9 @@ public class Reserva implements VOReserva{
 	public Reserva() {
 		this.inicio = null;
 		this.fin = null;
-		this.periodoArrendamiento = "";
-		this.idUsuario = 0;
-		this.idOferta = 0;
+		this.periodo_arrendamiento = "";
+		this.cliente = 0;
+		this.oferta = 0;
 	}
 
 	/**
@@ -70,9 +70,9 @@ public class Reserva implements VOReserva{
 		this.id = id;
 		this.inicio = inicio;
 		this.fin = fin;
-		this.periodoArrendamiento = periodoArrendamiento;
-		this.idUsuario = idUsuario;
-		this.idOferta = idOferta;
+		this.periodo_arrendamiento = periodoArrendamiento;
+		this.cliente = idUsuario;
+		this.oferta = idOferta;
 	}
 
 	/**
@@ -121,42 +121,42 @@ public class Reserva implements VOReserva{
 	 * @return periodoArrendamiento
 	 */
 	public String getPeriodoArrendamiento() {
-		return periodoArrendamiento;
+		return periodo_arrendamiento;
 	}
 
 	/**
 	 * @param periodoArrendamiento - el String de arrendamiento de la reserva
 	 */
 	public void setPeriodoArrendamiento(String periodoArrendamiento) {
-		this.periodoArrendamiento = periodoArrendamiento;
+		this.periodo_arrendamiento = periodoArrendamiento;
 	}
 
 	/**
 	 * @return idUsuario
 	 */
 	public long getIdUsuario() {
-		return idUsuario;
+		return cliente;
 	}
 
 	/**
 	 * @param idUsuario - el id del usuario de la reserva
 	 */
 	public void setIdUsuario(long idUsuario) {
-		this.idUsuario = idUsuario;
+		this.cliente = idUsuario;
 	}
 	
 	/**
 	 * @return idOferta
 	 */
 	public long getIdOferta() {
-		return idOferta;
+		return oferta;
 	}
 
 	/**
 	 * @param idOferta - el id de la oferta de la reserva
 	 */
 	public void setIdOferta(long idOferta) {
-		this.idOferta = idOferta;
+		this.oferta = idOferta;
 	}
 	
 }

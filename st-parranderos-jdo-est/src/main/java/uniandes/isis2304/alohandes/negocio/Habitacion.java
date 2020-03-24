@@ -10,7 +10,7 @@ public class Habitacion extends Vivienda implements VOHabitacion{
 	/**
 	 * el tipo de habitacion (ESTANDAR,SEMISUITE,SUITE)
 	 */
-	private String tipoHabitacion;
+	private String tipo_habitacion;
 	
 	/**
 	 * la categoria de la habitación
@@ -36,7 +36,7 @@ public class Habitacion extends Vivienda implements VOHabitacion{
 	 */
 	public Habitacion() {
 		super();
-		this.tipoHabitacion = "";
+		this.tipo_habitacion = "";
 		this.categoria = "";
 		this.numero = 0;
 		this.capacidad = 0;
@@ -54,7 +54,7 @@ public class Habitacion extends Vivienda implements VOHabitacion{
 	 */
 	public Habitacion(long id, String direccion, int cupos, long idOperador, String tipoHabitacion, String categoria, int capacidad, int numero) {
 		super(id, direccion, cupos,idOperador);
-		this.tipoHabitacion = tipoHabitacion;
+		this.tipo_habitacion = tipoHabitacion;
 		this.categoria = categoria;
 		this.capacidad = capacidad;
 		this.numero = numero;
@@ -64,14 +64,14 @@ public class Habitacion extends Vivienda implements VOHabitacion{
 	 * @return tipoHabitacion
 	 */
 	public String getTipoHabitacion() {
-		return tipoHabitacion;
+		return tipo_habitacion;
 	}
 
 	/**
 	 * @param tipoHabitacion - el tipo de habitacion
 	 */
 	public void setTipoHabitacion(String tipoHabitacion) {
-		this.tipoHabitacion = tipoHabitacion;
+		this.tipo_habitacion = tipoHabitacion;
 	}
 
 	/**

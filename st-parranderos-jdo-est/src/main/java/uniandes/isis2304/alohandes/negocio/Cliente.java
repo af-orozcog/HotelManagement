@@ -11,7 +11,7 @@ public class Cliente extends Usuario implements VOCliente{
 	/**
 	 * tipo de cliente (PROFESOR, EMPLEADO, EGRESADO, ESTUDIANTE, PADRE, NO_RELACIONADO, VECINO)
 	 */
-	private String tipoCliente;
+	private String tipo_cliente;
 
 	/**
 	 * documento de la persona natural
@@ -28,7 +28,7 @@ public class Cliente extends Usuario implements VOCliente{
 	 */
 	public Cliente() {
 		super();
-		this.tipoCliente = "";
+		this.tipo_cliente = "";
 		this.documento = null;
 	}
 
@@ -44,7 +44,7 @@ public class Cliente extends Usuario implements VOCliente{
 	public Cliente(long id, String nombre, String email, String numero, String tipoCliente,
 			String documento) {
 		super(id,nombre,email,numero);
-		this.tipoCliente = tipoCliente;
+		this.tipo_cliente = tipoCliente;
 		this.documento = documento;
 	}
 
@@ -52,14 +52,14 @@ public class Cliente extends Usuario implements VOCliente{
 	 * @return tipoHoteleria
 	 */
 	public String getTipoCliente() {
-		return tipoCliente;
+		return tipo_cliente;
 	}
 
 	/**
 	 * @param tipoCliente - el nuevo tipo de persona natural 
 	 */
 	public void setTipoCliente(String tipoCliente) {
-		this.tipoCliente = tipoCliente;
+		this.tipo_cliente = tipoCliente;
 	}
 
 	/**

@@ -77,7 +77,7 @@ class SQLOferta
 	*/
 	public long adicionarOferta (PersistenceManager pm, long idOferta, long precio, String periodo, long idVivienda, Timestamp fechaInicio, Timestamp fechaFin)
 	{
-	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaOferta () + "(id, precio, periodo, idVivienda, fechaInicio, fechaFin) values (? ,? ,? ,? ,? ,?)");
+	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaOferta () + "(id, precio, periodo, vivienda, fechainicio, fechafin) values (? ,? ,? ,? ,? ,?)");
 	   q.setParameters( idOferta, precio, periodo, idVivienda, fechaInicio, fechaFin );
 	    return (long) q.executeUnique();
 	}
@@ -129,7 +129,7 @@ class SQLOferta
 		List<Oferta> ofertas = darOfertas(pm);
 		for (String servicio : lista) {
 			Query q = pm.newQuery(SQL, "SELECT DISTINCT * FROM " + pa.darTablaOferta ()+" o, " + pa.darTablaIncluye() + " i, " + pa.darTablaServicio() + "s "
-					+ "WHERE o.id = i.idoferta AND i.idservicio = s.id AND s.nombre <> ?");
+					+ "WHERE o.id = i.oferta AND i.servicio = s.id AND s.nombre <> ?");
 			q.setResultClass(Oferta.class);
 			q.setParameters(servicio);
 			List<Oferta> eliminar = q.executeList();
@@ -151,7 +151,7 @@ class SQLOferta
 	 */
 	public List<Oferta> darOfertasPorOperador(PersistenceManager pm, long idOperador) {
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaOferta () +" o, "+ pa.darTablaVivienda() +" v, "
-				+ " o.idVivienda = v.id AND v.idOperador = ?");
+				+ " o.vivienda = v.id AND v.operador = ?");
 		q.setResultClass(Oferta.class);
 		q.setParameters(idOperador);
 		return (List<Oferta>) q.executeList();

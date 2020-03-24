@@ -28,12 +28,12 @@ public class Seguro implements VOSeguro{
 	/**
 	 * fecha de inicio del seguro
 	 */
-	private Timestamp inicioSeguro;
+	private Timestamp inicio_seguro;
 	
 	/**
 	 * fecha de finalización del seguro
 	 */
-	private Timestamp finSeguro;
+	private Timestamp fin_seguro;
 	
 	/**
 	 * la lista de asegurados
@@ -51,8 +51,8 @@ public class Seguro implements VOSeguro{
 		this.id = 0;
 		this.empresa  = "";
 		this.monto = 0;
-		this.inicioSeguro = null;
-		this.finSeguro = null;
+		this.inicio_seguro = null;
+		this.fin_seguro = null;
 		this.asegurados = new LinkedList<Object []> ();
 	}
 	
@@ -68,8 +68,8 @@ public class Seguro implements VOSeguro{
 		this.id = id;
 		this.empresa = empresa;
 		this.monto = monto;
-		this.inicioSeguro = inicioSeguro;
-		this.finSeguro = finSeguro;
+		this.inicio_seguro = inicioSeguro;
+		this.fin_seguro = finSeguro;
 		this.asegurados = new LinkedList<Object []> ();
 	}
 
@@ -119,28 +119,28 @@ public class Seguro implements VOSeguro{
 	 * @return inicioSeguro
 	 */
 	public Timestamp getInicioSeguro() {
-		return inicioSeguro;
+		return inicio_seguro;
 	}
 
 	/**
 	 * @param inicioSeguro - fecha de inicio del seguro
 	 */
 	public void setInicioSeguro(Timestamp inicioSeguro) {
-		this.inicioSeguro = inicioSeguro;
+		this.inicio_seguro = inicioSeguro;
 	}
 
 	/**
 	 * @return finSeguro
 	 */
 	public Timestamp getFinSeguro() {
-		return finSeguro;
+		return fin_seguro;
 	}
 
 	/**
 	 * @param finSeguro - fecha de finalización del seguro
 	 */
 	public void setFinSeguro(Timestamp finSeguro) {
-		this.finSeguro = finSeguro;
+		this.fin_seguro = finSeguro;
 	}
 
 	/**

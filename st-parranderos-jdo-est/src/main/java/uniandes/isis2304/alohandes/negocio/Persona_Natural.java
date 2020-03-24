@@ -11,7 +11,7 @@ public class Persona_Natural extends Operador implements VOPersona_Natural{
 	/**
 	 * tipo de persona natural (PROFESOR, EMPLEADO, EGRESADO, ESTUDIANTE, PADRE, NO_RELACIONADO, VECINO)
 	 */
-	private String tipoPersona;
+	private String tipo_persona;
 
 	/**
 	 * documento de la persona natural
@@ -28,7 +28,7 @@ public class Persona_Natural extends Operador implements VOPersona_Natural{
 	 */
 	public Persona_Natural() {
 		super();
-		this.tipoPersona = null;
+		this.tipo_persona = null;
 		this.documento = null;
 	}
 
@@ -44,7 +44,7 @@ public class Persona_Natural extends Operador implements VOPersona_Natural{
 	public Persona_Natural(long id, String nombre, String email, String numero, String tipoPersona,
 			String documento) {
 		super(id,nombre,email,numero,"PERSONA_NATURAL");
-		this.tipoPersona = tipoPersona;
+		this.tipo_persona = tipoPersona;
 		this.documento = documento;
 	}
 
@@ -52,14 +52,14 @@ public class Persona_Natural extends Operador implements VOPersona_Natural{
 	 * @return tipoHoteleria
 	 */
 	public String getTipoPersona() {
-		return tipoPersona;
+		return tipo_persona;
 	}
 
 	/**
 	 * @param tipoPersona - el nuevo tipo de persona natural 
 	 */
 	public void setTipoPersona(String tipoPersona) {
-		this.tipoPersona = tipoPersona;
+		this.tipo_persona = tipoPersona;
 	}
 
 	/**

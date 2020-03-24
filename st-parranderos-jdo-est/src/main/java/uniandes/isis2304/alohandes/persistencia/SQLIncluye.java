@@ -69,7 +69,7 @@ class SQLIncluye
 	 */
 	public long adicionarIncluye (PersistenceManager pm, long idServicio, long idOferta, boolean incluido) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaIncluye () + "(idservicio, idoferta, horario) values (?, ?, ?)");
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaIncluye () + "(servicio, oferta, incluido) values (?, ?, ?)");
         q.setParameters(idServicio, idOferta, incluido);
         return (long)q.executeUnique();            
 	}
@@ -83,7 +83,7 @@ class SQLIncluye
 	 */
 	public long eliminarIncluye (PersistenceManager pm, long idServicio, long idOferta) 
 	{
-        Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaIncluye () + " WHERE idservicio = ? AND idoferta = ?");
+        Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaIncluye () + " WHERE servicio = ? AND oferta = ?");
         q.setParameters(idServicio, idOferta);
         return (long) q.executeUnique();            
 	}
@@ -110,9 +110,9 @@ class SQLIncluye
 	 */
 	public List<Object []> darServiciosYCantidadOfertasIncluye (PersistenceManager pm)
 	{
-        String sql = "SELECT idServicio, count (*) as numOfertas";
+        String sql = "SELECT servicio, count (*) as numOfertas";
         sql += " FROM " + pa.darTablaIncluye ();
-       	sql	+= " GROUP BY idServicio";
+       	sql	+= " GROUP BY servicio";
 		Query q = pm.newQuery(SQL, sql);
 		return q.executeList();
 	}

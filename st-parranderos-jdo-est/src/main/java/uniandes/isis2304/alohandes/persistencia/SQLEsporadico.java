@@ -63,7 +63,7 @@ class SQLEsporadico extends SQLApartamento
 			double area, boolean amoblado, int numeroHabitaciones, int nochesAño, long idSeguro)
 	{
 		super.adicionarApartamento(pm, idEsporadico, direccion, cupos, idOperador, area, amoblado, numeroHabitaciones);
-		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaEsporadico () + "(id, nochesAño, idSeguro) values (? ,? ,?)");
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaEsporadico () + "(id, noches_año, seguro) values (? ,? ,?)");
 		q.setParameters(idEsporadico, nochesAño, idSeguro );
 		return (long) q.executeUnique();
 	}

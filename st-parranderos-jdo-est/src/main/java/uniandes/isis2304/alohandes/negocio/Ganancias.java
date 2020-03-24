@@ -29,7 +29,7 @@ public class Ganancias implements VOGanancias{
 	/**
 	 * el id del operador 
 	 */
-	private long idOperador;
+	private long operador;
 	
 	/* ****************************************************************
 	 * 			Métodos 
@@ -54,7 +54,7 @@ public class Ganancias implements VOGanancias{
 		this.cantidad = cantidad;
 		this.mes = mes;
 		this.año = año;
-		this.idOperador = idOperador;
+		this.operador = idOperador;
 	}
 
 	/**
@@ -103,14 +103,14 @@ public class Ganancias implements VOGanancias{
 	 * @return idOperador
 	 */
 	public long getIdOperador() {
-		return idOperador;
+		return operador;
 	}
 
 	/**
 	 * @param idOperador - el id del operador
 	 */
 	public void setIdOperador(long idOperador) {
-		this.idOperador = idOperador;
+		this.operador = idOperador;
 	}
 
 	/**

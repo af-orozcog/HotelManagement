@@ -65,7 +65,7 @@ class SQLHabitacion extends SQLVivienda
 			String tipoHabitacion, String categoria, int capacidad, int numero)
 	{
 		super.adicionarVivienda(pm, idHabitacion, direccion, cupos, idOperador);
-		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaHabitacion () + "(id, tipo_Habitacion, categoria, numero) values (? ,? ,? ,?)");
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaHabitacion () + "(id, tipo_habitacion, categoria, numero) values (? ,? ,? ,?)");
 		q.setParameters(idHabitacion, tipoHabitacion, categoria, numero );
 		return (long) q.executeUnique();
 	}

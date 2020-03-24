@@ -72,7 +72,7 @@ class SQLSeguro
 	*/
 	public long adicionarSeguro (PersistenceManager pm, long idSeguro, String empresa, int monto, Timestamp inicioSeguro, Timestamp finSeguro)
 	{
-	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaSeguro () + "(id, empresa, monto, inicioSeguro, finSeguro) values (? ,? ,? ,? ,?)");
+	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaSeguro () + "(id, empresa, monto, inicio_seguro, fin_seguro) values (? ,? ,? ,? ,?)");
 	   q.setParameters(empresa, monto, inicioSeguro, finSeguro );
 	    return (long) q.executeUnique();
 	}

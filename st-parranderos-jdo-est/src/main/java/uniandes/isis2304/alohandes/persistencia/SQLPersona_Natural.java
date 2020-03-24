@@ -56,42 +56,41 @@ class SQLPersona_Natural extends SQLOperador
 	}
 
 	/**
-	* Crea y ejecuta la sentencia SQL para adicionar un PERSONA_NATURAL a la base de datos de Alohandes
-	* @param idPersona_Natural - 
-	* @param nombre - 
-	* @param email - 
-	* @param numero - 
-	* @param documento - 
-	* @param tipoPersona - 
-	* @return El número de tuplas insertadas 
-	*/
+	 * Crea y ejecuta la sentencia SQL para adicionar un PERSONA_NATURAL a la base de datos de Alohandes
+	 * @param idPersona_Natural - 
+	 * @param nombre - 
+	 * @param email - 
+	 * @param numero - 
+	 * @param documento - 
+	 * @param tipoPersona - 
+	 * @return El número de tuplas insertadas 
+	 */
 	public long adicionarPersona_Natural (PersistenceManager pm, long idPersona_Natural, String nombre, String email, String numero, String documento, String tipoPersona)
 	{
 		super.adicionarOperador(pm, idPersona_Natural, nombre, email, numero,"PERSONA_NATURAL");
 	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaPersona_Natural () + "(id, documento, tipo_persona) values (? ,? ,?)");
-	   System.out.println("el tipo de persona es " + tipoPersona);
 	   q.setParameters( idPersona_Natural, documento, tipoPersona );
 	    return (long) q.executeUnique();
 	}
 
 	/**
-	* Crea y ejecuta la sentencia SQL para eliminar un PERSONA_NATURAL de la base de datos de Alohandes, por su identificador
-	* @param pm - El manejador de persistencia
-	* @param idPersona_Natural - El identificador de la Persona_Natural
-	* @return EL número de tuplas eliminadas
-	*/
+	 * Crea y ejecuta la sentencia SQL para eliminar un PERSONA_NATURAL de la base de datos de Alohandes, por su identificador
+	 * @param pm - El manejador de persistencia
+	 * @param idPersona_Natural - El identificador de la Persona_Natural
+	 * @return EL número de tuplas eliminadas
+	 */
 	public long eliminarPersona_NaturalPorId (PersistenceManager pm, long idPersona_Natural)
 	{
-	    return super.eliminarOperadorPorId(pm, idPersona_Natural);
+		return super.eliminarOperadorPorId(pm, idPersona_Natural);
 	}
 
 	/**
-	* Crea y ejecuta la sentencia SQL para encontrar la información de un PERSONA_NATURAL de la 
-	* base de datos de Alohandes, por su identificador
-	* @param pm - El manejador de persistencia
-	* @param idPersona_Natural - El identificador de la Persona_Natural
-	* @return El objeto PERSONA_NATURAL que tiene el identificador dado
-	*/
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de un PERSONA_NATURAL de la 
+	 * base de datos de Alohandes, por su identificador
+	 * @param pm - El manejador de persistencia
+	 * @param idPersona_Natural - El identificador de la Persona_Natural
+	 * @return El objeto PERSONA_NATURAL que tiene el identificador dado
+	 */
 	public Persona_Natural darPersona_NaturalPorId (PersistenceManager pm, long idPersona_Natural)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaPersona_Natural () +" NATURAL JOIN " + pa.darTablaOperador() + " WHERE id = ?");
@@ -102,11 +101,11 @@ class SQLPersona_Natural extends SQLOperador
 
 
 	/**
-	* Crea y ejecuta la sentencia SQL para encontrar la información de LOS(AS) Persona_Naturals de la
-	* base de datos de Alohandes
-	* @param pm - El manejador de persistencia
-	* @return Una lista de objetos Persona_Natural
-	*/
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de LOS(AS) Persona_Naturals de la
+	 * base de datos de Alohandes
+	 * @param pm - El manejador de persistencia
+	 * @return Una lista de objetos Persona_Natural
+	 */
 	public List<Persona_Natural> darPersona_Naturales (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaPersona_Natural () + " NATURAL JOIN " + pa.darTablaOperador());

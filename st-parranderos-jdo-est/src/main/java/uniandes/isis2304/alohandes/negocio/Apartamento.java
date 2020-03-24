@@ -18,7 +18,7 @@ public class Apartamento extends Vivienda implements VOApartamento{
 	/**
 	 * el numero de habitaciones del apartamento
 	 */
-	private int numeroHabitaciones;
+	private int numero_habitaciones;
 	
 	/* ****************************************************************
 	 * 			Métodos 
@@ -31,7 +31,7 @@ public class Apartamento extends Vivienda implements VOApartamento{
 		super();
 		this.area = 0.0;
 		this.amoblado = false;
-		this.numeroHabitaciones = 0;
+		this.numero_habitaciones = 0;
 	}
 
 	/**
@@ -48,7 +48,7 @@ public class Apartamento extends Vivienda implements VOApartamento{
 		super(id, direccion, cupos,idOperador);
 		this.area = area;
 		this.amoblado = amoblado;
-		this.numeroHabitaciones = numeroHabitaciones;
+		this.numero_habitaciones = numeroHabitaciones;
 	}
 
 	/**
@@ -83,13 +83,13 @@ public class Apartamento extends Vivienda implements VOApartamento{
 	 * @return numeroHabitaciones
 	 */
 	public int getNumeroHabitaciones() {
-		return numeroHabitaciones;
+		return numero_habitaciones;
 	}
 
 	/**
 	 * @param numeroHabitaciones - el numero de habitaciones del apartamento
 	 */
 	public void setNumeroHabitaciones(int numeroHabitaciones) {
-		this.numeroHabitaciones = numeroHabitaciones;
+		this.numero_habitaciones = numeroHabitaciones;
 	}
 }

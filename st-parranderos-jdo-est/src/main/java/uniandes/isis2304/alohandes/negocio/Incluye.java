@@ -8,12 +8,12 @@ public class Incluye implements VOIncluye
 	/**
 	 * El identificador de la oferta que incluye el servicio
 	 */
-	private long idOferta;
+	private long oferta;
 	
 	/**
 	 * El identificador del servicio que se incluye en la oferta
 	 */
-	private long idServicio;
+	private long servicio;
 	
 	/**
 	 * Indica si el servicio esta incluido en el precio.
@@ -28,8 +28,8 @@ public class Incluye implements VOIncluye
 	 */
 	public Incluye () 
 	{
-		this.idOferta = 0;
-		this.idServicio = 0;
+		this.oferta = 0;
+		this.servicio = 0;
 		this.incluido = true;
 	}
 
@@ -41,8 +41,8 @@ public class Incluye implements VOIncluye
 	 */
 	public Incluye (long idOferta, long idServicio, boolean incluido) 
 	{
-		this.idOferta = idOferta;
-		this.idServicio = idServicio;
+		this.oferta = idOferta;
+		this.servicio = idServicio;
 		this.incluido = incluido;
 	}
 
@@ -51,7 +51,7 @@ public class Incluye implements VOIncluye
 	 */
 	public long getIdOferta() 
 	{
-		return idOferta;
+		return oferta;
 	}
 
 	/**
@@ -59,7 +59,7 @@ public class Incluye implements VOIncluye
 	 */
 	public void setIdOferta(long idOferta) 
 	{
-		this.idOferta = idOferta;
+		this.oferta = idOferta;
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class Incluye implements VOIncluye
 	 */
 	public long getIdServicio() 
 	{
-		return idServicio;
+		return servicio;
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class Incluye implements VOIncluye
 	 */
 	public void setIdServicio(long idServicio) 
 	{
-		this.idServicio = idServicio;
+		this.servicio = idServicio;
 	}
 
 	/**
@@ -100,6 +100,6 @@ public class Incluye implements VOIncluye
 	@Override
 	public String toString() 
 	{
-		return "Sirven [idOferta=" + idOferta + ", idServicio=" + idServicio + ", incluido=" + incluido + "]";
+		return "Sirven [idOferta=" + oferta + ", idServicio=" + servicio + ", incluido=" + incluido + "]";
 	}
 }

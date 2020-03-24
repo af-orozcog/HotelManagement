@@ -9,12 +9,12 @@ public class Cuarto extends Vivienda implements VOCuarto{
 	/**
 	 * booleano para saber si el baño es privado
 	 */
-	private boolean bañoPrivado;
+	private boolean baño_privado;
 	
 	/**
 	 * booleano para saber si el cuarto es privado
 	 */
-	private boolean cuartoPrivado;
+	private boolean cuarto_privado;
 	
 	/**
 	 * el esquema del cuarto
@@ -36,8 +36,8 @@ public class Cuarto extends Vivienda implements VOCuarto{
 	 */
 	public Cuarto() {
 		super();
-		this.bañoPrivado = false;
-		this.cuartoPrivado = false;
+		this.baño_privado = false;
+		this.cuarto_privado = false;
 		this.esquema = "";
 		this.menaje = "";
 	}
@@ -55,8 +55,8 @@ public class Cuarto extends Vivienda implements VOCuarto{
 	 */
 	public Cuarto(long id, String direccion, int cupos, long idOperador, boolean bañoPrivado, boolean cuartoPrivado, String esquema, String menaje) {
 		super(id, direccion, cupos,idOperador);
-		this.bañoPrivado = bañoPrivado;
-		this.cuartoPrivado = cuartoPrivado;
+		this.baño_privado = bañoPrivado;
+		this.cuarto_privado = cuartoPrivado;
 		this.esquema = esquema;
 		this.menaje = menaje;
 	}
@@ -66,7 +66,7 @@ public class Cuarto extends Vivienda implements VOCuarto{
 	 * @return bañoPrivado
 	 */
 	public boolean isBañoPrivado() {
-		return bañoPrivado;
+		return baño_privado;
 	}
 
 
@@ -74,7 +74,7 @@ public class Cuarto extends Vivienda implements VOCuarto{
 	 * @param bañoPrivado - booleano del baño
 	 */
 	public void setBañoPrivado(boolean bañoPrivado) {
-		this.bañoPrivado = bañoPrivado;
+		this.baño_privado = bañoPrivado;
 	}
 
 
@@ -82,7 +82,7 @@ public class Cuarto extends Vivienda implements VOCuarto{
 	 * @return cuartoPrivado
 	 */
 	public boolean isCuartoPrivado() {
-		return cuartoPrivado;
+		return cuarto_privado;
 	}
 
 
@@ -90,7 +90,7 @@ public class Cuarto extends Vivienda implements VOCuarto{
 	 * @param cuartoPrivado - booleano del cuarto privado
 	 */
 	public void setCuartoPrivado(boolean cuartoPrivado) {
-		this.cuartoPrivado = cuartoPrivado;
+		this.cuarto_privado = cuartoPrivado;
 	}
 
 

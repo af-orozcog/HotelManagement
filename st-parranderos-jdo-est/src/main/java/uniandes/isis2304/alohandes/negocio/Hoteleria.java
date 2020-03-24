@@ -11,17 +11,17 @@ public class Hoteleria extends Operador implements VOHoteleria{
 	/**
 	 * tipo de hoteleria (HOSTAL, HOTEL)
 	 */
-	private String tipoHoteleria;
+	private String tipo_hoteleria;
 	
 	/**
 	 * hora de apertura del hotel
 	 */
-	private Timestamp horaApertura;
+	private Timestamp hora_apertura;
 	
 	/**
 	 * hora de cierre del hotel
 	 */
-	private Timestamp horaCierre;
+	private Timestamp hora_cierre;
 	
 	/* ****************************************************************
 	 * 			Métodos 
@@ -32,9 +32,9 @@ public class Hoteleria extends Operador implements VOHoteleria{
      */
 	public Hoteleria() {
 		super();
-		this.tipoHoteleria = "";
-		this.horaApertura = null;
-		this.horaCierre = null;
+		this.tipo_hoteleria = "";
+		this.hora_apertura = null;
+		this.hora_cierre = null;
 	}
 	
 	/**
@@ -50,51 +50,51 @@ public class Hoteleria extends Operador implements VOHoteleria{
 	public Hoteleria(long id, String nombre, String email, String numero, String tipoHoteleria,
 			Timestamp horaApertura, Timestamp horaCierre) {
 		super(id,nombre,email,numero,"HOTELERIA");
-		this.tipoHoteleria = tipoHoteleria;
-		this.horaApertura = horaApertura;
-		this.horaCierre = horaCierre;
+		this.tipo_hoteleria = tipoHoteleria;
+		this.hora_apertura = horaApertura;
+		this.hora_cierre = horaCierre;
 	}
 
 	/**
 	 * @return tipoHoteleria
 	 */
 	public String getTipoHoteleria() {
-		return tipoHoteleria;
+		return tipo_hoteleria;
 	}
 
 	/**
 	 * @param tipoHoteleria - el nuevo tipo de hoteleria 
 	 */
 	public void setTipoHoteleria(String tipoHoteleria) {
-		this.tipoHoteleria = tipoHoteleria;
+		this.tipo_hoteleria = tipoHoteleria;
 	}
 
 	/**
 	 * @return horaApertura
 	 */
 	public Timestamp getHoraApertura() {
-		return horaApertura;
+		return hora_apertura;
 	}
 
 	/**
 	 * @param horaApertura - la nueva hora de apertura
 	 */
 	public void setHoraApertura(Timestamp horaApertura) {
-		this.horaApertura = horaApertura;
+		this.hora_apertura = horaApertura;
 	}
 
 	/**
 	 * @return horaCierre
 	 */
 	public Timestamp getHoraCierre() {
-		return horaCierre;
+		return hora_cierre;
 	}
 
 	/**
 	 * @param horaCierre - la nueva hora de cierre
 	 */
 	public void setHoraCierre(Timestamp horaCierre) {
-		this.horaCierre = horaCierre;
+		this.hora_cierre = horaCierre;
 	}
 	
 }

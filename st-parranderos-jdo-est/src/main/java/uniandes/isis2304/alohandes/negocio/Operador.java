@@ -21,7 +21,7 @@ public class Operador extends Usuario implements VOOperador{
 	/**
 	 * tipo de operador (HOTELERIA, VIVIENDA_UNIVERSITARIA, PERSONA_NATURAL)
 	 */
-	private String tipo_Operador;
+	private String tipo_operador;
 	
 	/* ****************************************************************
 	 * 			Métodos 
@@ -35,7 +35,7 @@ public class Operador extends Usuario implements VOOperador{
     	super();
     	ganancias = new LinkedList<Object []> ();
     	viviendas = new LinkedList<Object []> ();
-    	tipo_Operador = "";
+    	tipo_operador = "";
 	}
 	
 	/**
@@ -50,7 +50,7 @@ public class Operador extends Usuario implements VOOperador{
 		super(id,nombre,email,numero);
 		ganancias = new LinkedList<Object []>();
 		viviendas = new LinkedList<Object []>();
-		this.tipo_Operador = tipo_Operador;
+		this.tipo_operador = tipo_Operador;
 	}
 
 	/**
@@ -85,14 +85,14 @@ public class Operador extends Usuario implements VOOperador{
 	 * @return el tipo de operador
 	 */
 	public String getTipo_Operador() {
-		return tipo_Operador;
+		return tipo_operador;
 	}
 
 	/**
 	 * @param tipoOperador - el nuevo tipo operador
 	 */
 	public void setTipo_Operador(String tipo_Operador) {
-		this.tipo_Operador = tipo_Operador;
+		this.tipo_operador = tipo_Operador;
 	}
 	
 	@Override

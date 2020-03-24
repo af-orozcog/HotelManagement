@@ -71,7 +71,7 @@ class SQLCliente
 	*/
 	public long adicionarCliente (PersistenceManager pm, long idCliente, String nombre, String email, String numero, String documento, String tipoCliente)
 	{
-	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaCliente () + "(id, nombre, email, numero, documento, tipoCliente) values (? ,? ,? ,? ,? ,?)");
+	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaCliente () + "(id, nombre, email, numero, documento, tipo_cliente) values (? ,? ,? ,? ,? ,?)");
 	   q.setParameters( idCliente, nombre, email, numero, documento, tipoCliente );
 	    return (long) q.executeUnique();
 	}

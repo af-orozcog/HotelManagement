@@ -66,7 +66,7 @@ class SQLCuarto extends SQLVivienda
 	public long adicionarCuarto (PersistenceManager pm, long idCuarto, String direccion, int cupos, long idOperador, boolean bañoPrivado, boolean cuartoPrivado, String esquema, String menaje)
 	{
 		super.adicionarVivienda(pm, idCuarto, direccion, cupos, idOperador);
-		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaCuarto () + "(id, bañoPrivado, cuartoPrivado, esquema, menaje) values (? ,? ,? ,? ,?)");
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaCuarto () + "(id, baño_privado, cuarto_privado, esquema, menaje) values (? ,? ,? ,? ,?)");
 		q.setParameters(idCuarto, bañoPrivado, cuartoPrivado, esquema, menaje );
 		return (long) q.executeUnique();
 	}

@@ -31,7 +31,7 @@ public class Vivienda implements VOVivienda{
 	/**
 	 * el identificador del operador
 	 */
-	private long idOperador;
+	private long operador;
 	
 	/* ****************************************************************
 	 * 			Métodos 
@@ -44,7 +44,7 @@ public class Vivienda implements VOVivienda{
 		this.direccion = "";
 		this.cupos = 0;
 		ofertas = new LinkedList<Object []> ();
-		this.idOperador = 0;
+		this.operador = 0;
 	}
 
 	/**
@@ -58,7 +58,7 @@ public class Vivienda implements VOVivienda{
 		this.direccion = direccion;
 		this.cupos = cupos;
 		this.ofertas = new LinkedList<Object []> ();
-		this.idOperador = idOperador;
+		this.operador = idOperador;
 	}
 
 	/**
@@ -121,14 +121,14 @@ public class Vivienda implements VOVivienda{
 	 * @return idOperador
 	 */
 	public long getIdOperador() {
-		return idOperador;
+		return operador;
 	}
 
 	/**
 	 * @param idOperador - el identificador del operador
 	 */
 	public void setIdOperador(long idOperador) {
-		this.idOperador = idOperador;
+		this.operador = idOperador;
 	}
 	
 	

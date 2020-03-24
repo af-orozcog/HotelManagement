@@ -8,12 +8,12 @@ public class Esporadico extends Apartamento implements VOEsporadico{
 	/**
 	 * numero de noches al año que se ha utilizado
 	 */
-	private int nochesAño;
+	private int noches_año;
 	
 	/**
 	 * id del seguro
 	 */
-	private long idSeguro;
+	private long seguro;
 	
 	/* ****************************************************************
 	 * 			Métodos 
@@ -25,8 +25,8 @@ public class Esporadico extends Apartamento implements VOEsporadico{
 	public Esporadico() 
     {
     	super();
-    	this.nochesAño = 0;
-    	this.idSeguro = 0;
+    	this.noches_año = 0;
+    	this.seguro = 0;
 	}
 	
 	/**
@@ -44,36 +44,36 @@ public class Esporadico extends Apartamento implements VOEsporadico{
 	public Esporadico(long id, String direccion, int cupos, long idOperador, double area, boolean amoblado, 
 			int numeroHabitaciones, int nochesAño, long idSeguro) {
 		super(id, direccion, cupos, idOperador, area,amoblado,numeroHabitaciones);
-		this.nochesAño = nochesAño;
-		this.idSeguro = idSeguro;
+		this.noches_año = nochesAño;
+		this.seguro = idSeguro;
 	}
 
 	/**
 	 * @return nochesAño
 	 */
 	public int getNochesAño() {
-		return nochesAño;
+		return noches_año;
 	}
 
 	/**
 	 * @param nochesAño - noches al año
 	 */
 	public void setNochesAño(int nochesAño) {
-		this.nochesAño = nochesAño;
+		this.noches_año = nochesAño;
 	}
 
 	/**
 	 * @return idSeguro
 	 */
 	public long getIdSeguro() {
-		return idSeguro;
+		return seguro;
 	}
 
 	/**
 	 * @param idSeguro - id del seguro
 	 */
 	public void setIdSeguro(long idSeguro) {
-		this.idSeguro = idSeguro;
+		this.seguro = idSeguro;
 	}
 	
 }

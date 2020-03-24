@@ -76,7 +76,7 @@ class SQLReserva
 	 */
 	public long adicionarReserva (PersistenceManager pm, long idReserva, Timestamp inicio, Timestamp fin, int duracion, String periodoArrendamiento, long idUsuario, long idOferta)
 	{
-		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaReserva () + "(id, inicio, fin, duracion, periodoArrendamiento, idUsuario, idOferta) values (? ,? ,? ,? ,? ,? ,?)");
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaReserva () + "(id, inicio, fin, duracion, periodo_arrendamiento, usuario, oferta) values (? ,? ,? ,? ,? ,? ,?)");
 		q.setParameters( idReserva, inicio, duracion, periodoArrendamiento, idUsuario, idOferta );
 		return (long) q.executeUnique();
 	}
@@ -131,7 +131,7 @@ class SQLReserva
 	 * @return Lista con todas las reservas del cliente buscado
 	 */
 	public List<Reserva> darReservasPorCliente(PersistenceManager pm, long idCliente) {
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaReserva () +" WHERE idUsuario = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaReserva () +" WHERE cliente = ?");
 		q.setResultClass(Reserva.class);
 		q.setParameters(idCliente);
 		return (List<Reserva>) q.executeList();

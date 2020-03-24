@@ -38,17 +38,17 @@ public class Oferta implements VOOferta{
 	/**
 	 * vivienda que ofrece la oferta
 	 */
-	private long idVivienda;
+	private long vivienda;
 
 	/**
 	 * la fecha de inicio de la oferta
 	 */
-	private Timestamp fechaInicio;
+	private Timestamp fechainicio;
 	
 	/**
 	 * fecha final de la oferta
 	 */
-	private Timestamp fechaFin;
+	private Timestamp fechafin;
 	
 	/* ****************************************************************
 	 * 			Métodos 
@@ -63,7 +63,7 @@ public class Oferta implements VOOferta{
 		this.periodo = "";
 		this.reservas = new LinkedList<Object []> ();
 		this.servicios = new LinkedList<Object []> ();
-		this.idVivienda = 0;
+		this.vivienda = 0;
 	}
 
 	/**
@@ -83,9 +83,9 @@ public class Oferta implements VOOferta{
 		this.periodo = periodo;
 		this.reservas = new LinkedList<Object []> ();
 		this.servicios = new LinkedList<Object []> ();
-		this.idVivienda = idVivienda;
-		this.fechaInicio = fechaInicio;
-		this.fechaFin = fechaFin;
+		this.vivienda = idVivienda;
+		this.fechainicio = fechaInicio;
+		this.fechafin = fechaFin;
 	}
 
 	/**
@@ -162,14 +162,31 @@ public class Oferta implements VOOferta{
 	 * @return idVivienda
 	 */
 	public long getIdVivienda() {
-		return idVivienda;
+		return vivienda;
 	}
 	
 	/**
 	 * @param idVivienda - id de la vivienda de la oferta
 	 */
 	public void setIdVivienda(long idVivienda) {
-		this.idVivienda = idVivienda;
+		this.vivienda = idVivienda;
+	}
+
+	
+	public Timestamp getFechainicio() {
+		return fechainicio;
+	}
+
+	public void setFechainicio(Timestamp fechainicio) {
+		this.fechainicio = fechainicio;
+	}
+
+	public Timestamp getFechafin() {
+		return fechafin;
+	}
+
+	public void setFechafin(Timestamp fechafin) {
+		this.fechafin = fechafin;
 	}
 	
 	
