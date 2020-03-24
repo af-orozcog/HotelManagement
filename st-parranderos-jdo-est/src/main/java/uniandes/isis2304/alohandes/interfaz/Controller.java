@@ -99,20 +99,20 @@ public class Controller {
 				break;
 			case 4:
 				req5(sc);
-				
+
 				break;
 			case 5:
 				req6(sc);
-				
+
 				break;
-				
+
 			case 6:
 				reqC1(sc);
-				
+
 				break;
 			case 7:
 				reqC2(sc);
-				
+
 				break;
 			case 8:
 				fin = true;
@@ -144,35 +144,35 @@ public class Controller {
 		for(String va : mensajes) 
 			interfaz.printMessage(va);
 	}
-	
+
 	private void req6(Scanner sc) {
 		interfaz.printMessage("Ingrese el nombre del operador a eliminar una propuesta");
 		String nombre = sc.next();
 		interfaz.printMessage("Ingrese el tipo de operador a eliminar una propuesta (Escriba HOTELERIA o VIVIENDA_UNIVERSITARIA o PERSONA_NATURAL según sea el caso)");
 		String tipo = sc.next();
-		
+
 		Operador operador = mundo.darOperadorPorNombre(nombre, tipo);
-		
+
 		interfaz.printMessage("Las ofertas del operador son:");
 		List<Oferta> ofertas = mundo.darOfertasPorOperador(operador.getId());
 		for (Oferta oferta : ofertas) {
 			interfaz.printMessage("Oferta id: "+oferta.getId() + " - " + oferta.toString());
 		}
-		
+
 		interfaz.printMessage("Ingrese el id de la oferta a eliminar");
 		mundo.eliminarOfertaPorId(sc.nextLong());
 	}
-	
+
 	private void req5(Scanner sc) {
 		interfaz.printMessage("Ingrese el nombre del cliente a eliminar una reserva");
 		Cliente cliente = mundo.darClientePorNombre(sc.next());
-		
+
 		interfaz.printMessage("Las reservas del cliente son:");
 		List<Reserva> reservas = mundo.darReservasPorCliente(cliente.getId());
 		for (Reserva reserva : reservas) {
 			interfaz.printMessage("Reserva id: "+reserva.getId() + " - " + reserva.toString());
 		}
-		
+
 		interfaz.printMessage("Ingrese el id de la reserva a eliminar");
 		mundo.eliminarReservaPorId(sc.nextLong());
 	}
@@ -199,24 +199,19 @@ public class Controller {
 
 		interfaz.printMessage("Ingrese el nombre del usuario que va a realizar la reserva");
 		Cliente usuario = mundo.darClientePorNombre(sc.next());
-		
+
 		interfaz.printMessage("Ya sabe con que oferta quiere realizar la reserva? (Y/N)");
 		boolean sabe = sc.next().equalsIgnoreCase("Y");
-		
+
+		long idOferta;
 		if(sabe) {
-		interfaz.printMessage("Ingrese el id de la oferta que se quiere reservar");
-		long idOferta = sc.nextLong();
-
-		String periodoArrendamiento = mundo.darOfertaPorId(idOferta).getPeriodo();
-		interfaz.printMessage("Dar duración de la reserva en " + periodoArrendamiento +" (Escribir número entero)");
-		int duracion = sc.nextInt();
-
-		mundo.adicionarReserva(inicio, fin, duracion, periodoArrendamiento, idOferta, usuario.getId());
+			interfaz.printMessage("Ingrese el id de la oferta que se quiere reservar");
+			idOferta = sc.nextLong();
 		}
 		else {
 			interfaz.printMessage("Algún servicio en específico? (Y/N)");
 			boolean servicios = sc.next().equalsIgnoreCase("Y");
-			
+
 			ArrayList<String> lista = new ArrayList<String>();
 			while(servicios) {
 				interfaz.printMessage("Escriba el servicio que desea");
@@ -224,14 +219,21 @@ public class Controller {
 				interfaz.printMessage("Desea más servicios? (Y/N");
 				servicios = sc.next().equalsIgnoreCase("Y");
 			}
-			
+
 			List<Oferta> ofertas = mundo.darOfertasConServicios(lista);
 			interfaz.printMessage("Las siguientes ofertas están disponibles: ");
 			for (Oferta oferta : ofertas) {
 				interfaz.printMessage(oferta.toString() + "ID OFERTA: " + oferta.getId());
 			}
-			
+			interfaz.printMessage("Escriba el id seleccionado");
+			idOferta = sc.nextLong();
 		}
+		
+		String periodoArrendamiento = mundo.darOfertaPorId(idOferta).getPeriodo();
+		interfaz.printMessage("Dar duración de la reserva en " + periodoArrendamiento +" (Escribir número entero)");
+		int duracion = sc.nextInt();
+
+		mundo.adicionarReserva(inicio, fin, duracion, periodoArrendamiento, idOferta, usuario.getId());
 	}
 
 	@SuppressWarnings("deprecation")
@@ -346,7 +348,7 @@ public class Controller {
 				interfaz.printMessage("El precio del servicio ya está incluido en la oferta? (Y/N)");
 				boolean incluido = sc.next().equalsIgnoreCase("Y");
 				mundo.adicionarIncluye(oferta.getId(), idServicio, incluido);
-				
+
 				interfaz.printMessage("Desea seguir adicionando servicios? (Y/N)"); 
 				servicio = sc.next().equalsIgnoreCase("Y");
 			}
