@@ -67,26 +67,33 @@ public class HabitacionTest {
 			// Lectura de los tipos de bebida con un habitacion adicionado
 			String direccionhabitacion1 = "calle23C#69C-20";
 			int cuposhabitacion1 = 4;
+			String tipoHabitacion1 = "ESTANDAR";
+			String Categoria1 = "cualquiera";
+			int capacidad1 = 4;
+			int numero1 = 3;
+			Habitacion habitacion1 = pm.adicionarHabitacion(direccionhabitacion1, cuposhabitacion1, op.getId(), tipoHabitacion1, Categoria1, capacidad1, numero1);
+			lista = pm.darHabitaciones();
 			
-			Habitacion habitacion1 = pm.adicionarhabitacion(direccionhabitacion1, cuposhabitacion1,op.getId());
-			lista = pm.darhabitacions();
 			assertEquals ("Debe haber un habitacion creado !!", 1, lista.size ());
 			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", habitacion1, lista.get (0));
 
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
-			String direccionhabitacion2 = "calle24C#20C-20";
+			String direccionhabitacion2 = "calle20C#20C-20";
 			int cuposhabitacion2 = 4;
-			
-			habitacion habitacion2 = pm.adicionarhabitacion (direccionhabitacion2,cuposhabitacion2,op.getId());
-			lista = pm.darhabitacions();
+			String tipoHabitacion2 = "SEMISUITE";
+			String Categoria2 = "nose";
+			int capacidad2 = 4;
+			int numero2 = 3;
+			Habitacion habitacion2 = pm.adicionarHabitacion(direccionhabitacion2, cuposhabitacion2, op.getId(), tipoHabitacion2, Categoria2, capacidad2, numero2);
+			lista = pm.darHabitaciones();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
 			assertTrue ("El primer habitacion adicionado debe estar en la tabla", habitacion1.equals (lista.get (0)) || habitacion1.equals (lista.get (1)));
 			assertTrue ("El segundo habitacion adicionado debe estar en la tabla", habitacion2.equals (lista.get (0)) || habitacion2.equals (lista.get (1)));
 
 			// Prueba de eliminación de un habitacion, dado su identificador
-			long tbEliminados = pm.eliminarhabitacionPorId (habitacion1.getId ());
+			long tbEliminados = pm.eliminarHabitacionPorId (habitacion1.getId ());
 			assertEquals ("Debe haberse eliminado un habitacion !!", 1, tbEliminados);
-			lista = pm.darhabitacions();
+			lista = pm.darHabitaciones();
 			assertEquals ("Debe haber un solo habitacion !!", 1, lista.size ());
 			assertFalse ("El primer habitacion adicionado NO debe estar en la tabla", habitacion1.equals (lista.get (0)));
 			assertTrue ("El segundo habitacion adicionado debe estar en la tabla", habitacion2.equals (lista.get (0)));
@@ -135,22 +142,29 @@ public class HabitacionTest {
 		try
 		{
 			Operador op = pm.adicionarOperador("..", "..", "..", "PERSONA_NATURAL");
-			String direccionhabitacion1 = "calle23C#69C-20";
-			int cuposhabitacion1 = 4;
+			
+			// Lectura de los tipos de bebida con la tabla vacía
+			List <Habitacion> lista = pm.darHabitaciones();
+			assertEquals ("No debe haber tipos de bebida creados!!", 0, lista.size ());
 			pm.modoPruebas();
 			pm.asignarID(1000);
-			// Lectura de los tipos de bebida con la tabla vacía
-			List <habitacion> lista = pm.darhabitacions();
-			assertEquals ("No debe haber tipos de bebida creados!!", 0, lista.size ());
-			
+			String direccionhabitacion1 = "calle23C#69C-20";
+			int cuposhabitacion1 = 4;
+			String tipoHabitacion1 = "ESTANDAR";
+			String Categoria1 = "cualquiera";
+			int capacidad1 = 4;
+			int numero1 = 3;
+			Habitacion habitacion1 = pm.adicionarHabitacion(direccionhabitacion1, cuposhabitacion1, op.getId(), tipoHabitacion1, Categoria1, capacidad1, numero1);
 			// Lectura de los tipos de bebida con un habitacion adicionado
-			habitacion habitacion1 = pm.adicionarhabitacion (direccionhabitacion1,cuposhabitacion1,op.getId());
-			lista = pm.darhabitacions();
+			lista = pm.darHabitaciones();
 			assertEquals ("Debe haber un habitacion creado !!", 1, lista.size ());
-			String direccionhabitacion2 = "calle24C#20C-20";
+			String direccionhabitacion2 = "calle20C#20C-20";
 			int cuposhabitacion2 = 4;
-			
-			habitacion habitacion2 = pm.adicionarhabitacion (direccionhabitacion2, cuposhabitacion2,op.getId());
+			String tipoHabitacion2 = "SEMISUITE";
+			String Categoria2 = "nose";
+			int capacidad2 = 4;
+			int numero2 = 3;
+			Habitacion habitacion2 = pm.adicionarHabitacion(direccionhabitacion2, cuposhabitacion2, op.getId(), tipoHabitacion2, Categoria2, capacidad2, numero2);
 			assertNull ("No puede adicionar dos habitacions con el mismo id !!", habitacion2);
 		}
 		catch (Exception e)

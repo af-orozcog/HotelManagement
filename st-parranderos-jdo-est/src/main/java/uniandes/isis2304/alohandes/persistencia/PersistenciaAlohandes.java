@@ -188,7 +188,7 @@ public class PersistenciaAlohandes
 	 */
 	private REQC2 reqc2;
 
-	private boolean modoPerron;
+	private boolean modoPerron = false;
 	
 	private long idPerron;
 	
