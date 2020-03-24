@@ -77,7 +77,7 @@ class SQLOferta
 	*/
 	public long adicionarOferta (PersistenceManager pm, long idOferta, long precio, String periodo, long idVivienda, Timestamp fechaInicio, Timestamp fechaFin)
 	{
-	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaOferta () + "(id, precio, periodo, idVivienda, fechaInicio, fechaFin) values (? ,? ,? ,? ,? ,?)");
+	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaOferta () + "(id, precio, periodo, vivienda, fechaInicio, fechaFin) values (? ,? ,? ,? ,? ,?)");
 	   q.setParameters( idOferta, precio, periodo, idVivienda, fechaInicio, fechaFin );
 	    return (long) q.executeUnique();
 	}
