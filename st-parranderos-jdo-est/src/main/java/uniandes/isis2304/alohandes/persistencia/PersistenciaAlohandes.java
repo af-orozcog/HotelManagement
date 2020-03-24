@@ -1909,11 +1909,12 @@ public class PersistenciaAlohandes
 	 *****************************************************************/
 	
 	public long reqc1Actual(long idOperador) {
+		System.out.println("what in the fucking world " + idOperador);
 		return reqc1.gananciasAñoActual(pmf.getPersistenceManager(), idOperador);
 	}
 	
 	public long reqc1Corrido(long idOperador) {
-		return reqc1.gananciasAñoActual(pmf.getPersistenceManager(), idOperador);
+		return reqc1.gananciasAñoCorrido(pmf.getPersistenceManager(), idOperador);
 	}
 	
 	public List<Oferta> reqc2(){

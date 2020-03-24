@@ -134,6 +134,7 @@ public class Controller {
 		interfaz.printMessage("Lista de los operadores con su nombre y el dinero ganado en el año actual y corrido");
 		List<Operador> operadores = mundo.darOperadores();
 		for (Operador operador : operadores) {
+			System.out.println("who's this fucker " + operador.getNombre());
 			long actual = mundo.reqc1Actual(operador.getId());
 			long corrido = mundo.reqc1Corrido(operador.getId());
 			interfaz.printMessage("Operador nombre: " + operador.getNombre() + " - Año actual: " + actual + " - Año corrido: " + corrido);

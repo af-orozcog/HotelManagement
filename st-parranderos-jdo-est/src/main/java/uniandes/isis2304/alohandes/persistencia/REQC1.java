@@ -43,6 +43,7 @@ public class REQC1 {
 	 */
 	public long gananciasAñoActual(PersistenceManager pm,long idOperador) {
 		int year = Calendar.getInstance().get(Calendar.YEAR);
+		System.out.println("cual es el gran sapo id " + idOperador + " cual es el gran sapo año "+ year);
 		Query q = pm.newQuery(SQL, "SELECT  SUM(cantidad) FROM" + pa.darTablaGanancias() + "WHERE id = ? AND año = ?");
 		q.setParameters(idOperador,year);
 		q.setResultClass(Long.class);
