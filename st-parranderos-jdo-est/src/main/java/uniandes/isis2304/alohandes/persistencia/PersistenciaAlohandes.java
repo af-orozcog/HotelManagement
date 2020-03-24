@@ -177,6 +177,16 @@ public class PersistenciaAlohandes
 	* Atributo para el acceso a la tabla INCLUYE de la base de datos
 	*/
 	private SQLIncluye sqlIncluye;
+	
+	/**
+	 * Atributo para la clase que maneja la consulta 1
+	 */
+	private REQC1 reqc1;
+	
+	/**
+	 * Atributo para la clase que maneja la consutla 2
+	 */
+	private REQC2 reqc2;
 
 	
 	/* ****************************************************************
@@ -1894,5 +1904,21 @@ public class PersistenciaAlohandes
 		
 	}
 
+	/* ****************************************************************
+	 * 			Métodos para manejar las consultas
+	 *****************************************************************/
+	
+	public long reqc1Actual(long idOperador) {
+		return reqc1.gananciasAñoActual(pmf.getPersistenceManager(), idOperador);
+	}
+	
+	public long reqc1Corrido(long idOperador) {
+		return reqc1.gananciasAñoActual(pmf.getPersistenceManager(), idOperador);
+	}
+	
+	public List<Oferta> reqc2(){
+		return reqc2.ofertasPopulares(pmf.getPersistenceManager());
+	}
+	
 
  }
