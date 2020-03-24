@@ -21,7 +21,7 @@ public class Operador extends Usuario implements VOOperador{
 	/**
 	 * tipo de operador (HOTELERIA, VIVIENDA_UNIVERSITARIA, PERSONA_NATURAL)
 	 */
-	private String tipoOperador;
+	private String tipo_Operador;
 	
 	/* ****************************************************************
 	 * 			Métodos 
@@ -35,7 +35,7 @@ public class Operador extends Usuario implements VOOperador{
     	super();
     	ganancias = new LinkedList<Object []> ();
     	viviendas = new LinkedList<Object []> ();
-    	tipoOperador = "";
+    	tipo_Operador = "";
 	}
 	
 	/**
@@ -46,11 +46,11 @@ public class Operador extends Usuario implements VOOperador{
 	 * @param numero - el numero telefonico del usuario
 	 * @param tipoOperador - el tipo de operador que es
 	 */
-	public Operador(long id, String nombre, String email, String numero, String tipoOperador) {
+	public Operador(long id, String nombre, String email, String numero, String tipo_Operador) {
 		super(id,nombre,email,numero);
 		ganancias = new LinkedList<Object []>();
 		viviendas = new LinkedList<Object []>();
-		this.tipoOperador = tipoOperador;
+		this.tipo_Operador = tipo_Operador;
 	}
 
 	/**
@@ -84,15 +84,77 @@ public class Operador extends Usuario implements VOOperador{
 	/**
 	 * @return el tipo de operador
 	 */
-	public String getTipoOperador() {
-		return tipoOperador;
+	public String getTipo_Operador() {
+		return tipo_Operador;
 	}
 
 	/**
 	 * @param tipoOperador - el nuevo tipo operador
 	 */
-	public void setTipoOperador(String tipoOperador) {
-		this.tipoOperador = tipoOperador;
+	public void setTipo_Operador(String tipo_Operador) {
+		this.tipo_Operador = tipo_Operador;
 	}
+	
+	@Override
+	public long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id - el nuevo id del usuario
+	 */
+	@Override
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return el nombre del usuario
+	 */
+	@Override
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * @param nombre - el nuevo nombre del usuario
+	 */
+	@Override
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	/**
+	 * @return la dirección de correo del usuario
+	 */
+	@Override
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email - la nueva dirección de correo del usuario
+	 */
+	@Override
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	/**
+	 * @return el numero del usuario
+	 */
+	@Override
+	public String getNumero() {
+		return numero;
+	}
+
+	/**
+	 * @param numero - el nuevo numero del usuario
+	 */
+	@Override
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+	
 	
 }

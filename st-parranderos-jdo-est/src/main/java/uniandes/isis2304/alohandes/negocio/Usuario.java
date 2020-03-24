@@ -7,22 +7,22 @@ public class Usuario {
 	/**
 	 * El identificador ÚNICO del usuario
 	 */
-	private long id;
+	protected long id;
 	
 	/**
 	 * el nombre del usuario
 	 */
-	private String nombre;
+	protected String nombre;
 	
 	/**
 	 * la dirección de correo del usuario
 	 */
-	private String email;
+	protected String email;
 	
 	/**
 	 * el numero telefonico del usuario
 	 */
-	private String numero;
+	protected String numero;
 	
 	/* ****************************************************************
 	 * 			Métodos 

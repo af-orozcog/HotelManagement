@@ -70,8 +70,8 @@ class SQLHoteleria extends SQLOperador
 	public long adicionarHoteleria (PersistenceManager pm, long idHoteleria, String nombre, String email, String numero, String tipoHoteleria, Timestamp horaApertura, Timestamp horaCierre)
 	{
 		super.adicionarOperador(pm, idHoteleria, nombre, email, numero, "HOTELERIA");
-		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaHoteleria () + "(id, tipoHoteleria, horaApertura, horaCierre) values (? ,? ,? ,?)");
-		q.setParameters( idHoteleria, nombre, email, numero, tipoHoteleria, horaApertura, horaCierre );
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaHoteleria () + "(id, tipo_hoteleria, hora_apertura, hora_cierre) values (? ,? ,? ,?)");
+		q.setParameters( idHoteleria, tipoHoteleria, horaApertura, horaCierre );
 		return (long) q.executeUnique();
 	}
 

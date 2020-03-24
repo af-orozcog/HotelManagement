@@ -26,10 +26,10 @@ public interface VOOperador {
 	/**
 	 * @return el tipo de operador
 	 */
-	public String getTipoOperador(); 
+	public String getTipo_Operador(); 
 	
 	/**
 	 * @param tipoOperador - el nuevo tipo operador
 	 */
-	public void setTipoOperador(String tipoOperador);
+	public void setTipo_Operador(String tipoOperador);
 }

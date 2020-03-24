@@ -4,7 +4,7 @@
 	"unidadPersistencia": "Parranderos",
 	"tablas":
 	[
-		"Alohandes_sequence",
+		"Parranderos_sequence",
 		"VIVIENDA",
 		"HABITACION",
 		"APARTAMENTO",

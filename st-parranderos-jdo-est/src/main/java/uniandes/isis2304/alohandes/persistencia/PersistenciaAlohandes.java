@@ -193,7 +193,7 @@ public class PersistenciaAlohandes
 		
 		// Define los nombres por defecto de las tablas de la base de datos
 		tablas = new LinkedList<String> ();
-		tablas.add ("Alohandes_sequence");
+		tablas.add ("Parranderos_sequence");
 		tablas.add ("VIVIENDA");
 		tablas.add ("HABITACION");
 		tablas.add ("APARTAMENTO");
@@ -1250,7 +1250,7 @@ public class PersistenciaAlohandes
 	        long tuplasInsertadas = sqlPersona_Natural.adicionarPersona_Natural(pm, idPersona_Natural, nombre, email, numero, documento, tipoPersona);
 	        tx.commit();
 
-	        log.trace ("Inserción de vivienda: " + idPersona_Natural + ": " + tuplasInsertadas + " tuplas insertadas");
+	        log.trace ("Inserción de persona: " + idPersona_Natural + ": " + tuplasInsertadas + " tuplas insertadas");
 
 	        return new Persona_Natural(idPersona_Natural, nombre, email, numero, tipoPersona, documento);
 	    }

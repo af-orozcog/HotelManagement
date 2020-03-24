@@ -71,7 +71,7 @@ class SQLOperador
 	public long adicionarOperador (PersistenceManager pm, long idOperador, String nombre, String email, String numero, String tipoOperador)
 	{
 	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaOperador () + "(id, nombre, email, numero, tipo_operador) values (? ,? ,? ,? ,?)");
-	   q.setParameters( idOperador, nombre, email, numero );
+	   q.setParameters( idOperador, nombre, email, numero,tipoOperador);
 	    return (long) q.executeUnique();
 	}
 
@@ -140,8 +140,8 @@ class SQLOperador
 	public Operador darOperadorPorNombre (PersistenceManager pm, String nombre, String tipoOperador)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaOperador () + " WHERE nombre = ? AND tipo_operador = ?");
-		q.setResultClass(Operador.class);
 		q.setParameters(nombre,tipoOperador);
+		q.setResultClass(Operador.class);
 		return (Operador) q.executeUnique();
 	}
 

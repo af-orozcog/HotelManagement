@@ -70,7 +70,7 @@ class SQLVivienda
 	*/
 	public long adicionarVivienda (PersistenceManager pm, long idVivienda, String direccion, int cupos, long idOperador)
 	{
-	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaVivienda () + "(id, direccion, cupos, idOperador) values (?, ,? ,? ,?)");
+	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaVivienda () + "(id, direccion, cupos, Operador) values (?, ? ,? ,?)");
 	   q.setParameters(idVivienda, direccion, cupos, idOperador );
 	    return (long) q.executeUnique();
 	}

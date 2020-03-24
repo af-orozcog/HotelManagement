@@ -321,7 +321,7 @@ public class Controller {
 		interfaz.printMessage("Introduzca los cupos que tiene está vivienda");
 		int cupos = sc.nextInt();
 
-		switch (operador.getTipoOperador()) {
+		switch (operador.getTipo_Operador()) {
 		case "HOTELERIA":
 			interfaz.printMessage("Es un hotel u hostal? (Escriba HOTEL u HOSTAL");
 			String hotTemp = sc.next();
