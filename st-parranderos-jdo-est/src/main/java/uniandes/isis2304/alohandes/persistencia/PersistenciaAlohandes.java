@@ -309,6 +309,8 @@ public class PersistenciaAlohandes
 		sqlServicio = new SQLServicio(this);
 		sqlIncluye = new SQLIncluye(this);	
 		sqlUtil = new SQLUtil(this);
+		reqc1 = new REQC1(this);
+		reqc2 = new REQC2(this);
 	}
 
 	/**
@@ -1909,7 +1911,6 @@ public class PersistenciaAlohandes
 	 *****************************************************************/
 	
 	public long reqc1Actual(long idOperador) {
-		System.out.println("what in the fucking world " + idOperador);
 		return reqc1.gananciasAñoActual(pmf.getPersistenceManager(), idOperador);
 	}
 	

@@ -43,8 +43,8 @@ public class REQC1 {
 	 */
 	public long gananciasAñoActual(PersistenceManager pm,long idOperador) {
 		int year = Calendar.getInstance().get(Calendar.YEAR);
-		System.out.println("cual es el gran sapo id " + idOperador + " cual es el gran sapo año "+ year);
-		Query q = pm.newQuery(SQL, "SELECT  SUM(cantidad) FROM" + pa.darTablaGanancias() + "WHERE id = ? AND año = ?");
+		//System.out.println("cual es el gran sapo id " + idOperador + " cual es el gran sapo año "+ year);
+		Query q = pm.newQuery(SQL, "SELECT  SUM(cantidad) FROM " + pa.darTablaGanancias() + " WHERE operador = ? AND año = ?");
 		q.setParameters(idOperador,year);
 		q.setResultClass(Long.class);
 		return (long)q.executeUnique();
@@ -67,8 +67,8 @@ public class REQC1 {
 			ar[i] = ar[i-1]-1;
 			if(ar[i] == 0) ar[i]+= 12;
 		}
-		Query q = pm.newQuery(SQL, "SELECT SUM(cantidad) FROM" + pa.darTablaGanancias() + "WHERE id = ? AND ((año = ? AND mes >= ?) OR (año = ? AND mes <= ?))");
-		q.setParameters(year-1,ar[11],year,ar[0]);
+		Query q = pm.newQuery(SQL, "SELECT SUM(cantidad) FROM " + pa.darTablaGanancias() + " WHERE operador = ? AND ((año = ? AND mes >= ?) OR (año = ? AND mes <= ?))");
+		q.setParameters(idOperador, year-1,ar[11],year,ar[0]);
 		q.setResultClass(Long.class);
 		return (long)q.executeUnique();
 	}

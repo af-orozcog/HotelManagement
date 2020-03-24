@@ -61,11 +61,11 @@ public class REQC2 {
 	 * @return
 	 */
 	public List<Long> idOfertasPopulares(PersistenceManager pm){
-		Query q = pm.newQuery(SQL, "SELECT ofertas FROM "
-												+ "(SELECT oferta, COOUNT(id) as conteo"
-												+ "FROM " + pa.darTablaReserva()
-												+ "GROUP BY oferta"
-												+ "ORDER BY conteo DESC"
+		Query q = pm.newQuery(SQL, "SELECT oferta FROM "
+												+ "(SELECT oferta, COUNT(id) as conteo"
+												+ " FROM " + pa.darTablaReserva()
+												+ " GROUP BY oferta"
+												+ " ORDER BY conteo DESC"
 												+ ")" + 
 									 " WHERE ROWNUM < 21");
 		q.setResultClass(Long.class);

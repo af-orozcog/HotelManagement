@@ -126,19 +126,23 @@ public class Controller {
 		interfaz.printMessage("Lista de las 20 ofertas más populares");
 		List<Oferta> ofertas = mundo.reqc2();
 		for (Oferta oferta : ofertas) {
-			interfaz.printMessage("Id oferta: " + oferta.getId() + "Precio oferta: " + oferta.getPrecio());
+			interfaz.printMessage("Id oferta: " + oferta.getId() + " Precio oferta: " + oferta.getPrecio());
 		}
 	}
 
 	private void reqC1(Scanner sc) {
 		interfaz.printMessage("Lista de los operadores con su nombre y el dinero ganado en el año actual y corrido");
 		List<Operador> operadores = mundo.darOperadores();
+		ArrayList<String> mensajes = new ArrayList<String>();
 		for (Operador operador : operadores) {
-			System.out.println("who's this fucker " + operador.getNombre());
 			long actual = mundo.reqc1Actual(operador.getId());
 			long corrido = mundo.reqc1Corrido(operador.getId());
-			interfaz.printMessage("Operador nombre: " + operador.getNombre() + " - Año actual: " + actual + " - Año corrido: " + corrido);
+			String toShow = "Operador nombre: " + operador.getNombre() + " - Año actual: " + actual + " - Año corrido: " + corrido;
+			//interfaz.printMessage("Operador nombre: " + operador.getNombre() + " - Año actual: " + actual + " - Año corrido: " + corrido);
+			mensajes.add(toShow);
 		}
+		for(String va : mensajes) 
+			interfaz.printMessage(va);
 	}
 	
 	private void req6(Scanner sc) {
