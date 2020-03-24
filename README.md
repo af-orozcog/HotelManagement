@@ -1,2 +1,0 @@
-# iteraciones
-sistrans bosses
