@@ -189,16 +189,16 @@ insert into GANANCIAS (id, CANTIDAD, MES, AÑO, OPERADOR) values (119, 3719278, 
 insert into GANANCIAS (id, CANTIDAD, MES, AÑO, OPERADOR) values (120, 9909283, 4, 2019, 10);
 
 ---datos de los servicios
-insert into SERVICIO (id, NOMBRE, COSTO, INCLUIDO) values (1, 'Piscina', 93, 0);
-insert into SERVICIO (id, NOMBRE, COSTO, INCLUIDO) values (2, 'Television', 71, 0);
-insert into SERVICIO (id, NOMBRE, COSTO, INCLUIDO) values (3, 'Tennis de mesa', 94, 1);
-insert into SERVICIO (id, NOMBRE, COSTO, INCLUIDO) values (4, 'Canchas multideporte', 57, 0);
-insert into SERVICIO (id, NOMBRE, COSTO, INCLUIDO) values (5, 'Cocina', 91, 1);
-insert into SERVICIO (id, NOMBRE, COSTO, INCLUIDO) values (6, 'Cocineta', 61, 1);
-insert into SERVICIO (id, NOMBRE, COSTO, INCLUIDO) values (7, 'servicio a la habitacion', 86, 1);
-insert into SERVICIO (id, NOMBRE, COSTO, INCLUIDO) values (8, 'Energia', 60, 0);
-insert into SERVICIO (id, NOMBRE, COSTO, INCLUIDO) values (9, 'Agua', 89, 1);
-insert into SERVICIO (id, NOMBRE, COSTO, INCLUIDO) values (10, 'Gas', 10, 0);
+insert into SERVICIO (id, NOMBRE, COSTO) values (1, 'Piscina', 93);
+insert into SERVICIO (id, NOMBRE, COSTO) values (2, 'Television', 7);
+insert into SERVICIO (id, NOMBRE, COSTO) values (3, 'Tennis de mesa', 94);
+insert into SERVICIO (id, NOMBRE, COSTO) values (4, 'Canchas multideporte', 57);
+insert into SERVICIO (id, NOMBRE, COSTO) values (5, 'Cocina', 91);
+insert into SERVICIO (id, NOMBRE, COSTO) values (6, 'Cocineta', 61);
+insert into SERVICIO (id, NOMBRE, COSTO) values (7, 'servicio a la habitacion', 86);
+insert into SERVICIO (id, NOMBRE, COSTO) values (8, 'Energia', 60);
+insert into SERVICIO (id, NOMBRE, COSTO) values (9, 'Agua', 89);
+insert into SERVICIO (id, NOMBRE, COSTO) values (10, 'Gas', 10);
 
 --- datos de las viviendas
 insert into VIVIENDA (id, DIRECCION, CUPOS, OPERADOR) values (1, '63948 Vahlen Hill', 5, 1);
