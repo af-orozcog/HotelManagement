@@ -153,6 +153,7 @@ public class ServicioTest {
 		// Ahora si se pueden probar las operaciones
 		try
 		{
+			pm.limpiarAlohandes();
 			Operador op = pm.adicionarOperador("..", "..", "..", "PERSONA_NATURAL");
 			
 			// Lectura de los tipos de bebida con la tabla vacía

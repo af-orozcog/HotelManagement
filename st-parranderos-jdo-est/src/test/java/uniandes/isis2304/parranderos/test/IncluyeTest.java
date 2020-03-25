@@ -163,6 +163,7 @@ public class IncluyeTest {
 		// Ahora si se pueden probar las operaciones
 		try
 		{
+			pm.limpiarAlohandes();
 			Operador op = pm.adicionarOperador("..", "..", "..", "PERSONA_NATURAL");
     		Vivienda vi = pm.adicionarVivienda("..", 10, op.getId());
 			    		

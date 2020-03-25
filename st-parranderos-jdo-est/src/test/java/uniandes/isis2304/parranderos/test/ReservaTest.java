@@ -168,6 +168,8 @@ public class ReservaTest {
 		// Ahora si se pueden probar las operaciones
 		try
 		{
+			pm.limpiarAlohandes();
+
 			Operador op = pm.adicionarOperador("..", "..", "..", "PERSONA_NATURAL");
     		Vivienda vi = pm.adicionarCuarto("..", 10, op.getId(), true, true, "..", "..");
     		Oferta of = pm.adicionarOferta(1000, "MESES", vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 1, 1, 1, 0, 0, 0));
