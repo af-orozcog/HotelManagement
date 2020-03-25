@@ -2,11 +2,19 @@ package uniandes.isis2304.parranderos.test;
 
 import static org.junit.Assert.*;
 
+import java.io.FileReader;
 import java.util.List;
+
+import javax.swing.JOptionPane;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.stream.JsonReader;
+
+import uniandes.isis2304.alohandes.negocio.Alohandes;
 import uniandes.isis2304.alohandes.negocio.Apartamento;
 import uniandes.isis2304.alohandes.negocio.Operador;
 import uniandes.isis2304.alohandes.persistencia.PersistenciaAlohandes;
@@ -20,12 +28,17 @@ public class ApartamentoTest {
 	 */
 	private static Logger log = Logger.getLogger(ApartamentoTest.class.getName());
 	
+	private static final String CONFIG_TABLAS = "./src/main/resources/config/TablasBD.json"; 
+	
 	
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
 	
-	private PersistenciaAlohandes pm;
+	private Alohandes pm;
+	
+	/** Objeto JSON con los nombres de las tablas de la base de datos que se quieren utilizar. */
+	private JsonObject tableConfig;
 	
 	/**
 	 * Método que prueba las operaciones sobre la tabla apartamento
@@ -41,7 +54,8 @@ public class ApartamentoTest {
 		try
 		{
 			log.info ("Probando las operaciones CRD sobre apartamento");
-			pm = PersistenciaAlohandes.getInstance ();
+			tableConfig = openConfig ("Tablas BD", CONFIG_TABLAS);
+			pm = new Alohandes(tableConfig);
 		}
 		catch (Exception e)
 		{
@@ -61,6 +75,7 @@ public class ApartamentoTest {
     		Operador op = pm.adicionarOperador("..", "..", "..", "PERSONA_NATURAL");
 			// Lectura de los tipos de bebida con la tabla vacía
 			List <Apartamento> lista = pm.darApartamentos();
+			System.out.println("tamaño al comienzo" + lista.size());
 			assertEquals ("No debe haber tipos de bebida creados!!", 0, lista.size ());
 
 			// Lectura de los tipos de bebida con un apartamento adicionado
@@ -73,6 +88,8 @@ public class ApartamentoTest {
 			double area1 = 45.5;
 			int numeroHabitaciones1 = 2;
 			Apartamento apartamento1 = pm.adicionarApartamento(direccionapartamento1, cuposapartamento1, op.getId(), area1, true, numeroHabitaciones1);
+			if(apartamento1 == null) System.out.println("why???");
+			System.out.println(apartamento1.getArea());
 			lista = pm.darApartamentos();
 			
 			assertEquals ("Debe haber un apartamento creado !!", 1, lista.size ());
@@ -128,7 +145,8 @@ public class ApartamentoTest {
 		try
 		{
 			log.info ("Probando la restricción de UNICIDAD del id del apartamento");
-			pm = PersistenciaAlohandes.getInstance ();
+			tableConfig = openConfig ("Tablas BD", CONFIG_TABLAS);
+			pm = new Alohandes(tableConfig);
 		}
 		catch (Exception e)
 		{
@@ -192,8 +210,31 @@ public class ApartamentoTest {
 		}
 	}
 	
-	@Test
-	public void test() {
-		fail("Not yet implemented");
+	
+	/**
+	 * Lee datos de configuraciÃ³n para la aplicaciÃ³, a partir de un archivo JSON o con valores por defecto si hay errores.
+	 * @param tipo - El tipo de configuraciÃ³n deseada
+	 * @param archConfig - Archivo Json que contiene la configuraciÃ³n
+	 * @return Un objeto JSON con la configuraciÃ³n del tipo especificado
+	 * 			NULL si hay un error en el archivo.
+	 */
+	private JsonObject openConfig (String tipo, String archConfig)
+	{
+		JsonObject config = null;
+		try 
+		{
+			Gson gson = new Gson( );
+			FileReader file = new FileReader (archConfig);
+			JsonReader reader = new JsonReader ( file );
+			config = gson.fromJson(reader, JsonObject.class);
+			log.info ("Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: " + tipo);
+		} 
+		catch (Exception e)
+		{
+			//			e.printStackTrace ();
+			log.info ("NO se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido");			
+			JOptionPane.showMessageDialog(null, "No se encontrÃ³ un archivo de configuraciÃ³n de interfaz vÃ¡lido: " + tipo, "Parranderos App", JOptionPane.ERROR_MESSAGE);
+		}	
+		return config;
 	}
 }

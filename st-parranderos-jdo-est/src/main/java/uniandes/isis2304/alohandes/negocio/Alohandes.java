@@ -1243,5 +1243,16 @@ public class Alohandes
 		return borrrados;
 	}
 
+	public void modoPruebas() {
+		pa.modoPruebas();
+	}
 
+	/**
+	 * 
+	 * @param id
+	 */
+	public void asignarID(long id) {
+		pa.asignarID(id);
+	}
+	
 }
