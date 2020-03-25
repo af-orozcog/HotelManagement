@@ -178,7 +178,6 @@ public class Controller {
 	}
 
 	private void req4(Scanner sc) {
-		interfaz.printMessage("Ingresar");
 
 		interfaz.printMessage("Ingrese el año de inicio de la reserva");
 		int añoIn = sc.nextInt();
@@ -388,7 +387,8 @@ public class Controller {
 		switch (operador.getTipo_operador()) {
 		case "HOTELERIA":
 			interfaz.printMessage("Es un hotel u hostal? (Escriba HOTEL u HOSTAL");
-			String hotTemp = sc.next();
+
+				String hotTemp = sc.next();
 			String tipoHabitacion = "COMPARTIDA";
 			if(hotTemp.equalsIgnoreCase("HOTEL")) {
 				interfaz.printMessage("Escriba el tipo de habitacion IGUAL que alguna de las opciones:\n ESTANDAR, SEMISUITE, SUITE");
