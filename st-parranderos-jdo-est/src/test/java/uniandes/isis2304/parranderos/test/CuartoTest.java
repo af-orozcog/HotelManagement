@@ -108,6 +108,7 @@ public class CuartoTest {
 		}
 		finally
 		{
+			pm.limpiarAlohandes();
     		pm.cerrarUnidadPersistencia ();    		
 		}
 	}
@@ -176,6 +177,7 @@ public class CuartoTest {
 		}    				
 		finally
 		{
+			pm.limpiarAlohandes();
     		pm.cerrarUnidadPersistencia ();    		
 		}
 	}

@@ -106,6 +106,7 @@ public class SeguroTest {
 		}
 		finally
 		{
+			pm.limpiarAlohandes();
     		pm.cerrarUnidadPersistencia ();    		
 		}
 	}
@@ -171,6 +172,7 @@ public class SeguroTest {
 		}    				
 		finally
 		{
+			pm.limpiarAlohandes();
     		pm.cerrarUnidadPersistencia ();    		
 		}
 	}

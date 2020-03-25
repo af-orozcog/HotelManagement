@@ -110,6 +110,7 @@ public class HoteleriaTest {
 		}
 		finally
 		{
+			pm.limpiarAlohandes();
     		pm.cerrarUnidadPersistencia ();    		
 		}
 	}
@@ -179,6 +180,7 @@ public class HoteleriaTest {
 		}    				
 		finally
 		{
+			pm.limpiarAlohandes();
     		pm.cerrarUnidadPersistencia ();    		
 		}
 	}

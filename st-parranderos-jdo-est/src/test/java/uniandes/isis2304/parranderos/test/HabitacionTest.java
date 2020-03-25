@@ -110,6 +110,7 @@ public class HabitacionTest {
 		}
 		finally
 		{
+			pm.limpiarAlohandes();
     		pm.cerrarUnidadPersistencia ();    		
 		}
 	}
@@ -178,6 +179,7 @@ public class HabitacionTest {
 		}    				
 		finally
 		{
+			pm.limpiarAlohandes();
     		pm.cerrarUnidadPersistencia ();    		
 		}
 	}

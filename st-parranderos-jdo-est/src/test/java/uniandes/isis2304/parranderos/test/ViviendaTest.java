@@ -103,6 +103,7 @@ public class ViviendaTest {
 		}
 		finally
 		{
+			pm.limpiarAlohandes();
     		pm.cerrarUnidadPersistencia ();    		
 		}
 	}
@@ -164,6 +165,7 @@ public class ViviendaTest {
 		}    				
 		finally
 		{
+			pm.limpiarAlohandes();
     		pm.cerrarUnidadPersistencia ();    		
 		}
 	}
