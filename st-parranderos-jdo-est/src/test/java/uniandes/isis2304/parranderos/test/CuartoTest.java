@@ -2,12 +2,19 @@ package uniandes.isis2304.parranderos.test;
 
 import static org.junit.Assert.*;
 
+import java.io.FileReader;
 import java.util.List;
+
+import javax.swing.JOptionPane;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.stream.JsonReader;
 
+import uniandes.isis2304.alohandes.negocio.Alohandes;
 import uniandes.isis2304.alohandes.negocio.Cuarto;
 import uniandes.isis2304.alohandes.negocio.Operador;
 import uniandes.isis2304.alohandes.persistencia.PersistenciaAlohandes;
@@ -21,12 +28,18 @@ public class CuartoTest {
 	 */
 	private static Logger log = Logger.getLogger(CuartoTest.class.getName());
 	
+	private static final String CONFIG_TABLAS = "./src/main/resources/config/TablasBD.json"; 
+	
 	
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
 	
-	private PersistenciaAlohandes pm;
+	private Alohandes pm;
+	
+	/** Objeto JSON con los nombres de las tablas de la base de datos que se quieren utilizar. */
+	private JsonObject tableConfig;
+	
 	
 	/**
 	 * Método que prueba las operaciones sobre la tabla cuarto
@@ -41,8 +54,9 @@ public class CuartoTest {
     	// Probar primero la conexión a la base de datos
 		try
 		{
-			log.info ("Probando las operaciones CRD sobre cuarto");
-			pm = PersistenciaAlohandes.getInstance ();
+			log.info ("Probando las operaciones CRD sobre apartamento");
+			tableConfig = openConfig ("Tablas BD", CONFIG_TABLAS);
+			pm = new Alohandes(tableConfig);
 		}
 		catch (Exception e)
 		{
@@ -59,6 +73,8 @@ public class CuartoTest {
 		// Ahora si se pueden probar las operaciones
     	try
 		{
+    		pm.limpiarAlohandes();
+    		pm.desactivarModoPruebas();
     		Operador op = pm.adicionarOperador("..", "..", "..", "PERSONA_NATURAL");
 			// Lectura de los tipos de bebida con la tabla vacía
 			List <Cuarto> lista = pm.darCuartos();
@@ -71,8 +87,10 @@ public class CuartoTest {
 			String esquema1 = "no hay";
 			String menaje1 = "no hay menaje";
 			Cuarto cuarto1 = pm.adicionarCuarto(direccioncuarto1, cuposcuarto1, op.getId(), true, true, esquema1, menaje1);
+			if(cuarto1 == null)System.out.println("why!!!!!!!!!!!!!!");
+			System.out.println(cuarto1.getCupos());
 			lista = pm.darCuartos();
-			
+			System.out.println("tamaño es " + lista.size());
 			assertEquals ("Debe haber un cuarto creado !!", 1, lista.size ());
 			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", cuarto1, lista.get (0));
 
@@ -122,8 +140,9 @@ public class CuartoTest {
     	// Probar primero la conexión a la base de datos
 		try
 		{
-			log.info ("Probando la restricción de UNICIDAD del id del cuarto");
-			pm = PersistenciaAlohandes.getInstance ();
+			log.info ("Probando las operaciones CRD sobre apartamento");
+			tableConfig = openConfig ("Tablas BD", CONFIG_TABLAS);
+			pm = new Alohandes(tableConfig);
 		}
 		catch (Exception e)
 		{
@@ -182,8 +201,30 @@ public class CuartoTest {
 		}
 	}
 	
-	@Test
-	public void test() {
-		fail("Not yet implemented");
+	/**
+	 * Lee datos de configuraciÃ³n para la aplicaciÃ³, a partir de un archivo JSON o con valores por defecto si hay errores.
+	 * @param tipo - El tipo de configuraciÃ³n deseada
+	 * @param archConfig - Archivo Json que contiene la configuraciÃ³n
+	 * @return Un objeto JSON con la configuraciÃ³n del tipo especificado
+	 * 			NULL si hay un error en el archivo.
+	 */
+	private JsonObject openConfig (String tipo, String archConfig)
+	{
+		JsonObject config = null;
+		try 
+		{
+			Gson gson = new Gson( );
+			FileReader file = new FileReader (archConfig);
+			JsonReader reader = new JsonReader ( file );
+			config = gson.fromJson(reader, JsonObject.class);
+			log.info ("Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: " + tipo);
+		} 
+		catch (Exception e)
+		{
+			//			e.printStackTrace ();
+			log.info ("NO se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido");			
+			JOptionPane.showMessageDialog(null, "No se encontrÃ³ un archivo de configuraciÃ³n de interfaz vÃ¡lido: " + tipo, "Parranderos App", JOptionPane.ERROR_MESSAGE);
+		}	
+		return config;
 	}
 }

@@ -72,7 +72,7 @@ public class ApartamentoTest {
 		// Ahora si se pueden probar las operaciones
     	try
 		{
-    		//pm.limpiarAlohandes();
+    		pm.limpiarAlohandes();
     		pm.desactivarModoPruebas();
     		Operador op = pm.adicionarOperador("asfaf", "dgsdf", "asd", "PERSONA_NATURAL");
 			// Lectura de los tipos de bebida con la tabla vacía
