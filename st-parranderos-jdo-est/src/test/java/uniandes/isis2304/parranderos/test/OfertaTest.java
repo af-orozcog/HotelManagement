@@ -160,6 +160,7 @@ public class OfertaTest {
 		// Ahora si se pueden probar las operaciones
 		try
 		{
+			pm.limpiarAlohandes();
 			Operador op = pm.adicionarOperador("..", "..", "..", "PERSONA_NATURAL");
     		Vivienda vi = pm.adicionarCuarto("..", 10, op.getId(), true, true, "..", "..");
     		
