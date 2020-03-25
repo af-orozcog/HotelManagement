@@ -1,5 +1,7 @@
 package uniandes.isis2304.alohandes.negocio;
 
+import java.util.List;
+
 public class Apartamento extends Vivienda implements VOApartamento{
 	/* ****************************************************************
 	 * 			Atributos
@@ -13,7 +15,7 @@ public class Apartamento extends Vivienda implements VOApartamento{
 	/**
 	 * booleano que representa si el apartamento esta amoblado
 	 */
-	private boolean amoblado;
+	private int amoblado;
 	
 	/**
 	 * el numero de habitaciones del apartamento
@@ -30,7 +32,7 @@ public class Apartamento extends Vivienda implements VOApartamento{
 	public Apartamento() {
 		super();
 		this.area = 0.0;
-		this.amoblado = false;
+		this.amoblado = 0;
 		this.numero_habitaciones = 0;
 	}
 
@@ -44,11 +46,11 @@ public class Apartamento extends Vivienda implements VOApartamento{
 	 * @param id - id de la vivienda
 	 * @param idOperador - el operador dueño de la vivienda
 	 */
-	public Apartamento(long id, String direccion, int cupos, long idOperador, double area, boolean amoblado, int numeroHabitaciones) {
-		super(id, direccion, cupos,idOperador);
+	public Apartamento(long id, String direccion, int cupos, long Operador, double area, boolean amoblado, int numero_habitaciones) {
+		super(id, direccion, cupos,Operador);
 		this.area = area;
-		this.amoblado = amoblado;
-		this.numero_habitaciones = numeroHabitaciones;
+		this.amoblado = (amoblado ? 1:0);
+		this.numero_habitaciones = numero_habitaciones;
 	}
 
 	/**
@@ -68,28 +70,99 @@ public class Apartamento extends Vivienda implements VOApartamento{
 	/**
 	 * @return amoblado
 	 */
-	public boolean isAmoblado() {
+	public int isAmoblado() {
 		return amoblado;
 	}
 
 	/**
 	 * @param amoblado - booleano que representa si esta amoblado
 	 */
-	public void setAmoblado(boolean amoblado) {
+	public void setAmoblado(int amoblado) {
 		this.amoblado = amoblado;
 	}
 
 	/**
 	 * @return numeroHabitaciones
 	 */
-	public int getNumeroHabitaciones() {
+	public int getnumero_habitaciones() {
 		return numero_habitaciones;
 	}
 
 	/**
 	 * @param numeroHabitaciones - el numero de habitaciones del apartamento
 	 */
-	public void setNumeroHabitaciones(int numeroHabitaciones) {
-		this.numero_habitaciones = numeroHabitaciones;
+	public void setNumero_habitaciones(int numero_habitaciones) {
+		this.numero_habitaciones = numero_habitaciones;
 	}
+	
+	/**
+	 * @return direccion
+	 */
+	public String getDireccion() {
+		return direccion;
+	}
+
+	/**
+	 * @return id
+	 */
+	public long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id - el id de la vivienda
+	 */
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	/**
+	 * @param direccion - la direccion de la vivienda
+	 */
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	/**
+	 * @return cupos
+	 */
+	public int getCupos() {
+		return cupos;
+	}
+
+	/**
+	 * @param cupos - los cupos de la vivienda
+	 */
+	public void setCupos(int cupos) {
+		this.cupos = cupos;
+	}
+
+	/**
+	 * @return ofertas 
+	 */
+	public List<Object[]> getOfertas() {
+		return ofertas;
+	}
+
+	/**
+	 * @param ofertas - las ofertas de la vivienda
+	 */
+	public void setOfertas(List<Object[]> ofertas) {
+		this.ofertas = ofertas;
+	}
+
+	/**
+	 * @return idOperador
+	 */
+	public long getOperador() {
+		return operador;
+	}
+
+	/**
+	 * @param idOperador - el identificador del operador
+	 */
+	public void setOperador(long Operador) {
+		this.operador = Operador;
+	}
+	
 }

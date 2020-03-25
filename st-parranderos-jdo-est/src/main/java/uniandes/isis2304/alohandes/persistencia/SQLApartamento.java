@@ -77,6 +77,9 @@ class SQLApartamento extends SQLVivienda
 	 */
 	public long eliminarApartamentoPorId (PersistenceManager pm, long idApartamento)
 	{
+	    Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaApartamento() + " WHERE id = ?");
+	    q.setParameters(idApartamento);
+	    q.executeUnique();
 		return super.eliminarViviendaPorId(pm, idApartamento);
 	}
 
@@ -105,7 +108,7 @@ class SQLApartamento extends SQLVivienda
 	 */
 	public List<Apartamento> darApartamentos (PersistenceManager pm)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaApartamento () + " NATURAL JOIN "+ pa.darTablaVivienda() );
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaApartamento () + " ap NATURAL JOIN "+ pa.darTablaVivienda() + " vi" );
 		q.setResultClass(Apartamento.class);
 		return (List<Apartamento>) q.executeList();
 	}

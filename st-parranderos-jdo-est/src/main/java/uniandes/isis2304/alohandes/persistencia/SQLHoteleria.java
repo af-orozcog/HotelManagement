@@ -83,6 +83,9 @@ class SQLHoteleria extends SQLOperador
 	 */
 	public long eliminarHoteleriaPorId (PersistenceManager pm, long idHoteleria)
 	{
+		Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaHoteleria() + " WHERE id = ?");
+	    q.setParameters(idHoteleria);
+	    q.executeUnique();
 		return super.eliminarOperadorPorId(pm, idHoteleria);
 	}
 

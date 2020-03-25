@@ -77,15 +77,29 @@ class SQLUtil
 	public long [] limpiarAlohandes (PersistenceManager pm)
 	{
 		
-		Query qIncluye = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaIncluye());
 		Query qReserva = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaReserva());
-		Query qCliente = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaCliente());
-		Query qOferta = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaOferta());
-		Query qServicio = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaServicio());
-		Query qVivienda = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaVivienda());
+		Query qApartamento = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaApartamento());
+		Query qCuarto = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaCuarto());
+		Query qEsporadico = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaEsporadico());
 		Query qSeguro = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaSeguro());
+		Query qHabitacion = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaHabitacion());
+		Query qIncluye = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaIncluye());
+		Query qOferta = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaOferta());
+		Query qVivienda = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaVivienda());
+		Query qServicio = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaServicio());
+		Query qGanancias = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaGanancias());
+		Query qHoteleria = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaHoteleria());
+		Query qPersona_natural = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaPersona_Natural());	
 		Query qOperador = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaOperador());	
-
+		Query qCliente = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaCliente());
+		
+		qApartamento.executeUnique();
+		qCuarto.executeUnique();
+		qEsporadico.executeUnique();
+		qHabitacion.executeUnique();
+		qGanancias.executeUnique();
+		qHoteleria.executeUnique();
+		qPersona_natural.executeUnique();
 		long IncluyeEliminados = (long) qIncluye.executeUnique();
 		long ReservaEliminados = (long) qReserva.executeUnique();
 		long ClienteEliminados = (long) qCliente.executeUnique();

@@ -85,6 +85,7 @@ class SQLVivienda
 	{
 	    Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaVivienda () + " WHERE id = ?");
 	    q.setParameters(idVivienda);
+	    System.out.println("entro aqui ? please yes");
 	    return (long) q.executeUnique();
 	}
 

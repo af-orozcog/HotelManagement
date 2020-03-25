@@ -11,27 +11,27 @@ public class Vivienda implements VOVivienda{
 	/**
 	 * identificador de la vivienda
 	 */
-	private long id;
+	protected long id;
 	
 	/**
 	 * la direccion de la vivienda
 	 */
-	private String direccion;
+	protected String direccion;
 	
 	/**
 	 * los cupos de la vivienda
 	 */
-	private int cupos;
+	protected int cupos;
 	
 	/**
 	 * las ofertas de la vivienda
 	 */
-	private List<Object []> ofertas;
+	protected List<Object []> ofertas;
 	
 	/**
 	 * el identificador del operador
 	 */
-	private long operador;
+	protected long operador;
 	
 	/* ****************************************************************
 	 * 			Métodos 
@@ -120,15 +120,15 @@ public class Vivienda implements VOVivienda{
 	/**
 	 * @return idOperador
 	 */
-	public long getIdOperador() {
+	public long getOperador() {
 		return operador;
 	}
 
 	/**
 	 * @param idOperador - el identificador del operador
 	 */
-	public void setIdOperador(long idOperador) {
-		this.operador = idOperador;
+	public void setOperador(long Operador) {
+		this.operador = Operador;
 	}
 	
 	

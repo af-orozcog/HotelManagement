@@ -14,20 +14,20 @@ public interface VOApartamento {
 	/**
 	 * @return amoblado
 	 */
-	public boolean isAmoblado();
+	public int isAmoblado();
 
 	/**
 	 * @param amoblado - booleano que representa si esta amoblado
 	 */
-	public void setAmoblado(boolean amoblado);
+	public void setAmoblado(int amoblado);
 
 	/**
 	 * @return numeroHabitaciones
 	 */
-	public int getNumeroHabitaciones();
+	public int getnumero_habitaciones();
 
 	/**
 	 * @param numeroHabitaciones - el numero de habitaciones del apartamento
 	 */
-	public void setNumeroHabitaciones(int numeroHabitaciones);
+	public void setNumero_habitaciones(int numero_habitaciones);
 }
