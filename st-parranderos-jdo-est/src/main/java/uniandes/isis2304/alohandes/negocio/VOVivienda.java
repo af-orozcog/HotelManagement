@@ -50,10 +50,10 @@ public interface VOVivienda {
 	/**
 	 * @return idOperador
 	 */
-	public long getIdOperador();
+	public long getOperador();
 
 	/**
 	 * @param idOperador - el identificador del operador
 	 */
-	public void setIdOperador(long idOperador);
+	public void setOperador(long Operador);
 }

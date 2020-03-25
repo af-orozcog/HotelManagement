@@ -266,8 +266,10 @@ public class Alohandes
 	 */
 	public List<Apartamento> darApartamentos ()
 	{
+		System.out.println("que gran hps pasa??????");
 		log.info ("Consultando Apartamento");
 		List<Apartamento> apartamento = pa.darApartamentos();
+		System.out.println("hay fallas???" + apartamento.size());
 		log.info ("Consultando Apartamento: " + apartamento.size() + " existentes");
 		return apartamento;
 	}

@@ -1919,8 +1919,10 @@ public class PersistenciaAlohandes
         try
         {
             tx.begin();
+            System.out.println("funciono???ñolool");
             long [] resp = sqlUtil.limpiarAlohandes(pm);
             tx.commit ();
+            System.out.println("funciono???");
             log.info ("Borrada la base de datos");
             return resp;
         }
