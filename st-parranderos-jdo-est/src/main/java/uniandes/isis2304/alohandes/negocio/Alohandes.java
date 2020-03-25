@@ -239,6 +239,7 @@ public class Alohandes
 	 */
 	public Apartamento adicionarApartamento ( String direccion, int cupos, long idOperador, double area, boolean amoblado, int numeroHabitaciones)
 	{
+		//System.out.println("poeque nuca llego por asfqwfgfd");
 		log.info ("Adicionando nuevo(a) Apartamento ");
 		Apartamento apartamento = pa.adicionarApartamento(direccion, cupos, idOperador, area, amoblado, numeroHabitaciones);	
 		log.info ("Adicionando Apartamento: " + apartamento);
@@ -266,10 +267,11 @@ public class Alohandes
 	 */
 	public List<Apartamento> darApartamentos ()
 	{
-		System.out.println("que gran hps pasa??????");
 		log.info ("Consultando Apartamento");
+		
 		List<Apartamento> apartamento = pa.darApartamentos();
 		System.out.println("hay fallas???" + apartamento.size());
+		System.out.println("Consultando Apartamento: " + apartamento.size() + " existentes");
 		log.info ("Consultando Apartamento: " + apartamento.size() + " existentes");
 		return apartamento;
 	}
@@ -503,6 +505,7 @@ public class Alohandes
 	 */
 	public Operador adicionarOperador (String nombre, String email, String numero, String tipoOperador)
 	{
+		System.out.println("por que fallas?");
 		log.info ("Adicionando nuevo(a) Operador ");
 		Operador operador = pa.adicionarOperador(nombre, email, numero, tipoOperador);
 		log.info ("Adicionando Operador: " + operador);
@@ -1249,6 +1252,10 @@ public class Alohandes
 		pa.modoPruebas();
 	}
 
+	public void desactivarModoPruebas() {
+		pa.desactivarModoPruebas();
+	}
+	
 	/**
 	 * 
 	 * @param id

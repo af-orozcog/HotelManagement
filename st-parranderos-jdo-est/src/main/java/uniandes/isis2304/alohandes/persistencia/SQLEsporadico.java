@@ -76,6 +76,9 @@ class SQLEsporadico extends SQLVivienda
 	 */
 	public long eliminarEsporadicoPorId (PersistenceManager pm, long idEsporadico)
 	{
+		Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaEsporadico() + " WHERE id = ?");
+	    q.setParameters(idEsporadico);
+	    q.executeUnique();
 		return super.eliminarViviendaPorId(pm, idEsporadico);
 	}
 

@@ -78,6 +78,9 @@ class SQLHabitacion extends SQLVivienda
 	 */
 	public long eliminarHabitacionPorId (PersistenceManager pm, long idHabitacion)
 	{
+		Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaHabitacion() + " WHERE id = ?");
+	    q.setParameters(idHabitacion);
+	    q.executeUnique();
 		return super.eliminarViviendaPorId(pm, idHabitacion);
 	}
 

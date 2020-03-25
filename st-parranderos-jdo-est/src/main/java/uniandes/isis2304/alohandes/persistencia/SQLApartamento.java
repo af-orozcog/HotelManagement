@@ -63,6 +63,7 @@ class SQLApartamento extends SQLVivienda
 	 */
 	public long adicionarApartamento (PersistenceManager pm, long idApartamento, String direccion, int cupos, long idOperador, double area, boolean amoblado, int numeroHabitaciones)
 	{
+		System.out.println("quiere adicionar");
 		super.adicionarVivienda(pm, idApartamento, direccion, cupos, idOperador);
 		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaApartamento () + "(id, area, amoblado, numero_habitaciones) values (? ,? ,? ,?)");
 		q.setParameters(idApartamento, area, amoblado, numeroHabitaciones );

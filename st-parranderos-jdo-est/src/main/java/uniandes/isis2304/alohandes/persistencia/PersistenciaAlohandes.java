@@ -672,8 +672,9 @@ public class PersistenciaAlohandes
 	    {
 	        tx.begin();
 	        long idApartamento = nextval ();
-	        if(modoPerron)
+	        if(modoPerron) 
             	idApartamento = idPerron;
+	        System.out.println("el modo esta activado? " + modoPerron);
 	        long tuplasInsertadas = sqlApartamento.adicionarApartamento(pm, idApartamento, direccion, cupos, idOperador, area, amoblado, numeroHabitaciones);
 	        tx.commit();
 
@@ -1967,6 +1968,11 @@ public class PersistenciaAlohandes
 	 */
 	public void modoPruebas() {
 		modoPerron = true;
+	}
+	
+	
+	public void desactivarModoPruebas() {
+		modoPerron = false;
 	}
 	
 	/**

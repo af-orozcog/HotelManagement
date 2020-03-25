@@ -81,6 +81,9 @@ class SQLPersona_Natural extends SQLOperador
 	 */
 	public long eliminarPersona_NaturalPorId (PersistenceManager pm, long idPersona_Natural)
 	{
+		Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaPersona_Natural() + " WHERE id = ?");
+	    q.setParameters(idPersona_Natural);
+	    q.executeUnique();
 		return super.eliminarOperadorPorId(pm, idPersona_Natural);
 	}
 

@@ -72,12 +72,11 @@ public class ApartamentoTest {
 		// Ahora si se pueden probar las operaciones
     	try
 		{
-    		pm.limpiarAlohandes();
+    		//pm.limpiarAlohandes();
+    		pm.desactivarModoPruebas();
     		Operador op = pm.adicionarOperador("asfaf", "dgsdf", "asd", "PERSONA_NATURAL");
 			// Lectura de los tipos de bebida con la tabla vacía
-    		System.out.println("is this fine?");
 			List <Apartamento> lista = pm.darApartamentos();
-			System.out.println("tamaño al comienzo" + lista.size());
 			assertEquals ("No debe haber tipos de bebida creados!!", 0, lista.size ());
 
 			// Lectura de los tipos de bebida con un apartamento adicionado
@@ -114,11 +113,13 @@ public class ApartamentoTest {
 
 			// Prueba de eliminación de un apartamento, dado su identificador
 			long tbEliminados = pm.eliminarApartamentoPorId (apartamento2.getId ());
+			System.out.println("tbEli " + tbEliminados);
 			assertEquals ("Debe haberse eliminado un apartamento !!", 1, tbEliminados);
 			lista = pm.darApartamentos();
+			
 			assertEquals ("Debe haber un solo apartamento !!", 1, lista.size ());
-			assertTrue ("El primer apartamento adicionado debe estar en la tabla", apartamento1.getId() ==  (lista.get (0).getId()) || apartamento1.getId() == (lista.get (1).getId()));
-			assertFalse ("El segundo apartamento adicionado debe estar en la tabla", apartamento2.getId() ==  (lista.get (0).getId()) || apartamento2.getId() ==  (lista.get (1).getId()));
+			assertTrue ("El primer apartamento adicionado debe estar en la tabla", apartamento1.getId() ==  (lista.get (0).getId()));
+			assertFalse ("El segundo apartamento adicionado debe estar en la tabla", apartamento2.getId() ==  (lista.get (0).getId()));
 
 			
 		}
@@ -166,11 +167,12 @@ public class ApartamentoTest {
 		// Ahora si se pueden probar las operaciones
 		try
 		{
-			pm.limpiarAlohandes();
+			//pm.limpiarAlohandes();
 			Operador op = pm.adicionarOperador("..", "..", "..", "PERSONA_NATURAL");
 			
 			// Lectura de los tipos de bebida con la tabla vacía
 			List <Apartamento> lista = pm.darApartamentos();
+			System.out.println("aqui entro?");
 			assertEquals ("No debe haber tipos de bebida creados!!", 0, lista.size ());
 			pm.modoPruebas();
 			pm.asignarID(1000);
@@ -182,7 +184,10 @@ public class ApartamentoTest {
 			int numero1 = 3;
 			double area1 = 45.5;
 			int numeroHabitaciones1 = 2;
+			System.out.println("aqui va bien?");
+			System.out.println("queee");
 			Apartamento apartamento1 = pm.adicionarApartamento(direccionapartamento1, cuposapartamento1, op.getId(), area1, true, numeroHabitaciones1);
+			System.out.println("fallo ahi?");
 			lista = pm.darApartamentos();
 			assertEquals ("Debe haber un apartamento creado !!", 1, lista.size ());
 			

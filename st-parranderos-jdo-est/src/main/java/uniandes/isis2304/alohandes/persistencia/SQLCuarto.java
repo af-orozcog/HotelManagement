@@ -79,6 +79,9 @@ class SQLCuarto extends SQLVivienda
 	 */
 	public long eliminarCuartoPorId (PersistenceManager pm, long idCuarto)
 	{
+		Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaCuarto() + " WHERE id = ?");
+	    q.setParameters(idCuarto);
+	    q.executeUnique();
 		return super.eliminarViviendaPorId(pm, idCuarto);
 	}
 
