@@ -50,6 +50,11 @@ public class Oferta implements VOOferta{
 	 */
 	private Timestamp fechafin;
 	
+	/**
+	 * booleano que representa si la oferta sigue activa
+	 */
+	private int activa;
+	
 	/* ****************************************************************
 	 * 			Métodos 
 	 *****************************************************************/
@@ -64,6 +69,7 @@ public class Oferta implements VOOferta{
 		this.reservas = new LinkedList<Object []> ();
 		this.servicios = new LinkedList<Object []> ();
 		this.vivienda = 0;
+		this.activa = 0;
 	}
 
 	/**
@@ -76,7 +82,7 @@ public class Oferta implements VOOferta{
 	 * @param idVivienda - id de la vivienda de la oferta
 	 */
 	public Oferta(long id, long precio, String periodo,
-			Timestamp fechaInicio, Timestamp fechaFin, long vivienda) {
+			Timestamp fechaInicio, Timestamp fechaFin, long vivienda, int activa) {
 		super();
 		this.id = id;
 		this.precio = precio;
@@ -86,6 +92,21 @@ public class Oferta implements VOOferta{
 		this.vivienda = vivienda;
 		this.fechainicio = fechaInicio;
 		this.fechafin = fechaFin;
+		this.activa = activa;
+	}
+
+	/**
+	 * @return the activa
+	 */
+	public int getActiva() {
+		return activa;
+	}
+
+	/**
+	 * @param activa the activa to set
+	 */
+	public void setActiva(int activa) {
+		this.activa = activa;
 	}
 
 	/**
