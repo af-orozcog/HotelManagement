@@ -80,11 +80,11 @@ public class EsporadicoTest {
 			double area1 = 45.5;
 			int numeroHabitaciones1 = 2;
 			int nochesAnio1 = 0;
-			Esporadico esporadico1 = pm.adicionarEsporadico(direccionesporadico1, cuposesporadico1, op.getId(), area1, true, numeroHabitaciones1, 0, seguro1.getId());
+			Esporadico esporadico1 = pm.adicionarEsporadico(direccionesporadico1, cuposesporadico1, op.getId(), area1, 1, numeroHabitaciones1, 0, seguro1.getId());
 			lista = pm.darEsporadicos();
 			
 			assertEquals ("Debe haber un esporadico creado !!", 1, lista.size ());
-			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", esporadico1, lista.get (0));
+			assertTrue ("El objeto creado y el traido de la BD deben ser iguales !!", esporadico1.getId() ==  lista.get(0).getId());
 
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
 			String direccionesporadico2 = "calle23C#69C-20";
@@ -96,19 +96,19 @@ public class EsporadicoTest {
 			double area2 = 45.5;
 			int numeroHabitaciones2 = 2;
 			int nochesAnio2 = 0;
-			Esporadico esporadico2 = pm.adicionarEsporadico(direccionesporadico2, cuposesporadico2, op.getId(), area2, true, numeroHabitaciones2, 0, seguro1.getId());
+			Esporadico esporadico2 = pm.adicionarEsporadico(direccionesporadico2, cuposesporadico2, op.getId(), area2, 1, numeroHabitaciones2, 0, seguro1.getId());
 			lista = pm.darEsporadicos();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
-			assertTrue ("El primer esporadico adicionado debe estar en la tabla", esporadico1.equals (lista.get (0)) || esporadico1.equals (lista.get (1)));
-			assertTrue ("El segundo esporadico adicionado debe estar en la tabla", esporadico2.equals (lista.get (0)) || esporadico2.equals (lista.get (1)));
+			assertTrue ("El primer esporadico adicionado debe estar en la tabla", esporadico1.getId() == lista.get(0).getId() || esporadico1.getId() == lista.get(1).getId());
+			assertTrue ("El segundo esporadico adicionado debe estar en la tabla", esporadico2.getId() == lista.get(0).getId() || esporadico2.getId() == lista.get(1).getId());
 
 			// Prueba de eliminación de un esporadico, dado su identificador
 			long tbEliminados = pm.eliminarEsporadicoPorId (esporadico1.getId ());
 			assertEquals ("Debe haberse eliminado un esporadico !!", 1, tbEliminados);
 			lista = pm.darEsporadicos();
 			assertEquals ("Debe haber un solo esporadico !!", 1, lista.size ());
-			assertFalse ("El primer esporadico adicionado NO debe estar en la tabla", esporadico1.equals (lista.get (0)));
-			assertTrue ("El segundo esporadico adicionado debe estar en la tabla", esporadico2.equals (lista.get (0)));
+			assertFalse ("El primer esporadico adicionado NO debe estar en la tabla", esporadico1.getId() == lista.get(0).getId());
+			assertTrue ("El segundo esporadico adicionado debe estar en la tabla", esporadico2.getId() == lista.get(0).getId());
 			
 		}
 		catch (Exception e)
@@ -178,7 +178,7 @@ public class EsporadicoTest {
 			double area1 = 45.5;
 			int numeroHabitaciones1 = 2;
 			int nochesAnio1 = 0;
-			Esporadico esporadico1 = pm.adicionarEsporadico(direccionesporadico1, cuposesporadico1, op.getId(), area1, true, numeroHabitaciones1, 0, seguro1.getId());
+			Esporadico esporadico1 = pm.adicionarEsporadico(direccionesporadico1, cuposesporadico1, op.getId(), area1, 1, numeroHabitaciones1, 0, seguro1.getId());
 			lista = pm.darEsporadicos();
 			assertEquals ("Debe haber un esporadico creado !!", 1, lista.size ());
 			
@@ -192,7 +192,7 @@ public class EsporadicoTest {
 			double area2 = 45.5;
 			int numeroHabitaciones2 = 2;
 			int nochesAnio2 = 0;
-			Esporadico esporadico2 = pm.adicionarEsporadico(direccionesporadico2, cuposesporadico2, op.getId(), area2, true, numeroHabitaciones2, 0, seguro1.getId());
+			Esporadico esporadico2 = pm.adicionarEsporadico(direccionesporadico2, cuposesporadico2, op.getId(), area2, 1, numeroHabitaciones2, 0, seguro1.getId());
 			assertNull ("No puede adicionar dos esporadicos con el mismo id !!", esporadico2);
 		}
 		catch (Exception e)

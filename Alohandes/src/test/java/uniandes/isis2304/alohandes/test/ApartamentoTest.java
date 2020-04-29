@@ -88,7 +88,7 @@ public class ApartamentoTest {
 			int numero1 = 3;
 			double area1 = 45.5;
 			int numeroHabitaciones1 = 2;
-			Apartamento apartamento1 = pm.adicionarApartamento(direccionapartamento1, cuposapartamento1, op.getId(), area1, true, numeroHabitaciones1);
+			Apartamento apartamento1 = pm.adicionarApartamento(direccionapartamento1, cuposapartamento1, op.getId(), area1, 1, numeroHabitaciones1);
 			//if(apartamento1 == null) System.out.println("why???");
 			//System.out.println(apartamento1.getArea());
 			lista = pm.darApartamentos();
@@ -105,7 +105,7 @@ public class ApartamentoTest {
 			int numero2 = 3;
 			double area2 = 45.5;
 			int numeroHabitaciones2 = 2;
-			Apartamento apartamento2 = pm.adicionarApartamento(direccionapartamento2, cuposapartamento2, op.getId(), area2, true, numeroHabitaciones2);
+			Apartamento apartamento2 = pm.adicionarApartamento(direccionapartamento2, cuposapartamento2, op.getId(), area2, 1, numeroHabitaciones2);
 			lista = pm.darApartamentos();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
 			assertTrue ("El primer apartamento adicionado debe estar en la tabla", apartamento1.getId() ==  (lista.get (0).getId()) || apartamento1.getId() == (lista.get (1).getId()));
@@ -186,7 +186,7 @@ public class ApartamentoTest {
 			int numeroHabitaciones1 = 2;
 			//System.out.println("aqui va bien?");
 			//System.out.println("queee");
-			Apartamento apartamento1 = pm.adicionarApartamento(direccionapartamento1, cuposapartamento1, op.getId(), area1, true, numeroHabitaciones1);
+			Apartamento apartamento1 = pm.adicionarApartamento(direccionapartamento1, cuposapartamento1, op.getId(), area1, 1, numeroHabitaciones1);
 			//System.out.println("fallo ahi?");
 			lista = pm.darApartamentos();
 			assertEquals ("Debe haber un apartamento creado !!", 1, lista.size ());
@@ -200,7 +200,7 @@ public class ApartamentoTest {
 			int numero2 = 3;
 			double area2 = 45.5;
 			int numeroHabitaciones2 = 2;
-			Apartamento apartamento2 = pm.adicionarApartamento(direccionapartamento2, cuposapartamento2, op.getId(), area2, true, numeroHabitaciones2);
+			Apartamento apartamento2 = pm.adicionarApartamento(direccionapartamento2, cuposapartamento2, op.getId(), area2,1, numeroHabitaciones2);
 			assertNull ("No puede adicionar dos apartamentos con el mismo id !!", apartamento2);
 		}
 		catch (Exception e)

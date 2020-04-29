@@ -9,15 +9,15 @@ public interface VOEsporadico {
 	/**
 	 * @param nochesAño - noches al año
 	 */
-	public void setNoches_Anio(int noches_Anio);
+	public void setNoches_anio(int noches_Anio);
 
 	/**
 	 * @return idSeguro
 	 */
-	public long getIdSeguro();
+	public long getSeguro();
 
 	/**
 	 * @param idSeguro - id del seguro
 	 */
-	public void setIdSeguro(long idSeguro);
+	public void setSeguro(long idSeguro);
 }

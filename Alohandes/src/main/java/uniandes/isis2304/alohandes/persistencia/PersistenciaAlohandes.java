@@ -664,7 +664,7 @@ public class PersistenciaAlohandes
 	* @param x - x de Apartamento
 	* @return El objeto Apartamento adicionado. null si ocurre alguna Excepción
 	*/
-	public Apartamento adicionarApartamento( String direccion, int cupos, long idOperador, double area, boolean amoblado, int numeroHabitaciones)
+	public Apartamento adicionarApartamento( String direccion, int cupos, long idOperador, double area, int amoblado, int numeroHabitaciones)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 	    Transaction tx=pm.currentTransaction();
@@ -750,7 +750,7 @@ public class PersistenciaAlohandes
 	* @param x - x de Esporadico
 	* @return El objeto Esporadico adicionado. null si ocurre alguna Excepción
 	*/
-	public Esporadico adicionarEsporadico(String direccion, int cupos, long idOperador,  double area, boolean amoblado, int numeroHabitaciones, int nochesAnio, long idSeguro)
+	public Esporadico adicionarEsporadico(String direccion, int cupos, long idOperador,  double area, int amoblado, int numeroHabitaciones, int nochesAnio, long idSeguro)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 	    Transaction tx=pm.currentTransaction();

@@ -61,7 +61,7 @@ class SQLApartamento extends SQLVivienda
 	 * @param numeroHabitaciones - 
 	 * @return El número de tuplas insertadas 
 	 */
-	public long adicionarApartamento (PersistenceManager pm, long idApartamento, String direccion, int cupos, long idOperador, double area, boolean amoblado, int numeroHabitaciones)
+	public long adicionarApartamento (PersistenceManager pm, long idApartamento, String direccion, int cupos, long idOperador, double area, int amoblado, int numeroHabitaciones)
 	{
 		System.out.println("quiere adicionar");
 		super.adicionarVivienda(pm, idApartamento, direccion, cupos, idOperador);
