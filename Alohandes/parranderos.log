@@ -1,0 +1,348 @@
+11:42:05,711 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos
+11:42:05,809 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos] - Borrada la base de datos
+11:42:05,810 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Parranderos] - Limpiando la BD de Parranderos: Listo!
+17:49:19,884 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+17:49:19,884 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+17:49:19,896 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+11:55:48,463 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+11:55:48,464 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+11:55:48,495 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+11:56:32,768 (main) INFO  [uniandes.isis2304.parranderos.interfazDemo.InterfazParranderosDemo] - Se encontró un archivo de configuración válido: Interfaz
+11:56:32,768 (main) INFO  [uniandes.isis2304.parranderos.interfazDemo.InterfazParranderosDemo] - Se aplica configuración indicada en el archivo de configuración
+11:56:32,789 (main) INFO  [uniandes.isis2304.parranderos.interfazDemo.InterfazParranderosDemo] - Se encontró un archivo de configuración válido: Tablas BD
+19:19:38,548 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+19:19:40,677 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+19:30:52,440 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+19:30:52,475 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+19:30:54,031 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+19:30:54,032 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+19:32:10,866 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+19:32:10,899 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+19:32:12,218 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+19:32:12,219 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+19:33:24,457 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+19:33:24,498 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+19:33:26,027 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+19:33:26,027 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+19:34:01,743 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+19:34:01,785 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+19:34:03,208 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+19:34:03,209 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+19:35:49,441 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+19:35:49,478 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+19:35:51,561 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+19:35:51,563 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+19:36:14,034 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+19:36:14,068 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+19:36:15,430 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+19:36:15,430 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+19:38:23,971 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+19:38:24,005 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+19:38:26,916 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+19:38:26,917 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+19:39:14,739 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+19:39:14,774 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+19:39:16,152 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+19:39:16,153 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+19:51:10,546 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+19:51:10,578 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+19:51:11,865 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+19:51:11,866 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+19:58:01,037 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+19:58:01,070 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+19:58:02,398 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+19:58:02,399 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:02:28,689 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+20:02:28,721 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:02:30,091 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+20:02:30,092 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:06:44,009 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+20:06:44,041 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:06:45,449 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+20:06:45,450 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:09:48,420 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+20:09:48,467 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:09:49,825 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+20:09:49,825 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:12:18,790 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+20:12:18,823 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:12:20,191 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+20:12:20,192 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:14:04,809 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+20:14:04,842 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:14:07,161 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+20:14:07,161 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:15:07,299 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+20:15:07,344 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:15:08,662 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+20:15:08,662 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:21:59,572 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+20:21:59,604 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:22:01,211 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+20:22:01,212 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:25:25,291 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+20:25:25,323 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:25:27,028 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+20:25:27,029 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:26:28,090 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+20:26:28,122 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:26:29,586 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+20:26:29,587 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:39:17,637 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+20:39:17,773 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:39:19,322 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+20:39:19,323 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:44:54,837 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+20:44:54,878 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:44:56,347 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+20:44:56,347 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:45:58,434 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+20:45:58,467 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:45:59,722 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+20:45:59,723 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:46:54,297 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+20:46:54,328 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:46:55,696 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+20:46:55,697 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:47:11,329 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+20:47:11,362 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:47:12,783 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+20:47:12,784 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:48:18,312 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+20:48:18,344 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+20:48:19,683 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+20:48:21,210 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:04:30,660 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+21:04:30,698 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:04:33,107 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+21:04:33,107 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:05:28,280 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+21:05:28,311 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:05:30,101 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+21:05:30,101 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:06:51,380 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+21:06:51,418 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:06:53,103 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+21:06:53,103 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:08:43,263 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+21:08:43,310 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:08:44,991 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+21:08:44,991 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:09:08,183 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+21:09:08,221 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:09:09,997 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+21:09:09,997 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:10:09,643 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+21:10:09,676 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:10:11,355 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+21:10:11,355 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:10:42,028 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+21:10:42,068 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:10:43,744 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+21:10:43,744 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:22:03,972 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+21:22:04,022 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:22:32,877 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+21:22:32,917 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:23:09,195 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+21:23:09,196 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:51:50,912 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+21:51:51,082 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:51:52,473 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+21:51:52,474 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:53:30,109 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+21:53:30,141 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:53:32,153 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+21:53:32,153 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:58:12,578 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+21:58:12,621 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:58:15,738 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+21:58:15,740 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:00:11,235 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:00:11,274 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:00:12,853 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:00:12,853 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:03:34,179 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:03:34,228 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:03:35,991 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:03:35,992 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:06:00,464 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:06:00,503 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:06:02,044 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:06:02,044 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:11:47,991 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:11:48,030 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:11:49,649 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:11:49,650 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:14:38,298 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:14:38,338 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:14:39,931 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:14:39,932 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:15:10,298 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:15:10,347 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:15:11,760 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:15:11,761 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:15:38,127 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:15:38,162 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:15:39,482 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:15:39,483 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:16:46,367 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:16:46,401 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:16:47,976 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:16:47,977 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:17:55,399 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:17:55,433 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:17:56,904 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:17:56,905 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:20:58,093 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:20:58,127 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:20:59,458 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:20:59,459 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:21:22,708 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:21:22,744 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:21:24,115 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:21:24,115 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:22:14,907 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:22:15,007 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:22:17,785 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:22:17,787 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:23:02,074 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:23:02,172 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:23:05,860 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:23:05,861 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:25:20,764 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:25:20,831 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:25:23,242 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:25:23,244 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:26:25,146 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:26:25,230 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:26:28,073 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:26:28,074 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:36:42,635 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:36:42,832 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:36:46,136 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:36:46,137 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:43:43,310 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:43:43,377 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:43:46,106 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:43:46,107 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:45:17,864 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:45:17,934 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:45:20,862 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:45:20,863 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:52:49,641 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:52:49,729 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:52:52,670 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:52:52,671 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:53:41,912 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:53:41,979 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:53:44,740 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:53:44,741 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:54:14,701 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:54:14,769 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:54:17,846 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:54:17,847 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:55:49,517 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:55:49,600 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:55:52,380 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:55:52,381 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:56:18,730 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:56:18,790 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:56:21,336 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:56:21,337 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:57:36,372 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+22:57:36,468 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:57:39,553 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+22:57:39,554 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+23:02:18,091 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+23:02:18,164 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+23:02:20,677 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+23:02:20,677 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+23:08:07,420 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+23:08:07,490 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+23:08:11,964 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+23:08:11,965 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+23:08:50,772 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+23:08:50,850 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+23:08:53,406 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+23:08:53,406 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+23:09:22,634 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+23:09:22,714 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+23:09:25,380 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+23:09:25,381 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+23:09:43,987 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+23:09:44,048 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+23:09:47,516 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+23:09:47,517 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+23:10:10,432 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+23:10:10,493 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+23:10:14,052 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+23:10:14,053 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+23:11:04,809 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+23:11:04,890 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+23:11:08,709 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+23:11:08,710 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:42:13,483 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+21:42:13,592 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:42:18,394 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+21:42:18,394 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:43:56,347 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando la restricción de UNICIDAD del id del apartamento
+21:43:56,474 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:43:59,506 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Probando las operaciones CRD sobre apartamento
+21:43:59,508 (main) INFO  [uniandes.isis2304.parranderos.test.ApartamentoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:46:06,104 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+21:46:06,252 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:46:11,749 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+21:46:11,751 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:50:36,746 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+21:50:36,842 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:50:41,108 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+21:50:41,110 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+21:54:44,790 (main) INFO  [uniandes.isis2304.parranderos.test.OperadorTest] - Probando las operaciones CRD sobre operador
+21:54:47,642 (main) INFO  [uniandes.isis2304.parranderos.test.OperadorTest] - Probando la restricción de UNICIDAD del id del operador
+21:57:47,620 (main) INFO  [uniandes.isis2304.parranderos.test.OperadorTest] - Probando las operaciones CRD sobre operador
+21:57:50,904 (main) INFO  [uniandes.isis2304.parranderos.test.OperadorTest] - Probando la restricción de UNICIDAD del id del operador
+22:02:47,657 (main) INFO  [uniandes.isis2304.parranderos.test.OperadorTest] - Probando las operaciones CRD sobre operador
+22:02:51,045 (main) INFO  [uniandes.isis2304.parranderos.test.OperadorTest] - Probando la restricción de UNICIDAD del id del operador
+22:04:25,962 (main) INFO  [uniandes.isis2304.parranderos.test.OperadorTest] - Probando las operaciones CRD sobre operador
+22:04:30,823 (main) INFO  [uniandes.isis2304.parranderos.test.OperadorTest] - Probando la restricción de UNICIDAD del id del operador
+22:05:15,149 (main) INFO  [uniandes.isis2304.parranderos.test.OperadorTest] - Probando las operaciones CRD sobre operador
+22:05:18,633 (main) INFO  [uniandes.isis2304.parranderos.test.OperadorTest] - Probando la restricción de UNICIDAD del id del operador
+22:06:29,570 (main) INFO  [uniandes.isis2304.parranderos.test.OperadorTest] - Probando las operaciones CRD sobre operador
+22:06:35,027 (main) INFO  [uniandes.isis2304.parranderos.test.OperadorTest] - Probando la restricción de UNICIDAD del id del operador
+22:11:18,410 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+22:11:18,498 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:11:22,241 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+22:11:22,242 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:12:52,143 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+22:12:52,265 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:12:56,118 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+22:12:56,120 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:16:32,968 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+22:16:33,084 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:16:37,202 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+22:16:37,203 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:18:43,151 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+22:18:43,330 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:18:46,760 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+22:18:46,761 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:23:22,221 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+22:23:22,342 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:23:29,185 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+22:23:29,186 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:26:04,949 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+22:26:05,041 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:26:09,455 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+22:26:09,456 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:38:30,641 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+22:38:30,746 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:38:34,919 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+22:38:34,921 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:41:19,705 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+22:41:19,893 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:41:25,217 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Probando las operaciones CRD sobre apartamento
+22:41:25,218 (main) INFO  [uniandes.isis2304.parranderos.test.CuartoTest] - Se encontrÃ³ un archivo de configuraciÃ³n vÃ¡lido: Tablas BD
+22:43:28,874 (main) INFO  [uniandes.isis2304.parranderos.test.EsporadicoTest] - Probando la restricción de UNICIDAD del id del esporadico
+22:43:32,520 (main) INFO  [uniandes.isis2304.parranderos.test.EsporadicoTest] - Probando las operaciones CRD sobre esporadico
+22:56:02,634 (main) INFO  [uniandes.isis2304.parranderos.test.EsporadicoTest] - Probando la restricción de UNICIDAD del id del esporadico
+22:56:06,541 (main) INFO  [uniandes.isis2304.parranderos.test.EsporadicoTest] - Probando las operaciones CRD sobre esporadico
