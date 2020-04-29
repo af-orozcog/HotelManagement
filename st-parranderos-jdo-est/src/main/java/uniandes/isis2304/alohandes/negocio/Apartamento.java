@@ -10,17 +10,17 @@ public class Apartamento extends Vivienda implements VOApartamento{
 	/**
 	 * el area del apartamento
 	 */
-	private double area;
+	protected double area;
 	
 	/**
 	 * booleano que representa si el apartamento esta amoblado
 	 */
-	private int amoblado;
+	protected int amoblado;
 	
 	/**
 	 * el numero de habitaciones del apartamento
 	 */
-	private int numero_habitaciones;
+	protected int numero_habitaciones;
 	
 	/* ****************************************************************
 	 * 			Métodos 

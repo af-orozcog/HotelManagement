@@ -11,7 +11,7 @@ public class Cuarto extends Vivienda implements VOCuarto{
 	/**
 	 * booleano para saber si el baño es privado
 	 */
-	private int baño_privado;
+	private int banio_privado;
 	
 	/**
 	 * booleano para saber si el cuarto es privado
@@ -38,7 +38,7 @@ public class Cuarto extends Vivienda implements VOCuarto{
 	 */
 	public Cuarto() {
 		super();
-		this.baño_privado = 0;
+		this.banio_privado = 0;
 		this.cuarto_privado = 0;
 		this.esquema = "";
 		this.menaje = "";
@@ -55,10 +55,10 @@ public class Cuarto extends Vivienda implements VOCuarto{
 	 * @param cupos - cupos disponibles de la vivienda
 	 * @param idOperador - el operador dueño de la vivienda
 	 */
-	public Cuarto(long id, String direccion, int cupos, long idOperador, boolean bañoPrivado, boolean cuartoPrivado, String esquema, String menaje) {
+	public Cuarto(long id, String direccion, int cupos, long idOperador, int banio_privado, int cuarto_privado, String esquema, String menaje) {
 		super(id, direccion, cupos,idOperador);
-		this.baño_privado = (bañoPrivado? 1:0);
-		this.cuarto_privado = (cuartoPrivado?1:0);
+		this.banio_privado = banio_privado;
+		this.cuarto_privado = cuarto_privado;
 		this.esquema = esquema;
 		this.menaje = menaje;
 	}
@@ -67,23 +67,23 @@ public class Cuarto extends Vivienda implements VOCuarto{
 	/**
 	 * @return bañoPrivado
 	 */
-	public int isBañoPrivado() {
-		return baño_privado;
+	public int isBanio_Privado() {
+		return banio_privado;
 	}
 
-
+	
 	/**
 	 * @param bañoPrivado - booleano del baño
 	 */
-	public void setBaño_Privado(int baño_privado) {
-		this.baño_privado = baño_privado;
+	public void setBanio_privado(int banio_privado) {
+		this.banio_privado = banio_privado;
 	}
 
 
 	/**
 	 * @return cuartoPrivado
 	 */
-	public int isCuarto_Privado() {
+	public int isCuarto_privado() {
 		return cuarto_privado;
 	}
 

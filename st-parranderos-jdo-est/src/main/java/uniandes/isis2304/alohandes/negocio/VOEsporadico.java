@@ -4,12 +4,12 @@ public interface VOEsporadico {
 	/**
 	 * @return nochesAño
 	 */
-	public int getNochesAño();
+	public int getNoches_Anio();
 
 	/**
 	 * @param nochesAño - noches al año
 	 */
-	public void setNochesAño(int nochesAño);
+	public void setNoches_Anio(int noches_Anio);
 
 	/**
 	 * @return idSeguro

@@ -24,7 +24,7 @@ public class Ganancias implements VOGanancias{
 	/**
 	 * el año en el cual se dio la ganacia
 	 */
-	private int año;
+	private int anio;
 
 	/**
 	 * el id del operador 
@@ -49,11 +49,11 @@ public class Ganancias implements VOGanancias{
 	 * @param año - el año de la ganacia
 	 * @param idOperador - el id del operador
 	 */
-	public Ganancias(long id, long cantidad, int mes, int año, long idOperador) {
+	public Ganancias(long id, long cantidad, int mes, int anio, long idOperador) {
 		this.id = id;
 		this.cantidad = cantidad;
 		this.mes = mes;
-		this.año = año;
+		this.anio = anio;
 		this.operador = idOperador;
 	}
 
@@ -88,15 +88,15 @@ public class Ganancias implements VOGanancias{
 	/**
 	 * @return el año de la ganacia
 	 */
-	public int getAño() {
-		return año;
+	public int getAnio() {
+		return anio;
 	}
 
 	/**
 	 * @param año - año de la ganacia
 	 */
-	public void setAño(int año) {
-		this.año = año;
+	public void setAnio(int anio) {
+		this.anio = anio;
 	}
 
 	/**

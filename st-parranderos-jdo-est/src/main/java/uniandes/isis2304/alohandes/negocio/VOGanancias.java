@@ -24,12 +24,12 @@ public interface VOGanancias {
 	/**
 	 * @return el año de la ganacia
 	 */
-	public int getAño();
+	public int getAnio();
 
 	/**
 	 * @param año - año de la ganacia
 	 */
-	public void setAño(int año);
+	public void setAnio(int anio);
 
 	/**
 	 * @return idOperador

@@ -920,7 +920,7 @@ public class PersistenciaAlohandes
 	* @param x - x de Cuarto
 	* @return El objeto Cuarto adicionado. null si ocurre alguna Excepción
 	*/
-	public Cuarto adicionarCuarto(String direccion, int cupos, long idOperador, boolean bañoPrivado, boolean cuartoPrivado, String esquema, String menaje)
+	public Cuarto adicionarCuarto(String direccion, int cupos, long idOperador, int banio_privado, int cuarto_privado, String esquema, String menaje)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 	    Transaction tx=pm.currentTransaction();
@@ -930,12 +930,12 @@ public class PersistenciaAlohandes
 	        long idCuarto = nextval ();
 	        if(modoPerron)
             	idCuarto = idPerron;
-	        long tuplasInsertadas = sqlCuarto.adicionarCuarto(pm, idCuarto, direccion, cupos, idOperador, bañoPrivado, cuartoPrivado, esquema, menaje);
+	        long tuplasInsertadas = sqlCuarto.adicionarCuarto(pm, idCuarto, direccion, cupos, idOperador, banio_privado, cuarto_privado, esquema, menaje);
 	        tx.commit();
 
 	        log.trace ("Inserción de vivienda: " + idCuarto + ": " + tuplasInsertadas + " tuplas insertadas");
 
-	        return new Cuarto(idCuarto, direccion, cupos, idOperador, bañoPrivado, cuartoPrivado, esquema, menaje);
+	        return new Cuarto(idCuarto, direccion, cupos, idOperador, banio_privado, cuarto_privado, esquema, menaje);
 	    }
 	    catch (Exception e)
 	    {

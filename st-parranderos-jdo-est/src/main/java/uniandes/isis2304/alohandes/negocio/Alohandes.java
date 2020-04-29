@@ -440,10 +440,10 @@ public class Alohandes
 	 * @param menaje - mensaje del Cuarto
 	 * @return El objeto Cuarto adicionado. null si ocurre alguna Excepción
 	 */
-	public Cuarto adicionarCuarto (String direccion, int cupos, long idOperador, boolean bañoPrivado, boolean cuartoPrivado, String esquema, String menaje)
+	public Cuarto adicionarCuarto (String direccion, int cupos, long idOperador, int banio_privado, int cuarto_privado, String esquema, String menaje)
 	{
 		log.info ("Adicionando nuevo(a) Cuarto ");
-		Cuarto cuarto = pa.adicionarCuarto(direccion, cupos, idOperador, bañoPrivado, cuartoPrivado, esquema, menaje);
+		Cuarto cuarto = pa.adicionarCuarto(direccion, cupos, idOperador, banio_privado, cuarto_privado, esquema, menaje);
 		log.info ("Adicionando Cuarto: " + cuarto);
 		return cuarto;
 	}

@@ -4,18 +4,18 @@ public interface VOCuarto {
 	/**
 	 * @return bañoPrivado
 	 */
-	public int isBañoPrivado();
+	public int isBanio_Privado();
 
 
 	/**
 	 * @param bañoPrivado - booleano del baño
 	 */
-	public void setBaño_Privado(int baño_privado);
+	public void setBanio_privado(int banio_privado);
 
 	/**
 	 * @return cuartoPrivado
 	 */
-	public int isCuarto_Privado();
+	public int isCuarto_privado();
 
 
 	/**

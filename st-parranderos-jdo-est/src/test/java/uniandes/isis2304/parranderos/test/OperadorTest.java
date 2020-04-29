@@ -71,26 +71,28 @@ public class OperadorTest {
 			lista = pm.darOperadores();
 			
 			assertEquals ("Debe haber un operador creado !!", 1, lista.size ());
-			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", operador1, lista.get (0));
+			System.out.println("el nombre del sapo es: " + lista.get(0).getNombre());
+			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", operador1.getNombre(), lista.get(0).getNombre());
 
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
-			String nombre2 = "zeus";
-			String email2 = "zeus@gmail.com";
-			String numero2 = "3246765434";
+			String nombre2 = "zeuss";
+			String email2 = "zeusss@gmail.com";
+			String numero2 = "324676543445";
 			String tipo2 = "PERSONA_NATURAL";
 			Operador operador2 = pm.adicionarOperador(nombre2, email2, numero2, tipo2);
 			lista = pm.darOperadores();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
-			assertTrue ("El primer operador adicionado debe estar en la tabla", operador1.equals (lista.get (0)) || operador1.equals (lista.get (1)));
-			assertTrue ("El segundo operador adicionado debe estar en la tabla", operador2.equals (lista.get (0)) || operador2.equals (lista.get (1)));
+			assertTrue ("El primer operador adicionado debe estar en la tabla", operador1.getNombre().equals (lista.get(0).getNombre()) || operador1.getNombre().equals (lista.get(1).getNombre()));
+			assertTrue ("El segundo operador adicionado debe estar en la tabla", operador2.getNombre().equals (lista.get(0).getNombre()) || operador2.getNombre().equals(lista.get(1).getNombre()));
 
 			// Prueba de eliminación de un operador, dado su identificador
-			long tbEliminados = pm.eliminarOperadorPorId (operador1.getId ());
+			long tbEliminados = pm.eliminarOperadorPorId (operador1.getId());
 			assertEquals ("Debe haberse eliminado un operador !!", 1, tbEliminados);
 			lista = pm.darOperadores();
 			assertEquals ("Debe haber un solo operador !!", 1, lista.size ());
-			assertFalse ("El primer operador adicionado NO debe estar en la tabla", operador1.equals (lista.get (0)));
-			assertTrue ("El segundo operador adicionado debe estar en la tabla", operador2.equals (lista.get (0)));
+			System.out.println("cual es el nombre de la persona ahi");
+			assertFalse ("El primer operador adicionado NO debe estar en la tabla", operador1.getNombre().equals(lista.get(0).getNombre()));
+			assertTrue ("El segundo operador adicionado debe estar en la tabla", operador2.getNombre().equals(lista.get(0).getNombre()));
 			
 		}
 		catch (Exception e)
@@ -175,8 +177,4 @@ public class OperadorTest {
 		}
 	}
 	
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
 }

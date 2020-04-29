@@ -210,10 +210,5 @@ public class EsporadicoTest {
     		pm.cerrarUnidadPersistencia ();    		
 		}
 	}
-	
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
 
 }

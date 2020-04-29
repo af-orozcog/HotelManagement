@@ -86,13 +86,10 @@ public class CuartoTest {
 			String tipocuarto1 = "ESTANDAR";
 			String esquema1 = "no hay";
 			String menaje1 = "no hay menaje";
-			Cuarto cuarto1 = pm.adicionarCuarto(direccioncuarto1, cuposcuarto1, op.getId(), true, true, esquema1, menaje1);
-			if(cuarto1 == null)System.out.println("why!!!!!!!!!!!!!!");
-			System.out.println(cuarto1.getCupos());
+			Cuarto cuarto1 = pm.adicionarCuarto(direccioncuarto1, cuposcuarto1, op.getId(), 1, 1, esquema1, menaje1);
 			lista = pm.darCuartos();
-			System.out.println("tamaño es " + lista.size());
 			assertEquals ("Debe haber un cuarto creado !!", 1, lista.size ());
-			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", cuarto1, lista.get (0));
+			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", cuarto1.getId(), lista.get(0).getId());
 
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
 			String direccioncuarto2 = "calle23C#69C-20";
@@ -100,19 +97,19 @@ public class CuartoTest {
 			String tipocuarto2 = "ESTANDAR";
 			String esquema2 = "no hay";
 			String menaje2 = "no hay menaje";
-			Cuarto cuarto2 = pm.adicionarCuarto(direccioncuarto2, cuposcuarto2, op.getId(), true, true, esquema2, menaje2);
+			Cuarto cuarto2 = pm.adicionarCuarto(direccioncuarto2, cuposcuarto2, op.getId(), 1, 1, esquema2, menaje2);
 			lista = pm.darCuartos();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
-			assertTrue ("El primer cuarto adicionado debe estar en la tabla", cuarto1.equals (lista.get (0)) || cuarto1.equals (lista.get (1)));
-			assertTrue ("El segundo cuarto adicionado debe estar en la tabla", cuarto2.equals (lista.get (0)) || cuarto2.equals (lista.get (1)));
+			assertTrue ("El primer cuarto adicionado debe estar en la tabla", cuarto1.getId() == lista.get(0).getId() || cuarto1.getId() == lista.get(1).getId());
+			assertTrue ("El segundo cuarto adicionado debe estar en la tabla", cuarto2.getId() == lista.get(0).getId() || cuarto2.getId() == lista.get(1).getId());
 
 			// Prueba de eliminación de un cuarto, dado su identificador
 			long tbEliminados = pm.eliminarCuartoPorId (cuarto1.getId ());
 			assertEquals ("Debe haberse eliminado un cuarto !!", 1, tbEliminados);
 			lista = pm.darCuartos();
 			assertEquals ("Debe haber un solo cuarto !!", 1, lista.size ());
-			assertFalse ("El primer cuarto adicionado NO debe estar en la tabla", cuarto1.equals (lista.get (0)));
-			assertTrue ("El segundo cuarto adicionado debe estar en la tabla", cuarto2.equals (lista.get (0)));
+			assertFalse ("El primer cuarto adicionado NO debe estar en la tabla", cuarto1.getId() == lista.get(0).getId());
+			assertTrue ("El segundo cuarto adicionado debe estar en la tabla", cuarto2.getId() == lista.get (0).getId());
 			
 		}
 		catch (Exception e)
@@ -171,7 +168,7 @@ public class CuartoTest {
 			String tipocuarto1 = "ESTANDAR";
 			String esquema1 = "no hay";
 			String menaje1 = "no hay menaje";
-			Cuarto cuarto1 = pm.adicionarCuarto(direccioncuarto1, cuposcuarto1, op.getId(), true, true, esquema1, menaje1);
+			Cuarto cuarto1 = pm.adicionarCuarto(direccioncuarto1, cuposcuarto1, op.getId(), 1, 1, esquema1, menaje1);
 			lista = pm.darCuartos();
 			assertEquals ("Debe haber un cuarto creado !!", 1, lista.size ());
 			
@@ -181,7 +178,7 @@ public class CuartoTest {
 			String tipocuarto2 = "ESTANDAR";
 			String esquema2 = "no hay";
 			String menaje2 = "no hay menaje";
-			Cuarto cuarto2 = pm.adicionarCuarto(direccioncuarto2, cuposcuarto2, op.getId(), true, true, esquema2, menaje2);
+			Cuarto cuarto2 = pm.adicionarCuarto(direccioncuarto2, cuposcuarto2, op.getId(), 1, 1, esquema2, menaje2);
 			lista = pm.darCuartos();
 			assertNull ("No puede adicionar dos cuartos con el mismo id !!", cuarto2);
 		}
