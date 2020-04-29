@@ -34,12 +34,12 @@ public interface VOGanancias {
 	/**
 	 * @return idOperador
 	 */
-	public long getIdOperador();
+	public long getOperador();
 
 	/**
 	 * @param idOperador - el id del operador
 	 */
-	public void setIdOperador(long idOperador);
+	public void setOperador(long idOperador);
 
 	/**
 	 * @return id

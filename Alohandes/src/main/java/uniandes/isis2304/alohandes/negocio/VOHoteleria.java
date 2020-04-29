@@ -6,30 +6,30 @@ public interface VOHoteleria {
 	/**
 	 * @return tipoHoteleria
 	 */
-	public String getTipoHoteleria();
+	public String getTipo_hoteleria();
 
 	/**
 	 * @param tipoHoteleria - el nuevo tipo de hoteleria 
 	 */
-	public void setTipoHoteleria(String tipoHoteleria);
+	public void setTipo_hoteleria(String tipoHoteleria);
 
 	/**
 	 * @return horaApertura
 	 */
-	public Timestamp getHoraApertura();
+	public Timestamp getHora_apertura();
 
 	/**
 	 * @param horaApertura - la nueva hora de apertura
 	 */
-	public void setHoraApertura(Timestamp horaApertura);
+	public void setHora_apertura(Timestamp horaApertura);
 
 	/**
 	 * @return horaCierre
 	 */
-	public Timestamp getHoraCierre();
+	public Timestamp getHora_cierre();
 
 	/**
 	 * @param horaCierre - la nueva hora de cierre
 	 */
-	public void setHoraCierre(Timestamp horaCierre);
+	public void setHora_cierre(Timestamp horaCierre);
 }

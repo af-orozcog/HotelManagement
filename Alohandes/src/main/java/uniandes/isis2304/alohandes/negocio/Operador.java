@@ -12,16 +12,16 @@ public class Operador extends Usuario implements VOOperador{
 	/**
 	 * Las ganacias del operador
 	 */
-	private List<Object []> ganancias;
+	protected List<Object []> ganancias;
 	
 	/**
 	 * las viviendas del operador
 	 */
-	private List<Object []> viviendas;
+	protected List<Object []> viviendas;
 	/**
 	 * tipo de operador (HOTELERIA, VIVIENDA_UNIVERSITARIA, PERSONA_NATURAL)
 	 */
-	private String tipo_operador;
+	protected String tipo_operador;
 	
 	/* ****************************************************************
 	 * 			Métodos 

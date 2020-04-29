@@ -75,10 +75,10 @@ public class HabitacionTest {
 			lista = pm.darHabitaciones();
 			
 			assertEquals ("Debe haber un habitacion creado !!", 1, lista.size ());
-			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", habitacion1, lista.get (0));
+			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", habitacion1.getDireccion(), lista.get (0).getDireccion());
 
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
-			String direccionhabitacion2 = "calle20C#20C-20";
+			String direccionhabitacion2 = "calle20C#20C-202";
 			int cuposhabitacion2 = 4;
 			String tipoHabitacion2 = "SEMISUITE";
 			String Categoria2 = "nose";
@@ -87,16 +87,16 @@ public class HabitacionTest {
 			Habitacion habitacion2 = pm.adicionarHabitacion(direccionhabitacion2, cuposhabitacion2, op.getId(), tipoHabitacion2, Categoria2, capacidad2, numero2);
 			lista = pm.darHabitaciones();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
-			assertTrue ("El primer habitacion adicionado debe estar en la tabla", habitacion1.equals (lista.get (0)) || habitacion1.equals (lista.get (1)));
-			assertTrue ("El segundo habitacion adicionado debe estar en la tabla", habitacion2.equals (lista.get (0)) || habitacion2.equals (lista.get (1)));
+			assertTrue ("El primer habitacion adicionado debe estar en la tabla", habitacion1.getDireccion().equals (lista.get(0).getDireccion()) || habitacion1.getDireccion().equals(lista.get(1).getDireccion()));
+			assertTrue ("El segundo habitacion adicionado debe estar en la tabla", habitacion2.getDireccion().equals (lista.get(0).getDireccion()) || habitacion2.getDireccion().equals (lista.get(1).getDireccion()));
 
 			// Prueba de eliminación de un habitacion, dado su identificador
 			long tbEliminados = pm.eliminarHabitacionPorId (habitacion1.getId ());
 			assertEquals ("Debe haberse eliminado un habitacion !!", 1, tbEliminados);
 			lista = pm.darHabitaciones();
 			assertEquals ("Debe haber un solo habitacion !!", 1, lista.size ());
-			assertFalse ("El primer habitacion adicionado NO debe estar en la tabla", habitacion1.equals (lista.get (0)));
-			assertTrue ("El segundo habitacion adicionado debe estar en la tabla", habitacion2.equals (lista.get (0)));
+			assertFalse ("El primer habitacion adicionado NO debe estar en la tabla", habitacion1.getDireccion().equals (lista.get(0).getDireccion()));
+			assertTrue ("El segundo habitacion adicionado debe estar en la tabla", habitacion2.getDireccion().equals (lista.get(0).getDireccion()));
 			
 		}
 		catch (Exception e)
@@ -182,11 +182,6 @@ public class HabitacionTest {
 			pm.limpiarAlohandes();
     		pm.cerrarUnidadPersistencia ();    		
 		}
-	}
-	
-	@Test
-	public void test() {
-		fail("Not yet implemented");
 	}
 
 }

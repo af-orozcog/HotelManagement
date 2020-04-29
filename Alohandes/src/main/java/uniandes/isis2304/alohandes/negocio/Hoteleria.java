@@ -1,6 +1,7 @@
 package uniandes.isis2304.alohandes.negocio;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 public class Hoteleria extends Operador implements VOHoteleria{
 	
@@ -58,43 +59,146 @@ public class Hoteleria extends Operador implements VOHoteleria{
 	/**
 	 * @return tipoHoteleria
 	 */
-	public String getTipoHoteleria() {
+	public String getTipo_hoteleria() {
 		return tipo_hoteleria;
 	}
 
 	/**
 	 * @param tipoHoteleria - el nuevo tipo de hoteleria 
 	 */
-	public void setTipoHoteleria(String tipoHoteleria) {
+	public void setTipo_hoteleria(String tipoHoteleria) {
 		this.tipo_hoteleria = tipoHoteleria;
 	}
 
 	/**
 	 * @return horaApertura
 	 */
-	public Timestamp getHoraApertura() {
+	public Timestamp getHora_apertura() {
 		return hora_apertura;
 	}
 
 	/**
 	 * @param horaApertura - la nueva hora de apertura
 	 */
-	public void setHoraApertura(Timestamp horaApertura) {
+	public void setHora_apertura(Timestamp horaApertura) {
 		this.hora_apertura = horaApertura;
 	}
 
 	/**
 	 * @return horaCierre
 	 */
-	public Timestamp getHoraCierre() {
+	public Timestamp getHora_cierre() {
 		return hora_cierre;
 	}
 
 	/**
 	 * @param horaCierre - la nueva hora de cierre
 	 */
-	public void setHoraCierre(Timestamp horaCierre) {
+	public void setHora_cierre(Timestamp horaCierre) {
 		this.hora_cierre = horaCierre;
+	}
+	
+	/**
+	 * @return las viviendas del operador
+	 */
+	public List<Object[]> getViviendas() {
+		return viviendas;
+	}
+
+	/**
+	 * @param viviendas - la nueva lsita de ganacias del operador
+	 */
+	public void setViviendas(List<Object[]> viviendas) {
+		this.viviendas = viviendas;
+	}
+
+	/**
+	 * @return las ganacias del operador
+	 */
+	public List<Object[]> getGanancias() {
+		return ganancias;
+	}
+
+	/**
+	 * @param ganancias - la nueva lista de ganacias del operador
+	 */
+	public void setGanancias(List<Object[]> ganancias) {
+		this.ganancias = ganancias;
+	}
+
+	/**
+	 * @return el tipo de operador
+	 */
+	public String getTipo_operador() {
+		return tipo_operador;
+	}
+
+	/**
+	 * @param tipoOperador - el nuevo tipo operador
+	 */
+	public void setTipo_operador(String tipo_operador) {
+		this.tipo_operador = tipo_operador;
+	}
+	
+	@Override
+	public long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id - el nuevo id del usuario
+	 */
+	@Override
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return el nombre del usuario
+	 */
+	@Override
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * @param nombre - el nuevo nombre del usuario
+	 */
+	@Override
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	/**
+	 * @return la dirección de correo del usuario
+	 */
+	@Override
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email - la nueva dirección de correo del usuario
+	 */
+	@Override
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	/**
+	 * @return el numero del usuario
+	 */
+	@Override
+	public String getNumero() {
+		return numero;
+	}
+
+	/**
+	 * @param numero - el nuevo numero del usuario
+	 */
+	@Override
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 	
 }

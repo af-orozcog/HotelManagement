@@ -63,14 +63,14 @@ public class Habitacion extends Vivienda implements VOHabitacion{
 	/**
 	 * @return tipoHabitacion
 	 */
-	public String getTipoHabitacion() {
+	public String getTipo_habitacion() {
 		return tipo_habitacion;
 	}
 
 	/**
 	 * @param tipoHabitacion - el tipo de habitacion
 	 */
-	public void setTipoHabitacion(String tipoHabitacion) {
+	public void setTipo_habitacion(String tipoHabitacion) {
 		this.tipo_habitacion = tipoHabitacion;
 	}
 
@@ -116,6 +116,74 @@ public class Habitacion extends Vivienda implements VOHabitacion{
 		this.numero = numero;
 	}
 	
-	
+	/**
+	 * @return direccion
+	 */
+	public String getDireccion() {
+		return direccion;
+	}
+
+	/**
+	 * @return id
+	 */
+	public long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id - el id de la vivienda
+	 */
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	/**
+	 * @param direccion - la direccion de la vivienda
+	 */
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	/**
+	 * @return cupos
+	 */
+	public int getCupos() {
+		return cupos;
+	}
+
+	/**
+	 * @param cupos - los cupos de la vivienda
+	 */
+	public void setCupos(int cupos) {
+		this.cupos = cupos;
+	}
+
+	/**
+	 * @return ofertas 
+	 */
+	public List<Object[]> getOfertas() {
+		return ofertas;
+	}
+
+	/**
+	 * @param ofertas - las ofertas de la vivienda
+	 */
+	public void setOfertas(List<Object[]> ofertas) {
+		this.ofertas = ofertas;
+	}
+
+	/**
+	 * @return idOperador
+	 */
+	public long getOperador() {
+		return operador;
+	}
+
+	/**
+	 * @param idOperador - el identificador del operador
+	 */
+	public void setOperador(long Operador) {
+		this.operador = Operador;
+	}
 	
 }
