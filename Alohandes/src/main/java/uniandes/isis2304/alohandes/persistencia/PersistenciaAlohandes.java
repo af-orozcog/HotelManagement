@@ -1543,12 +1543,14 @@ public class PersistenciaAlohandes
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 	    Transaction tx=pm.currentTransaction();
+	    System.out.println("Entroo");
 	    try
 	    {
 	        tx.begin();
 	        long idReserva = nextval ();
 	    	if(modoPerron)
 	    		idReserva = idPerron;
+	    	System.out.println("Todo listo");
 	        long tuplasInsertadas = sqlReserva.adicionarReserva(pm, idReserva, inicio, fin, duracion, periodoArrendamiento, idUsuario, idOferta, idColectiva);
 	        tx.commit();
 
@@ -1633,7 +1635,7 @@ public class PersistenciaAlohandes
 	* @param x - x de Oferta
 	* @return El objeto Oferta adicionado. null si ocurre alguna Excepción
 	*/
-	public Oferta adicionarOferta(long precio, String periodo, long idVivienda, Timestamp fechaInicio, Timestamp fechaFin, int activa)
+	public Oferta adicionarOferta(long precio, String periodo, long vivienda, Timestamp fechaInicio, Timestamp fechaFin)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 	    Transaction tx=pm.currentTransaction();
@@ -1643,12 +1645,12 @@ public class PersistenciaAlohandes
 	        long idOferta = nextval ();
 	        if(modoPerron)
             	idOferta = idPerron;
-	        long tuplasInsertadas = sqlOferta.adicionarOferta(pm, idOferta, precio, periodo, idVivienda, fechaInicio, fechaFin,activa);
+	        long tuplasInsertadas = sqlOferta.adicionarOferta(pm, idOferta, precio, periodo, vivienda, fechaInicio, fechaFin);
 	        tx.commit();
 
 	        log.trace ("Inserción de vivienda: " + idOferta + ": " + tuplasInsertadas + " tuplas insertadas");
 
-	        return new Oferta(idOferta, precio, periodo, fechaInicio, fechaFin, idVivienda, activa);
+	        return new Oferta(idOferta, precio, periodo, fechaInicio, fechaFin, vivienda);
 	    }
 	    catch (Exception e)
 	    {

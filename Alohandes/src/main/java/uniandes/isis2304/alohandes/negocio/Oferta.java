@@ -79,10 +79,10 @@ public class Oferta implements VOOferta{
 	 * @param periodo - periodo de la oferta
 	 * @param fechaInicio - fecha de inicio de la oferta
 	 * @param fechaFin - fecha en la que se acaba la oferta
-	 * @param idVivienda - id de la vivienda de la oferta
+	 * @param vivienda - id de la vivienda de la oferta
 	 */
 	public Oferta(long id, long precio, String periodo,
-			Timestamp fechaInicio, Timestamp fechaFin, long vivienda, int activa) {
+			Timestamp fechaInicio, Timestamp fechaFin, long vivienda) {
 		super();
 		this.id = id;
 		this.precio = precio;
@@ -93,20 +93,6 @@ public class Oferta implements VOOferta{
 		this.fechainicio = fechaInicio;
 		this.fechafin = fechaFin;
 		this.habilitada = 1;
-	}
-
-	/**
-	 * @return the activa
-	 */
-	public int getActiva() {
-		return activa;
-	}
-
-	/**
-	 * @param activa the activa to set
-	 */
-	public void setActiva(int activa) {
-		this.activa = activa;
 	}
 
 	/**

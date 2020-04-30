@@ -91,7 +91,7 @@ public class OfertaTest {
 			
 			long precio1 = 1000;
 			String periodo1 = "MESES";
-			Oferta oferta1 = pm.adicionarOferta(precio1, periodo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 10, 23, 5, 0, 0, 0),1);
+			Oferta oferta1 = pm.adicionarOferta(precio1, periodo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 10, 23, 5, 0, 0, 0));
 			lista = pm.darOfertas();
 			
 			assertEquals ("Debe haber un oferta creado !!", 1, lista.size ());
@@ -100,7 +100,7 @@ public class OfertaTest {
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
 			long precio2 = 11000;
 			String periodo2 = "SEMESTRES";
-			Oferta oferta2 = pm.adicionarOferta(precio1, periodo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 10, 23, 5, 0, 0, 0),1);
+			Oferta oferta2 = pm.adicionarOferta(precio1, periodo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 10, 23, 5, 0, 0, 0));
 
 			lista = pm.darOfertas();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
@@ -172,14 +172,14 @@ public class OfertaTest {
 			
 			long precio1 = 1000;
 			String periodo1 = "MESES";
-			Oferta oferta1 = pm.adicionarOferta(precio1, periodo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 10, 23, 5, 0, 0, 0),1);
+			Oferta oferta1 = pm.adicionarOferta(precio1, periodo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 10, 23, 5, 0, 0, 0));
 			lista = pm.darOfertas();
 			assertEquals ("Debe haber un oferta creado !!", 1, lista.size ());
 			
 			
 			long precio2 = 11000;
 			String periodo2 = "SEMESTRES";
-			Oferta oferta2 = pm.adicionarOferta(precio1, periodo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 10, 23, 5, 0, 0, 0),1);
+			Oferta oferta2 = pm.adicionarOferta(precio1, periodo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 10, 23, 5, 0, 0, 0));
 
 			assertNull ("No puede adicionar dos ofertas con el mismo id !!", oferta2);
 		}

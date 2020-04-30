@@ -345,7 +345,7 @@ public class Controller {
 				}
 
 				interfaz.printMessage("El precio del servicio ya está incluido en la oferta? (1/0) 1 para verdadero, 0 para falso");
-				boolean incluido = sc.next().equalsIgnoreCase("Y");
+				int incluido = sc.nextInt();
 				mundo.adicionarIncluye(oferta.getId(), idServicio, incluido);
 
 				interfaz.printMessage("Desea seguir adicionando servicios? (1/0) 1 para verdadero, 0 para falso"); 
@@ -411,7 +411,7 @@ public class Controller {
 				interfaz.printMessage("Ingrese el area (en decimales y en metros cuadrados ej: 22.5)");
 				double area = sc.nextDouble();
 				interfaz.printMessage("El apartamento esta amoblado? (1/0) 1 para verdadero, 0 para falso");
-				boolean amoblado = sc.next().equalsIgnoreCase("Y");
+				int amoblado = sc.nextInt();
 				interfaz.printMessage("Ingrese el número de habitaciones (en número entero)");
 				int numeroHabitaciones = sc.nextInt();
 

@@ -919,6 +919,7 @@ public class Alohandes
 	public Reserva adicionarReserva (Timestamp inicio, Timestamp fin, int duracion, String periodoArrendamiento, long idOferta, long idUsuario, long idColectiva)
 	{
 		log.info ("Adicionando nuevo(a) Reserva ");
+		System.out.println("VA A ENTRAR :OOOO");
 		Reserva reserva = pa.adicionarReserva(inicio, fin, duracion, periodoArrendamiento, idUsuario, idOferta, idColectiva);
 		log.info ("Adicionando Reserva: " + reserva);
 		return reserva;
@@ -991,10 +992,10 @@ public class Alohandes
 	 * @param idVivienda - idVivienda del Oferta
 	 * @return El objeto Oferta adicionado. null si ocurre alguna Excepción
 	 */
-	public Oferta adicionarOferta ( long precio, String periodo, long idVivienda, Timestamp fechaInicio, Timestamp fechaFin, int activa)
+	public Oferta adicionarOferta ( long precio, String periodo, long idVivienda, Timestamp fechaInicio, Timestamp fechaFin)
 	{
 		log.info ("Adicionando nuevo(a) Oferta ");
-		Oferta oferta = pa.adicionarOferta(precio, periodo, idVivienda, fechaInicio, fechaFin,activa);
+		Oferta oferta = pa.adicionarOferta(precio, periodo, idVivienda, fechaInicio, fechaFin);
 		log.info ("Adicionando Oferta: " + oferta);
 		return oferta;
 	}

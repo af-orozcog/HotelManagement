@@ -75,7 +75,7 @@ class SQLOferta
 	* @param fechaFin - 
 	* @return El número de tuplas insertadas 
 	*/
-	public long adicionarOferta (PersistenceManager pm, long idOferta, long precio, String periodo, long idVivienda, Timestamp fechaInicio, Timestamp fechaFin, int activa)
+	public long adicionarOferta (PersistenceManager pm, long idOferta, long precio, String periodo, long idVivienda, Timestamp fechaInicio, Timestamp fechaFin)
 	{
 	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaOferta () + "(id, precio, periodo, vivienda, fechainicio, fechafin, habilitada) values (? ,? ,? ,? ,? ,? ,?)");
 	   q.setParameters( idOferta, precio, periodo, idVivienda, fechaInicio, fechaFin, 1 );
