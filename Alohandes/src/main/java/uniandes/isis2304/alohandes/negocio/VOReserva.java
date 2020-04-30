@@ -62,4 +62,11 @@ public interface VOReserva {
 	 * @param idOferta - el id de la oferta de la reserva
 	 */
 	public void setOferta(long Oferta);
+	
+	public long getColectiva();
+
+	/**
+	 * @param colectiva the colectiva to set
+	 */
+	public void setColectiva(long colectiva);
 }

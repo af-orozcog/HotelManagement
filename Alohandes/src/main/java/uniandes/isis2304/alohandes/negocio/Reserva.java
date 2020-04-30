@@ -1,11 +1,9 @@
 package uniandes.isis2304.alohandes.negocio;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.LinkedList;
-import java.util.List;
 
-public class Reserva implements VOReserva{
+
+public class Reserva{
 
 	/* ****************************************************************
 	 * 			Atributos
@@ -84,6 +82,20 @@ public class Reserva implements VOReserva{
 	}
 
 	/**
+	 * @return the colectiva
+	 */
+	public long getColectiva() {
+		return colectiva;
+	}
+
+	/**
+	 * @param colectiva the colectiva to set
+	 */
+	public void setColectiva(long colectiva) {
+		this.colectiva = colectiva;
+	}
+	
+	/**
 	 * @return id
 	 */
 	public long getId() {
@@ -152,7 +164,7 @@ public class Reserva implements VOReserva{
 	public void setCliente(long cliente) {
 		this.cliente = cliente;
 	}
-	
+
 	/**
 	 * @return idOferta
 	 */
