@@ -179,6 +179,11 @@ public class PersistenciaAlohandes
 	private SQLIncluye sqlIncluye;
 	
 	/**
+	 * Atributo para el acceso a la tabla RESERVA_COLECTIVA de la base de daatos
+	 */
+	private SQLReservaColectiva sqlReservaColectiva;
+	
+	/**
 	 * Atributo para la clase que maneja la consulta 1
 	 */
 	private REQC1 reqc1;
@@ -223,6 +228,7 @@ public class PersistenciaAlohandes
 		tablas.add ("OFERTA");
 		tablas.add ("SERVICIO");
 		tablas.add ("INCLUYE");
+		tablas.add("RESERVA_COLECTIVA");
 }
 
 	/**
@@ -312,6 +318,7 @@ public class PersistenciaAlohandes
 		sqlOferta = new SQLOferta(this);
 		sqlServicio = new SQLServicio(this);
 		sqlIncluye = new SQLIncluye(this);	
+		sqlReservaColectiva = new SQLReservaColectiva(this);
 		sqlUtil = new SQLUtil(this);
 		reqc1 = new REQC1(this);
 		reqc2 = new REQC2(this);
@@ -443,6 +450,14 @@ public class PersistenciaAlohandes
 	public String darTablaIncluye ()
 	{
 		return tablas.get (15);
+	}
+	
+	/**
+	* @return La cadena de caracteres con el nombre de la tabla de Reserva Colectiva de alohandes
+	*/
+	public String darTablaReservaColectiva ()
+	{
+		return tablas.get (16);
 	}
 	
 	/**
