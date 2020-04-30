@@ -84,7 +84,7 @@ public class ReservaTest {
     		Vivienda vi = pm.adicionarCuarto("..", 10, op.getId(), 1, 1, "..", "..");
     		long precio1 = 1000;
     		String tipo1 = "MESES";
-    		Oferta of = pm.adicionarOferta(precio1, tipo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 1, 1, 1, 0, 0, 0),1);
+    		Oferta of = pm.adicionarOferta(precio1, tipo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 1, 1, 1, 0, 0, 0));
     		Cliente us = pm.adicionarCliente("nom", "correo", "320", "100", "ESTUDIANTE");
 			// Lectura de los tipos de bebida con la tabla vacía
 			List <Reserva> lista = pm.darReservas();
@@ -98,9 +98,8 @@ public class ReservaTest {
 			int duracion1 = 10;
 			String periodoArrendamiento1 = "SEMESTRES";
 			
-			Reserva reserva1 = pm.adicionarReserva(inicio1, fin1, duracion1, periodoArrendamiento1, of.getId(), us.getId());
+			Reserva reserva1 = pm.adicionarReserva(inicio1, fin1, duracion1, periodoArrendamiento1, of.getId(), us.getId(), -1);
 			lista = pm.darReservas();
-			
 			assertEquals ("Debe haber un reserva creado !!", 1, lista.size ());
 			assertTrue ("El objeto creado y el traido de la BD deben ser iguales !!", reserva1.getId() == lista.get(0).getId());
 
@@ -111,7 +110,7 @@ public class ReservaTest {
 			int duracion2 = 9;
 			String periodoArrendamiento2 = "MESES";
 
-			Reserva reserva2 = pm.adicionarReserva(inicio2, fin2, duracion2, periodoArrendamiento2, of.getId(), us.getId());
+			Reserva reserva2 = pm.adicionarReserva(inicio2, fin2, duracion2, periodoArrendamiento2, of.getId(), us.getId(), -1);
 			lista = pm.darReservas();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
 			assertTrue ("El primer reserva adicionado debe estar en la tabla", reserva1.getId() == lista.get(0).getId() || reserva1.getId() == lista.get(1).getId());
@@ -176,7 +175,7 @@ public class ReservaTest {
     		Vivienda vi = pm.adicionarCuarto("..", 10, op.getId(), 1, 1, "..", "..");
     		long precio1 = 1000;
     		String tipo1 = "MESES";
-    		Oferta of = pm.adicionarOferta(precio1, tipo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 1, 1, 1, 0, 0, 0),1);
+    		Oferta of = pm.adicionarOferta(precio1, tipo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 1, 1, 1, 0, 0, 0));
     		Cliente us = pm.adicionarCliente("nom", "correo", "320", "100", "ESTUDIANTE");
 						
 			// Lectura de los tipos de bebida con la tabla vacía
@@ -190,7 +189,7 @@ public class ReservaTest {
 			int duracion1 = 10;
 			String periodoArrendamiento1 = "SEMESTRES";
 			
-			Reserva reserva1 = pm.adicionarReserva(inicio1, fin1, duracion1, periodoArrendamiento1, of.getId(), us.getId());
+			Reserva reserva1 = pm.adicionarReserva(inicio1, fin1, duracion1, periodoArrendamiento1, of.getId(), us.getId(), -1);
 			lista = pm.darReservas();
 			assertEquals ("Debe haber un reserva creado !!", 1, lista.size ());
 			
@@ -200,7 +199,7 @@ public class ReservaTest {
 			int duracion2 = 9;
 			String periodoArrendamiento2 = "MESES";
 
-			Reserva reserva2 = pm.adicionarReserva(inicio2, fin2, duracion2, periodoArrendamiento2, of.getId(), us.getId());
+			Reserva reserva2 = pm.adicionarReserva(inicio2, fin2, duracion2, periodoArrendamiento2, of.getId(), us.getId(), -1);
 			assertNull ("No puede adicionar dos reservas con el mismo id !!", reserva2);
 		}
 		catch (Exception e)

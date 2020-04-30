@@ -51,9 +51,9 @@ public class Oferta implements VOOferta{
 	private Timestamp fechafin;
 	
 	/**
-	 * booleano que representa si la oferta sigue activa
+	 * si la oferta esta habilitada
 	 */
-	private int activa;
+	private Integer habilitada;
 	
 	/* ****************************************************************
 	 * 			Métodos 
@@ -69,7 +69,7 @@ public class Oferta implements VOOferta{
 		this.reservas = new LinkedList<Object []> ();
 		this.servicios = new LinkedList<Object []> ();
 		this.vivienda = 0;
-		this.activa = 0;
+		this.habilitada = 1;
 	}
 
 	/**
@@ -79,10 +79,10 @@ public class Oferta implements VOOferta{
 	 * @param periodo - periodo de la oferta
 	 * @param fechaInicio - fecha de inicio de la oferta
 	 * @param fechaFin - fecha en la que se acaba la oferta
-	 * @param idVivienda - id de la vivienda de la oferta
+	 * @param vivienda - id de la vivienda de la oferta
 	 */
 	public Oferta(long id, long precio, String periodo,
-			Timestamp fechaInicio, Timestamp fechaFin, long vivienda, int activa) {
+			Timestamp fechaInicio, Timestamp fechaFin, long vivienda) {
 		super();
 		this.id = id;
 		this.precio = precio;
@@ -92,21 +92,7 @@ public class Oferta implements VOOferta{
 		this.vivienda = vivienda;
 		this.fechainicio = fechaInicio;
 		this.fechafin = fechaFin;
-		this.activa = activa;
-	}
-
-	/**
-	 * @return the activa
-	 */
-	public int getActiva() {
-		return activa;
-	}
-
-	/**
-	 * @param activa the activa to set
-	 */
-	public void setActiva(int activa) {
-		this.activa = activa;
+		this.habilitada = 1;
 	}
 
 	/**
@@ -194,21 +180,46 @@ public class Oferta implements VOOferta{
 	}
 
 	
+	/**
+	 * @return fechaInicio
+	 */
 	public Timestamp getFechainicio() {
 		return fechainicio;
 	}
 
+	/**
+	 * @param fechaInicio - fecha de inicio de la oferta
+	 */
 	public void setFechainicio(Timestamp fechainicio) {
 		this.fechainicio = fechainicio;
 	}
 
+	/**
+	 * @return fechaFin
+	 */
 	public Timestamp getFechafin() {
 		return fechafin;
 	}
 
+	/**
+	 * @param fechaFin - fecha de fin de la oferta
+	 */
 	public void setFechafin(Timestamp fechafin) {
 		this.fechafin = fechafin;
 	}
 	
+	/**
+	 * @return habilitada
+	 */
+	public Integer getHabilitada() {
+		return habilitada;
+	}
+	
+	/**
+	 * @param habilitada - si la oferta est� habilitada
+	 */
+	public void setHabilitada(Integer habilitada) {
+		this.habilitada = habilitada;
+	}
 	
 }

@@ -1,6 +1,8 @@
 package uniandes.isis2304.alohandes.negocio;
 
 import java.time.LocalTime;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Cliente extends Usuario implements VOCliente{
 
@@ -18,6 +20,16 @@ public class Cliente extends Usuario implements VOCliente{
 	 */
 	private String documento;
 
+
+	/**
+	 * las reservas que tiene el cliente
+	 */
+	private List<Object []> reservas;
+
+	/**
+	 * las reservas colectivas que tiene el cliente
+	 */
+	private List<Object []> reservasColectivas;
 
 	/* ****************************************************************
 	 * 			Métodos 
@@ -46,6 +58,8 @@ public class Cliente extends Usuario implements VOCliente{
 		super(id,nombre,email,numero);
 		this.tipo_cliente = tipoCliente;
 		this.documento = documento;
+		this.reservas = new LinkedList<Object[]>();
+		this.reservasColectivas = new LinkedList<Object[]>();
 	}
 
 	/**
@@ -131,5 +145,33 @@ public class Cliente extends Usuario implements VOCliente{
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-	
+
+	/**
+	 * @return reservas
+	 */
+	public List<Object[]> getReservas() {
+		return reservas;
+	}
+
+	/**
+	 * @param reservas - reservas del cliente
+	 */
+	public void setReservas(List<Object[]> reservas) {
+		this.reservas = reservas;
+	}
+
+	/**
+	 * @return reservasColectivas
+	 */
+	public List<Object[]> getReservasColectivas() {
+		return reservasColectivas;
+	}
+
+	/**
+	 * @param reservasColectivas - reservas colectivas del cliente
+	 */
+	public void setReservasColectivas(List<Object[]> reservasColectivas) {
+		this.reservasColectivas = reservasColectivas;
+	}
+
 }
