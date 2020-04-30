@@ -919,7 +919,7 @@ public class Alohandes
 	public Reserva adicionarReserva (Timestamp inicio, Timestamp fin, int duracion, String periodoArrendamiento, long idOferta, long idUsuario, long idColectiva)
 	{
 		log.info ("Adicionando nuevo(a) Reserva ");
-		System.out.println("VA A ENTRAR :OOOO");
+		System.out.println("VA A ENTRAR lol :OOOO");
 		Reserva reserva = pa.adicionarReserva(inicio, fin, duracion, periodoArrendamiento, idUsuario, idOferta, idColectiva);
 		log.info ("Adicionando Reserva: " + reserva);
 		return reserva;
