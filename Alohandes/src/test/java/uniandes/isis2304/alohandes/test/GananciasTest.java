@@ -71,7 +71,7 @@ public class GananciasTest {
 			lista = pm.darGanancias();
 			
 			assertEquals ("Debe haber un ganancias creado !!", 1, lista.size ());
-			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", ganancias1, lista.get (0));
+			assertTrue ("El objeto creado y el traido de la BD deben ser iguales !!", ganancias1.getId() ==  lista.get(0).getId());
 
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
 			long cantidad2 = 100000;
@@ -80,16 +80,16 @@ public class GananciasTest {
 			Ganancias ganancias2 = pm.adicionarGanancias(cantidad2, mes2, anio2, op.getId());
 			lista = pm.darGanancias();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
-			assertTrue ("El primer ganancias adicionado debe estar en la tabla", ganancias1.equals (lista.get (0)) || ganancias1.equals (lista.get (1)));
-			assertTrue ("El segundo ganancias adicionado debe estar en la tabla", ganancias2.equals (lista.get (0)) || ganancias2.equals (lista.get (1)));
+			assertTrue ("El primer ganancias adicionado debe estar en la tabla", ganancias1.getId() == lista.get(0).getId() || ganancias1.getId() == lista.get(1).getId());
+			assertTrue ("El segundo ganancias adicionado debe estar en la tabla", ganancias2.getId() == lista.get(0).getId() || ganancias2.getId() == lista.get(1).getId());
 
 			// Prueba de eliminación de un ganancias, dado su identificador
 			long tbEliminados = pm.eliminarGananciasPorId (ganancias1.getId ());
 			assertEquals ("Debe haberse eliminado un ganancias !!", 1, tbEliminados);
 			lista = pm.darGanancias();
 			assertEquals ("Debe haber un solo ganancias !!", 1, lista.size ());
-			assertFalse ("El primer ganancias adicionado NO debe estar en la tabla", ganancias1.equals (lista.get (0)));
-			assertTrue ("El segundo ganancias adicionado debe estar en la tabla", ganancias2.equals (lista.get (0)));
+			assertFalse ("El primer ganancias adicionado NO debe estar en la tabla", ganancias1.getId() == lista.get(0).getId());
+			assertTrue ("El segundo ganancias adicionado debe estar en la tabla", ganancias2.getId() == lista.get(0).getId());
 			
 		}
 		catch (Exception e)
@@ -171,10 +171,5 @@ public class GananciasTest {
 			pm.limpiarAlohandes();
     		pm.cerrarUnidadPersistencia ();    		
 		}
-	}
-	
-	@Test
-	public void test() {
-		fail("Not yet implemented");
 	}
 }

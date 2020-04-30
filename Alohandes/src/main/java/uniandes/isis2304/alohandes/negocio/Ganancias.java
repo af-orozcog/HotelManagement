@@ -102,14 +102,14 @@ public class Ganancias implements VOGanancias{
 	/**
 	 * @return idOperador
 	 */
-	public long getIdOperador() {
+	public long getOperador() {
 		return operador;
 	}
 
 	/**
 	 * @param idOperador - el id del operador
 	 */
-	public void setIdOperador(long idOperador) {
+	public void setOperador(long idOperador) {
 		this.operador = idOperador;
 	}
 

@@ -237,7 +237,7 @@ public class Alohandes
 	 * @param numeroHabitaciones - numeroHabitaciones del Apartamento
 	 * @return El objeto Apartamento adicionado. null si ocurre alguna Excepción
 	 */
-	public Apartamento adicionarApartamento ( String direccion, int cupos, long idOperador, double area, boolean amoblado, int numeroHabitaciones)
+	public Apartamento adicionarApartamento ( String direccion, int cupos, long idOperador, double area, int amoblado, int numeroHabitaciones)
 	{
 		//System.out.println("poeque nuca llego por asfqwfgfd");
 		log.info ("Adicionando nuevo(a) Apartamento ");
@@ -309,7 +309,7 @@ public class Alohandes
 	 * @param idSeguro - idSeguro del Esporadico
 	 * @return El objeto Esporadico adicionado. null si ocurre alguna Excepción
 	 */
-	public Esporadico adicionarEsporadico (String direccion, int cupos, long idOperador, double area, boolean amoblado, int numeroHabitaciones, int nochesanio, long idSeguro)
+	public Esporadico adicionarEsporadico (String direccion, int cupos, long idOperador, double area, int amoblado, int numeroHabitaciones, int nochesanio, long idSeguro)
 	{
 		log.info ("Adicionando nuevo(a) Esporadico ");
 		Esporadico esporadico = pa.adicionarEsporadico(direccion, cupos, idOperador, area, amoblado, numeroHabitaciones, nochesanio, idSeguro);	
@@ -991,10 +991,10 @@ public class Alohandes
 	 * @param idVivienda - idVivienda del Oferta
 	 * @return El objeto Oferta adicionado. null si ocurre alguna Excepción
 	 */
-	public Oferta adicionarOferta ( long precio, String periodo, long idVivienda, Timestamp fechaInicio, Timestamp fechaFin)
+	public Oferta adicionarOferta ( long precio, String periodo, long idVivienda, Timestamp fechaInicio, Timestamp fechaFin, int activa)
 	{
 		log.info ("Adicionando nuevo(a) Oferta ");
-		Oferta oferta = pa.adicionarOferta(precio, periodo, idVivienda, fechaInicio, fechaFin);
+		Oferta oferta = pa.adicionarOferta(precio, periodo, idVivienda, fechaInicio, fechaFin,activa);
 		log.info ("Adicionando Oferta: " + oferta);
 		return oferta;
 	}

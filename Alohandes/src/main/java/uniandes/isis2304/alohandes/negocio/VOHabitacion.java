@@ -6,12 +6,12 @@ public interface VOHabitacion {
 	 * 
 	 * @return
 	 */
-	public String getTipoHabitacion();
+	public String getTipo_habitacion();
 
 	/**
 	 * @param tipoHabitacion - el tipo de habitacion
 	 */
-	public void setTipoHabitacion(String tipoHabitacion);
+	public void setTipo_habitacion(String tipoHabitacion);
 
 	/**
 	 * @return the categoria

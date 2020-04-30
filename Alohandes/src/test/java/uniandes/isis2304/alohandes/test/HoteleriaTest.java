@@ -68,35 +68,35 @@ public class HoteleriaTest {
 			String nombre1 = "elSapo";
 			String email1 = "sapo@gmail.com";
 			String numero1 = "345654323456";
-			String tipoHoteleria1 = "HOTELERIA";
+			String tipoHoteleria1 = "HOTEL";
 			Timestamp horaInicio1 = new Timestamp(1000);
 			Timestamp horaFin1 = new Timestamp(100000);
 			Hoteleria Hoteleria1 = pm.adicionarHoteleria(nombre1, email1, numero1, tipoHoteleria1, horaInicio1, horaFin1);
 			lista = pm.darHotelerias();
 			
 			assertEquals ("Debe haber un Hoteleria creado !!", 1, lista.size ());
-			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", Hoteleria1, lista.get (0));
+			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", Hoteleria1.getEmail(), lista.get(0).getEmail());
 
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
 			String nombre2 = "elSapoPerro";
-			String email2 = "sapo@gmail.com";
+			String email2 = "sapo2@gmail.com";
 			String numero2 = "345654323456";
-			String tipoHoteleria2 = "HOTELERIA";
+			String tipoHoteleria2 = "HOTEL";
 			Timestamp horaInicio2 = new Timestamp(1000);
 			Timestamp horaFin2 = new Timestamp(100000);
 			Hoteleria Hoteleria2 = pm.adicionarHoteleria(nombre2, email2, numero2, tipoHoteleria2, horaInicio2, horaFin2);
 			lista = pm.darHotelerias();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
-			assertTrue ("El primer Hoteleria adicionado debe estar en la tabla", Hoteleria1.equals (lista.get (0)) || Hoteleria1.equals (lista.get (1)));
-			assertTrue ("El segundo Hoteleria adicionado debe estar en la tabla", Hoteleria2.equals (lista.get (0)) || Hoteleria2.equals (lista.get (1)));
+			assertTrue ("El primer Hoteleria adicionado debe estar en la tabla", Hoteleria1.getEmail().equals (lista.get(0).getEmail()) || Hoteleria1.getEmail().equals (lista.get(1).getEmail()));
+			assertTrue ("El segundo Hoteleria adicionado debe estar en la tabla", Hoteleria2.getEmail().equals (lista.get(0).getEmail()) || Hoteleria2.getEmail().equals (lista.get(1).getEmail()));
 
 			// Prueba de eliminación de un Hoteleria, dado su identificador
 			long tbEliminados = pm.eliminarHoteleriaPorId (Hoteleria1.getId ());
 			assertEquals ("Debe haberse eliminado un Hoteleria !!", 1, tbEliminados);
 			lista = pm.darHotelerias();
 			assertEquals ("Debe haber un solo Hoteleria !!", 1, lista.size ());
-			assertFalse ("El primer Hoteleria adicionado NO debe estar en la tabla", Hoteleria1.equals (lista.get (0)));
-			assertTrue ("El segundo Hoteleria adicionado debe estar en la tabla", Hoteleria2.equals (lista.get (0)));
+			assertFalse ("El primer Hoteleria adicionado NO debe estar en la tabla", Hoteleria1.getEmail().equals (lista.get(0).getEmail()));
+			assertTrue ("El segundo Hoteleria adicionado debe estar en la tabla", Hoteleria2.getEmail().equals (lista.get(0).getEmail()));
 			
 		}
 		catch (Exception e)
@@ -152,7 +152,7 @@ public class HoteleriaTest {
 			String nombre1 = "elSapo";
 			String email1 = "sapo@gmail.com";
 			String numero1 = "345654323456";
-			String tipoHoteleria1 = "HOTELERIA";
+			String tipoHoteleria1 = "HOTEL";
 			Timestamp horaInicio1 = new Timestamp(1000);
 			Timestamp horaFin1 = new Timestamp(100000);
 			Hoteleria Hoteleria1 = pm.adicionarHoteleria(nombre1, email1, numero1, tipoHoteleria1, horaInicio1, horaFin1);
@@ -162,7 +162,7 @@ public class HoteleriaTest {
 			String nombre2 = "elSapoPerro";
 			String email2 = "sapo@gmail.com";
 			String numero2 = "345654323456";
-			String tipoHoteleria2 = "HOTELERIA";
+			String tipoHoteleria2 = "HOTEL";
 			Timestamp horaInicio2 = new Timestamp(1000);
 			Timestamp horaFin2 = new Timestamp(100000);
 			Hoteleria Hoteleria2 = pm.adicionarHoteleria(nombre2, email2, numero2, tipoHoteleria2, horaInicio2, horaFin2);
@@ -185,8 +185,4 @@ public class HoteleriaTest {
 		}
 	}
 	
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
 }

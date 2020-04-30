@@ -664,7 +664,7 @@ public class PersistenciaAlohandes
 	* @param x - x de Apartamento
 	* @return El objeto Apartamento adicionado. null si ocurre alguna Excepción
 	*/
-	public Apartamento adicionarApartamento( String direccion, int cupos, long idOperador, double area, boolean amoblado, int numeroHabitaciones)
+	public Apartamento adicionarApartamento( String direccion, int cupos, long idOperador, double area, int amoblado, int numeroHabitaciones)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 	    Transaction tx=pm.currentTransaction();
@@ -750,7 +750,7 @@ public class PersistenciaAlohandes
 	* @param x - x de Esporadico
 	* @return El objeto Esporadico adicionado. null si ocurre alguna Excepción
 	*/
-	public Esporadico adicionarEsporadico(String direccion, int cupos, long idOperador,  double area, boolean amoblado, int numeroHabitaciones, int nochesAnio, long idSeguro)
+	public Esporadico adicionarEsporadico(String direccion, int cupos, long idOperador,  double area, int amoblado, int numeroHabitaciones, int nochesAnio, long idSeguro)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 	    Transaction tx=pm.currentTransaction();
@@ -1632,7 +1632,7 @@ public class PersistenciaAlohandes
 	* @param x - x de Oferta
 	* @return El objeto Oferta adicionado. null si ocurre alguna Excepción
 	*/
-	public Oferta adicionarOferta(long precio, String periodo, long idVivienda, Timestamp fechaInicio, Timestamp fechaFin)
+	public Oferta adicionarOferta(long precio, String periodo, long idVivienda, Timestamp fechaInicio, Timestamp fechaFin, int activa)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 	    Transaction tx=pm.currentTransaction();
@@ -1642,12 +1642,12 @@ public class PersistenciaAlohandes
 	        long idOferta = nextval ();
 	        if(modoPerron)
             	idOferta = idPerron;
-	        long tuplasInsertadas = sqlOferta.adicionarOferta(pm, idOferta, precio, periodo, idVivienda, fechaInicio, fechaFin);
+	        long tuplasInsertadas = sqlOferta.adicionarOferta(pm, idOferta, precio, periodo, idVivienda, fechaInicio, fechaFin,activa);
 	        tx.commit();
 
 	        log.trace ("Inserción de vivienda: " + idOferta + ": " + tuplasInsertadas + " tuplas insertadas");
 
-	        return new Oferta(idOferta, precio, periodo, fechaInicio, fechaFin, idVivienda);
+	        return new Oferta(idOferta, precio, periodo, fechaInicio, fechaFin, idVivienda, activa);
 	    }
 	    catch (Exception e)
 	    {
