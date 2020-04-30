@@ -84,7 +84,7 @@ public class IncluyeTest {
     		Vivienda vi = pm.adicionarVivienda("..", 10, op.getId());
 			    		
     		// Lectura de los tipos de bebida con la tabla vacía
-    		Oferta of1 = pm.adicionarOferta(500, "SEMESTRES", vi.getId(), new Timestamp(2000, 1, 1, 0, 0, 0, 0), new Timestamp(2001, 12, 30, 0, 0, 0, 0));
+    		Oferta of1 = pm.adicionarOferta(500, "SEMESTRES", vi.getId(), new Timestamp(2000, 1, 1, 0, 0, 0, 0), new Timestamp(2001, 12, 30, 0, 0, 0, 0),1);
     		Servicio se1 = pm.adicionarServicio("Ser1", 100);
     	
 			List <Incluye> lista = pm.darIncluye();
@@ -93,30 +93,31 @@ public class IncluyeTest {
 			// Lectura de los tipos de bebida con un incluye adicionado
 			
 			
-			Incluye incluye1 = pm.adicionarIncluye(of1.getId(),se1.getId(),true);
+			Incluye incluye1 = pm.adicionarIncluye(se1.getId(),of1.getId(),1);
 			lista = pm.darIncluye();
 			
 			assertEquals ("Debe haber un incluye creado !!", 1, lista.size ());
-			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", incluye1, lista.get (0));
+			System.out.println("VALORES "+ incluye1.getOferta() + " " + lista.get(0).getOferta() + " "+ of1.getId() + " " + se1.getId());
+			assertTrue ("El objeto creado y el traido de la BD deben ser iguales !!", incluye1.getOferta() == lista.get(0).getOferta());
 
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
 			
-			Oferta of2 = pm.adicionarOferta(1500, "MESES", vi.getId(), new Timestamp(2001, 1, 1, 0, 0, 0, 0), new Timestamp(2002, 12, 30, 0, 0, 0, 0));
+			Oferta of2 = pm.adicionarOferta(1500, "MESES", vi.getId(), new Timestamp(2001, 1, 1, 0, 0, 0, 0), new Timestamp(2002, 12, 30, 0, 0, 0, 0),1);
     		Servicio se2 = pm.adicionarServicio("Ser2", 1100);
 			
-			Incluye incluye2 = pm.adicionarIncluye(of2.getId(), se2.getId(), false);
+			Incluye incluye2 = pm.adicionarIncluye(se2.getId(),of2.getId(), 0);
 			lista = pm.darIncluye();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
-			assertTrue ("El primer incluye adicionado debe estar en la tabla", incluye1.equals (lista.get (0)) || incluye1.equals (lista.get (1)));
-			assertTrue ("El segundo incluye adicionado debe estar en la tabla", incluye2.equals (lista.get (0)) || incluye2.equals (lista.get (1)));
+			assertTrue ("El primer incluye adicionado debe estar en la tabla", incluye1.getOferta() == lista.get (0).getOferta() || incluye1.getOferta() == lista.get (1).getOferta());
+			assertTrue ("El segundo incluye adicionado debe estar en la tabla", incluye2.getOferta() == lista.get (0).getOferta() || incluye2.getOferta() == lista.get(1).getOferta());
 
 			// Prueba de eliminación de un incluye, dado su identificador
-			long tbEliminados = pm.eliminarIncluyePorId(incluye1.getIdServicio(), incluye1.getIdOferta());
+			long tbEliminados = pm.eliminarIncluyePorId(incluye1.getServicio(), incluye1.getOferta());
 			assertEquals ("Debe haberse eliminado un incluye !!", 1, tbEliminados);
 			lista = pm.darIncluye();
 			assertEquals ("Debe haber un solo incluye !!", 1, lista.size ());
-			assertFalse ("El primer incluye adicionado NO debe estar en la tabla", incluye1.equals (lista.get (0)));
-			assertTrue ("El segundo incluye adicionado debe estar en la tabla", incluye2.equals (lista.get (0)));
+			assertFalse ("El primer incluye adicionado NO debe estar en la tabla", incluye1.getOferta() == lista.get(0).getOferta());
+			assertTrue ("El segundo incluye adicionado debe estar en la tabla", incluye2.getOferta() == lista.get (0).getOferta());
 			
 		}
 		catch (Exception e)
@@ -168,7 +169,7 @@ public class IncluyeTest {
     		Vivienda vi = pm.adicionarVivienda("..", 10, op.getId());
 			    		
     		// Lectura de los tipos de bebida con la tabla vacía
-    		Oferta of1 = pm.adicionarOferta(500, "SEMESTRES", vi.getId(), new Timestamp(2000, 1, 1, 0, 0, 0, 0), new Timestamp(2001, 12, 30, 0, 0, 0, 0));
+    		Oferta of1 = pm.adicionarOferta(500, "SEMESTRES", vi.getId(), new Timestamp(2000, 1, 1, 0, 0, 0, 0), new Timestamp(2001, 12, 30, 0, 0, 0, 0),1);
     		Servicio se1 = pm.adicionarServicio("Ser1", 100);
     		
 			List <Incluye> lista = pm.darIncluye();
@@ -176,14 +177,14 @@ public class IncluyeTest {
 			pm.modoPruebas();
 			pm.asignarID(1000);
 
-			Incluye incluye1 = pm.adicionarIncluye(of1.getId(),se1.getId(),true);
+			Incluye incluye1 = pm.adicionarIncluye(se1.getId(),of1.getId(),1);
 			lista = pm.darIncluye();
 			assertEquals ("Debe haber un incluye creado !!", 1, lista.size ());
 			
-			Oferta of2 = pm.adicionarOferta(1500, "MESES", vi.getId(), new Timestamp(2001, 1, 1, 0, 0, 0, 0), new Timestamp(2002, 12, 30, 0, 0, 0, 0));
+			Oferta of2 = pm.adicionarOferta(1500, "MESES", vi.getId(), new Timestamp(2001, 1, 1, 0, 0, 0, 0), new Timestamp(2002, 12, 30, 0, 0, 0, 0),1);
     		Servicio se2 = pm.adicionarServicio("Ser2", 1100);
 			
-			Incluye incluye2 = pm.adicionarIncluye(of2.getId(), se2.getId(), false);
+			Incluye incluye2 = pm.adicionarIncluye(se2.getId(),of2.getId(), 0);
 			assertNull ("No puede adicionar dos incluyes con el mismo id !!", incluye2);
 		}
 		catch (Exception e)

@@ -82,7 +82,9 @@ public class ReservaTest {
 		{
     		Operador op = pm.adicionarOperador("..", "..", "..", "PERSONA_NATURAL");
     		Vivienda vi = pm.adicionarCuarto("..", 10, op.getId(), 1, 1, "..", "..");
-    		Oferta of = pm.adicionarOferta(1000, "MESES", vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 1, 1, 1, 0, 0, 0));
+    		long precio1 = 1000;
+    		String tipo1 = "MESES";
+    		Oferta of = pm.adicionarOferta(precio1, tipo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 1, 1, 1, 0, 0, 0),1);
     		Cliente us = pm.adicionarCliente("nom", "correo", "320", "100", "ESTUDIANTE");
 			// Lectura de los tipos de bebida con la tabla vacía
 			List <Reserva> lista = pm.darReservas();
@@ -100,7 +102,7 @@ public class ReservaTest {
 			lista = pm.darReservas();
 			
 			assertEquals ("Debe haber un reserva creado !!", 1, lista.size ());
-			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", reserva1, lista.get (0));
+			assertTrue ("El objeto creado y el traido de la BD deben ser iguales !!", reserva1.getId() == lista.get(0).getId());
 
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
 			
@@ -112,16 +114,16 @@ public class ReservaTest {
 			Reserva reserva2 = pm.adicionarReserva(inicio2, fin2, duracion2, periodoArrendamiento2, of.getId(), us.getId());
 			lista = pm.darReservas();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
-			assertTrue ("El primer reserva adicionado debe estar en la tabla", reserva1.equals (lista.get (0)) || reserva1.equals (lista.get (1)));
-			assertTrue ("El segundo reserva adicionado debe estar en la tabla", reserva2.equals (lista.get (0)) || reserva2.equals (lista.get (1)));
+			assertTrue ("El primer reserva adicionado debe estar en la tabla", reserva1.getId() == lista.get(0).getId() || reserva1.getId() == lista.get(1).getId());
+			assertTrue ("El segundo reserva adicionado debe estar en la tabla", reserva2.getId() == lista.get(0).getId() || reserva2.getId() == lista.get(1).getId());
 
 			// Prueba de eliminación de un reserva, dado su identificador
 			long tbEliminados = pm.eliminarReservaPorId (reserva1.getId ());
 			assertEquals ("Debe haberse eliminado un reserva !!", 1, tbEliminados);
 			lista = pm.darReservas();
 			assertEquals ("Debe haber un solo reserva !!", 1, lista.size ());
-			assertFalse ("El primer reserva adicionado NO debe estar en la tabla", reserva1.equals (lista.get (0)));
-			assertTrue ("El segundo reserva adicionado debe estar en la tabla", reserva2.equals (lista.get (0)));
+			assertFalse ("El primer reserva adicionado NO debe estar en la tabla", reserva1.getId() == lista.get(0).getId());
+			assertTrue ("El segundo reserva adicionado debe estar en la tabla", reserva2.getId() == lista.get(0).getId());
 			
 		}
 		catch (Exception e)
@@ -172,7 +174,9 @@ public class ReservaTest {
 
 			Operador op = pm.adicionarOperador("..", "..", "..", "PERSONA_NATURAL");
     		Vivienda vi = pm.adicionarCuarto("..", 10, op.getId(), 1, 1, "..", "..");
-    		Oferta of = pm.adicionarOferta(1000, "MESES", vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 1, 1, 1, 0, 0, 0));
+    		long precio1 = 1000;
+    		String tipo1 = "MESES";
+    		Oferta of = pm.adicionarOferta(precio1, tipo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 1, 1, 1, 0, 0, 0),1);
     		Cliente us = pm.adicionarCliente("nom", "correo", "320", "100", "ESTUDIANTE");
 						
 			// Lectura de los tipos de bebida con la tabla vacía

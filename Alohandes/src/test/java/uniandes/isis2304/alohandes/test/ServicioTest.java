@@ -88,7 +88,7 @@ public class ServicioTest {
 			lista = pm.darServicios();
 			
 			assertEquals ("Debe haber un servicio creado !!", 1, lista.size ());
-			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", servicio1, lista.get (0));
+			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", servicio1.getNombre(), lista.get(0).getNombre());
 
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
 			String nombre2 = "nom2";
@@ -97,16 +97,16 @@ public class ServicioTest {
 			
 			lista = pm.darServicios();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
-			assertTrue ("El primer servicio adicionado debe estar en la tabla", servicio1.equals (lista.get (0)) || servicio1.equals (lista.get (1)));
-			assertTrue ("El segundo servicio adicionado debe estar en la tabla", servicio2.equals (lista.get (0)) || servicio2.equals (lista.get (1)));
+			assertTrue ("El primer servicio adicionado debe estar en la tabla", servicio1.getNombre().equals(lista.get(0).getNombre()) || servicio1.getNombre().equals (lista.get(1).getNombre()));
+			assertTrue ("El segundo servicio adicionado debe estar en la tabla", servicio2.getNombre().equals(lista.get(0).getNombre()) || servicio2.getNombre().equals (lista.get(1).getNombre()));
 
 			// Prueba de eliminación de un servicio, dado su identificador
 			long tbEliminados = pm.eliminarServicioPorId (servicio1.getId ());
 			assertEquals ("Debe haberse eliminado un servicio !!", 1, tbEliminados);
 			lista = pm.darServicios();
 			assertEquals ("Debe haber un solo servicio !!", 1, lista.size ());
-			assertFalse ("El primer servicio adicionado NO debe estar en la tabla", servicio1.equals (lista.get (0)));
-			assertTrue ("El segundo servicio adicionado debe estar en la tabla", servicio2.equals (lista.get (0)));
+			assertFalse ("El primer servicio adicionado NO debe estar en la tabla", servicio1.getNombre().equals(lista.get(0).getNombre()));
+			assertTrue ("El segundo servicio adicionado debe estar en la tabla", servicio2.getNombre().equals(lista.get(0).getNombre()));
 			
 		}
 		catch (Exception e)

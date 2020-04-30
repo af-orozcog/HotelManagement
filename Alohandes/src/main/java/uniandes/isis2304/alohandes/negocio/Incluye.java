@@ -18,7 +18,7 @@ public class Incluye implements VOIncluye
 	/**
 	 * Indica si el servicio esta incluido en el precio.
 	 */
-	private boolean incluido;
+	private int incluido;
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -30,7 +30,7 @@ public class Incluye implements VOIncluye
 	{
 		this.oferta = 0;
 		this.servicio = 0;
-		this.incluido = true;
+		this.incluido = 0;
 	}
 
 	/**
@@ -39,7 +39,7 @@ public class Incluye implements VOIncluye
 	 * @param idServicio - El identificador del servicio. Debe existir una servicio con dicho identificador
 	 * @param incluido - Si el servicio esta incluido en el precio
 	 */
-	public Incluye (long idOferta, long idServicio, boolean incluido) 
+	public Incluye (long idOferta, long idServicio, int incluido) 
 	{
 		this.oferta = idOferta;
 		this.servicio = idServicio;
@@ -49,7 +49,7 @@ public class Incluye implements VOIncluye
 	/**
 	 * @return El idOferta
 	 */
-	public long getIdOferta() 
+	public long getOferta() 
 	{
 		return oferta;
 	}
@@ -57,7 +57,7 @@ public class Incluye implements VOIncluye
 	/**
 	 * @param idOferta - El nuevo identificador de oferta. Debe existir un oferta con dicho identificador
 	 */
-	public void setIdOferta(long idOferta) 
+	public void setOferta(long idOferta) 
 	{
 		this.oferta = idOferta;
 	}
@@ -65,7 +65,7 @@ public class Incluye implements VOIncluye
 	/**
 	 * @return El idServicio
 	 */
-	public long getIdServicio() 
+	public long getServicio() 
 	{
 		return servicio;
 	}
@@ -73,7 +73,7 @@ public class Incluye implements VOIncluye
 	/**
 	 * @param idServicio - El nuevo identificador de servicio. Debe existir una servicio con dicho identificador
 	 */
-	public void setIdServicio(long idServicio) 
+	public void setServicio(long idServicio) 
 	{
 		this.servicio = idServicio;
 	}
@@ -81,7 +81,7 @@ public class Incluye implements VOIncluye
 	/**
 	 * @return Si el servicio esta incluido en el precio
 	 */
-	public boolean getIncluido() 
+	public int getIncluido() 
 	{
 		return incluido;
 	}
@@ -89,7 +89,7 @@ public class Incluye implements VOIncluye
 	/**
 	 * @param incluido - La nueva condicion del servicio con respecto a si esta incluido
 	 */
-	public void setIncluido(boolean incluido) 
+	public void setIncluido(int incluido) 
 	{
 		this.incluido = incluido;
 	}

@@ -69,32 +69,35 @@ public class VivienvaUniversitariaTest {
 			String numero1 = "nose";
 			ViviendaUniversitaria ViviendaUniversitaria1 = pm.adicionarViviendaUniversitaria(nombre1, email1, numero1);
 			lista = pm.darViviendasUniversitarias();
-			
+			System.out.println("LLEGA HASTA ANTES DE PEDIR POR PRIMERA VES LAS VIVIENDAS " + lista.size());
 			assertEquals ("Debe haber un ViviendaUniversitaria creado !!", 1, lista.size ());
-			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", ViviendaUniversitaria1, lista.get (0));
+			System.out.println("LIL" + lista.get(0).getEmail());
+			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", ViviendaUniversitaria1.getEmail(), lista.get(0).getEmail());
 
+			System.out.println("LLEGA HASTA DEPUES DE PEDIR LAS VIVIENDAS?");
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
-			String nombre2 = "nose";
-			String email2 = "nose";
-			String numero2 = "nose";
+			String nombre2 = "nosse";
+			String email2 = "nosse";
+			String numero2 = "nosse";
 			ViviendaUniversitaria ViviendaUniversitaria2 = pm.adicionarViviendaUniversitaria(nombre2, email2, numero2);
 			lista = pm.darViviendasUniversitarias();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
-			assertTrue ("El primer ViviendaUniversitaria adicionado debe estar en la tabla", ViviendaUniversitaria1.equals (lista.get (0)) || ViviendaUniversitaria1.equals (lista.get (1)));
-			assertTrue ("El segundo ViviendaUniversitaria adicionado debe estar en la tabla", ViviendaUniversitaria2.equals (lista.get (0)) || ViviendaUniversitaria2.equals (lista.get (1)));
+			assertTrue ("El primer ViviendaUniversitaria adicionado debe estar en la tabla", ViviendaUniversitaria1.getEmail().equals(lista.get(0).getEmail()) || ViviendaUniversitaria1.getEmail().equals (lista.get(1).getEmail()));
+			assertTrue ("El segundo ViviendaUniversitaria adicionado debe estar en la tabla", ViviendaUniversitaria2.getEmail().equals(lista.get(0).getEmail()) || ViviendaUniversitaria2.getEmail().equals (lista.get(1).getEmail()));
 
 			// Prueba de eliminación de un ViviendaUniversitaria, dado su identificador
+			System.out.println("LLEGA HASTA JUNTO DE ELIMINAR");
 			long tbEliminados = pm.eliminarViviendaUniversitariaPorId (ViviendaUniversitaria1.getId ());
 			assertEquals ("Debe haberse eliminado un ViviendaUniversitaria !!", 1, tbEliminados);
 			lista = pm.darViviendasUniversitarias();
 			assertEquals ("Debe haber un solo ViviendaUniversitaria !!", 1, lista.size ());
-			assertFalse ("El primer ViviendaUniversitaria adicionado NO debe estar en la tabla", ViviendaUniversitaria1.equals (lista.get (0)));
-			assertTrue ("El segundo ViviendaUniversitaria adicionado debe estar en la tabla", ViviendaUniversitaria2.equals (lista.get (0)));
+			assertFalse ("El primer ViviendaUniversitaria adicionado NO debe estar en la tabla", ViviendaUniversitaria1.getEmail().equals(lista.get(0).getEmail()));
+			assertTrue ("El segundo ViviendaUniversitaria adicionado debe estar en la tabla", ViviendaUniversitaria2.getEmail().equals (lista.get(0).getEmail()));
 			
 		}
 		catch (Exception e)
 		{
-//			e.printStackTrace();
+			e.printStackTrace();
 			String msg = "Error en la ejecución de las pruebas de operaciones sobre la tabla ViviendaUniversitaria.\n";
 			msg += "Revise el log de pm y el de datanucleus para conocer el detalle de la excepción";
 			System.out.println (msg);
@@ -170,10 +173,5 @@ public class VivienvaUniversitariaTest {
 			pm.limpiarAlohandes();
     		pm.cerrarUnidadPersistencia ();    		
 		}
-	}
-	
-	@Test
-	public void test() {
-		fail("Not yet implemented");
 	}
 }

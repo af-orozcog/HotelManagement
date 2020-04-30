@@ -91,29 +91,29 @@ public class OfertaTest {
 			
 			long precio1 = 1000;
 			String periodo1 = "MESES";
-			Oferta oferta1 = pm.adicionarOferta(precio1, periodo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 10, 23, 5, 0, 0, 0));
+			Oferta oferta1 = pm.adicionarOferta(precio1, periodo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 10, 23, 5, 0, 0, 0),1);
 			lista = pm.darOfertas();
 			
 			assertEquals ("Debe haber un oferta creado !!", 1, lista.size ());
-			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", oferta1, lista.get (0));
+			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", oferta1.getPeriodo(), lista.get(0).getPeriodo());
 
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
 			long precio2 = 11000;
 			String periodo2 = "SEMESTRES";
-			Oferta oferta2 = pm.adicionarOferta(precio1, periodo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 10, 23, 5, 0, 0, 0));
+			Oferta oferta2 = pm.adicionarOferta(precio1, periodo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 10, 23, 5, 0, 0, 0),1);
 
 			lista = pm.darOfertas();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
-			assertTrue ("El primer oferta adicionado debe estar en la tabla", oferta1.equals (lista.get (0)) || oferta1.equals (lista.get (1)));
-			assertTrue ("El segundo oferta adicionado debe estar en la tabla", oferta2.equals (lista.get (0)) || oferta2.equals (lista.get (1)));
+			assertTrue ("El primer oferta adicionado debe estar en la tabla", oferta1.getPeriodo().equals(lista.get(0).getPeriodo()) || oferta1.getPeriodo().equals (lista.get(1).getPeriodo()));
+			assertTrue ("El segundo oferta adicionado debe estar en la tabla", oferta2.getPeriodo().equals (lista.get (0).getPeriodo()) || oferta2.getPeriodo().equals (lista.get(1).getPeriodo()));
 
 			// Prueba de eliminación de un oferta, dado su identificador
 			long tbEliminados = pm.eliminarOfertaPorId (oferta1.getId ());
 			assertEquals ("Debe haberse eliminado un oferta !!", 1, tbEliminados);
 			lista = pm.darOfertas();
 			assertEquals ("Debe haber un solo oferta !!", 1, lista.size ());
-			assertFalse ("El primer oferta adicionado NO debe estar en la tabla", oferta1.equals (lista.get (0)));
-			assertTrue ("El segundo oferta adicionado debe estar en la tabla", oferta2.equals (lista.get (0)));
+			assertFalse ("El primer oferta adicionado NO debe estar en la tabla", oferta1.getId() == lista.get(0).getId());
+			assertTrue ("El segundo oferta adicionado debe estar en la tabla", oferta2.getPeriodo().equals (lista.get(0).getPeriodo()));
 			
 		}
 		catch (Exception e)
@@ -172,14 +172,14 @@ public class OfertaTest {
 			
 			long precio1 = 1000;
 			String periodo1 = "MESES";
-			Oferta oferta1 = pm.adicionarOferta(precio1, periodo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 10, 23, 5, 0, 0, 0));
+			Oferta oferta1 = pm.adicionarOferta(precio1, periodo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 10, 23, 5, 0, 0, 0),1);
 			lista = pm.darOfertas();
 			assertEquals ("Debe haber un oferta creado !!", 1, lista.size ());
 			
 			
 			long precio2 = 11000;
 			String periodo2 = "SEMESTRES";
-			Oferta oferta2 = pm.adicionarOferta(precio1, periodo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 10, 23, 5, 0, 0, 0));
+			Oferta oferta2 = pm.adicionarOferta(precio1, periodo1, vi.getId(), new Timestamp(2000, 1, 1, 1, 0, 0, 0), new Timestamp(2001, 10, 23, 5, 0, 0, 0),1);
 
 			assertNull ("No puede adicionar dos ofertas con el mismo id !!", oferta2);
 		}

@@ -67,7 +67,7 @@ class SQLIncluye
 	 * @param incluido - si el servicio está incluido en el precio de la oferta
 	 * @return EL número de tuplas insertadas
 	 */
-	public long adicionarIncluye (PersistenceManager pm, long idServicio, long idOferta, boolean incluido) 
+	public long adicionarIncluye (PersistenceManager pm, long idServicio, long idOferta, int incluido) 
 	{
         Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaIncluye () + "(servicio, oferta, incluido) values (?, ?, ?)");
         q.setParameters(idServicio, idOferta, incluido);

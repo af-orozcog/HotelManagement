@@ -71,25 +71,25 @@ public class ViviendaTest {
 			Vivienda vivienda1 = pm.adicionarVivienda(direccionVivienda1, cuposVivienda1,op.getId());
 			lista = pm.darViviendas();
 			assertEquals ("Debe haber un vivienda creado !!", 1, lista.size ());
-			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", vivienda1, lista.get (0));
+			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", vivienda1.getDireccion(), lista.get(0).getDireccion());
 
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
-			String direccionVivienda2 = "calle24C#20C-20";
+			String direccionVivienda2 = "calle24C#20C-202";
 			int cuposVivienda2 = 4;
 			
 			Vivienda vivienda2 = pm.adicionarVivienda (direccionVivienda2,cuposVivienda2,op.getId());
 			lista = pm.darViviendas();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
-			assertTrue ("El primer vivienda adicionado debe estar en la tabla", vivienda1.equals (lista.get (0)) || vivienda1.equals (lista.get (1)));
-			assertTrue ("El segundo vivienda adicionado debe estar en la tabla", vivienda2.equals (lista.get (0)) || vivienda2.equals (lista.get (1)));
+			assertTrue ("El primer vivienda adicionado debe estar en la tabla", vivienda1.getDireccion().equals(lista.get(0).getDireccion()) || vivienda1.getDireccion().equals(lista.get(1).getDireccion()));
+			assertTrue ("El segundo vivienda adicionado debe estar en la tabla", vivienda2.getDireccion().equals(lista.get(0).getDireccion()) || vivienda2.getDireccion().equals(lista.get(1).getDireccion()));
 
 			// Prueba de eliminación de un vivienda, dado su identificador
 			long tbEliminados = pm.eliminarViviendaPorId (vivienda1.getId ());
 			assertEquals ("Debe haberse eliminado un vivienda !!", 1, tbEliminados);
 			lista = pm.darViviendas();
 			assertEquals ("Debe haber un solo vivienda !!", 1, lista.size ());
-			assertFalse ("El primer vivienda adicionado NO debe estar en la tabla", vivienda1.equals (lista.get (0)));
-			assertTrue ("El segundo vivienda adicionado debe estar en la tabla", vivienda2.equals (lista.get (0)));
+			assertFalse ("El primer vivienda adicionado NO debe estar en la tabla", vivienda1.getDireccion().equals(lista.get(0).getDireccion()));
+			assertTrue ("El segundo vivienda adicionado debe estar en la tabla", vivienda2.getDireccion().equals (lista.get(0).getDireccion()));
 			
 		}
 		catch (Exception e)
@@ -168,11 +168,6 @@ public class ViviendaTest {
 			pm.limpiarAlohandes();
     		pm.cerrarUnidadPersistencia ();    		
 		}
-	}
-	
-	@Test
-	public void test() {
-		fail("Not yet implemented");
 	}
 
 }
