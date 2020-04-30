@@ -66,10 +66,10 @@ public interface VOReserva {
 	/**
 	 * @return reservaColectiva
 	 */
-	public long getColectiva();
+	public Long getColectiva();
 
 	/**
 	 * @param colectiva the colectiva to set
 	 */
-	public void setColectiva(long colectiva);
+	public void setColectiva(Long colectiva);
 }

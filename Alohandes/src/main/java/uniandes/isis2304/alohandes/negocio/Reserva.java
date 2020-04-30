@@ -42,7 +42,7 @@ public class Reserva implements VOReserva{
 	/**
 	 * reserva colectiva a la que pertenece
 	 */
-	private long colectiva;
+	private Long colectiva;
 	
 	/* ****************************************************************
 	 * 			Métodos 
@@ -57,7 +57,7 @@ public class Reserva implements VOReserva{
 		this.periodo_arrendamiento = "";
 		this.cliente = 0;
 		this.oferta = 0;
-		this.colectiva = 0;
+		this.colectiva = null;
 	}
 
 	/**
@@ -69,16 +69,16 @@ public class Reserva implements VOReserva{
 	 * @param idOferta - la oferta de la reserva
 	 * @param idColectiva - la reserva colectiva a la que puede pertenecer
 	 */
-	public Reserva(long id, Timestamp inicio, Timestamp fin, String periodoArrendamiento, long idUsuario,
-			long idOferta, long idColectiva) {
+	public Reserva(long id, Timestamp inicio, Timestamp fin, String periodoArrendamiento, long usuario,
+			long oferta, Long colectiva) {
 		super();
 		this.id = id;
 		this.inicio = inicio;
 		this.fin = fin;
 		this.periodo_arrendamiento = periodoArrendamiento;
-		this.cliente = idUsuario;
-		this.oferta = idOferta;
-		this.colectiva = idColectiva;
+		this.cliente = usuario;
+		this.oferta = oferta;
+		this.colectiva = colectiva;
 	}
 	
 	/**
@@ -168,14 +168,14 @@ public class Reserva implements VOReserva{
 	/**
 	 * @return the colectiva
 	 */
-	public long getColectiva() {
+	public Long getColectiva() {
 		return colectiva;
 	}
 
 	/**
 	 * @param colectiva the colectiva to set
 	 */
-	public void setColectiva(long colectiva) {
+	public void setColectiva(Long colectiva) {
 		this.colectiva = colectiva;
 	}
 }
