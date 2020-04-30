@@ -96,7 +96,7 @@ public class ReservaTest {
 			int duracion1 = 10;
 			String periodoArrendamiento1 = "SEMESTRES";
 			
-			Reserva reserva1 = pm.adicionarReserva(inicio1, fin1, duracion1, periodoArrendamiento1, of.getId(), us.getId());
+			Reserva reserva1 = pm.adicionarReserva(inicio1, fin1, duracion1, periodoArrendamiento1, of.getId(), us.getId(), -1);
 			lista = pm.darReservas();
 			
 			assertEquals ("Debe haber un reserva creado !!", 1, lista.size ());
@@ -109,7 +109,7 @@ public class ReservaTest {
 			int duracion2 = 9;
 			String periodoArrendamiento2 = "MESES";
 
-			Reserva reserva2 = pm.adicionarReserva(inicio2, fin2, duracion2, periodoArrendamiento2, of.getId(), us.getId());
+			Reserva reserva2 = pm.adicionarReserva(inicio2, fin2, duracion2, periodoArrendamiento2, of.getId(), us.getId(), -1);
 			lista = pm.darReservas();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
 			assertTrue ("El primer reserva adicionado debe estar en la tabla", reserva1.equals (lista.get (0)) || reserva1.equals (lista.get (1)));
@@ -186,7 +186,7 @@ public class ReservaTest {
 			int duracion1 = 10;
 			String periodoArrendamiento1 = "SEMESTRES";
 			
-			Reserva reserva1 = pm.adicionarReserva(inicio1, fin1, duracion1, periodoArrendamiento1, of.getId(), us.getId());
+			Reserva reserva1 = pm.adicionarReserva(inicio1, fin1, duracion1, periodoArrendamiento1, of.getId(), us.getId(), -1);
 			lista = pm.darReservas();
 			assertEquals ("Debe haber un reserva creado !!", 1, lista.size ());
 			
@@ -196,7 +196,7 @@ public class ReservaTest {
 			int duracion2 = 9;
 			String periodoArrendamiento2 = "MESES";
 
-			Reserva reserva2 = pm.adicionarReserva(inicio2, fin2, duracion2, periodoArrendamiento2, of.getId(), us.getId());
+			Reserva reserva2 = pm.adicionarReserva(inicio2, fin2, duracion2, periodoArrendamiento2, of.getId(), us.getId(), -1);
 			assertNull ("No puede adicionar dos reservas con el mismo id !!", reserva2);
 		}
 		catch (Exception e)

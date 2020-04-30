@@ -70,15 +70,24 @@ class SQLReserva
 	 * @param fin - 
 	 * @param duracion - 
 	 * @param periodoArrendamiento - 
-	 * @param idUsuario - 
+	 * @param idCliente - 
 	 * @param idOferta - 
+	 * @param idColectiva 
 	 * @return El número de tuplas insertadas 
 	 */
-	public long adicionarReserva (PersistenceManager pm, long idReserva, Timestamp inicio, Timestamp fin, int duracion, String periodoArrendamiento, long idUsuario, long idOferta)
+	public long adicionarReserva (PersistenceManager pm, long idReserva, Timestamp inicio, Timestamp fin, int duracion, String periodoArrendamiento, long idCliente, long idOferta, long idColectiva)
 	{
-		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaReserva () + "(id, inicio, fin, periodo_arrendamiento, cliente, oferta) values (? ,? ,? ,? ,? ,?)");
-		q.setParameters( idReserva, inicio, fin, periodoArrendamiento, idUsuario, idOferta );
-		return (long) q.executeUnique();
+		if(idColectiva == -1) {
+			Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaReserva () + "(id, inicio, fin, periodo_arrendamiento, cliente, oferta) values (? ,? ,? ,? ,? ,?)");
+			q.setParameters( idReserva, inicio, fin, periodoArrendamiento, idCliente, idOferta );
+			return (long) q.executeUnique();
+		}
+		else
+		{
+			Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaReserva () + "(id, inicio, fin, periodo_arrendamiento, cliente, oferta, colectiva) values (? ,? ,? ,? ,? ,?, ?)");
+			q.setParameters( idReserva, inicio, fin, periodoArrendamiento, idCliente, idOferta, idColectiva );
+			return (long) q.executeUnique();
+		}
 	}
 
 	/**

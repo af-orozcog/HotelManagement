@@ -41,6 +41,11 @@ public class Reserva implements VOReserva{
 	 */
 	private long oferta;
 	
+	/**
+	 * reserva colectiva a la que pertenece
+	 */
+	private long colectiva;
+	
 	/* ****************************************************************
 	 * 			Métodos 
 	 *****************************************************************/
@@ -54,6 +59,7 @@ public class Reserva implements VOReserva{
 		this.periodo_arrendamiento = "";
 		this.cliente = 0;
 		this.oferta = 0;
+		this.colectiva = 0;
 	}
 
 	/**
@@ -63,9 +69,10 @@ public class Reserva implements VOReserva{
 	 * @param periodoArrendamiento - String de arrendamiento de la reserva
 	 * @param idUsuario - el usuario dueño de la reserva
 	 * @param idOferta - la oferta de la reserva
+	 * @param idColectiva - la reserva colectiva a la que puede pertenecer
 	 */
 	public Reserva(long id, Timestamp inicio, Timestamp fin, String periodoArrendamiento, long idUsuario,
-			long idOferta) {
+			long idOferta, long idColectiva) {
 		super();
 		this.id = id;
 		this.inicio = inicio;
@@ -73,6 +80,7 @@ public class Reserva implements VOReserva{
 		this.periodo_arrendamiento = periodoArrendamiento;
 		this.cliente = idUsuario;
 		this.oferta = idOferta;
+		this.colectiva = idColectiva;
 	}
 
 	/**

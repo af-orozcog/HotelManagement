@@ -50,6 +50,11 @@ public class Oferta implements VOOferta{
 	 */
 	private Timestamp fechafin;
 	
+	/**
+	 * si la oferta esta habilitada
+	 */
+	private Integer habilitada;
+	
 	/* ****************************************************************
 	 * 			MÃ©todos 
 	 *****************************************************************/
@@ -64,6 +69,7 @@ public class Oferta implements VOOferta{
 		this.reservas = new LinkedList<Object []> ();
 		this.servicios = new LinkedList<Object []> ();
 		this.vivienda = 0;
+		this.habilitada = 1;
 	}
 
 	/**
@@ -86,6 +92,7 @@ public class Oferta implements VOOferta{
 		this.vivienda = vivienda;
 		this.fechainicio = fechaInicio;
 		this.fechafin = fechaFin;
+		this.habilitada = 1;
 	}
 
 	/**
@@ -173,21 +180,46 @@ public class Oferta implements VOOferta{
 	}
 
 	
+	/**
+	 * @return fechaInicio
+	 */
 	public Timestamp getFechainicio() {
 		return fechainicio;
 	}
 
+	/**
+	 * @param fechaInicio - fecha de inicio de la oferta
+	 */
 	public void setFechainicio(Timestamp fechainicio) {
 		this.fechainicio = fechainicio;
 	}
 
+	/**
+	 * @return fechaFin
+	 */
 	public Timestamp getFechafin() {
 		return fechafin;
 	}
 
+	/**
+	 * @param fechaFin - fecha de fin de la oferta
+	 */
 	public void setFechafin(Timestamp fechafin) {
 		this.fechafin = fechafin;
 	}
 	
+	/**
+	 * @return habilitada
+	 */
+	public Integer getHabilitada() {
+		return habilitada;
+	}
+	
+	/**
+	 * @param habilitada - si la oferta está habilitada
+	 */
+	public void setHabilitada(Integer habilitada) {
+		this.habilitada = habilitada;
+	}
 	
 }

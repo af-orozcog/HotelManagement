@@ -1538,7 +1538,7 @@ public class PersistenciaAlohandes
 	* @param x - x de Reserva
 	* @return El objeto Reserva adicionado. null si ocurre alguna Excepción
 	*/
-	public Reserva adicionarReserva(Timestamp inicio, Timestamp fin, int duracion, String periodoArrendamiento, long idUsuario, long idOferta)
+	public Reserva adicionarReserva(Timestamp inicio, Timestamp fin, int duracion, String periodoArrendamiento, long idUsuario, long idOferta, long idColectiva)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 	    Transaction tx=pm.currentTransaction();
@@ -1548,12 +1548,12 @@ public class PersistenciaAlohandes
 	        long idReserva = nextval ();
 	    	if(modoPerron)
 	    		idReserva = idPerron;
-	        long tuplasInsertadas = sqlReserva.adicionarReserva(pm, idReserva, inicio, fin, duracion, periodoArrendamiento, idUsuario, idOferta);
+	        long tuplasInsertadas = sqlReserva.adicionarReserva(pm, idReserva, inicio, fin, duracion, periodoArrendamiento, idUsuario, idOferta, idColectiva);
 	        tx.commit();
 
 	        log.trace ("Inserción de vivienda: " + idReserva + ": " + tuplasInsertadas + " tuplas insertadas");
 
-	        return new Reserva(idReserva, inicio, fin, periodoArrendamiento, idUsuario, idOferta);
+	        return new Reserva(idReserva, inicio, fin, periodoArrendamiento, idUsuario, idOferta, idColectiva);
 	    }
 	    catch (Exception e)
 	    {

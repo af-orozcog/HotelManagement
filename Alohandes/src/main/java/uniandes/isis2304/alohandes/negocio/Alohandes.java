@@ -916,10 +916,10 @@ public class Alohandes
 	 * @param idUsuario - idUsuario del Reserva
 	 * @return El objeto Reserva adicionado. null si ocurre alguna Excepción
 	 */
-	public Reserva adicionarReserva (Timestamp inicio, Timestamp fin, int duracion, String periodoArrendamiento, long idOferta, long idUsuario)
+	public Reserva adicionarReserva (Timestamp inicio, Timestamp fin, int duracion, String periodoArrendamiento, long idOferta, long idUsuario, long idColectiva)
 	{
 		log.info ("Adicionando nuevo(a) Reserva ");
-		Reserva reserva = pa.adicionarReserva(inicio, fin, duracion, periodoArrendamiento, idUsuario, idOferta);
+		Reserva reserva = pa.adicionarReserva(inicio, fin, duracion, periodoArrendamiento, idUsuario, idOferta, idColectiva);
 		log.info ("Adicionando Reserva: " + reserva);
 		return reserva;
 	}

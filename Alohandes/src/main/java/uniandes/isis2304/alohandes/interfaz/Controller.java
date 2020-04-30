@@ -232,7 +232,7 @@ public class Controller {
 		interfaz.printMessage("Dar duración de la reserva en " + periodoArrendamiento +" (Escribir número entero)");
 		int duracion = sc.nextInt();
 
-		mundo.adicionarReserva(inicio, fin, duracion, periodoArrendamiento, idOferta, usuario.getId());
+		mundo.adicionarReserva(inicio, fin, duracion, periodoArrendamiento, idOferta, usuario.getId(), -1);
 	}
 
 	@SuppressWarnings("deprecation")
