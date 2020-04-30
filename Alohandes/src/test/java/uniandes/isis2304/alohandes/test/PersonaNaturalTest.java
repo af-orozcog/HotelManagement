@@ -66,32 +66,32 @@ public class PersonaNaturalTest {
 			String email1 = "zeus@gmail.com";
 			String numero1 = "3246765434";
 			String documento1 = "2343454345";
-			String tipo1 = "PERSONA_NATURAL";
+			String tipo1 = "PROFESOR";
 			Persona_Natural Persona_Natural1 = pm.adicionarPersona_Natural(nombre1, email1, documento1, numero1, tipo1);
 			lista = pm.darPersona_Naturales();
 			
 			assertEquals ("Debe haber un Persona_Natural creado !!", 1, lista.size ());
-			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", Persona_Natural1, lista.get (0));
+			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", Persona_Natural1.getEmail(), lista.get (0).getEmail());
 
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
 			String nombre2 = "zeuss";
-			String email2 = "zeus@gmail.com";
+			String email2 = "zeuss@gmail.com";
 			String numero2 = "3246765434";
 			String documento2 = "23434543sf45";
-			String tipo2 = "PERSONA_NATURAL";
+			String tipo2 = "PROFESOR";
 			Persona_Natural Persona_Natural2 = pm.adicionarPersona_Natural(nombre2, email2, documento2, numero2, tipo2);
 			lista = pm.darPersona_Naturales();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
-			assertTrue ("El primer Persona_Natural adicionado debe estar en la tabla", Persona_Natural1.equals (lista.get (0)) || Persona_Natural1.equals (lista.get (1)));
-			assertTrue ("El segundo Persona_Natural adicionado debe estar en la tabla", Persona_Natural2.equals (lista.get (0)) || Persona_Natural2.equals (lista.get (1)));
+			assertTrue ("El primer Persona_Natural adicionado debe estar en la tabla", Persona_Natural1.getEmail().equals (lista.get (0).getEmail()) || Persona_Natural1.getEmail().equals (lista.get (1).getEmail()));
+			assertTrue ("El segundo Persona_Natural adicionado debe estar en la tabla", Persona_Natural2.getEmail().equals (lista.get (0).getEmail()) || Persona_Natural2.getEmail().equals (lista.get (1).getEmail()));
 
 			// Prueba de eliminación de un Persona_Natural, dado su identificador
 			long tbEliminados = pm.eliminarPersona_NaturalPorId (Persona_Natural1.getId ());
 			assertEquals ("Debe haberse eliminado un Persona_Natural !!", 1, tbEliminados);
 			lista = pm.darPersona_Naturales();
 			assertEquals ("Debe haber un solo Persona_Natural !!", 1, lista.size ());
-			assertFalse ("El primer Persona_Natural adicionado NO debe estar en la tabla", Persona_Natural1.equals (lista.get (0)));
-			assertTrue ("El segundo Persona_Natural adicionado debe estar en la tabla", Persona_Natural2.equals (lista.get (0)));
+			assertFalse ("El primer Persona_Natural adicionado NO debe estar en la tabla", Persona_Natural1.getEmail().equals (lista.get (0).getEmail()));
+			assertTrue ("El segundo Persona_Natural adicionado debe estar en la tabla", Persona_Natural2.getEmail().equals (lista.get (0).getEmail()));
 			
 		}
 		catch (Exception e)
@@ -147,7 +147,7 @@ public class PersonaNaturalTest {
 			String email1 = "zeus@gmail.com";
 			String numero1 = "3246765434";
 			String documento1 = "2343454345";
-			String tipo1 = "PERSONA_NATURAL";
+			String tipo1 = "PROFESOR";
 			Persona_Natural Persona_Natural1 = pm.adicionarPersona_Natural(nombre1, email1, documento1, numero1, tipo1);
 			lista = pm.darPersona_Naturales();
 			assertEquals ("Debe haber un Persona_Natural creado !!", 1, lista.size ());
@@ -157,7 +157,7 @@ public class PersonaNaturalTest {
 			String email2 = "zeus@gmail.com";
 			String numero2 = "3246765434";
 			String documento2 = "23434543sf45";
-			String tipo2 = "PERSONA_NATURAL";
+			String tipo2 = "PROFESOR";
 			Persona_Natural Persona_Natural2 = pm.adicionarPersona_Natural(nombre2, email2, documento2, numero2, tipo2);
 			lista = pm.darPersona_Naturales();
 			assertNull ("No puede adicionar dos Persona_Naturals con el mismo id !!", Persona_Natural2);
@@ -178,8 +178,4 @@ public class PersonaNaturalTest {
 		}
 	}
 	
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
 }

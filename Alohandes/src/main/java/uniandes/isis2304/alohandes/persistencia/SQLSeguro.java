@@ -85,7 +85,7 @@ class SQLSeguro
 	*/
 	public long eliminarSeguroPorId (PersistenceManager pm, long idSeguro)
 	{
-	    Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaVivienda () + " WHERE id = ?");
+	    Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaSeguro()+ " WHERE id = ?");
 	    q.setParameters(idSeguro);
 	    return (long) q.executeUnique();
 	}

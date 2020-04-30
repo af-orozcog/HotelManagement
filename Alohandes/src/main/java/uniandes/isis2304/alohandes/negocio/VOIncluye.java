@@ -4,30 +4,30 @@ public interface VOIncluye {
 	/**
 	 * @return El idOferta
 	 */
-	public long getIdOferta();
+	public long getOferta();
 
 	/**
 	 * @param idOferta - El nuevo identificador de oferta. Debe existir un oferta con dicho identificador
 	 */
-	public void setIdOferta(long idOferta);
+	public void setOferta(long idOferta);
 
 	/**
 	 * @return El idServicio
 	 */
-	public long getIdServicio();
+	public long getServicio();
 
 	/**
 	 * @param idServicio - El nuevo identificador de servicio. Debe existir una servicio con dicho identificador
 	 */
-	public void setIdServicio(long idServicio);
+	public void setServicio(long idServicio);
 
 	/**
 	 * @return Si el servicio esta incluido en el precio
 	 */
-	public boolean getIncluido();
+	public int getIncluido();
 
 	/**
 	 * @param incluido - La nueva condicion del servicio con respecto a si esta incluido
 	 */
-	public void setIncluido(boolean incluido);
+	public void setIncluido(int incluido);
 }

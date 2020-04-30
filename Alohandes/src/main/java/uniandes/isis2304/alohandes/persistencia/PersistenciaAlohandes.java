@@ -881,6 +881,7 @@ public class PersistenciaAlohandes
 	    try
 	    {
 	        tx.begin();
+	        System.out.println("intenta borrar el seguro?");
 	        long resp = sqlSeguro.eliminarSeguroPorId(pm, idSeguro);
 	        tx.commit();
 	        return resp;
@@ -1835,7 +1836,7 @@ public class PersistenciaAlohandes
 	 * @param incluido - 
 	 * @return Un objeto INCLUYE con la información dada. Null si ocurre alguna Excepción
 	 */
-	public Incluye adicionarIncluye (long idServicio, long idOferta, boolean incluido) 
+	public Incluye adicionarIncluye (long idServicio, long idOferta, int incluido) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();

@@ -73,26 +73,26 @@ public class SeguroTest {
 			lista = pm.darSeguros();
 			
 			assertEquals ("Debe haber un seguro creado !!", 1, lista.size ());
-			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", seguro1, lista.get (0));
+			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", seguro1.getEmpresa(), lista.get (0).getEmpresa());
 
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
-			String empresa2 = "elSAPOINC";
+			String empresa2 = "elSAPOINCC";
 			int monto2 = 1000;
 			Timestamp inicio2 = new Timestamp(10000);
 			Timestamp fin2 = new Timestamp(100000);
 			Seguro seguro2 = pm.adicionarSeguro(empresa2, monto2, inicio2, fin2);
 			lista = pm.darSeguros();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
-			assertTrue ("El primer seguro adicionado debe estar en la tabla", seguro1.equals (lista.get (0)) || seguro1.equals (lista.get (1)));
-			assertTrue ("El segundo seguro adicionado debe estar en la tabla", seguro2.equals (lista.get (0)) || seguro2.equals (lista.get (1)));
+			assertTrue ("El primer seguro adicionado debe estar en la tabla", seguro1.getEmpresa().equals (lista.get (0).getEmpresa()) || seguro1.getEmpresa().equals (lista.get (1).getEmpresa()));
+			assertTrue ("El segundo seguro adicionado debe estar en la tabla", seguro2.getEmpresa().equals (lista.get (0).getEmpresa()) || seguro2.getEmpresa().equals (lista.get (1).getEmpresa()));
 
 			// Prueba de eliminación de un seguro, dado su identificador
 			long tbEliminados = pm.eliminarSeguroPorId (seguro1.getId ());
 			assertEquals ("Debe haberse eliminado un seguro !!", 1, tbEliminados);
 			lista = pm.darSeguros();
 			assertEquals ("Debe haber un solo seguro !!", 1, lista.size ());
-			assertFalse ("El primer seguro adicionado NO debe estar en la tabla", seguro1.equals (lista.get (0)));
-			assertTrue ("El segundo seguro adicionado debe estar en la tabla", seguro2.equals (lista.get (0)));
+			assertFalse ("El primer seguro adicionado NO debe estar en la tabla", seguro1.getEmpresa().equals (lista.get (0).getEmpresa()));
+			assertTrue ("El segundo seguro adicionado debe estar en la tabla", seguro2.getEmpresa().equals (lista.get (0).getEmpresa()));
 			
 		}
 		catch (Exception e)
@@ -176,10 +176,5 @@ public class SeguroTest {
 			pm.limpiarAlohandes();
     		pm.cerrarUnidadPersistencia ();    		
 		}
-	}
-	
-	@Test
-	public void test() {
-		fail("Not yet implemented");
 	}
 }

@@ -37,22 +37,22 @@ public interface VOSeguro {
 	/**
 	 * @return inicioSeguro
 	 */
-	public Timestamp getInicioSeguro();
+	public Timestamp getInicio_seguro();
 
 	/**
 	 * @param inicioSeguro - fecha de inicio del seguro
 	 */
-	public void setInicioSeguro(Timestamp inicioSeguro);
+	public void setInicio_seguro(Timestamp inicioSeguro);
 
 	/**
 	 * @return finSeguro
 	 */
-	public Timestamp getFinSeguro();
+	public Timestamp getFin_seguro();
 
 	/**
 	 * @param finSeguro - fecha de finalización del seguro
 	 */
-	public void setFinSeguro(Timestamp finSeguro);
+	public void setFin_seguro(Timestamp finSeguro);
 
 	/**
 	 * @return asegurados

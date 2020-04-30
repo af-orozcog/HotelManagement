@@ -118,28 +118,28 @@ public class Seguro implements VOSeguro{
 	/**
 	 * @return inicioSeguro
 	 */
-	public Timestamp getInicioSeguro() {
+	public Timestamp getInicio_seguro() {
 		return inicio_seguro;
 	}
 
 	/**
 	 * @param inicioSeguro - fecha de inicio del seguro
 	 */
-	public void setInicioSeguro(Timestamp inicioSeguro) {
+	public void setInicio_seguro(Timestamp inicioSeguro) {
 		this.inicio_seguro = inicioSeguro;
 	}
 
 	/**
 	 * @return finSeguro
 	 */
-	public Timestamp getFinSeguro() {
+	public Timestamp getFin_seguro() {
 		return fin_seguro;
 	}
 
 	/**
 	 * @param finSeguro - fecha de finalización del seguro
 	 */
-	public void setFinSeguro(Timestamp finSeguro) {
+	public void setFin_seguro(Timestamp finSeguro) {
 		this.fin_seguro = finSeguro;
 	}
 

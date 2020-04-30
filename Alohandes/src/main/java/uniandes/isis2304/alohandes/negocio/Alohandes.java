@@ -1152,7 +1152,7 @@ public class Alohandes
 	 * @param incluido - incluido del Incluye
 	 * @return El objeto Incluye adicionado. null si ocurre alguna Excepción
 	 */
-	public Incluye adicionarIncluye (long idOferta, long idServicio, boolean incluido)
+	public Incluye adicionarIncluye (long idServicio, long idOferta, int incluido)
 	{
 		log.info ("Adicionando nuevo(a) Incluye ");
 		Incluye incluye = pa.adicionarIncluye(idServicio, idOferta, incluido);	

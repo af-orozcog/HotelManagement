@@ -4,12 +4,12 @@ public interface VOPersona_Natural {
 	/**
 	 * @return tipoHoteleria
 	 */
-	public String getTipoPersona();
+	public String getTipo_persona();
 
 	/**
 	 * @param tipoPersona - el nuevo tipo de persona natural 
 	 */
-	public void setTipoPersona(String tipoPersona);
+	public void setTipo_persona(String tipoPersona);
 
 	/**
 	 * @return documento

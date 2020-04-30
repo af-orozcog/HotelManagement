@@ -9,6 +9,7 @@ import org.junit.Test;
 
 
 import uniandes.isis2304.alohandes.negocio.Operador;
+import uniandes.isis2304.alohandes.negocio.Persona_Natural;
 import uniandes.isis2304.alohandes.persistencia.PersistenciaAlohandes;
 
 public class OperadorTest {
@@ -66,33 +67,37 @@ public class OperadorTest {
 			String nombre1 = "zeus";
 			String email1 = "zeus@gmail.com";
 			String numero1 = "3246765434";
-			String tipo1 = "PERSONA_NATURAL";
-			Operador operador1 = pm.adicionarOperador(nombre1, email1, numero1, tipo1);
-			lista = pm.darOperadores();
+			String documento1 = "3545654456";
+			String tipoOp1 = "PERSONA_NATURAL";
+			String tipo1 = "PROFESOR";
+			Persona_Natural operador1 = pm.adicionarPersona_Natural(nombre1, email1, documento1, numero1, tipo1);
+			List<Persona_Natural> lista1 = pm.darPersona_Naturales();
 			
-			assertEquals ("Debe haber un operador creado !!", 1, lista.size ());
-			System.out.println("el nombre del sapo es: " + lista.get(0).getNombre());
-			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", operador1.getNombre(), lista.get(0).getNombre());
+			
+			assertEquals ("Debe haber un operador creado !!", 1, lista1.size ());
+			System.out.println("el nombre del sapo es: " + lista1.get(0).getNombre());
+			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", operador1.getNombre(), lista1.get(0).getNombre());
 
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
 			String nombre2 = "zeuss";
 			String email2 = "zeusss@gmail.com";
 			String numero2 = "324676543445";
 			String tipo2 = "PERSONA_NATURAL";
-			Operador operador2 = pm.adicionarOperador(nombre2, email2, numero2, tipo2);
-			lista = pm.darOperadores();
-			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
-			assertTrue ("El primer operador adicionado debe estar en la tabla", operador1.getNombre().equals (lista.get(0).getNombre()) || operador1.getNombre().equals (lista.get(1).getNombre()));
-			assertTrue ("El segundo operador adicionado debe estar en la tabla", operador2.getNombre().equals (lista.get(0).getNombre()) || operador2.getNombre().equals(lista.get(1).getNombre()));
+			String documento2 = "45676576534";
+			Persona_Natural operador2 = pm.adicionarPersona_Natural(nombre2, email2, documento2, numero2, tipo2);
+			lista1 = pm.darPersona_Naturales();
+			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista1.size ());
+			assertTrue ("El primer operador adicionado debe estar en la tabla", operador1.getNombre().equals (lista1.get(0).getNombre()) || operador1.getNombre().equals (lista.get(1).getNombre()));
+			assertTrue ("El segundo operador adicionado debe estar en la tabla", operador2.getNombre().equals (lista1.get(0).getNombre()) || operador2.getNombre().equals(lista.get(1).getNombre()));
 
 			// Prueba de eliminación de un operador, dado su identificador
 			long tbEliminados = pm.eliminarOperadorPorId (operador1.getId());
 			assertEquals ("Debe haberse eliminado un operador !!", 1, tbEliminados);
-			lista = pm.darOperadores();
-			assertEquals ("Debe haber un solo operador !!", 1, lista.size ());
+			lista1 = pm.darPersona_Naturales();
+			assertEquals ("Debe haber un solo operador !!", 1, lista1.size ());
 			System.out.println("cual es el nombre de la persona ahi");
-			assertFalse ("El primer operador adicionado NO debe estar en la tabla", operador1.getNombre().equals(lista.get(0).getNombre()));
-			assertTrue ("El segundo operador adicionado debe estar en la tabla", operador2.getNombre().equals(lista.get(0).getNombre()));
+			assertFalse ("El primer operador adicionado NO debe estar en la tabla", operador1.getNombre().equals(lista1.get(0).getNombre()));
+			assertTrue ("El segundo operador adicionado debe estar en la tabla", operador2.getNombre().equals(lista1.get(0).getNombre()));
 			
 		}
 		catch (Exception e)
@@ -147,18 +152,22 @@ public class OperadorTest {
 			String nombre1 = "zeus";
 			String email1 = "zeus@gmail.com";
 			String numero1 = "3246765434";
-			String tipo1 = "PERSONA_NATURAL";
-			Operador operador1 = pm.adicionarOperador(nombre1, email1, numero1, tipo1);
-			lista = pm.darOperadores();
-			assertEquals ("Debe haber un operador creado !!", 1, lista.size ());
+			String documento1 = "3545654456";
+			String tipoOp1 = "PERSONA_NATURAL";
+			String tipo1 = "PROFESOR";
+			Persona_Natural operador1 = pm.adicionarPersona_Natural(nombre1, email1, documento1, numero1, tipo1);
+			List<Persona_Natural> lista1 = pm.darPersona_Naturales();
+			assertEquals ("Debe haber un operador creado !!", 1, lista1.size ());
 			
 			
 			String nombre2 = "zeus";
 			String email2 = "zeus@gmail.com";
 			String numero2 = "3246765434";
-			String tipo2 = "PERSONA_NATURAL";
-			Operador operador2 = pm.adicionarOperador(nombre2, email2, numero2, tipo2);
-			lista = pm.darOperadores();
+			String documento2 = "3545654456";
+			String tipoOp2 = "PERSONA_NATURAL";
+			String tipo2 = "PROFESOR";
+			Persona_Natural operador2 = pm.adicionarPersona_Natural(nombre1, email1, documento1, numero1, tipo1);
+			lista1 = pm.darPersona_Naturales();
 			assertNull ("No puede adicionar dos operadors con el mismo id !!", operador2);
 		}
 		catch (Exception e)
