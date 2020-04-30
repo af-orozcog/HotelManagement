@@ -77,7 +77,6 @@ class SQLReserva
 	 */
 	public long adicionarReserva (PersistenceManager pm, long idReserva, Timestamp inicio, Timestamp fin, int duracion, String periodoArrendamiento, long idCliente, long idOferta, long idColectiva)
 	{
-		System.out.println("HASTA ACA");
 		if(idColectiva == -1L) {
 			Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaReserva () + "(id, inicio, fin, periodo_arrendamiento, cliente, oferta) values (? ,? ,? ,? ,? ,?)");
 			q.setParameters( idReserva, inicio, fin, periodoArrendamiento, idCliente, idOferta );

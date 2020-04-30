@@ -1558,14 +1558,12 @@ public class PersistenciaAlohandes
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 	    Transaction tx=pm.currentTransaction();
-	    System.out.println("Entroo");
 	    try
 	    {
 	        tx.begin();
 	        long idReserva = nextval ();
 	    	if(modoPerron)
 	    		idReserva = idPerron;
-	    	System.out.println("Todo listo");
 	        long tuplasInsertadas = sqlReserva.adicionarReserva(pm, idReserva, inicio, fin, duracion, periodoArrendamiento, idUsuario, idOferta, idColectiva);
 	        tx.commit();
 
