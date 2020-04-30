@@ -3,7 +3,7 @@ package uniandes.isis2304.alohandes.negocio;
 import java.sql.Timestamp;
 
 
-public class Reserva{
+public class Reserva implements VOReserva{
 
 	/* ****************************************************************
 	 * 			Atributos
