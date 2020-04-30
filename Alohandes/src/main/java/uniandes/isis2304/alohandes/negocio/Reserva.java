@@ -20,7 +20,7 @@ public class Reserva implements VOReserva{
 	private Timestamp inicio;
 	
 	/**
-	 * duracion de la reserva
+	 * fin de la reserva
 	 */
 	private Timestamp fin;
 	
