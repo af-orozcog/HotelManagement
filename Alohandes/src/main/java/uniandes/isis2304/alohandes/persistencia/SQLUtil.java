@@ -76,7 +76,7 @@ class SQLUtil
 	 */
 	public long [] limpiarAlohandes (PersistenceManager pm)
 	{
-		
+		Query qReservaColectiva = pm.newQuery(SQL,"DELETE FROM RESERVA_COLECTIVA");
 		Query qReserva = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaReserva());
 		Query qApartamento = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaApartamento());
 		Query qCuarto = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaCuarto());
@@ -93,21 +93,22 @@ class SQLUtil
 		Query qOperador = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaOperador());	
 		Query qCliente = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaCliente());
 		
+		long ReservaEliminados = (long) qReserva.executeUnique();
+		qReservaColectiva.executeUnique();
 		qApartamento.executeUnique();
 		qCuarto.executeUnique();
 		qEsporadico.executeUnique();
+		long SeguroEliminados = (long) qSeguro.executeUnique();
 		qHabitacion.executeUnique();
+		long IncluyeEliminados = (long) qIncluye.executeUnique();
+		long OfertaEliminados = (long) qOferta.executeUnique();
+		long ViviendaEliminados = (long) qVivienda.executeUnique();
+		long ServicioEliminados = (long) qServicio.executeUnique();
 		qGanancias.executeUnique();
 		qHoteleria.executeUnique();
 		qPersona_natural.executeUnique();
-		long IncluyeEliminados = (long) qIncluye.executeUnique();
-		long ReservaEliminados = (long) qReserva.executeUnique();
-		long ClienteEliminados = (long) qCliente.executeUnique();
-		long OfertaEliminados = (long) qOferta.executeUnique();
-		long ServicioEliminados = (long) qServicio.executeUnique();
-		long ViviendaEliminados = (long) qVivienda.executeUnique();
-		long SeguroEliminados = (long) qSeguro.executeUnique();
 		long OperadorEliminados = (long) qOperador.executeUnique();
+		long ClienteEliminados = (long) qCliente.executeUnique();
 
 		return new long[] {IncluyeEliminados, ReservaEliminados, ClienteEliminados, 
 				OfertaEliminados, ServicioEliminados, ViviendaEliminados, SeguroEliminados, OperadorEliminados};

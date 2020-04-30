@@ -85,7 +85,7 @@ public class OfertaTest {
     		// Lectura de los tipos de bebida con la tabla vacía
 			List <Oferta> lista = pm.darOfertas();
 			System.out.println("tamAnio al comienzo" + lista.size());
-			assertEquals ("No debe haber tipos de bebida creados!!", 0, lista.size ());
+			assertEquals ("No debe haber ofertas creados!!", 0, lista.size ());
 
 			// Lectura de los tipos de bebida con un oferta adicionado
 			
