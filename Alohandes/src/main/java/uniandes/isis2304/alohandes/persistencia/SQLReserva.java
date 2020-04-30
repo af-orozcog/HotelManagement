@@ -15,14 +15,11 @@
 
 package uniandes.isis2304.alohandes.persistencia;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import uniandes.isis2304.alohandes.negocio.Ganancias;
-import uniandes.isis2304.alohandes.negocio.Operador;
 import uniandes.isis2304.alohandes.negocio.Reserva;
 
 /**
