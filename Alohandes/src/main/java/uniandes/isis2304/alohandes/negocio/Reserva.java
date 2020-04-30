@@ -80,20 +80,6 @@ public class Reserva{
 		this.oferta = idOferta;
 		this.colectiva = idColectiva;
 	}
-
-	/**
-	 * @return the colectiva
-	 */
-	public long getColectiva() {
-		return colectiva;
-	}
-
-	/**
-	 * @param colectiva the colectiva to set
-	 */
-	public void setColectiva(long colectiva) {
-		this.colectiva = colectiva;
-	}
 	
 	/**
 	 * @return id
@@ -179,4 +165,17 @@ public class Reserva{
 		this.oferta = Oferta;
 	}
 	
+	/**
+	 * @return the colectiva
+	 */
+	public long getColectiva() {
+		return colectiva;
+	}
+
+	/**
+	 * @param colectiva the colectiva to set
+	 */
+	public void setColectiva(long colectiva) {
+		this.colectiva = colectiva;
+	}
 }

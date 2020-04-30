@@ -63,6 +63,9 @@ public interface VOReserva {
 	 */
 	public void setOferta(long Oferta);
 	
+	/**
+	 * @return reservaColectiva
+	 */
 	public long getColectiva();
 
 	/**

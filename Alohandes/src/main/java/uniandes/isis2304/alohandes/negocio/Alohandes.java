@@ -962,7 +962,7 @@ public class Alohandes
 		List<VOReserva> voReserva = new LinkedList<VOReserva> ();
 		for (Reserva tb : pa.darReservas ())
 		{
-			voReserva.add (tb);
+			voReserva.add ((VOReserva) tb);
 		}
 		log.info ("Generando los VO de Reserva: " + voReserva.size() + " existentes");
 		return voReserva;
