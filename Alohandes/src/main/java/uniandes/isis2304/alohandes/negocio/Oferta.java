@@ -21,7 +21,7 @@ public class Oferta implements VOOferta{
 	private long precio;
 	
 	/**
-	 * el periodo de la oferta (DIAS,MESES,SEMESTRES)
+	 * el periodo de la oferta (DIAS,SEMANAS,MESES,SEMESTRES)
 	 */
 	private String periodo;
 	

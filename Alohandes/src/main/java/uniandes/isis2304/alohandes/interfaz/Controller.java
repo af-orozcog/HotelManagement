@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -175,19 +176,36 @@ public class Controller {
 
 		interfaz.printMessage("Ingrese el id de la reserva a eliminar");
 		Reserva reserva = mundo.darReservaPorId(sc.nextLong());
-//		int comparar = 0; int limite = 0;
-//		switch (reserva.getPeriodo_arrendamiento()) {
-//		case "DIAS":
-//			limite = 3;
-//			break;
-//case "MESES":
-//			
-//			break;
-//case "SEMESTRES":
-//	
-//	break;
-//
-//		}
+
+		Timestamp inicio = reserva.getInicio();
+		Timestamp fin = reserva.getFin();
+		Timestamp hoy = new Timestamp(System.currentTimeMillis());
+
+		double porcentaje = 0;
+
+		if(hoy.before(inicio)) {
+			boolean limite = false;
+			long dias = compareDays(hoy, inicio);
+			switch (reserva.getPeriodo_arrendamiento()) {
+			case "DIAS":
+				if(dias <= 3)
+					limite = true;
+				break;
+			default:
+				if(dias <= 8)
+					limite = true;
+				break;
+			}
+			porcentaje = limite?0.3:0.1;
+		}
+		else if(hoy.before(fin)) {
+			porcentaje = 0.5;
+		}
+		Oferta oferta = mundo.darOfertaPorId(reserva.getOferta());
+		Vivienda vivienda = mundo.darViviendaPorId(oferta.getVivienda());
+		Long aumento = (new Double (oferta.getPrecio()*porcentaje)).longValue();
+		
+		mundo.aumentarGanancias(aumento, vivienda.getOperador(), hoy.getMonth(), hoy.getYear());
 		mundo.eliminarReservaPorId(reserva.getId());
 	}
 
@@ -241,7 +259,7 @@ public class Controller {
 			interfaz.printMessage("Escriba el id seleccionado");
 			idOferta = sc.nextLong();
 		}
-		
+
 		String periodoArrendamiento = mundo.darOfertaPorId(idOferta).getPeriodo();
 		interfaz.printMessage("Dar duraciÃ³n de la reserva en " + periodoArrendamiento +" (Escribir número entero)");
 		int duracion = sc.nextInt();
@@ -319,7 +337,7 @@ public class Controller {
 
 		interfaz.printMessage("Ingrese el precio de la propuesta");
 		long precio = sc.nextLong();
-		interfaz.printMessage("Escriba el periodo de la propuesta (DIAS, MESES, SEMESTRES)");
+		interfaz.printMessage("Escriba el periodo de la propuesta (DIAS, SEMANAS, MESES, SEMESTRES)");
 		String periodo = sc.next();
 		if(periodo.equalsIgnoreCase("DIAS") && !es)
 			interfaz.printMessage("ERROR DE PERIDO, No se puede elegir DIAS si no es esporadico");
@@ -402,7 +420,7 @@ public class Controller {
 		case "HOTELERIA":
 			interfaz.printMessage("Es un hotel u hostal? (Escriba HOTEL u HOSTAL");
 
-				String hotTemp = sc.next();
+			String hotTemp = sc.next();
 			String tipoHabitacion = "COMPARTIDA";
 			if(hotTemp.equalsIgnoreCase("HOTEL")) {
 				interfaz.printMessage("Escriba el tipo de habitacion IGUAL que alguna de las opciones:\n ESTANDAR, SEMISUITE, SUITE");
@@ -486,9 +504,21 @@ public class Controller {
 		return mundo.adicionarCuarto(direccion, cupos, operador.getId(), banioPrivado, cuartoPrivado, esquema, menaje);
 
 	}
-	
+
 	public void req7(Scanner sc) {
-		
+
+	}
+
+	public long compareDays (Timestamp in, Timestamp fi) {
+		final long MILLIS_PER_DAY = 1000*60*60*24;
+		long time1 = in.getTime(); // (Mon 31 December 2018 13:19:25)
+		long time2 = fi.getTime(); // (Fri 28 December 2018 15:05:15)
+
+		// Set both times to 0:00:00
+		time1 -= time1 % MILLIS_PER_DAY;
+		time2 -= time2 % MILLIS_PER_DAY;
+
+		return TimeUnit.DAYS.convert(time1 - time2 , TimeUnit.MILLISECONDS);
 	}
 
 	/**
