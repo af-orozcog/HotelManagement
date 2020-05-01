@@ -114,10 +114,9 @@ class SQLGanancias
 	 */
 	public Ganancias darGananciasPorFechaOperador (PersistenceManager pm, long idOperador, int mes, int anio)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaGanancias () + " WHERE mes = ? AND "
-				+ "anio = ? AND operador = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaGanancias () + " WHERE fecha = ? AND operador = ?");
 		q.setResultClass(Ganancias.class);
-		q.setParameters(mes, anio, idOperador);
+		q.setParameters(new Timestamp(anio, mes, 0, 0, 0, 0, 0), idOperador);
 		return (Ganancias) q.executeUnique();
 	}
 
