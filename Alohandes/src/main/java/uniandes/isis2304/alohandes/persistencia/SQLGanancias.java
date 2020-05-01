@@ -104,6 +104,21 @@ class SQLGanancias
 		return (Ganancias) q.executeUnique();
 	}
 
+	/**
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de un GANANCIAS de la 
+	 * base de datos de Alohandes, por su identificador
+	 * @param pm - El manejador de persistencia
+	 * @param idOperador - El identificador de la Ganancias
+	 * @return El objeto GANANCIAS que tiene el identificador dado
+	 */
+	public Ganancias darGananciasPorFechaOperador (PersistenceManager pm, long idOperador, int mes, int anio)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaGanancias () + " WHERE mes = ? AND "
+				+ "anio = ? AND operador = ?");
+		q.setResultClass(Ganancias.class);
+		q.setParameters(mes, anio, idOperador);
+		return (Ganancias) q.executeUnique();
+	}
 
 	/**
 	 * Crea y ejecuta la sentencia SQL para encontrar la información de LOS(AS) Ganancias de la
@@ -117,6 +132,22 @@ class SQLGanancias
 		q.setResultClass(Ganancias.class);
 		return (List<Ganancias>) q.executeList();
 	}
-
+	
+	/**
+	 * Aumenta el n�mero de ganancias respectivo
+	 * @param pm - El manejador de persistencia
+	 * @param aumento de ganancias
+	 * @param idGanancias - El identificador de la Ganancias
+	 * @param idOperador 
+	 * @param mes 
+	 * @param anio 
+	 */
+	public void aumentarGanancias(PersistenceManager pm, Long aumento, long idOperador, int mes, int anio) {
+		Ganancias ganancias = darGananciasPorFechaOperador(pm, idOperador, mes, anio);
+		Query q = pm.newQuery(SQL, "UPDATE " + pa.darTablaGanancias() + " SET cantidad = ? "
+				+ "WHERE id = ?"); 
+		q.setParameters(ganancias.getCantidad(), ganancias.getId() );
+		q.executeList();
+	}
 
 }

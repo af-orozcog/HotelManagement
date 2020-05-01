@@ -9,7 +9,7 @@
  * @author Germ谩n Bravo
  * Julio de 2018
  * 
- * Revisado por: Claudia Jim茅nez, Christian Ariza
+ * Revisado por: Claudia Jim閚ez, Christian Ariza
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
@@ -199,7 +199,7 @@ public class PersistenciaAlohandes
 	
 	
 	/* ****************************************************************
-	 * 			M茅todos del MANEJADOR DE PERSISTENCIA
+	 * 			M閠odos del MANEJADOR DE PERSISTENCIA
 	 *****************************************************************/
 
 	/**
@@ -489,11 +489,11 @@ public class PersistenciaAlohandes
 	}
 
 	/* ****************************************************************
-	 * 			M茅todos para manejar las VIVIENDAS
+	 * 			M閠odos para manejar las VIVIENDAS
 	 *****************************************************************/
 
 	/**
-	 * M茅todo que inserta, de manera transaccional, una tupla en la tabla Vivienda
+	 * M閠odo que inserta, de manera transaccional, una tupla en la tabla Vivienda
 	 * Adiciona entradas al log de la aplicaci贸n
 	 * @param direccion - direccion de la vivienda
 	 * @param cupos - cupos de la vivienda
@@ -535,7 +535,7 @@ public class PersistenciaAlohandes
 	
 
 	/**
-	 * M茅todo que elimina, de manera transaccional, una tupla en la tabla Vivienda, dado el id
+	 * M閠odo que elimina, de manera transaccional, una tupla en la tabla Vivienda, dado el id
 	 * Adiciona entradas al log de la aplicaci贸n
 	 * @param idVivienda - el id
 	 * @return El n煤mero de tuplas eliminadas. -1 si ocurre alguna Excepci贸n
@@ -568,7 +568,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	 * M茅todo que consulta todas las tuplas en la tabla Vivienda
+	 * M閠odo que consulta todas las tuplas en la tabla Vivienda
 	 * @return La lista de objetos Vivienda, construidos con base en las tuplas de la tabla VIVIENDA
 	 */
 	public List<Vivienda> darViviendas ()
@@ -577,7 +577,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	 * M茅todo que retorna la Vivienda con el id buscado
+	 * M閠odo que retorna la Vivienda con el id buscado
 	 * @return La Vivienda con el id buscado
 	 */
 	public Vivienda darViviendaPorId(long idVivienda) {
@@ -585,11 +585,11 @@ public class PersistenciaAlohandes
 	}
 	
 	/* ****************************************************************
-	* 			M茅todos para manejar los(as) HABITACIONS
+	* 			M閠odos para manejar los(as) HABITACIONS
 	*****************************************************************/
 
 	/**
-	* M茅todo que inserta, de manera transaccional, una tupla en la tabla Habitacion
+	* M閠odo que inserta, de manera transaccional, una tupla en la tabla Habitacion
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param x - x de Habitacion
 	* @return El objeto Habitacion adicionado. null si ocurre alguna Excepci贸n
@@ -628,7 +628,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que elimina, de manera transaccional, una tupla en la tabla Habitacion, dado el id
+	* M閠odo que elimina, de manera transaccional, una tupla en la tabla Habitacion, dado el id
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param idHabitacion - el id
 	* @return El n煤mero de tuplas eliminadas. -1 si ocurre alguna Excepci贸n
@@ -661,7 +661,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que consulta todas las tuplas en la tabla Habitacion
+	* M閠odo que consulta todas las tuplas en la tabla Habitacion
 	* @return La lista de objetos Habitacion, construidos con base en las tuplas de la tabla HABITACION
 	*/
 	public List<Habitacion> darHabitaciones ()
@@ -670,11 +670,11 @@ public class PersistenciaAlohandes
 	}
 
 	/* ****************************************************************
-	* 			M茅todos para manejar los(as) APARTAMENTOS
+	* 			M閠odos para manejar los(as) APARTAMENTOS
 	*****************************************************************/
 
 	/**
-	* M茅todo que inserta, de manera transaccional, una tupla en la tabla Apartamento
+	* M閠odo que inserta, de manera transaccional, una tupla en la tabla Apartamento
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param x - x de Apartamento
 	* @return El objeto Apartamento adicionado. null si ocurre alguna Excepci贸n
@@ -714,7 +714,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que elimina, de manera transaccional, una tupla en la tabla Apartamento, dado el id
+	* M閠odo que elimina, de manera transaccional, una tupla en la tabla Apartamento, dado el id
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param idApartamento - el id
 	* @return El n煤mero de tuplas eliminadas. -1 si ocurre alguna Excepci贸n
@@ -747,7 +747,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que consulta todas las tuplas en la tabla Apartamento
+	* M閠odo que consulta todas las tuplas en la tabla Apartamento
 	* @return La lista de objetos Apartamento, construidos con base en las tuplas de la tabla APARTAMENTO
 	*/
 	public List<Apartamento> darApartamentos ()
@@ -756,11 +756,11 @@ public class PersistenciaAlohandes
 	}
 
 	/* ****************************************************************
-	* 			M茅todos para manejar los(as) ESPORADICOS
+	* 			M閠odos para manejar los(as) ESPORADICOS
 	*****************************************************************/
 
 	/**
-	* M茅todo que inserta, de manera transaccional, una tupla en la tabla Esporadico
+	* M閠odo que inserta, de manera transaccional, una tupla en la tabla Esporadico
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param x - x de Esporadico
 	* @return El objeto Esporadico adicionado. null si ocurre alguna Excepci贸n
@@ -799,7 +799,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que elimina, de manera transaccional, una tupla en la tabla Esporadico, dado el id
+	* M閠odo que elimina, de manera transaccional, una tupla en la tabla Esporadico, dado el id
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param idEsporadico - el id
 	* @return El n煤mero de tuplas eliminadas. -1 si ocurre alguna Excepci贸n
@@ -832,7 +832,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que consulta todas las tuplas en la tabla Esporadico
+	* M閠odo que consulta todas las tuplas en la tabla Esporadico
 	* @return La lista de objetos Esporadico, construidos con base en las tuplas de la tabla ESPORADICO
 	*/
 	public List<Esporadico> darEsporadicos ()
@@ -841,11 +841,11 @@ public class PersistenciaAlohandes
 	}
 
 	/* ****************************************************************
-	* 			M茅todos para manejar los(as) SEGUROS
+	* 			M閠odos para manejar los(as) SEGUROS
 	*****************************************************************/
 
 	/**
-	* M茅todo que inserta, de manera transaccional, una tupla en la tabla Seguro
+	* M閠odo que inserta, de manera transaccional, una tupla en la tabla Seguro
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param x - x de Seguro
 	* @return El objeto Seguro adicionado. null si ocurre alguna Excepci贸n
@@ -884,7 +884,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que elimina, de manera transaccional, una tupla en la tabla Seguro, dado el id
+	* M閠odo que elimina, de manera transaccional, una tupla en la tabla Seguro, dado el id
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param idSeguro - el id
 	* @return El n煤mero de tuplas eliminadas. -1 si ocurre alguna Excepci贸n
@@ -918,7 +918,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que consulta todas las tuplas en la tabla Seguro
+	* M閠odo que consulta todas las tuplas en la tabla Seguro
 	* @return La lista de objetos Seguro, construidos con base en las tuplas de la tabla SEGURO
 	*/
 	public List<Seguro> darSeguros ()
@@ -927,11 +927,11 @@ public class PersistenciaAlohandes
 	}
 
 	/* ****************************************************************
-	* 			M茅todos para manejar los(as) CUARTOS
+	* 			M閠odos para manejar los(as) CUARTOS
 	*****************************************************************/
 
 	/**
-	* M茅todo que inserta, de manera transaccional, una tupla en la tabla Cuarto
+	* M閠odo que inserta, de manera transaccional, una tupla en la tabla Cuarto
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param x - x de Cuarto
 	* @return El objeto Cuarto adicionado. null si ocurre alguna Excepci贸n
@@ -970,7 +970,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que elimina, de manera transaccional, una tupla en la tabla Cuarto, dado el id
+	* M閠odo que elimina, de manera transaccional, una tupla en la tabla Cuarto, dado el id
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param idCuarto - el id
 	* @return El n煤mero de tuplas eliminadas. -1 si ocurre alguna Excepci贸n
@@ -1003,7 +1003,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que consulta todas las tuplas en la tabla Cuarto
+	* M閠odo que consulta todas las tuplas en la tabla Cuarto
 	* @return La lista de objetos Cuarto, construidos con base en las tuplas de la tabla CUARTO
 	*/
 	public List<Cuarto> darCuartos ()
@@ -1013,11 +1013,11 @@ public class PersistenciaAlohandes
 
 	
 	/* ****************************************************************
-	* 			M茅todos para manejar los(as) OPERADORES
+	* 			M閠odos para manejar los(as) OPERADORES
 	*****************************************************************/
 
 	/**
-	* M茅todo que inserta, de manera transaccional, una tupla en la tabla Operador
+	* M閠odo que inserta, de manera transaccional, una tupla en la tabla Operador
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param x - x de Operador
 	* @return El objeto Operador adicionado. null si ocurre alguna Excepci贸n
@@ -1056,7 +1056,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que elimina, de manera transaccional, una tupla en la tabla Operador, dado el id
+	* M閠odo que elimina, de manera transaccional, una tupla en la tabla Operador, dado el id
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param idOperador - el id
 	* @return El n煤mero de tuplas eliminadas. -1 si ocurre alguna Excepci贸n
@@ -1089,7 +1089,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que consulta todas las tuplas en la tabla Operador
+	* M閠odo que consulta todas las tuplas en la tabla Operador
 	* @return La lista de objetos Operador, construidos con base en las tuplas de la tabla OPERADOR
 	*/
 	public List<Operador> darOperadores ()
@@ -1098,7 +1098,7 @@ public class PersistenciaAlohandes
 	}
 	
 	/**
-	 * M茅todo que retorna el operador con el nombre y tipo buscados
+	 * M閠odo que retorna el operador con el nombre y tipo buscados
 	 * @return Objeto Operador con el nombre y tipo buscados
 	 */
 	public Operador darOperadorPorNombre(String nombre, String tipoOperador) {
@@ -1107,11 +1107,11 @@ public class PersistenciaAlohandes
 	
 
 	/* ****************************************************************
-	* 			M茅todos para manejar los(as) VIVIENDAS_UNIVERSITARIAS
+	* 			M閠odos para manejar los(as) VIVIENDAS_UNIVERSITARIAS
 	*****************************************************************/
 
 	/**
-	* M茅todo que inserta, de manera transaccional, una tupla en la tabla Vivienda_Universitaria
+	* M閠odo que inserta, de manera transaccional, una tupla en la tabla Vivienda_Universitaria
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param x - x de Operador
 	* @return El objeto Operador adicionado. null si ocurre alguna Excepci贸n
@@ -1150,7 +1150,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que elimina, de manera transaccional, una tupla en la tabla Operador, dado el id
+	* M閠odo que elimina, de manera transaccional, una tupla en la tabla Operador, dado el id
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param idViviendaUniversitaria - el id
 	* @return El n煤mero de tuplas eliminadas. -1 si ocurre alguna Excepci贸n
@@ -1183,7 +1183,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que consulta todas las tuplas en la tabla ViviendaUniversitaria
+	* M閠odo que consulta todas las tuplas en la tabla ViviendaUniversitaria
 	* @return La lista de objetos Operador, construidos con base en las tuplas de la tabla OPERADOR
 	*/
 	public List<ViviendaUniversitaria> darViviendasUniversitarias ()
@@ -1192,11 +1192,11 @@ public class PersistenciaAlohandes
 	}
 	
 	/* ****************************************************************
-	* 			M茅todos para manejar los(as) HOTELERIAS
+	* 			M閠odos para manejar los(as) HOTELERIAS
 	*****************************************************************/
 
 	/**
-	* M茅todo que inserta, de manera transaccional, una tupla en la tabla Hoteleria
+	* M閠odo que inserta, de manera transaccional, una tupla en la tabla Hoteleria
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param x - x de Hoteleria
 	* @return El objeto Hoteleria adicionado. null si ocurre alguna Excepci贸n
@@ -1235,7 +1235,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que elimina, de manera transaccional, una tupla en la tabla Hoteleria, dado el id
+	* M閠odo que elimina, de manera transaccional, una tupla en la tabla Hoteleria, dado el id
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param idHoteleria - el id
 	* @return El n煤mero de tuplas eliminadas. -1 si ocurre alguna Excepci贸n
@@ -1268,7 +1268,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que consulta todas las tuplas en la tabla Hoteleria
+	* M閠odo que consulta todas las tuplas en la tabla Hoteleria
 	* @return La lista de objetos Hoteleria, construidos con base en las tuplas de la tabla HOTELERIA
 	*/
 	public List<Hoteleria> darHotelerias ()
@@ -1277,11 +1277,11 @@ public class PersistenciaAlohandes
 	}
 
 	/* ****************************************************************
-	* 			M茅todos para manejar los(as) PERSONA_NATURALES
+	* 			M閠odos para manejar los(as) PERSONA_NATURALES
 	*****************************************************************/
 
 	/**
-	* M茅todo que inserta, de manera transaccional, una tupla en la tabla Persona_Natural
+	* M閠odo que inserta, de manera transaccional, una tupla en la tabla Persona_Natural
 	* Adiciona entradas al log de la aplicaci贸n
 	 * @param nombre 
 	 * @param email 
@@ -1325,7 +1325,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que elimina, de manera transaccional, una tupla en la tabla Persona_Natural, dado el id
+	* M閠odo que elimina, de manera transaccional, una tupla en la tabla Persona_Natural, dado el id
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param idPersona_Natural - el id
 	* @return El n煤mero de tuplas eliminadas. -1 si ocurre alguna Excepci贸n
@@ -1358,7 +1358,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que consulta todas las tuplas en la tabla Persona_Natural
+	* M閠odo que consulta todas las tuplas en la tabla Persona_Natural
 	* @return La lista de objetos Persona_Natural, construidos con base en las tuplas de la tabla PERSONA_NATURAL
 	*/
 	public List<Persona_Natural> darPersona_Naturales ()
@@ -1367,11 +1367,11 @@ public class PersistenciaAlohandes
 	}
 
 	/* ****************************************************************
-	* 			M茅todos para manejar los(as) GANANCIAS
+	* 			M閠odos para manejar los(as) GANANCIAS
 	*****************************************************************/
 
 	/**
-	* M茅todo que inserta, de manera transaccional, una tupla en la tabla Ganancias
+	* M閠odo que inserta, de manera transaccional, una tupla en la tabla Ganancias
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param x - x de Ganancias
 	* @return El objeto Ganancias adicionado. null si ocurre alguna Excepci贸n
@@ -1410,7 +1410,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que elimina, de manera transaccional, una tupla en la tabla Ganancias, dado el id
+	* M閠odo que elimina, de manera transaccional, una tupla en la tabla Ganancias, dado el id
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param idGanancias - el id
 	* @return El n煤mero de tuplas eliminadas. -1 si ocurre alguna Excepci贸n
@@ -1443,20 +1443,31 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que consulta todas las tuplas en la tabla Ganancias
+	* M閠odo que consulta todas las tuplas en la tabla Ganancias
 	* @return La lista de objetos Ganancias, construidos con base en las tuplas de la tabla GANANCIAS
 	*/
 	public List<Ganancias> darGanancias ()
 	{
 		return sqlGanancias.darGanancias(pmf.getPersistenceManager());
 	}
+	
+	/**
+	 * M閠odo que aumetna las gananacias de cierto operador para cierta fecha
+	 * @param aumento
+	 * @param idOperador
+	 * @param mes
+	 * @param anio
+	 */
+	public void aumentarGanancias(Long aumento, long idOperador, int mes, int anio) {
+		sqlGanancias.aumentarGanancias(pmf.getPersistenceManager(), aumento, idOperador, mes, anio);
+	}
 
 	/* ****************************************************************
-	* 			M茅todos para manejar los(as) CLIENTES
+	* 			M閠odos para manejar los(as) CLIENTES
 	*****************************************************************/
 
 	/**
-	* M茅todo que inserta, de manera transaccional, una tupla en la tabla Cliente
+	* M閠odo que inserta, de manera transaccional, una tupla en la tabla Cliente
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param x - x de Cliente
 	* @return El objeto Cliente adicionado. null si ocurre alguna Excepci贸n
@@ -1495,7 +1506,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que elimina, de manera transaccional, una tupla en la tabla Cliente, dado el id
+	* M閠odo que elimina, de manera transaccional, una tupla en la tabla Cliente, dado el id
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param idCliente - el id
 	* @return El n煤mero de tuplas eliminadas. -1 si ocurre alguna Excepci贸n
@@ -1528,7 +1539,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que consulta todas las tuplas en la tabla Cliente
+	* M閠odo que consulta todas las tuplas en la tabla Cliente
 	* @return La lista de objetos Cliente, construidos con base en las tuplas de la tabla USUARIO
 	*/
 	public List<Cliente> darClientes ()
@@ -1537,7 +1548,7 @@ public class PersistenciaAlohandes
 	}
 	
 	/**
-	 * M茅todo que busca una tupla en Cliente seg煤n su nombre
+	 * M閠odo que busca una tupla en Cliente seg煤n su nombre
 	 * @return El objeto Cliente con el nombre buscado
 	 */
 	public Cliente buscarClientePorNombre(String nombreCliente) {
@@ -1545,11 +1556,11 @@ public class PersistenciaAlohandes
 	}
 
 	/* ****************************************************************
-	* 			M茅todos para manejar los(as) RESERVAS
+	* 			M閠odos para manejar los(as) RESERVAS
 	*****************************************************************/
 
 	/**
-	* M茅todo que inserta, de manera transaccional, una tupla en la tabla Reserva
+	* M閠odo que inserta, de manera transaccional, una tupla en la tabla Reserva
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param x - x de Reserva
 	* @return El objeto Reserva adicionado. null si ocurre alguna Excepci贸n
@@ -1586,9 +1597,18 @@ public class PersistenciaAlohandes
 	        pm.close();
 	    }
 	}
+	/**
+	 * Encuentra todas la reserva de determinado ID
+	 * @param idReserva Identificador de la reserva
+	 * @return Todas las reservas del cliente buscado
+	 */
+	public Reserva darReservaPorId(long idReserva) {
+		return sqlReserva.darReservaPorId(pmf.getPersistenceManager(), idReserva);
+	}
+	
 
 	/**
-	* M茅todo que elimina, de manera transaccional, una tupla en la tabla Reserva, dado el id
+	* M閠odo que elimina, de manera transaccional, una tupla en la tabla Reserva, dado el id
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param idReserva - el id
 	* @return El n煤mero de tuplas eliminadas. -1 si ocurre alguna Excepci贸n
@@ -1621,7 +1641,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que consulta todas las tuplas en la tabla Reserva
+	* M閠odo que consulta todas las tuplas en la tabla Reserva
 	* @return La lista de objetos Reserva, construidos con base en las tuplas de la tabla RESERVA
 	*/
 	public List<Reserva> darReservas ()
@@ -1639,11 +1659,11 @@ public class PersistenciaAlohandes
 	}
 
 	/* ****************************************************************
-	* 			M茅todos para manejar los(as) OFERTAS
+	* 			M閠odos para manejar los(as) OFERTAS
 	*****************************************************************/
 
 	/**
-	* M茅todo que inserta, de manera transaccional, una tupla en la tabla Oferta
+	* M閠odo que inserta, de manera transaccional, una tupla en la tabla Oferta
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param x - x de Oferta
 	* @return El objeto Oferta adicionado. null si ocurre alguna Excepci贸n
@@ -1682,7 +1702,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	 * M茅todo que retorna la oferta con el id buscado
+	 * M閠odo que retorna la oferta con el id buscado
 	 * @param idOferta Identificador de la oferta buscada
 	 * @return Oferta con el id buscado
 	 */
@@ -1692,7 +1712,7 @@ public class PersistenciaAlohandes
 	
 	
 	/**
-	* M茅todo que elimina, de manera transaccional, una tupla en la tabla Oferta, dado el id
+	* M閠odo que elimina, de manera transaccional, una tupla en la tabla Oferta, dado el id
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param idOferta - el id
 	* @return El n煤mero de tuplas eliminadas. -1 si ocurre alguna Excepci贸n
@@ -1725,7 +1745,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que consulta todas las tuplas en la tabla Oferta
+	* M閠odo que consulta todas las tuplas en la tabla Oferta
 	* @return La lista de objetos Oferta, construidos con base en las tuplas de la tabla OFERTA
 	*/
 	public List<Oferta> darOfertas ()
@@ -1753,11 +1773,11 @@ public class PersistenciaAlohandes
 
 
 	/* ****************************************************************
-	* 			M茅todos para manejar los(as) SERVICIOS
+	* 			M閠odos para manejar los(as) SERVICIOS
 	*****************************************************************/
 
 	/**
-	* M茅todo que inserta, de manera transaccional, una tupla en la tabla Servicio
+	* M閠odo que inserta, de manera transaccional, una tupla en la tabla Servicio
 	* Adiciona entradas al log de la aplicaci贸n
 	 * @param nombre 
 	 * @param costo 
@@ -1798,7 +1818,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que elimina, de manera transaccional, una tupla en la tabla Servicio, dado el id
+	* M閠odo que elimina, de manera transaccional, una tupla en la tabla Servicio, dado el id
 	* Adiciona entradas al log de la aplicaci贸n
 	* @param idServicio - el id
 	* @return El n煤mero de tuplas eliminadas. -1 si ocurre alguna Excepci贸n
@@ -1831,7 +1851,7 @@ public class PersistenciaAlohandes
 	}
 
 	/**
-	* M茅todo que consulta todas las tuplas en la tabla Servicio
+	* M閠odo que consulta todas las tuplas en la tabla Servicio
 	* @return La lista de objetos Servicio, construidos con base en las tuplas de la tabla SERVICIO
 	*/
 	public List<Servicio> darServicios ()
@@ -1840,11 +1860,11 @@ public class PersistenciaAlohandes
 	}
 
 	/* ****************************************************************
-	 * 			M茅todos para manejar la relaci贸n INCLUYE
+	 * 			M閠odos para manejar la relaci贸n INCLUYE
 	 *****************************************************************/
 	
 	/**
-	 * M茅todo que inserta, de manera transaccional, una tupla en la tabla INCLUYE
+	 * M閠odo que inserta, de manera transaccional, una tupla en la tabla INCLUYE
 	 * Adiciona entradas al log de la aplicaci贸n
 	 * @param idServicio - El identificador del servicio - Debe haber un servicio con ese identificador
 	 * @param idOferta - El identificador de la oferta - Debe haber una oferta con ese identificador
@@ -1882,7 +1902,7 @@ public class PersistenciaAlohandes
 	}
  
 	/**
-	 * M茅todo que elimina, de manera transaccional, una tupla en la tabla INCLUYE, dados los identificadores de servicio y oferta
+	 * M閠odo que elimina, de manera transaccional, una tupla en la tabla INCLUYE, dados los identificadores de servicio y oferta
 	 * @param idServicio - El identificador del servicio
 	 * @param idOferta - El identificador de la oferta
 	 * @return El n煤mero de tuplas eliminadas. -1 si ocurre alguna Excepci贸n
@@ -1916,7 +1936,7 @@ public class PersistenciaAlohandes
 	}
  
 	/**
-	 * M茅todo que consulta todas las tuplas en la tabla INCLUYE
+	 * M閠odo que consulta todas las tuplas en la tabla INCLUYE
 	 * @return La lista de objetos INCLUYE, construidos con base en las tuplas de la tabla INCLUYE
 	 */
 	public List<Incluye> darIncluye ()
@@ -1961,7 +1981,7 @@ public class PersistenciaAlohandes
 	}
 
 	/* ****************************************************************
-	 * 			M茅todos para manejar las consultas
+	 * 			M閠odos para manejar las consultas
 	 *****************************************************************/
 	
 	public long reqc1Actual(long idOperador) {
@@ -1977,7 +1997,7 @@ public class PersistenciaAlohandes
 	}
 	
 	/* ****************************************************************
-	 * 			M茅todos para activar el modo perron pruebas :v
+	 * 			M閠odos para activar el modo perron pruebas :v
 	 *****************************************************************/
 	/**
 	 * 
