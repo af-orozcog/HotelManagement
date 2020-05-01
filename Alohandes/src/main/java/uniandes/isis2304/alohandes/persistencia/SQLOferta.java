@@ -161,4 +161,55 @@ class SQLOferta
 		return (List<Oferta>) q.executeList();
 	}
 
+	/**
+	 * Método que devuelve las ofertas por rangos de fechas
+	 * @param pm
+	 * @param inicio
+	 * @param fin
+	 * @return
+	 */
+	public Oferta darOfertasPorRangoFechaDisponibles(PersistenceManager pm, Timestamp inicio, Timestamp fin){
+		Query q = pm.newQuery(SQL, ""
+				+ "SELECT * FROM " + pa.darTablaOferta()
+				+ " WHERE fechaInicio <= ? AND fechaFin >= ? AND habilitado = 1 AND id NOT IN"
+				+ "("
+				+ "SELECT o.id,o.precio, o.periodo,o.vivienda,o.fechaInicio,o.fechaFin FROM "
+				+ pa.darTablaOferta() + " o, " + pa.darTablaReserva()+ " r"
+				+" WHERE o.id = r.oferta AND ((r.inicio >= ?  AND r.inicio <= ?) OR (r.inicio <= ? AND r.fin >= ?))"
+				+ ")"
+				);
+		q.setParameters(inicio,fin,inicio,fin,inicio,inicio);
+		List<Oferta> ans = (List<Oferta>)q.executeList();
+		if(ans.size() > 0)
+			return ans.get(0);
+		return null;
+	}
+	
+	/**
+	 * Método que cambia el atributo de habilitado de una oferta
+	 * @param pm
+	 * @param idOferta
+	 * @return
+	 */
+	public long deshabilitarOferta(PersistenceManager pm, long idOferta) {
+		Query q = pm.newQuery(SQL, "UPDATE " + pa.darTablaOferta () + " "
+				+ "SET habilitada = 0"
+				+ " WHERE id = ?");
+		q.setParameters(idOferta);
+	    return (long) q.executeUnique();
+	}
+	
+	/**
+	 * Método que cambia el atributo de habilitado de una oferta
+	 * @param pm
+	 * @param idOferta
+	 * @return
+	 */
+	public long habilitarOferta(PersistenceManager pm, long idOferta) {
+		Query q = pm.newQuery(SQL, "UPDATE " + pa.darTablaOferta () + " "
+				+ "SET habilitada = 1"
+				+ " WHERE id = ?");
+		q.setParameters(idOferta);
+	    return (long) q.executeUnique();
+	}
 }

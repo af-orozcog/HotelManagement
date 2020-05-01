@@ -1565,7 +1565,7 @@ public class PersistenciaAlohandes
 	* @param x - x de Reserva
 	* @return El objeto Reserva adicionado. null si ocurre alguna Excepción
 	*/
-	public Reserva adicionarReserva(Timestamp inicio, Timestamp fin, int duracion, String periodoArrendamiento, long idUsuario, long idOferta, long idColectiva)
+	public Reserva adicionarReserva(Timestamp inicio, Timestamp fin, String periodoArrendamiento, long idUsuario, long idOferta, long idColectiva)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 	    Transaction tx=pm.currentTransaction();
@@ -1575,7 +1575,7 @@ public class PersistenciaAlohandes
 	        long idReserva = nextval ();
 	    	if(modoPerron)
 	    		idReserva = idPerron;
-	        long tuplasInsertadas = sqlReserva.adicionarReserva(pm, idReserva, inicio, fin, duracion, periodoArrendamiento, idUsuario, idOferta, idColectiva);
+	        long tuplasInsertadas = sqlReserva.adicionarReserva(pm, idReserva, inicio, fin,periodoArrendamiento, idUsuario, idOferta, idColectiva);
 	        tx.commit();
 
 	        log.trace ("Inserción de vivienda: " + idReserva + ": " + tuplasInsertadas + " tuplas insertadas");
@@ -2019,16 +2019,31 @@ public class PersistenciaAlohandes
 		idPerron = id;
 	}
 	
-	
-	public List<Reserva> deshabilitarAlojamiento(long idOferta){
+	/**
+	 * 
+	 * @param idOferta
+	 * @return
+	 */
+	public List<Reserva> deshabilitarOferta(long idOferta){
 		LinkedList<Reserva> ans = new LinkedList<Reserva>();
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try
         {
             tx.begin();
-            
+            sqlOferta.deshabilitarOferta(pm, idOferta);
+            List<Reserva> reservasACancelar = sqlReserva.darReservasPorOferta(pm, idOferta);
+            for(Reserva va: reservasACancelar) {
+            	eliminarReservaPorId(va.getId());
+            	Timestamp ini = va.getInicio(), fin = va.getFin();
+            	Oferta of = sqlOferta.darOfertasPorRangoFechaDisponibles(pm, ini, fin);
+            	if(of == null)
+            		ans.add(va);
+            	else
+            		adicionarReserva(ini, fin,va.getPeriodo_arrendamiento(), va.getCliente(), of.getId(), va.getColectiva());
+            }
             tx.commit();
+            
 
             return ans;
         }
@@ -2047,4 +2062,33 @@ public class PersistenciaAlohandes
             pm.close();
         }
 	}
+	
+	
+	public long habilitarOferta(long idOferta) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        long ans;
+        try
+        {
+            tx.begin();
+            ans = sqlOferta.habilitarOferta(pm, idOferta);
+            tx.commit();
+            return ans;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
  }

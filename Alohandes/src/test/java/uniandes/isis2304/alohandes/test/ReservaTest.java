@@ -95,10 +95,10 @@ public class ReservaTest {
 			
 			Timestamp inicio1 = new Timestamp(2010, 1, 1, 1, 0, 0, 0);
 			Timestamp fin1 = new Timestamp(2011, 1, 1, 1, 0, 0, 0);
-			int duracion1 = 10;
+			//int duracion1 = 10;
 			String periodoArrendamiento1 = "SEMESTRES";
 			
-			Reserva reserva1 = pm.adicionarReserva(inicio1, fin1, duracion1, periodoArrendamiento1, of.getId(), us.getId(), -1);
+			Reserva reserva1 = pm.adicionarReserva(inicio1, fin1,periodoArrendamiento1, of.getId(), us.getId(), -1);
 			lista = pm.darReservas();
 			assertEquals ("Debe haber un reserva creado !!", 1, lista.size ());
 			assertTrue ("El objeto creado y el traido de la BD deben ser iguales !!", reserva1.getId() == lista.get(0).getId());
@@ -107,10 +107,10 @@ public class ReservaTest {
 			
 			Timestamp inicio2 = new Timestamp(2011, 1, 1, 1, 0, 0, 0);
 			Timestamp fin2 = new Timestamp(2012, 1, 1, 1, 0, 0, 0);
-			int duracion2 = 9;
+			//int duracion2 = 9;
 			String periodoArrendamiento2 = "MESES";
 
-			Reserva reserva2 = pm.adicionarReserva(inicio2, fin2, duracion2, periodoArrendamiento2, of.getId(), us.getId(), -1);
+			Reserva reserva2 = pm.adicionarReserva(inicio2, fin2,periodoArrendamiento2, of.getId(), us.getId(), -1);
 			lista = pm.darReservas();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
 			assertTrue ("El primer reserva adicionado debe estar en la tabla", reserva1.getId() == lista.get(0).getId() || reserva1.getId() == lista.get(1).getId());
@@ -186,20 +186,20 @@ public class ReservaTest {
 			
 			Timestamp inicio1 = new Timestamp(2010, 1, 1, 1, 0, 0, 0);
 			Timestamp fin1 = new Timestamp(2011, 1, 1, 1, 0, 0, 0);
-			int duracion1 = 10;
+			//int duracion1 = 10;
 			String periodoArrendamiento1 = "SEMESTRES";
 			
-			Reserva reserva1 = pm.adicionarReserva(inicio1, fin1, duracion1, periodoArrendamiento1, of.getId(), us.getId(), -1);
+			Reserva reserva1 = pm.adicionarReserva(inicio1, fin1, periodoArrendamiento1, of.getId(), us.getId(), -1);
 			lista = pm.darReservas();
 			assertEquals ("Debe haber un reserva creado !!", 1, lista.size ());
 			
 			
 			Timestamp inicio2 = new Timestamp(2011, 1, 1, 1, 0, 0, 0);
 			Timestamp fin2 = new Timestamp(2012, 1, 1, 1, 0, 0, 0);
-			int duracion2 = 9;
+			//int duracion2 = 9;
 			String periodoArrendamiento2 = "MESES";
 
-			Reserva reserva2 = pm.adicionarReserva(inicio2, fin2, duracion2, periodoArrendamiento2, of.getId(), us.getId(), -1);
+			Reserva reserva2 = pm.adicionarReserva(inicio2, fin2, periodoArrendamiento2, of.getId(), us.getId(), -1);
 			assertNull ("No puede adicionar dos reservas con el mismo id !!", reserva2);
 		}
 		catch (Exception e)
