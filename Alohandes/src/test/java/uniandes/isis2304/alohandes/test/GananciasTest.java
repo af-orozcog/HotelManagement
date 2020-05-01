@@ -2,6 +2,7 @@ package uniandes.isis2304.alohandes.test;
 
 import static org.junit.Assert.*;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -67,7 +68,7 @@ public class GananciasTest {
 			long cantidad1 = 10000;
 			int mes1 = 12;
 			int anio1 = 2020;
-			Ganancias ganancias1 = pm.adicionarGanancias(cantidad1, mes1, anio1, op.getId());
+			Ganancias ganancias1 = pm.adicionarGanancias(cantidad1, new Timestamp(2000, 1, 1, 1, 0, 0, 0), op.getId());
 			lista = pm.darGanancias();
 			
 			assertEquals ("Debe haber un ganancias creado !!", 1, lista.size ());
@@ -77,7 +78,7 @@ public class GananciasTest {
 			long cantidad2 = 100000;
 			int mes2 = 12;
 			int anio2 = 2020;
-			Ganancias ganancias2 = pm.adicionarGanancias(cantidad2, mes2, anio2, op.getId());
+			Ganancias ganancias2 = pm.adicionarGanancias(cantidad2, new Timestamp(2000, 1, 1, 1, 0, 0, 0), op.getId());
 			lista = pm.darGanancias();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
 			assertTrue ("El primer ganancias adicionado debe estar en la tabla", ganancias1.getId() == lista.get(0).getId() || ganancias1.getId() == lista.get(1).getId());
@@ -146,14 +147,14 @@ public class GananciasTest {
 			long cantidad1 = 10000;
 			int mes1 = 12;
 			int anio1 = 2020;
-			Ganancias ganancias1 = pm.adicionarGanancias(cantidad1, mes1, anio1, op.getId());
+			Ganancias ganancias1 = pm.adicionarGanancias(cantidad1, new Timestamp(2000, 1, 1, 1, 0, 0, 0), op.getId());
 			lista = pm.darGanancias();
 			assertEquals ("Debe haber un ganancias creado !!", 1, lista.size ());
 			
 			long cantidad2 = 100000;
 			int mes2 = 12;
 			int anio2 = 2020;
-			Ganancias ganancias2 = pm.adicionarGanancias(cantidad2, mes2, anio2, op.getId());
+			Ganancias ganancias2 = pm.adicionarGanancias(cantidad2, new Timestamp(2000, 1, 1, 1, 0, 0, 0), op.getId());
 			lista = pm.darGanancias();
 			assertNull ("No puede adicionar dos gananciass con el mismo id !!", ganancias2);
 		}
