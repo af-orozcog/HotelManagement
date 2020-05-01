@@ -1,5 +1,7 @@
 package uniandes.isis2304.alohandes.negocio;
 
+import java.sql.Timestamp;
+
 public class Ganancias implements VOGanancias{
 	
 	/* ****************************************************************
@@ -17,14 +19,9 @@ public class Ganancias implements VOGanancias{
 	private long cantidad;
 	
 	/**
-	 * el mes del año de la ganacia
+	 * 
 	 */
-	private int mes;
-	
-	/**
-	 * el año en el cual se dio la ganacia
-	 */
-	private int anio;
+	private Timestamp fecha;
 
 	/**
 	 * el id del operador 
@@ -40,6 +37,9 @@ public class Ganancias implements VOGanancias{
 	 */
 	public Ganancias() {
 		this.id = 0;
+		this.cantidad = 0;
+		this.fecha = null;
+		this.operador = 0;
 	}
 	
 	/**
@@ -49,12 +49,29 @@ public class Ganancias implements VOGanancias{
 	 * @param año - el año de la ganacia
 	 * @param idOperador - el id del operador
 	 */
-	public Ganancias(long id, long cantidad, int mes, int anio, long idOperador) {
+	public Ganancias(long id, long cantidad, Timestamp fecha, long operador) {
 		this.id = id;
 		this.cantidad = cantidad;
-		this.mes = mes;
-		this.anio = anio;
-		this.operador = idOperador;
+		this.fecha = fecha;
+		this.operador = operador;
+	}
+
+	
+	
+	
+	
+	/**
+	 * @return the fecha
+	 */
+	public Timestamp getFecha() {
+		return fecha;
+	}
+
+	/**
+	 * @param fecha the fecha to set
+	 */
+	public void setFecha(Timestamp fecha) {
+		this.fecha = fecha;
 	}
 
 	/**
@@ -71,33 +88,6 @@ public class Ganancias implements VOGanancias{
 		this.cantidad = cantidad;
 	}
 
-	/**
-	 * @return mes de la ganancia
-	 */
-	public int getMes() {
-		return mes;
-	}
-
-	/**
-	 * @param mes - mes de la ganancia
-	 */
-	public void setMes(int mes) {
-		this.mes = mes;
-	}
-
-	/**
-	 * @return el año de la ganacia
-	 */
-	public int getAnio() {
-		return anio;
-	}
-
-	/**
-	 * @param año - año de la ganacia
-	 */
-	public void setAnio(int anio) {
-		this.anio = anio;
-	}
 
 	/**
 	 * @return idOperador

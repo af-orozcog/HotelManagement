@@ -1,5 +1,7 @@
 package uniandes.isis2304.alohandes.negocio;
 
+import java.sql.Timestamp;
+
 public interface VOGanancias {
 	/**
 	 * @return cantidad de dinero
@@ -12,24 +14,14 @@ public interface VOGanancias {
 	public void setCantidad(long cantidad);
 
 	/**
-	 * @return mes de la ganancia
+	 * @return the fecha
 	 */
-	public int getMes();
+	public Timestamp getFecha();
 
 	/**
-	 * @param mes - mes de la ganancia
+	 * @param fecha the fecha to set
 	 */
-	public void setMes(int mes);
-
-	/**
-	 * @return el año de la ganacia
-	 */
-	public int getAnio();
-
-	/**
-	 * @param año - año de la ganacia
-	 */
-	public void setAnio(int anio);
+	public void setFecha(Timestamp fecha);
 
 	/**
 	 * @return idOperador

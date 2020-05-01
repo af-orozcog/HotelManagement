@@ -1376,7 +1376,7 @@ public class PersistenciaAlohandes
 	* @param x - x de Ganancias
 	* @return El objeto Ganancias adicionado. null si ocurre alguna Excepción
 	*/
-	public Ganancias adicionarGanancias(long cantidad, int mes, int anio, long idOperador)
+	public Ganancias adicionarGanancias(long cantidad, Timestamp fecha ,long idOperador)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 	    Transaction tx=pm.currentTransaction();
@@ -1386,12 +1386,12 @@ public class PersistenciaAlohandes
 	        long idGanancias = nextval ();
 	        if(modoPerron)
             	idGanancias = idPerron;
-	        long tuplasInsertadas = sqlGanancias.adicionarGanancias(pm, idGanancias, cantidad, mes, anio, idOperador);
+	        long tuplasInsertadas = sqlGanancias.adicionarGanancias(pm, idGanancias, cantidad, fecha, idOperador);
 	        tx.commit();
 
 	        log.trace ("Inserción de vivienda: " + idGanancias + ": " + tuplasInsertadas + " tuplas insertadas");
 
-	        return new Ganancias(idGanancias, cantidad, mes, anio, idOperador);
+	        return new Ganancias(idGanancias, cantidad, fecha, idOperador);
 	    }
 	    catch (Exception e)
 	    {
