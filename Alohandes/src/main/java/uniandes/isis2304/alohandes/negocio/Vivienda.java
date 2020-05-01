@@ -33,6 +33,12 @@ public class Vivienda implements VOVivienda{
 	 */
 	protected long operador;
 	
+	
+	/**
+	 * El tipo de vivienda;
+	 */
+	protected String tipo;
+	
 	/* ****************************************************************
 	 * 			Métodos 
 	 *****************************************************************/
@@ -53,12 +59,27 @@ public class Vivienda implements VOVivienda{
 	 * @param cupos - cupos disponibles de la vivienda
 	 * @param idOperador - el operador dueño de la vivienda
 	 */
-	public Vivienda(long id, String direccion, int cupos, long idOperador) {
+	public Vivienda(long id, String direccion, int cupos, long idOperador, String tipo) {
 		this.id = id;
 		this.direccion = direccion;
 		this.cupos = cupos;
 		this.ofertas = new LinkedList<Object []> ();
 		this.operador = idOperador;
+		this.tipo = tipo;
+	}
+
+	/**
+	 * @return the tipo
+	 */
+	public String getTipo() {
+		return tipo;
+	}
+
+	/**
+	 * @param tipo the tipo to set
+	 */
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	/**

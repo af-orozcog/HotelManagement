@@ -64,7 +64,7 @@ class SQLHabitacion extends SQLVivienda
 	public long adicionarHabitacion (PersistenceManager pm, long idHabitacion, String direccion, int cupos, long idOperador, 
 			String tipoHabitacion, String categoria, int capacidad, int numero)
 	{
-		super.adicionarVivienda(pm, idHabitacion, direccion, cupos, idOperador);
+		super.adicionarVivienda(pm, idHabitacion, direccion, cupos, idOperador,"HABITACION");
 		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaHabitacion () + "(id, tipo_habitacion, categoria, numero) values (? ,? ,? ,?)");
 		q.setParameters(idHabitacion, tipoHabitacion, categoria, numero );
 		return (long) q.executeUnique();

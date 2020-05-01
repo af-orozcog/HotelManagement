@@ -62,7 +62,7 @@ class SQLEsporadico extends SQLVivienda
 	public long adicionarEsporadico (PersistenceManager pm, long idEsporadico, String direccion, int cupos, long idOperador, 
 			double area, int amoblado, int numeroHabitaciones, int nochesAnio, long idSeguro)
 	{
-		super.adicionarVivienda(pm, idEsporadico, direccion, cupos, idOperador);
+		super.adicionarVivienda(pm, idEsporadico, direccion, cupos, idOperador,"ESPORADICO");
 		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaEsporadico () + "(id, area, numero_habitaciones, noches_anio, seguro, amoblado) values (?, ?, ?, ?, ?,?)");
 		q.setParameters(idEsporadico,area,numeroHabitaciones, nochesAnio, idSeguro ,amoblado);
 		return (long) q.executeUnique();

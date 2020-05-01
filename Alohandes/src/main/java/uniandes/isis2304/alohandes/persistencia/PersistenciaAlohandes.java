@@ -500,7 +500,7 @@ public class PersistenciaAlohandes
 	 * @param idOperador - idOperador de la vivienda
 	 * @return El objeto Vivienda adicionado. null si ocurre alguna Excepción
 	 */
-	public Vivienda adicionarVivienda(String direccion, int cupos, long idOperador)
+	public Vivienda adicionarVivienda(String direccion, int cupos, long idOperador,String tipo)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -510,12 +510,12 @@ public class PersistenciaAlohandes
 			long idVivienda = nextval ();
 			if(modoPerron)
 				idVivienda = idPerron;
-			long tuplasInsertadas = sqlVivienda.adicionarVivienda(pm, idVivienda, direccion, cupos, idOperador);
+			long tuplasInsertadas = sqlVivienda.adicionarVivienda(pm, idVivienda, direccion, cupos, idOperador,tipo);
 			tx.commit();
 
 			log.trace ("Inserción de vivienda: " + idVivienda + ": " + tuplasInsertadas + " tuplas insertadas");
 
-			return new Vivienda(idVivienda, direccion, cupos, idOperador);
+			return new Vivienda(idVivienda, direccion, cupos, idOperador,tipo);
 		}
 		catch (Exception e)
 		{

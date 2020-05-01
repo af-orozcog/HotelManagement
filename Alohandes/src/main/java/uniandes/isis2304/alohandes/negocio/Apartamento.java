@@ -47,12 +47,26 @@ public class Apartamento extends Vivienda implements VOApartamento{
 	 * @param idOperador - el operador dueño de la vivienda
 	 */
 	public Apartamento(long id, String direccion, int cupos, long Operador, double area, int amoblado, int numero_habitaciones) {
-		super(id, direccion, cupos,Operador);
+		super(id, direccion, cupos,Operador,"APARTAMENTO");
 		this.area = area;
 		this.amoblado = amoblado;
 		this.numero_habitaciones = numero_habitaciones;
 	}
 
+	/**
+	 * @return the tipo
+	 */
+	public String getTipo() {
+		return tipo;
+	}
+
+	/**
+	 * @param tipo the tipo to set
+	 */
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
 	/**
 	 * @return area
 	 */

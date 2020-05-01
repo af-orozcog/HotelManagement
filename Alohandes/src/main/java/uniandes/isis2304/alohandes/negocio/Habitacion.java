@@ -53,13 +53,28 @@ public class Habitacion extends Vivienda implements VOHabitacion{
 	 * @param idOperador - el operador dueño de la vivienda
 	 */
 	public Habitacion(long id, String direccion, int cupos, long idOperador, String tipoHabitacion, String categoria, int capacidad, int numero) {
-		super(id, direccion, cupos,idOperador);
+		super(id, direccion, cupos,idOperador,"HABITACION");
 		this.tipo_habitacion = tipoHabitacion;
 		this.categoria = categoria;
 		this.capacidad = capacidad;
 		this.numero = numero;
 	}
 
+	
+	/**
+	 * @return the tipo
+	 */
+	public String getTipo() {
+		return tipo;
+	}
+
+	/**
+	 * @param tipo the tipo to set
+	 */
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
 	/**
 	 * @return tipoHabitacion
 	 */

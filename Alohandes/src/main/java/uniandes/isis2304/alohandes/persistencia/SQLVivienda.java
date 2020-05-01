@@ -68,10 +68,10 @@ class SQLVivienda
 	* @param idOperador - 
 	* @return El número de tuplas insertadas 
 	*/
-	public long adicionarVivienda (PersistenceManager pm, long idVivienda, String direccion, int cupos, long idOperador)
+	public long adicionarVivienda (PersistenceManager pm, long idVivienda, String direccion, int cupos, long idOperador, String tipo)
 	{
-	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaVivienda () + "(id, direccion, cupos, operador) values (?, ? ,? ,?)");
-	   q.setParameters(idVivienda, direccion, cupos, idOperador );
+	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaVivienda () + "(id, direccion, cupos, operador, tipo) values (?, ? ,? ,?,?)");
+	   q.setParameters(idVivienda, direccion, cupos, idOperador,tipo);
 	    return (long) q.executeUnique();
 	}
 

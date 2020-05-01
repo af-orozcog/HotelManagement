@@ -56,13 +56,27 @@ public class Cuarto extends Vivienda implements VOCuarto{
 	 * @param idOperador - el operador dueño de la vivienda
 	 */
 	public Cuarto(long id, String direccion, int cupos, long idOperador, int banio_privado, int cuarto_privado, String esquema, String menaje) {
-		super(id, direccion, cupos,idOperador);
+		super(id, direccion, cupos,idOperador,"CUARTO");
 		this.banio_privado = banio_privado;
 		this.cuarto_privado = cuarto_privado;
 		this.esquema = esquema;
 		this.menaje = menaje;
 	}
 
+	
+	/**
+	 * @return the tipo
+	 */
+	public String getTipo() {
+		return tipo;
+	}
+
+	/**
+	 * @param tipo the tipo to set
+	 */
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 
 	/**
 	 * @return bañoPrivado
