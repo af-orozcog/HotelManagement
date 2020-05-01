@@ -261,8 +261,6 @@ public class Controller {
 		}
 		long idOferta = sc.nextLong();
 		String periodoArrendamiento = mundo.darOfertaPorId(idOferta).getPeriodo();
-		interfaz.printMessage("Dar duración de la reserva en " + periodoArrendamiento +" (Escribir número entero)");
-		int duracion = sc.nextInt();
 
 		mundo.adicionarReserva(inicio, fin, periodoArrendamiento, idOferta, usuario.getId(), -1);
 	}
@@ -558,6 +556,8 @@ public class Controller {
 				mundo.adicionarReserva(inicio, fin, periodo, oferta.getId(), usuario.getId(), -1);	
 			}
 			
+			interfaz.printMessage("Reservas finalizadas, muchas gracias");
+			
 		}
 		else
 		{
@@ -567,8 +567,8 @@ public class Controller {
 
 	public long compareDays (Timestamp in, Timestamp fi) {
 		final long MILLIS_PER_DAY = 1000*60*60*24;
-		long time1 = in.getTime(); // (Mon 31 December 2018 13:19:25)
-		long time2 = fi.getTime(); // (Fri 28 December 2018 15:05:15)
+		long time1 = in.getTime();
+		long time2 = fi.getTime();
 
 		// Set both times to 0:00:00
 		time1 -= time1 % MILLIS_PER_DAY;
