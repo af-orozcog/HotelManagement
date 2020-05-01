@@ -774,10 +774,10 @@ public class Alohandes
 	 * @param idOperador - idOperador del Ganancias
 	 * @return El objeto Ganancias adicionado. null si ocurre alguna Excepción
 	 */
-	public Ganancias adicionarGanancias (int cantidad, int mes, int anio, long idOperador)
+	public Ganancias adicionarGanancias (long cantidad, Timestamp fecha, long idOperador)
 	{
 		log.info ("Adicionando nuevo(a) Ganancias ");
-		Ganancias ganancias = pa.adicionarGanancias(cantidad, mes, anio, idOperador);	
+		Ganancias ganancias = pa.adicionarGanancias(cantidad, fecha, idOperador);	
 		log.info ("Adicionando Ganancias: " + ganancias);
 		return ganancias;
 	}

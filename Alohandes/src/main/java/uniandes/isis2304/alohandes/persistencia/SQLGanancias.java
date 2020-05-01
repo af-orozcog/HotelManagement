@@ -14,6 +14,7 @@
  */
 
 package uniandes.isis2304.alohandes.persistencia;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -69,10 +70,10 @@ class SQLGanancias
 	 * @param idOperador - 
 	 * @return El número de tuplas insertadas 
 	 */
-	public long adicionarGanancias (PersistenceManager pm, long idGanancias, long cantidad, int mes, int anio, long idOperador)
+	public long adicionarGanancias (PersistenceManager pm, long idGanancias, long cantidad,Timestamp fecha, long idOperador)
 	{
-		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaGanancias () + "(id, cantidad, mes, anio, operador) values (? ,? ,? ,? ,?)");
-		q.setParameters( idGanancias, cantidad, mes, anio, idOperador );
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaGanancias () + "(id, cantidad, fecha, operador) values (? ,? ,? ,?)");
+		q.setParameters( idGanancias,cantidad ,fecha ,idOperador );
 		return (long) q.executeUnique();
 	}
 
