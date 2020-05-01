@@ -25,7 +25,7 @@ public class Reserva implements VOReserva{
 	private Timestamp fin;
 	
 	/**
-	 * tipo de periodo de arrendamiento (DIAS, MESES, SEMESTRES)
+	 * tipo de periodo de arrendamiento (DIAS, SEMANAS, MESES, SEMESTRES)
 	 */
 	private String periodo_arrendamiento;
 	
