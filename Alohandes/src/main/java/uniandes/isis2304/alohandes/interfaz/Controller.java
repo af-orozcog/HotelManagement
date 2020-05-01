@@ -554,77 +554,15 @@ public class Controller {
 			
 			interfaz.printMessage("Reservando ofertas");
 			
-			interfaz.printMessage("Dar duración de la reserva en " + periodo +" (Escribir número entero)");
-			int duracion = sc.nextInt();
 			for (Oferta oferta : ofertas) {
-				mundo.adicionarReserva(inicio, fin, duracion, periodo, oferta.getId(), usuario.getId(), -1);	
+				mundo.adicionarReserva(inicio, fin, periodo, oferta.getId(), usuario.getId(), -1);	
 			}
 			
 		}
-		
-		
-		interfaz.printMessage("Las siguientes ofertas están disponibles: ");
-		for (Oferta oferta : ofertas) {
-			interfaz.printMessage(oferta.toString() + "ID OFERTA: " + oferta.getId());
+		else
+		{
+			interfaz.printMessage("Lo sentimos, no hay suficientes reservas");
 		}
-		interfaz.printMessage("Escriba el id seleccionado");
-		
-		/*
-		interfaz.printMessage("Ingrese el anio de inicio de la reserva");
-		int anioIn = sc.nextInt();
-		interfaz.printMessage("Ingrese el mes de inicio de la reserva");
-		int mesIn = sc.nextInt();
-		interfaz.printMessage("Ingrese el dia de inicio de la reserva");
-		int diaIn = sc.nextInt();
-
-		interfaz.printMessage("Ingrese el anio de fin de la reserva");
-		int anioFin = sc.nextInt();
-		interfaz.printMessage("Ingrese el mes de fin de la reserva");
-		int mesFin = sc.nextInt();
-		interfaz.printMessage("Ingrese el dia de fin de la reserva");
-		int diaFin = sc.nextInt();
-
-		Timestamp inicio = new Timestamp(anioIn, mesIn, diaIn, 0, 0, 0, 0);
-		Timestamp fin = new Timestamp(anioFin, mesFin, diaFin, 0, 0, 0, 0);
-
-		interfaz.printMessage("Ingrese el nombre del usuario que va a realizar la reserva");
-		Cliente usuario = mundo.darClientePorNombre(sc.next());
-
-		interfaz.printMessage("Ya sabe con que oferta quiere realizar la reserva? (1/0) 1 para verdadero, 0 para falso");
-		boolean sabe = sc.next().equalsIgnoreCase("Y");
-
-		long idOferta;
-		if(sabe) {
-			interfaz.printMessage("Ingrese el id de la oferta que se quiere reservar");
-			idOferta = sc.nextLong();
-		}
-		else {
-			interfaz.printMessage("Algún servicio en específico? (1/0) 1 para verdadero, 0 para falso");
-			boolean servicios = sc.next().equalsIgnoreCase("Y");
-
-			ArrayList<String> lista = new ArrayList<String>();
-			while(servicios) {
-				interfaz.printMessage("Escriba el servicio que desea");
-				lista.add(sc.next());
-				interfaz.printMessage("Desea más servicios? (Y/N");
-				servicios = sc.next().equalsIgnoreCase("Y");
-			}
-
-			List<Oferta> ofertas = mundo.darOfertasConServicios(lista);
-			interfaz.printMessage("Las siguientes ofertas están disponibles: ");
-			for (Oferta oferta : ofertas) {
-				interfaz.printMessage(oferta.toString() + "ID OFERTA: " + oferta.getId());
-			}
-			interfaz.printMessage("Escriba el id seleccionado");
-			idOferta = sc.nextLong();
-		}
-
-		String periodoArrendamiento = mundo.darOfertaPorId(idOferta).getPeriodo();
-		interfaz.printMessage("Dar duración de la reserva en " + periodoArrendamiento +" (Escribir número entero)");
-		int duracion = sc.nextInt();
-
-		mundo.adicionarReserva(inicio, fin, duracion, periodoArrendamiento, idOferta, usuario.getId(), -1);
-*/	
 	}
 
 	public long compareDays (Timestamp in, Timestamp fi) {
