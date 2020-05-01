@@ -1759,7 +1759,17 @@ public class PersistenciaAlohandes
 	 * @return lista de Ofertas con los servicios requeridos
 	 */
 	public List<Oferta> darOfertasConServicios(ArrayList<String> lista) {
-		return sqlOferta.darOfertasConServicos(pmf.getPersistenceManager(), lista);
+		return sqlOferta.darOfertasConServicios(pmf.getPersistenceManager(), lista);
+	}
+	
+	/**
+	 * Retorna un grupo de ofertas que cumplan con los servicios pedidos
+	 * @param lista Servicios requeridos
+	 * @param tipo Tipo de operador
+	 * @return lista de Ofertas con los servicios requeridos
+	 */
+	public List<Oferta> darOfertasConServiciosYTipo(ArrayList<String> lista, String tipo, String periodo) {
+		return sqlOferta.darOfertasConServiciosYTipo(pmf.getPersistenceManager(), lista, tipo, periodo);
 	}
 	
 	/**
