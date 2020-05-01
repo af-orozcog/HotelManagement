@@ -1089,6 +1089,20 @@ public class Alohandes
 	}
 	
 	/**
+	 * Retorna un grupo de ofertas que cumplan con los servicios pedidos
+	 * @param lista Servicios requeridos
+	 * @param tipo Tipo de operador requerido
+	 * @return lista de Ofertas con los servicios requeridos
+	 */
+	public List<Oferta> darOfertasConServiciosYTipo(ArrayList<String> lista, String tipo, String periodo) {
+		log.info("Buscando ofertas con servicos");
+		List<Oferta> ofertas = pa.darOfertasConServiciosYTipo(lista, tipo, periodo);
+		log.info("Encontrado ofertas");
+		return ofertas;
+	}
+	
+	
+	/**
 	 * Encuentra todas las reservas de un operador
 	 * @param idOperador Identificador del operador
 	 * @return Todas las reservas del operador buscado

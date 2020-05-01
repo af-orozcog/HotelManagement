@@ -128,12 +128,31 @@ class SQLOferta
 		return (List<Oferta>) q.executeList();
 	}
 
-	public List<Oferta> darOfertasConServicos(PersistenceManager pm, ArrayList<String> lista) {
+	public List<Oferta> darOfertasConServicios(PersistenceManager pm, ArrayList<String> lista) {
 		
 		List<Oferta> ofertas = darOfertas(pm);
 		for (String servicio : lista) {
-			Query q = pm.newQuery(SQL, "SELECT DISTINCT * FROM " + pa.darTablaOferta ()+" o, " + pa.darTablaIncluye() + " i, " + pa.darTablaServicio() + "s "
+			Query q = pm.newQuery(SQL, "SELECT DISTINCT o.id, o.precio, o.periodo, o.vivienda, o.fechainicio, o.fechafin "
+					+ "FROM " + pa.darTablaOferta ()+" o, " + pa.darTablaIncluye() + " i, " + pa.darTablaServicio() + "s "
 					+ "WHERE o.id = i.oferta AND i.servicio = s.id AND s.nombre <> ?");
+			q.setResultClass(Oferta.class);
+			q.setParameters(servicio);
+			List<Oferta> eliminar = q.executeList();
+			for (Oferta el : eliminar) {
+				ofertas.remove(el);
+			}
+		}
+		
+		return ofertas;
+	}
+	
+public List<Oferta> darOfertasConServiciosYTipo(PersistenceManager pm, ArrayList<String> lista, String tipo, String periodo) {
+		
+		List<Oferta> ofertas = darOfertas(pm);
+		for (String servicio : lista) {
+			Query q = pm.newQuery(SQL, "SELECT DISTINCT o.id, o.precio, o.periodo, o.vivienda, o.fechainicio, o.fechafin "
+					+ "o.habilitada FROM " + pa.darTablaOferta ()+" o, " + pa.darTablaIncluye() + " i, " + pa.darTablaServicio() + "s, " + pa.darTablaVivienda() + "v, " + pa.darTablaOperador() + "op "
+					+ "WHERE o.id = i.oferta AND i.servicio = s.id AND s.nombre <> ? AND op.tipo_operador <> "+tipo+" AND op.periodo <> " + periodo);
 			q.setResultClass(Oferta.class);
 			q.setParameters(servicio);
 			List<Oferta> eliminar = q.executeList();
