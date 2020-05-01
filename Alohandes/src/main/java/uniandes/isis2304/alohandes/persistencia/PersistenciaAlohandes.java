@@ -2019,4 +2019,32 @@ public class PersistenciaAlohandes
 		idPerron = id;
 	}
 	
+	
+	public List<Reserva> deshabilitarAlojamiento(long idOferta){
+		LinkedList<Reserva> ans = new LinkedList<Reserva>();
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            
+            tx.commit();
+
+            return ans;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
  }
