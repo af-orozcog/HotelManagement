@@ -200,11 +200,11 @@ class SQLOferta
 		}
 		else {
 			Query q = pm.newQuery(SQL, "SELECT DISTINCT o.id, o.precio, o.periodo, o.vivienda, o.fechainicio, o.fechafin, o.habilitada "+
-					"FROM "+pa.darTablaOferta()+" o, "+pa.darTablaIncluye()+" i, "+pa.darTablaServicio()+" s, "+pa.darTablaVivienda()+" v, "+pa.darTablaOperador()+" op "+
-					"WHERE o.id = i.oferta AND i.servicio = s.id AND v.operador = op.id AND o.vivienda = v.id AND "+
-					"(o.habilitada = 1 AND s.nombre = ? AND op.tipo_operador = ? AND o.periodo = ? "+
+					"FROM "+pa.darTablaOferta()+" o, "+pa.darTablaVivienda()+" v, "+pa.darTablaOperador()+" op "+
+					"WHERE v.operador = op.id AND o.vivienda = v.id AND "+
+					"(o.habilitada = 1 AND op.tipo_operador = ? AND o.periodo = ? "+
 					"AND o.fechaInicio <= ? AND fechaFin >= ? "+
-					"OR o.id NOT IN( "+
+					"AND o.id NOT IN( "+
 					"SELECT o.id FROM "+pa.darTablaOferta()+" o, "+pa.darTablaReserva()+" r WHERE o.id = r.oferta AND "+
 					"(  (r.inicio >= ?  AND r.inicio <= ?) "+
 					"OR (r.inicio <= ? AND r.fin >= ?) "+
