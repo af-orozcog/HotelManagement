@@ -44,7 +44,6 @@ public class REQC9 {
 	}
 
 	public List<Oferta> ofertasConPocaDemanda(PersistenceManager pm){
-<<<<<<< Updated upstream:Alohandes/src/main/java/uniandes/isis2304/alohandes/persistencia/REQC9.java
 		Query q = pm.newQuery(SQL, "SELECT *\r\n" + 
 				"FROM oferta o\r\n" + 
 				"WHERE o.id NOT IN\r\n" + 
@@ -70,19 +69,5 @@ public class REQC9 {
 				");");
 		q.setResultClass(Oferta.class);
 		return (List<Oferta>) q.executeList();
-=======
-//		Timestamp hoy = new Timestamp(System.currentTimeMillis());
-//		int año = hoy.getYear();
-//		int mes = hoy.getMonth();
-//		Query q = pm.newQuery(SQL, "SELECT FROM " + pa.darTablaOferta() + "WHERE id NOT IN " +"("
-//				+ "SELECT o.id,o.precio, o.periodo,o.vivienda,o.fechaInicio,o.fechaFin FROM "
-//				+ pa.darTablaOferta() + " o, " + pa.darTablaReserva()+ " r"
-//				+" WHERE "
-//				+ ")");
-//		q.setParameters(idOperador,year);
-//		q.setResultClass(Oferta.class);
-//		return (List<Oferta>) q.executeList();
-		return null;
->>>>>>> Stashed changes:Alohandes/src/main/java/uniandes/isis2304/alohandes/persistencia/REQC5.java
 	}
 }
