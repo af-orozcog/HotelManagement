@@ -72,20 +72,23 @@ public class REQCC1 {
 	 * @param pm
 	 * @return
 	 */
-	public String respuestaSemana(PersistenceManager pm) {
+	public String respuestaSemana(PersistenceManager pm, String tipoAlojamiento) {
 		Query q = pm.newQuery(SQL, "SELECT to_char(fecha, 'iw') as numero, SUM(cantidad) as monto FROM "
 				+ ""
 				+ ""
-				+ "(" + pa.darTablaGanancias() + " o INNER JOIN "
-				+ " GROUP BY to_char(fecha, 'iw') "
-				+ "WHERE monto in "
+				+ "(" + pa.darTablaGanancias() + " g INNER JOIN " + pa.darTablaVivienda() + " v ON g.operador = v.opeador)" 
+				+ " GROUP BY to_char(g.fecha, 'iw') "
+				+ "WHERE v.tipo = ?  AND monto in "
 				+ "("
 				+ "SELECT MAX(suma) "
 				+ "FROM ("
 				+ "SELECT SUM(cantidad) as suma FROM "
-				+ "" + pa.darTablaGanancias() + " GROUP BY to_char(fecha, 'iw') "
+				+ "(" + pa.darTablaGanancias() + " g INNER JOIN " + pa.darTablaVivienda() + " v ON g.operador = v.opeador)"
+				+ " GROUP BY to_char(fecha, 'iw') "
+				+ "WHERE v.tipo = ?" 
 				+ ")"
 				+ ")");
+		q.setParameters(tipoAlojamiento,tipoAlojamiento);
 		q.setResultClass(Respuesta.class);
 		Respuesta ans = (Respuesta)q.executeUnique();
 		return "semana: " + ans.getNumero()+ " ganancias obtenidas:" + ans.getMonto();
@@ -96,19 +99,23 @@ public class REQCC1 {
 	 * @param pm
 	 * @return
 	 */
-	public String respuestaMes(PersistenceManager pm) {
+	public String respuestaMes(PersistenceManager pm, String tipoAlojamiento) {
 		Query q = pm.newQuery(SQL, "SELECT to_char(fecha, 'MM') as numero, SUM(cantidad) as monto FROM "
 				+ ""
 				+ ""
-				+ "" + pa.darTablaGanancias() + " GROUP BY to_char(fecha, 'MM') "
-				+ "WHERE monto in "
+				+ "( " + pa.darTablaGanancias() + " g INNER JOIN " + pa.darTablaVivienda() + " v ON g.operador = v.opeador )" 
+				+ " GROUP BY to_char(g.fecha, 'MM') "
+				+ "WHERE v.tipo = ?  AND monto in "
 				+ "("
 				+ "SELECT MAX(suma) "
 				+ "FROM ("
 				+ "SELECT SUM(cantidad) as suma FROM "
-				+ "" + pa.darTablaGanancias() + " GROUP BY to_char(fecha, 'MM') "
+				+ "(" + pa.darTablaGanancias() + " g INNER JOIN " + pa.darTablaVivienda() + " v ON g.operador = v.opeador)"
+				+ " GROUP BY to_char(fecha, 'MM') "
+				+ "WHERE v.tipo = ?" 
 				+ ")"
 				+ ")");
+		q.setParameters(tipoAlojamiento,tipoAlojamiento);
 		q.setResultClass(Respuesta.class);
 		Respuesta ans = (Respuesta)q.executeUnique();
 		return "mes: " + ans.getNumero()+ " ganancias obtenidas:" + ans.getMonto();
