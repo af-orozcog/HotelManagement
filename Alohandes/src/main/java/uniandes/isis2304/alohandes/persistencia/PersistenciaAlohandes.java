@@ -2139,13 +2139,20 @@ public class PersistenciaAlohandes
 			sqlOferta.deshabilitarOferta(pm, idOferta);
 			List<Reserva> reservasACancelar = sqlReserva.darReservasPorOferta(pm, idOferta);
 			for(Reserva va: reservasACancelar) {
+				long idColectiva =va.getColectiva();
+				if(va.getColectiva() != null) {
+					sqlReservaColectiva.disminuirCantidadColectiva(pm,idColectiva);
+					System.out.println("La reserva " + va.getId() + " queda desligada de la reserva colectiva: " + idColectiva);
+				}
 				eliminarReservaPorId(va.getId());
 				Timestamp ini = va.getInicio(), fin = va.getFin();
 				Oferta of = sqlOferta.darOfertasPorRangoFechaDisponibles(pm, ini, fin);
 				if(of == null)
 					ans.add(va);
-				else
-					adicionarReserva(ini, fin,va.getPeriodo_arrendamiento(), va.getCliente(), of.getId(), va.getColectiva());
+				else {
+					long nuevo = adicionarReserva(ini, fin,va.getPeriodo_arrendamiento(), va.getCliente(), of.getId(), va.getColectiva()).getId();
+					System.out.println("La reserva " + va.getId() + " queda reubicada a la oferta: " + of.getId() + " y su nuevo id es: " + nuevo);
+				}
 			}
 			tx.commit();
 

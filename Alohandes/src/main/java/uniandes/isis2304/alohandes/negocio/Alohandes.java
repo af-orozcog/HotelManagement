@@ -1168,6 +1168,30 @@ public class Alohandes
 		return ofertas;
 	}
 
+	/**
+	 * 
+	 * @param idOferta
+	 * @return
+	 */
+	public List<Reserva> deshabilitarOferta(long idOferta){
+		log.info("Deshabilitando la oferta con id: " + idOferta);
+		List<Reserva> reservas = pa.deshabilitarOferta(idOferta);
+		log.info("Deshabilitada la oferta");
+		return reservas;
+	}
+	
+	/**
+	 * 
+	 * @param idOferta
+	 * @return
+	 */
+	public long rehabilitarOferta(long idOferta){
+		log.info("Deshabilitando la oferta con id: " + idOferta);
+		long resp = pa.habilitarOferta(idOferta);
+				log.info("Deshabilitada la oferta");
+		return resp;
+	}
+	
 	/* ****************************************************************
 	 * 			Métodos para manejar los(as) SERVICIO
 	 *****************************************************************/

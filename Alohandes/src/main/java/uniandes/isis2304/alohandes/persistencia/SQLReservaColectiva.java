@@ -138,6 +138,14 @@ class SQLReservaColectiva
 		q.setParameters(idCliente);
 		return (List<Reserva>) q.executeList();
 	}
+	
+	public long disminuirCantidadColectiva(PersistenceManager pm, long idColectiva) {
+		Integer cantidad = darReservaPorId(pm, idColectiva).getCantidad();
+		cantidad--;
+		Query q = pm.newQuery(SQL, "UPDATE " + pa.darTablaReservaColectiva() + " SET cantidad = ? WHERE id = ?");
+		q.setParameters(cantidad, idColectiva);
+		return (long) q.executeUnique();
+	}
 
 
 }

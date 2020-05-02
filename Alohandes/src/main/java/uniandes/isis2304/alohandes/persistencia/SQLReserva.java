@@ -170,4 +170,15 @@ class SQLReserva
 		q.setParameters(idOferta);
 		return (List<Reserva>) q.executeList();
 	}
+	
+	/**
+	 * 
+	 * @param pm
+	 * @param idReserva
+	 */
+	public long desligarReservaColectiva(PersistenceManager pm, long idReserva) {
+		Query q = pm.newQuery(SQL, "UPDATE " + pa.darTablaReserva() + " SET colectiva = NULL");
+		q.setParameters(idReserva);
+		return (long) q.executeUnique();	
+	}
 }

@@ -454,8 +454,27 @@ public class Controller {
 		mundo.eliminarReservaColectivaPorId(idReserva);
 		interfaz.printMessage("Eliminada reserva colectiva");
 	}
+	
+	public void req9(Scanner sc) {
+		interfaz.printMessage("Ingresa el id de la oferta a deshabilitar");
+		long idOferta = sc.nextLong();
+		interfaz.printMessage("Revisando las reservas asociadas");
+		List<Reserva> eliminadas = mundo.deshabilitarOferta(idOferta);
+		
+		interfaz.printMessage("Hubo " + eliminadas.size() + " reservas eliminadas");
+		for (Reserva reserva : eliminadas) {
+			interfaz.printMessage("La reserva " + reserva.getId() +" no pudo reubicarse");
+		}
+		interfaz.printMessage("La oferta quedo deshabilitada");
+	}
 
-
+	public void req10(Scanner sc) {
+		interfaz.printMessage("Ingresa el id de la oferta a rehabilitar");
+		long idOferta = sc.nextLong();
+		mundo.rehabilitarOferta(idOferta);
+		interfaz.printMessage("La oferta quedo habilitada");
+	}
+	
 	public void reqC1(Scanner sc) {
 		interfaz.printMessage("Lista de los operadores con su nombre y el dinero ganado en el anio actual y corrido");
 		List<Operador> operadores = mundo.darOperadores();
