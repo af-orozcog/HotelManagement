@@ -135,7 +135,7 @@ class SQLOferta
 			Query q = pm.newQuery(SQL, "SELECT DISTINCT o.id, o.precio, o.periodo, o.vivienda, o.fechainicio, o.fechafin "
 					+ "FROM " + pa.darTablaOferta ()+" o, " + pa.darTablaIncluye() + " i, " + pa.darTablaServicio() + "s "
 					+ "WHERE o.id = i.oferta AND i.servicio = s.id AND s.nombre <> ?"
-					+ " AND fechaInicio > ? AND fechaFin < ? AND habilitado = 1 AND o.id NOT IN"
+					+ " AND fechaInicio > ? AND fechaFin < ? AND habilitado = 1 AND o.habilitada = 0 AND o.id NOT IN"
 					+ "( SELECT o.id FROM "+ pa.darTablaOferta() + " o, " + pa.darTablaReserva()+ " r"
 					+" WHERE o.id = r.oferta AND ((r.inicio < ?  AND r.inicio > ?) OR (r.inicio > ? AND r.fin < ?))"
 					+ ")");
@@ -156,7 +156,7 @@ public List<Oferta> darOfertasConServiciosYTipo(PersistenceManager pm, ArrayList
 		for (String servicio : lista) {
 			Query q = pm.newQuery(SQL, "SELECT DISTINCT o.id, o.precio, o.periodo, o.vivienda, o.fechainicio, o.fechafin "
 					+ "o.habilitada FROM " + pa.darTablaOferta ()+" o, " + pa.darTablaIncluye() + " i, " + pa.darTablaServicio() + "s, " + pa.darTablaVivienda() + "v, " + pa.darTablaOperador() + "op "
-					+ "WHERE o.id = i.oferta AND i.servicio = s.id AND s.nombre <> ? AND op.tipo_operador <> ? AND op.periodo <> ?"
+					+ "WHERE o.id = i.oferta AND i.servicio = s.id AND o.habilitada = 0 AND s.nombre <> ? AND op.tipo_operador <> ? AND op.periodo <> ?"
 					+ " AND fechaInicio > ? AND fechaFin < ? AND habilitado = 1 AND o.id NOT IN"
 					+ "( SELECT o.id FROM "+ pa.darTablaOferta() + " o, " + pa.darTablaReserva()+ " r"
 					+" WHERE o.id = r.oferta AND ((r.inicio < ?  AND r.inicio > ?) OR (r.inicio > ? AND r.fin < ?))"

@@ -12,9 +12,9 @@ public class InterfazAlohandes {
 		System.out.println("(5) RF5.Cancelar una reserva");
 		System.out.println("(6) RF6.Retirar una propuesta");
 		System.out.println("(7) RF7.Registrar una reserva colectiva");
-		System.out.println("(8) RF8");
-		System.out.println("(9) RF9");
-		System.out.println("(10) RF10");
+		System.out.println("(8) RF8.Cancelar reserva colectiva");
+		System.out.println("(9) RF9.Deshabilitar una oferta");
+		System.out.println("(10) RF10.Rehabilitar una oferta");
 
 		
 		System.out.println("---------------------------------------------------");
