@@ -442,8 +442,8 @@ public class Controller {
 			interfaz.printMessage("Reservando ofertas");
 
 			long colectiva = mundo.adicionarReservaColectiva(new Timestamp(System.currentTimeMillis()), n, usuario.getId()).getId();
-			for (Oferta oferta : ofertas) {
-				mundo.adicionarReserva(inicio, fin, periodo, oferta.getId(), usuario.getId(), colectiva);	
+			for(int i=0; i<n; i++) {
+				mundo.adicionarReserva(inicio, fin, periodo, ofertas.get(i).getId(), usuario.getId(), colectiva);	
 			}
 
 			interfaz.printMessage("Reservas finalizadas, muchas gracias");
