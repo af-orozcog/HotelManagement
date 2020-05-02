@@ -1,4 +1,4 @@
-SELECT o.id
+SELECT *
 FROM oferta o
 WHERE o.id NOT IN
 (

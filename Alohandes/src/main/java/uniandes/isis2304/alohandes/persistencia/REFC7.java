@@ -3,7 +3,7 @@ import java.util.Calendar;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-public class REQCC1 {
+public class REFC7 {
 	/* ****************************************************************
 	 * 			Constantes
 	 *****************************************************************/
@@ -64,7 +64,7 @@ public class REQCC1 {
 	* Constructor
 	* @param pa - El Manejador de persistencia de la aplicación
 	*/
-	public REQCC1 (PersistenciaAlohandes pa)
+	public REFC7 (PersistenciaAlohandes pa)
 	{
 	   this.pa = pa;
 	}

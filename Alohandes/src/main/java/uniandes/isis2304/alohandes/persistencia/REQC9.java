@@ -9,8 +9,9 @@ import javax.jdo.Query;
 
 import uniandes.isis2304.alohandes.negocio.Hoteleria;
 import uniandes.isis2304.alohandes.negocio.Oferta;
+import uniandes.isis2304.alohandes.negocio.Vivienda;
 
-public class REQC5 {
+public class REQC9 {
 
 	/* ****************************************************************
 	 * 			Constantes
@@ -37,21 +38,35 @@ public class REQC5 {
 	* Constructor
 	* @param pa - El Manejador de persistencia de la aplicaci√≥n
 	*/
-	public REQC5 (PersistenciaAlohandes pa)
+	public REQC9 (PersistenciaAlohandes pa)
 	{
 	   this.pa = pa;
 	}
 
 	public List<Oferta> ofertasConPocaDemanda(PersistenceManager pm){
-		Timestamp hoy = new Timestamp(System.currentTimeMillis());
-		int aÒo = hoy.getYear();
-		int mes = hoy.getMonth();
-		Query q = pm.newQuery(SQL, "SELECT FROM " + pa.darTablaOferta() + "WHERE id NOT IN " +"("
-				+ "SELECT o.id,o.precio, o.periodo,o.vivienda,o.fechaInicio,o.fechaFin FROM "
-				+ pa.darTablaOferta() + " o, " + pa.darTablaReserva()+ " r"
-				+" WHERE "
-				+ ")");
-		q.setParameters(idOperador,year);
+		Query q = pm.newQuery(SQL, "SELECT *\r\n" + 
+				"FROM oferta o\r\n" + 
+				"WHERE o.id NOT IN\r\n" + 
+				"(\r\n" + 
+				"	SELECT re1.oferta\r\n" + 
+				"	FROM reserva re1\r\n" + 
+				"	WHERE (\r\n" + 
+				"			SELECT re2.id\r\n" + 
+				"			FROM reserva re2\r\n" + 
+				"			WHERE to_number(to_char(re2.inicio,'DDD')) > to_number(to_char(re1.fin,'DDD'))\r\n" + 
+				"			AND to_number(to_char(re1.fin,'DDD')) + 30 >  to_number(to_char(re2.inicio,'DDD')) \r\n" + 
+				"			AND to_number(to_char(re1.fin,'YYYY')) = to_number(to_char(re2.inicio,'YYYY'))\r\n" + 
+				"		) IS NOT NULL\r\n" + 
+				"		OR (\r\n" + 
+				"			SELECT re2.id\r\n" + 
+				"			FROM reserva re2\r\n" + 
+				"			WHERE to_number(to_char(re2.inicio,'DDD')) < to_number(to_char(re1.fin,'DDD'))\r\n" + 
+				"			AND to_number(to_char(re1.fin,'DDD')) + 30 - 365 >  to_number(to_char(re2.inicio,'DDD'))\r\n" + 
+				"			AND to_number(to_char(re1.fin,'YYYY'))+1 = to_number(to_char(re2.inicio,'YYYY'))\r\n" + 
+				"		) IS NOT NULL\r\n" + 
+				"\r\n" + 
+				"	GROUP BY re1.oferta\r\n" + 
+				");");
 		q.setResultClass(Oferta.class);
 		return (List<Oferta>) q.executeList();
 	}
