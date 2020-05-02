@@ -162,7 +162,17 @@ class SQLOferta
 		return ofertas;
 	}
 	
-public List<Oferta> darOfertasConServiciosYTipo(PersistenceManager pm, ArrayList<String> lista, String tipo, String periodo, Timestamp inicio, Timestamp fin) {
+	/**
+	 * 
+	 * @param pm
+	 * @param lista
+	 * @param tipo
+	 * @param periodo
+	 * @param inicio
+	 * @param fin
+	 * @return
+	 */
+	public List<Oferta> darOfertasConServiciosYTipo(PersistenceManager pm, ArrayList<String> lista, String tipo, String periodo, Timestamp inicio, Timestamp fin) {
 		
 		List<Oferta> ofertas = darOfertas(pm);
 		for (String servicio : lista) {
