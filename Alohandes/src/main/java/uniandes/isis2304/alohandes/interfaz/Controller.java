@@ -302,7 +302,7 @@ public class Controller {
 				servicios = sc.next().equalsIgnoreCase("1");
 			}
 
-			List<Oferta> ofertas = mundo.darOfertasConServicios(lista);
+			List<Oferta> ofertas = mundo.darOfertasConServicios(lista, inicio, fin);
 			interfaz.printMessage("Las siguientes ofertas están disponibles: ");
 			for (Oferta oferta : ofertas) {
 				interfaz.printMessage(oferta.toString() + "ID OFERTA: " + oferta.getId());
@@ -394,35 +394,35 @@ public class Controller {
 		while(servicios) {
 			interfaz.printMessage("Escriba el servicio que desea");
 			lista.add(sc.next());
-			interfaz.printMessage("Desea más servicios? (Y/N");
-			servicios = sc.next().equalsIgnoreCase("1");
+			interfaz.printMessage("Desea más servicios? (Y/N)");
+			servicios = sc.next().equalsIgnoreCase("Y");
 		}
 
 		interfaz.printMessage("Ingrese el período deseado");
 		String periodo = sc.next();
+		
+		interfaz.printMessage("Ingrese el anio de inicio de la reserva");
+		int anioIn = sc.nextInt();
+		interfaz.printMessage("Ingrese el mes de inicio de la reserva");
+		int mesIn = sc.nextInt();
+		interfaz.printMessage("Ingrese el dia de inicio de la reserva");
+		int diaIn = sc.nextInt();
 
-		List<Oferta> ofertas = mundo.darOfertasConServiciosYTipo(lista, tipo, periodo);
+		interfaz.printMessage("Ingrese el anio de fin de la reserva");
+		int anioFin = sc.nextInt();
+		interfaz.printMessage("Ingrese el mes de fin de la reserva");
+		int mesFin = sc.nextInt();
+		interfaz.printMessage("Ingrese el dia de fin de la reserva");
+		int diaFin = sc.nextInt();
+
+		Timestamp inicio = new Timestamp(anioIn, mesIn, diaIn, 0, 0, 0, 0);
+		Timestamp fin = new Timestamp(anioFin, mesFin, diaFin, 0, 0, 0, 0);
+
+		List<Oferta> ofertas = mundo.darOfertasConServiciosYTipo(lista, tipo, periodo, inicio, fin);
 
 		interfaz.printMessage("Hay " + ofertas.size() + " ofertas disponibles");
 		if(n <= ofertas.size()) {
 			interfaz.printMessage("Es posible hacer las reservas");
-
-			interfaz.printMessage("Ingrese el anio de inicio de la reserva");
-			int anioIn = sc.nextInt();
-			interfaz.printMessage("Ingrese el mes de inicio de la reserva");
-			int mesIn = sc.nextInt();
-			interfaz.printMessage("Ingrese el dia de inicio de la reserva");
-			int diaIn = sc.nextInt();
-
-			interfaz.printMessage("Ingrese el anio de fin de la reserva");
-			int anioFin = sc.nextInt();
-			interfaz.printMessage("Ingrese el mes de fin de la reserva");
-			int mesFin = sc.nextInt();
-			interfaz.printMessage("Ingrese el dia de fin de la reserva");
-			int diaFin = sc.nextInt();
-
-			Timestamp inicio = new Timestamp(anioIn, mesIn, diaIn, 0, 0, 0, 0);
-			Timestamp fin = new Timestamp(anioFin, mesFin, diaFin, 0, 0, 0, 0);
 
 			interfaz.printMessage("Ingrese el id del usuario que va a realizar la reserva");
 			Cliente usuario = mundo.darClientePorId(sc.nextInt());
