@@ -194,7 +194,22 @@ public class PersistenciaAlohandes
 	 * Atributo para la clase que maneja la consutla 2
 	 */
 	private REQC2 reqc2;
+	
+	/**
+	 * Atributo para la clase que maneja la consutla 7
+	 */
+	private REQC7 reqc7;
 
+	/**
+	 * Atributo para la clase que maneja la consutla 7
+	 */
+	private REQC8 reqc8;
+	
+	/**
+	 * Atributo para la clase que maneja la consutla 7
+	 */
+	private REQC9 reqc9;
+	
 	private boolean modoPerron = false;
 
 	private long idPerron;
@@ -2101,7 +2116,48 @@ public class PersistenciaAlohandes
 	public List<Oferta> reqc2(){
 		return reqc2.ofertasPopulares(pmf.getPersistenceManager());
 	}
-
+	
+	public String reqC7MayorDemanda(String tiempo, String alojamiento	) {
+		switch (tiempo) {
+		case "SEMANA":
+			return reqc7.respuestaSemanaMayorDemanda(pmf.getPersistenceManager(), alojamiento);
+		case "MES":
+			return reqc7.respuestaMesMayorDemanda(pmf.getPersistenceManager(), alojamiento);
+	default:
+			return null;
+		}
+	}
+	
+	public String reqC7MenorDemanda(String tiempo, String alojamiento) {
+		switch (tiempo) {
+		case "SEMANA":
+			return reqc7.respuestaSemanaMenorDemanda(pmf.getPersistenceManager(), alojamiento);
+		case "MES":
+			return reqc7.respuestaMesMenorDemanda(pmf.getPersistenceManager(), alojamiento);
+		default:
+			return null;
+		}
+	}
+	
+	public String reqC7Ganancia(String tiempo, String alojamiento) {
+		switch (tiempo) {
+		case "SEMANA":
+			return reqc7.respuestaSemanaGanancias(pmf.getPersistenceManager(), alojamiento);
+		case "MES":
+			return reqc7.respuestaMesGanancias(pmf.getPersistenceManager(), alojamiento);
+		default:
+			return null;
+		}
+	}
+	
+	public List<Cliente> reqC8(long vivienda) {
+		return reqc8.clientesFrecuentes(pmf.getPersistenceManager(), vivienda);	
+	}
+	
+	public List<Oferta> reqC9(){
+		return reqc9.ofertasConPocaDemanda(pmf.getPersistenceManager());
+	}
+	
 	/* ****************************************************************
 	 * 			M�todos para activar el modo perron pruebas :v
 	 *****************************************************************/

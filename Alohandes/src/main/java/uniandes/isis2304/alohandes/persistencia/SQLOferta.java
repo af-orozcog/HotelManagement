@@ -135,7 +135,7 @@ class SQLOferta
 			Query q = pm.newQuery(SQL, "SELECT DISTINCT o.id, o.precio, o.periodo, o.vivienda, o.fechainicio, o.fechafin, o.habilitada "
 					+"FROM "+pa.darTablaOferta()+" o, "+pa.darTablaIncluye()+" i, "+pa.darTablaServicio()+" s, "+pa.darTablaVivienda()+" v"
 					+"WHERE o.id = i.oferta AND i.servicio = s.id AND o.vivienda = v.id AND "
-					+"(o.periodo <> ? OR o.habilitada = 0 OR s.nombre <> ? OR v.tipo <> ? "
+					+"(o.habilitada = 0 OR s.nombre <> ?"
 					+"OR o.fechaInicio > ? OR fechaFin < ? "
 					+"OR o.id IN( "
 					+"    SELECT o.id FROM OFERTA o, RESERVA r WHERE o.id = r.oferta AND "
@@ -193,7 +193,6 @@ class SQLOferta
 			q.setParameters(servicio, tipo, periodo, inicio,fin,inicio,fin,inicio,inicio);
 			List<Oferta> eliminar = q.executeList();
 			for (Oferta el : eliminar) {
-				if(ofertas.contains(el))
 				ofertas.remove(el);
 			}
 		}

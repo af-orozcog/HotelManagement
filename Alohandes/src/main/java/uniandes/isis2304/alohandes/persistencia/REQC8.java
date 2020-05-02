@@ -5,11 +5,12 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import uniandes.isis2304.alohandes.negocio.Cliente;
 import uniandes.isis2304.alohandes.negocio.VOVivienda;
 import uniandes.isis2304.alohandes.negocio.Vivienda;
 
 
-public class REFC8 {
+public class REQC8 {
 	/* ****************************************************************
 	 * 			Constantes
 	 *****************************************************************/
@@ -36,7 +37,7 @@ public class REFC8 {
 	* Constructor
 	* @param pa - El Manejador de persistencia de la aplicación
 	*/
-	public REFC8 (PersistenciaAlohandes pa)
+	public REQC8 (PersistenciaAlohandes pa)
 	{
 	   this.pa = pa;
 	}
@@ -47,7 +48,7 @@ public class REFC8 {
 	 * @param pm
 	 * @return
 	 */
-	public List<Vivienda> respuestaSemanaGanancias(PersistenceManager pm, long idVivienda) {
+	public List<Cliente> clientesFrecuentes(PersistenceManager pm, long idVivienda) {
 			Query q = pm.newQuery(SQL, "SELECT *\r\n" + 
 					"FROM CLIENTE\r\n" + 
 					"WHERE id in \r\n" + 
@@ -75,7 +76,7 @@ public class REFC8 {
 					"	)\r\n" + 
 					")");
 			q.setParameters(idVivienda,idVivienda);
-			q.setResultClass(Vivienda.class);
-			return (List<Vivienda>) q.executeList();
+			q.setResultClass(Cliente.class);
+			return (List<Cliente>) q.executeList();
 	}
 }
