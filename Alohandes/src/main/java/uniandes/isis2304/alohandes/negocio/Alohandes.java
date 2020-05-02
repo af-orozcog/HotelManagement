@@ -1135,9 +1135,9 @@ public class Alohandes
 	 * @param lista Servicios requeridos
 	 * @return lista de Ofertas con los servicios requeridos
 	 */
-	public List<Oferta> darOfertasConServicios(ArrayList<String> lista) {
+	public List<Oferta> darOfertasConServicios(ArrayList<String> lista, Timestamp inicio, Timestamp fin) {
 		log.info("Buscando ofertas con servicos");
-		List<Oferta> ofertas = pa.darOfertasConServicios(lista);
+		List<Oferta> ofertas = pa.darOfertasConServicios(lista, inicio, fin);
 		log.info("Encontrado ofertas");
 		return ofertas;
 	}
@@ -1148,9 +1148,9 @@ public class Alohandes
 	 * @param tipo Tipo de operador requerido
 	 * @return lista de Ofertas con los servicios requeridos
 	 */
-	public List<Oferta> darOfertasConServiciosYTipo(ArrayList<String> lista, String tipo, String periodo) {
+	public List<Oferta> darOfertasConServiciosYTipo(ArrayList<String> lista, String tipo, String periodo, Timestamp inicio, Timestamp fin) {
 		log.info("Buscando ofertas con servicos");
-		List<Oferta> ofertas = pa.darOfertasConServiciosYTipo(lista, tipo, periodo);
+		List<Oferta> ofertas = pa.darOfertasConServiciosYTipo(lista, tipo, periodo, inicio, fin);
 		log.info("Encontrado ofertas");
 		return ofertas;
 	}

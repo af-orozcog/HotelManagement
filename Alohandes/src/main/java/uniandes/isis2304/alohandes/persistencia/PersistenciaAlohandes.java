@@ -1854,8 +1854,8 @@ public class PersistenciaAlohandes
 	 * @param lista Servicios requeridos
 	 * @return lista de Ofertas con los servicios requeridos
 	 */
-	public List<Oferta> darOfertasConServicios(ArrayList<String> lista) {
-		return sqlOferta.darOfertasConServicios(pmf.getPersistenceManager(), lista);
+	public List<Oferta> darOfertasConServicios(ArrayList<String> lista, Timestamp inicio, Timestamp fin) {
+		return sqlOferta.darOfertasConServicios(pmf.getPersistenceManager(), lista, inicio, fin);
 	}
 
 	/**
@@ -1864,8 +1864,8 @@ public class PersistenciaAlohandes
 	 * @param tipo Tipo de operador
 	 * @return lista de Ofertas con los servicios requeridos
 	 */
-	public List<Oferta> darOfertasConServiciosYTipo(ArrayList<String> lista, String tipo, String periodo) {
-		return sqlOferta.darOfertasConServiciosYTipo(pmf.getPersistenceManager(), lista, tipo, periodo);
+	public List<Oferta> darOfertasConServiciosYTipo(ArrayList<String> lista, String tipo, String periodo, Timestamp inicio, Timestamp fin) {
+		return sqlOferta.darOfertasConServiciosYTipo(pmf.getPersistenceManager(), lista, tipo, periodo, inicio, fin);
 	}
 
 	/**

@@ -128,19 +128,19 @@ class SQLOferta
 		return (List<Oferta>) q.executeList();
 	}
 
-	public List<Oferta> darOfertasConServicios(PersistenceManager pm, ArrayList<String> lista) {
+	public List<Oferta> darOfertasConServicios(PersistenceManager pm, ArrayList<String> lista, Timestamp inicio, Timestamp fin) {
 		
 		List<Oferta> ofertas = darOfertas(pm);
 		for (String servicio : lista) {
-			Query q = pm.newQuery(SQL, "SELECT DISTINCT o.id, o.precio, o.periodo, o.vivienda, o.fechainicio, o.fechafin "
-					+ "FROM " + pa.darTablaOferta ()+" o, " + pa.darTablaIncluye() + " i, " + pa.darTablaServicio() + "s "
-					+ "WHERE o.id = i.oferta AND i.servicio = s.id AND s.nombre <> ?"
-					+ " AND fechaInicio > ? AND fechaFin < ? AND habilitado = 1 AND o.habilitada = 0 AND o.id NOT IN"
+			Query q = pm.newQuery(SQL, "SELECT DISTINCT o.id, o.precio, o.periodo, o.vivienda, o.fechainicio, o.fechafin, o.habilitada "
+					+ "FROM " + pa.darTablaOferta ()+" o, " + pa.darTablaIncluye() + " i, " + pa.darTablaServicio() + " s "
+					+ "WHERE o.id = i.oferta AND i.servicio = s.id AND (o.habilitada = 0 OR s.nombre <> ? OR op.tipo_operador <> ? OR op.periodo <> ?"
+					+ " OR o.fechaInicio > ? OR o.fechaFin < ? OR o.id IN"
 					+ "( SELECT o.id FROM "+ pa.darTablaOferta() + " o, " + pa.darTablaReserva()+ " r"
 					+" WHERE o.id = r.oferta AND ((r.inicio < ?  AND r.inicio > ?) OR (r.inicio > ? AND r.fin < ?))"
-					+ ")");
+					+ "))");
 			q.setResultClass(Oferta.class);
-			q.setParameters(servicio);
+			q.setParameters(servicio, inicio,fin,inicio,fin,inicio,inicio);
 			List<Oferta> eliminar = q.executeList();
 			for (Oferta el : eliminar) {
 				ofertas.remove(el);
@@ -150,21 +150,28 @@ class SQLOferta
 		return ofertas;
 	}
 	
-public List<Oferta> darOfertasConServiciosYTipo(PersistenceManager pm, ArrayList<String> lista, String tipo, String periodo) {
+public List<Oferta> darOfertasConServiciosYTipo(PersistenceManager pm, ArrayList<String> lista, String tipo, String periodo, Timestamp inicio, Timestamp fin) {
 		
 		List<Oferta> ofertas = darOfertas(pm);
 		for (String servicio : lista) {
-			Query q = pm.newQuery(SQL, "SELECT DISTINCT o.id, o.precio, o.periodo, o.vivienda, o.fechainicio, o.fechafin "
-					+ "o.habilitada FROM " + pa.darTablaOferta ()+" o, " + pa.darTablaIncluye() + " i, " + pa.darTablaServicio() + "s, " + pa.darTablaVivienda() + "v, " + pa.darTablaOperador() + "op "
-					+ "WHERE o.id = i.oferta AND i.servicio = s.id AND o.habilitada = 0 AND s.nombre <> ? AND op.tipo_operador <> ? AND op.periodo <> ?"
-					+ " AND fechaInicio > ? AND fechaFin < ? AND habilitado = 1 AND o.id NOT IN"
-					+ "( SELECT o.id FROM "+ pa.darTablaOferta() + " o, " + pa.darTablaReserva()+ " r"
-					+" WHERE o.id = r.oferta AND ((r.inicio < ?  AND r.inicio > ?) OR (r.inicio > ? AND r.fin < ?))"
-					+ ")");
+			Query q = pm.newQuery(SQL, "SELECT DISTINCT o.id, o.precio, o.periodo, o.vivienda, o.fechainicio, o.fechafin, o.habilitada "+
+					"FROM "+pa.darTablaOferta()+" o, "+pa.darTablaIncluye()+" i, "+pa.darTablaServicio()+" s, "+pa.darTablaVivienda()+" v, "+pa.darTablaOperador()+" op "+
+					"WHERE o.id = i.oferta AND i.servicio = s.id AND v.operador = op.id AND o.vivienda = v.id AND "+
+					"(o.habilitada = 0 OR s.nombre <> 'Internet' OR op.tipo_operador <> 'HOTELERIA' OR o.periodo <> 'SEMANAS' "+
+					"OR o.fechaInicio > ? OR fechaFin < ?"+
+					"OR o.id IN( "+
+					    "SELECT o.id FROM "+pa.darTablaOferta()+" o, "+pa.darTablaReserva()+" r WHERE o.id = r.oferta AND "+
+					        "(  (r.inicio >= ?  AND r.inicio <= ?) "+
+					        "OR (r.inicio <= ? AND r.fin >= ?) "+
+					        ")"
+					       + ")"
+				 + ")"
+			);
 			q.setResultClass(Oferta.class);
-			q.setParameters(servicio, tipo, periodo );
+			q.setParameters(servicio, tipo, periodo, inicio,fin,inicio,fin,inicio,inicio);
 			List<Oferta> eliminar = q.executeList();
 			for (Oferta el : eliminar) {
+				if(ofertas.contains(el))
 				ofertas.remove(el);
 			}
 		}
@@ -188,7 +195,7 @@ public List<Oferta> darOfertasConServiciosYTipo(PersistenceManager pm, ArrayList
 	}
 
 	/**
-	 * Método que devuelve las ofertas por rangos de fechas
+	 * Mï¿½todo que devuelve las ofertas por rangos de fechas
 	 * @param pm
 	 * @param inicio
 	 * @param fin
@@ -212,7 +219,7 @@ public List<Oferta> darOfertasConServiciosYTipo(PersistenceManager pm, ArrayList
 	}
 	
 	/**
-	 * Método que cambia el atributo de habilitado de una oferta
+	 * Mï¿½todo que cambia el atributo de habilitado de una oferta
 	 * @param pm
 	 * @param idOferta
 	 * @return
@@ -226,7 +233,7 @@ public List<Oferta> darOfertasConServiciosYTipo(PersistenceManager pm, ArrayList
 	}
 	
 	/**
-	 * Método que cambia el atributo de habilitado de una oferta
+	 * Mï¿½todo que cambia el atributo de habilitado de una oferta
 	 * @param pm
 	 * @param idOferta
 	 * @return
