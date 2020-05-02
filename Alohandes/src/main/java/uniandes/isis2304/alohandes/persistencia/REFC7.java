@@ -22,43 +22,9 @@ public class REFC7 {
 	protected PersistenciaAlohandes pa;
 
 	
-	String months[] = {"01","02","03","04","05","06","07","08","09","10","11","12"};
-	
 	/* ****************************************************************
 	 * 			Métodos
 	 *****************************************************************/
-	/**
-	 * Clase auxiliar
-	 */
-	
-	public class Respuesta{
-		
-		private Integer numero;
-		
-		private Long monto;
-		
-		public Respuesta(Integer numero,Long monto) {
-			this.numero = numero;
-			this.monto = monto;
-		}
-		
-		public void setNumero(Integer numero) {
-			this.numero = numero;
-		}
-		
-		public Integer getNumero() {
-			return numero;
-		}
-		
-		public void setMonto(Long monto) {
-			this.monto = monto;
-		}
-		
-		public Long getMonto() {
-			return monto;
-		}
-	}
-	
 	
 	/** 
 	* Constructor
@@ -76,24 +42,27 @@ public class REFC7 {
 	 * @return
 	 */
 	public String respuestaSemanaGanancias(PersistenceManager pm, String tipoAlojamiento) {
-		Respuesta def = null;
+		long va = 0;
+		int semana = 0;
 		for(int i = 1; i < 53;++i) {
 			Query q = pm.newQuery(SQL, "SELECT to_char(fecha, 'iw') as numero, SUM(cantidad) as monto FROM "
 					+ ""
 					+ ""
 					+ "( " + pa.darTablaGanancias() + " g INNER JOIN " + pa.darTablaVivienda() + " v ON g.operador = v.opeador ) " 
-					+ " WHERE v.tipo = ?  AND to_char(g.fecha, 'iw') = ? "
+					+ " WHERE v.tipo = ?  AND to_number(to_char(g.fecha, 'iw')) = ? "
 					+ " GROUP BY to_char(g.fecha, 'iw') "
 					);
 			q.setParameters(tipoAlojamiento,i);
-			q.setResultClass(Respuesta.class);
-			Respuesta ans = (Respuesta)q.executeUnique();
-			if(ans != null) {
-				if(def == null) def = ans;
-				else if(def.getMonto() < ans.getMonto()) def = ans;
+			q.setResultClass(Long.class);
+			Long ans = (Long)q.executeUnique();
+			if(ans == null) ans = new Long(0);
+			if(va < ans) {
+				ans = va;
+				semana = i;
 			}
 		}
-		return "semana: " + def.getNumero() + " ganancias de esa semana: " + def.getMonto();
+		
+		return "semana: " + semana + " ganancias de esa semana: " + va;
 	}
 	
 	/**
@@ -102,24 +71,26 @@ public class REFC7 {
 	 * @return
 	 */
 	public String respuestaMesGanacias(PersistenceManager pm, String tipoAlojamiento) {
-		Respuesta def = null;
-		for(int i = 0; i < 12;++i) {
-			Query q = pm.newQuery(SQL, "SELECT to_char(fecha, 'MM') as numero, SUM(cantidad) as monto FROM "
+		long va = 0;
+		int mes = 0;
+		for(int i = 1; i < 13;++i) {
+			Query q = pm.newQuery(SQL, "SELECT SUM(cantidad) as monto FROM "
 					+ ""
 					+ ""
 					+ "( " + pa.darTablaGanancias() + " g INNER JOIN " + pa.darTablaVivienda() + " v ON g.operador = v.opeador ) " 
-					+ "WHERE v.tipo = ?  AND to_char(g.fecha, 'MM') = ? "
+					+ "WHERE v.tipo = ?  AND to_number(to_char(g.fecha, 'MM')) = ? "
 					+ " GROUP BY to_char(g.fecha, 'MM') "
 					);
-			q.setParameters(tipoAlojamiento,months[i]);
-			q.setResultClass(Respuesta.class);
-			Respuesta ans = (Respuesta)q.executeUnique();
-			if(ans != null) {
-				if(def == null) def = ans;
-				else if(def.getMonto() < ans.getMonto()) def = ans;
+			q.setParameters(tipoAlojamiento,i);
+			q.setResultClass(Long.class);
+			Long ans = (Long)q.executeUnique();
+			if(ans == null) ans = new Long(0);
+			if(ans > va) {
+				va = ans;
+				mes = i;
 			}
 		}
-		return "mes: " + def.getNumero() + " ganancias de ese mes: " + def.getMonto();
+		return "mes: " + mes + " ganancias de ese mes: " + va;
 	}
 	
 	/**
@@ -128,23 +99,26 @@ public class REFC7 {
 	 * @return
 	 */
 	public String respuestaSemanaMayorDemanda(PersistenceManager pm, String tipoAlojamiento) {
-		Respuesta def = null;
+		long va = 0;
+		int semana = 0;
 		for(int i = 1; i < 53;++i) {
-			Query q = pm.newQuery(SQL, "SELECT to_char(fecha, 'iw') as numero, SUM(re.id) as monto FROM "
+			Query q = pm.newQuery(SQL, "SELECT COUNT(re.id) as monto FROM "
 					+ ""
 					+ ""
 					+ "((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) aux1 INNER JOIN VIVIENDA vi ON vi.id = aux1.vivienda)" 
 					+ "WHERE vi.tipo = ?  AND TO_NUMBER(to_char(re.inicio, 'iw')) <= ? AND ? <= TO_NUMBER(to_char(re.inicio, 'iw')) "
 					);
 			q.setParameters(tipoAlojamiento,i);
-			q.setResultClass(Respuesta.class);
-			Respuesta ans = (Respuesta)q.executeUnique();
-			if(ans != null) {
-				if(def == null) def = ans;
-				else if(def.getMonto() < ans.getMonto()) def = ans;
+			q.setResultClass(Long.class);
+			Long ans = (Long)q.executeUnique();
+			if(ans == null) ans = new Long(0);
+			if(va < ans) {
+				ans = va;
+				semana = i;
 			}
 		}
-		return "semana: " + def.getNumero() + " demanda de esa semana: " + def.getMonto();
+		
+		return "semana: " + semana + " demanda de esa semana: " + va;
 	}
 	
 	/**
@@ -153,23 +127,25 @@ public class REFC7 {
 	 * @return
 	 */
 	public String respuestaMesMayorDemanda(PersistenceManager pm, String tipoAlojamiento) {
-		Respuesta def = null;
+		long va = 0;
+		int mes = 0;
 		for(int i = 1; i < 13;++i) {
-			Query q = pm.newQuery(SQL, "SELECT to_char(fecha, 'MM') as numero, SUM(*) as monto FROM "
+			Query q = pm.newQuery(SQL, "SELECT COUNT(re.id) as monto FROM "
 					+ ""
 					+ ""
-					+ "((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) aux1 INNER JOIN VIVIENDA vi ON vi.id = aux1.vivienda)" 
+					+ "((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) aux1 INNER JOIN VIVIENDA vi ON vi.id = aux1.vivienda) " 
 					+ "WHERE v.tipo = ?  AND to_number(to_char(re.fecha, 'MM')) <= ? AND ? <= to_number(to_char(re.fecha, 'MM'))"
 					);
 			q.setParameters(tipoAlojamiento,i);
-			q.setResultClass(Respuesta.class);
-			Respuesta ans = (Respuesta)q.executeUnique();
-			if(ans != null) {
-				if(def == null) def = ans;
-				else if(def.getMonto() < ans.getMonto()) def = ans;
+			q.setResultClass(Long.class);
+			Long ans = (Long)q.executeUnique();
+			if(ans == null) ans = new Long(0);
+			if(va < ans) {
+				ans = va;
+				mes = i;
 			}
 		}
-		return "mes: " + def.getNumero() + " demanda de ese mes: " + def.getMonto();
+		return "mes: " + mes + " demanda de ese mes: " + va;
 	}
 	
 	/**
@@ -178,23 +154,26 @@ public class REFC7 {
 	 * @return
 	 */
 	public String respuestaSemanaMenorDemanda(PersistenceManager pm, String tipoAlojamiento) {
-		Respuesta def = null;
+		long va = 10000000000L;
+		int semana = 0;
 		for(int i = 1; i < 53;++i) {
-			Query q = pm.newQuery(SQL, "SELECT to_char(fecha, 'iw') as numero, SUM(re.id) as monto FROM "
+			Query q = pm.newQuery(SQL, "SELECT COUNT(re.id) as monto FROM "
 					+ ""
 					+ ""
-					+ "((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) aux1 INNER JOIN VIVIENDA vi ON vi.id = aux1.vivienda)" 
+					+ "((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) aux1 INNER JOIN VIVIENDA vi ON vi.id = aux1.vivienda) " 
 					+ "WHERE vi.tipo = ?  AND TO_NUMBER(to_char(re.inicio, 'iw')) <= ? AND ? <= TO_NUMBER(to_char(re.inicio, 'iw')) "
 					);
 			q.setParameters(tipoAlojamiento,i);
-			q.setResultClass(Respuesta.class);
-			Respuesta ans = (Respuesta)q.executeUnique();
-			if(ans != null) {
-				if(def == null) def = ans;
-				else if(def.getMonto() > ans.getMonto()) def = ans;
+			q.setResultClass(Long.class);
+			Long ans = (Long)q.executeUnique();
+			if(ans == null) ans = new Long(0);
+			if(va > ans) {
+				ans = va;
+				semana = i;
 			}
 		}
-		return "semana: " + def.getNumero() + " demanda de esa semana: " + def.getMonto();
+		
+		return "semana: " + semana + " demanda de esa semana: " + va;
 	}
 	
 	/**
@@ -203,24 +182,25 @@ public class REFC7 {
 	 * @return
 	 */
 	public String respuestaMesMenorDemanda(PersistenceManager pm, String tipoAlojamiento) {
-		Respuesta def = null;
+		long va = 10000000000L;
+		int mes = 0;
 		for(int i = 1; i < 13;++i) {
-			Query q = pm.newQuery(SQL, "SELECT to_char(fecha, 'MM') as numero, SUM(*) as monto FROM "
+			Query q = pm.newQuery(SQL, "SELECT COUNT(re.id) as monto FROM "
 					+ ""
 					+ ""
-					+ "((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) aux1 INNER JOIN VIVIENDA vi ON vi.id = aux1.vivienda)" 
+					+ "((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) aux1 INNER JOIN VIVIENDA vi ON vi.id = aux1.vivienda) " 
 					+ "WHERE v.tipo = ?  AND to_number(to_char(re.fecha, 'MM')) <= ? AND ? <= to_number(to_char(re.fecha, 'MM'))"
 					);
 			q.setParameters(tipoAlojamiento,i);
-			q.setParameters(tipoAlojamiento,months[i]);
-			q.setResultClass(Respuesta.class);
-			Respuesta ans = (Respuesta)q.executeUnique();
-			if(ans != null) {
-				if(def == null) def = ans;
-				else if(def.getMonto() > ans.getMonto()) def = ans;
+			q.setResultClass(Long.class);
+			Long ans = (Long)q.executeUnique();
+			if(ans == null) ans = new Long(0);
+			if(va > ans) {
+				ans = va;
+				mes = i;
 			}
 		}
-		return "mes: " + def.getNumero() + " demanda de ese mes: " + def.getMonto();
+		return "mes: " + mes + " demanda de ese mes: " + va;
 	}
 	
 }
