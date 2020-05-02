@@ -1,7 +1,7 @@
 /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * Universidad	de	los	Andes	(BogotÃ¡	- Colombia)
- * Departamento	de	IngenierÃ­a	de	Sistemas	y	Computación
- * Licenciado	bajo	el	esquema	Academic Free License versión 2.1
+ * Departamento	de	IngenierÃ­a	de	Sistemas	y	Computaciï¿½n
+ * Licenciado	bajo	el	esquema	Academic Free License versiï¿½n 2.1
  * 		
  * Curso: isis2304 - Sistemas Transaccionales
  * Proyecto: Alohandes Uniandes
@@ -9,7 +9,7 @@
  * @author GermÃ¡n Bravo
  * Julio de 2018
  * 
- * Revisado por: Claudia Jiménez, Christian Ariza
+ * Revisado por: Claudia Jimï¿½nez, Christian Ariza
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
@@ -40,7 +40,7 @@ public class Alohandes
 	 * 			Constantes
 	 *****************************************************************/
 	/**
-	 * Logger para escribir la traza de la ejecución
+	 * Logger para escribir la traza de la ejecuciï¿½n
 	 */
 	private static Logger log = Logger.getLogger(Alohandes.class.getName());
 
@@ -53,7 +53,7 @@ public class Alohandes
 	private PersistenciaAlohandes pa;
 
 	/* ****************************************************************
-	 * 			Métodos
+	 * 			Mï¿½todos
 	 *****************************************************************/
 	/**
 	 * El constructor por defecto
@@ -73,7 +73,7 @@ public class Alohandes
 	}
 
 	/**
-	 * Cierra la conexión con la base de datos (Unidad de persistencia)
+	 * Cierra la conexiï¿½n con la base de datos (Unidad de persistencia)
 	 */
 	public void cerrarUnidadPersistencia ()
 	{
@@ -81,29 +81,29 @@ public class Alohandes
 	}
 
 	/* ****************************************************************
-	 * 			Métodos para manejar los(as) VIVIENDA
+	 * 			Mï¿½todos para manejar los(as) VIVIENDA
 	 *****************************************************************/
 	/**
 	 * Adiciona de manera persistente un Vivienda
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param direccion - direccion del Vivienda
 	 * @param cupos - cupos del Vivienda
 	 * @param idOperador - idOperador del Vivienda
-	 * @return El objeto Vivienda adicionado. null si ocurre alguna Excepción
+	 * @return El objeto Vivienda adicionado. null si ocurre alguna Excepciï¿½n
 	 */
 	public Vivienda adicionarVivienda (String direccion, int cupos, long idOperador, String tipo)
 	{
 		log.info ("Adicionando nuevo(a) Vivienda ");
-		Vivienda vivienda = pa.adicionarVivienda(direccion, cupos, idOperador,tipo);	
+		Vivienda vivienda = pa.adicionarVivienda(direccion, cupos, idOperador, tipo);	
 		log.info ("Adicionando Vivienda: " + vivienda);
 		return vivienda;
 	}
 
 	/**
 	 * Elimina un Vivienda por su id
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param id - El id del Vivienda a eliminar
-	 * @return El número de tuplas eliminadas
+	 * @return El nï¿½mero de tuplas eliminadas
 	 */
 	public long eliminarViviendaPorId (long idVivienda)
 	{
@@ -115,8 +115,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Vivienda en Alohandes
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos Vivienda, llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos Vivienda, llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<Vivienda> darViviendas ()
 	{
@@ -128,8 +128,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Vivienda en Alohandes y los devuelve como una lista de VOVivienda
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos VOVivienda llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos VOVivienda llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<VOVivienda> darVOVivienda ()
 	{
@@ -157,11 +157,11 @@ public class Alohandes
 	}
 
 	/* ****************************************************************
-	 * 			Métodos para manejar los(as) HABITACION
+	 * 			Mï¿½todos para manejar los(as) HABITACION
 	 *****************************************************************/
 	/**
 	 * Adiciona de manera persistente un Habitacion
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param direccion - direccion del Habitacion
 	 * @param cupos - cupos del Habitacion
 	 * @param idOperador - idOperador del Habitacion
@@ -169,7 +169,7 @@ public class Alohandes
 	 * @param categoria - categoria del Habitacion
 	 * @param capacidad - capacidad del Habitacion
 	 * @param numero - numero del Habitacion
-	 * @return El objeto Habitacion adicionado. null si ocurre alguna Excepción
+	 * @return El objeto Habitacion adicionado. null si ocurre alguna Excepciï¿½n
 	 */
 	public Habitacion adicionarHabitacion (String direccion, int cupos, long idOperador, String tipoHabitacion, String categoria, int capacidad, int numero)
 	{
@@ -181,9 +181,9 @@ public class Alohandes
 
 	/**
 	 * Elimina un Habitacion por su id
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param id - El id del Habitacion a eliminar
-	 * @return El número de tuplas eliminadas
+	 * @return El nï¿½mero de tuplas eliminadas
 	 */
 	public long eliminarHabitacionPorId (long idHabitacion)
 	{
@@ -195,8 +195,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Habitacion en Alohandes
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos Habitacion, llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos Habitacion, llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<Habitacion> darHabitaciones ()
 	{
@@ -208,8 +208,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Habitacion en Alohandes y los devuelve como una lista de VOHabitacion
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos VOHabitacion llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos VOHabitacion llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<VOHabitacion> darVOHabitacion ()
 	{
@@ -224,18 +224,18 @@ public class Alohandes
 	}
 
 	/* ****************************************************************
-	 * 			Métodos para manejar los(as) APARTAMENTO
+	 * 			Mï¿½todos para manejar los(as) APARTAMENTO
 	 *****************************************************************/
 	/**
 	 * Adiciona de manera persistente un Apartamento
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param direccion - direccion del Apartamento
 	 * @param cupos - cupos del Apartamento
 	 * @param idOperador - idOperador del Apartamento
 	 * @param area - area del Apartamento
 	 * @param amoblado - amoblado del Apartamento
 	 * @param numeroHabitaciones - numeroHabitaciones del Apartamento
-	 * @return El objeto Apartamento adicionado. null si ocurre alguna Excepción
+	 * @return El objeto Apartamento adicionado. null si ocurre alguna Excepciï¿½n
 	 */
 	public Apartamento adicionarApartamento ( String direccion, int cupos, long idOperador, double area, int amoblado, int numeroHabitaciones)
 	{
@@ -248,9 +248,9 @@ public class Alohandes
 
 	/**
 	 * Elimina un Apartamento por su id
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param id - El id del Apartamento a eliminar
-	 * @return El número de tuplas eliminadas
+	 * @return El nï¿½mero de tuplas eliminadas
 	 */
 	public long eliminarApartamentoPorId (long idApartamento)
 	{
@@ -262,8 +262,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Apartamento en Alohandes
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos Apartamento, llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos Apartamento, llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<Apartamento> darApartamentos ()
 	{
@@ -278,8 +278,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Apartamento en Alohandes y los devuelve como una lista de VOApartamento
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos VOApartamento llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos VOApartamento llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<VOApartamento> darVOApartamento ()
 	{
@@ -294,11 +294,11 @@ public class Alohandes
 	}
 
 	/* ****************************************************************
-	 * 			Métodos para manejar los(as) ESPORADICO
+	 * 			Mï¿½todos para manejar los(as) ESPORADICO
 	 *****************************************************************/
 	/**
 	 * Adiciona de manera persistente un Esporadico
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param direccion - direccion del Esporadico
 	 * @param cupos - cupos del Esporadico
 	 * @param idOperador - idOperador del Esporadico
@@ -307,7 +307,7 @@ public class Alohandes
 	 * @param numeroHabitaciones - numeroHabitaciones del Esporadico
 	 * @param nochesanio - nochesanio del Esporadico
 	 * @param idSeguro - idSeguro del Esporadico
-	 * @return El objeto Esporadico adicionado. null si ocurre alguna Excepción
+	 * @return El objeto Esporadico adicionado. null si ocurre alguna Excepciï¿½n
 	 */
 	public Esporadico adicionarEsporadico (String direccion, int cupos, long idOperador, double area, int amoblado, int numeroHabitaciones, int nochesanio, long idSeguro)
 	{
@@ -319,9 +319,9 @@ public class Alohandes
 
 	/**
 	 * Elimina un Esporadico por su id
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param id - El id del Esporadico a eliminar
-	 * @return El número de tuplas eliminadas
+	 * @return El nï¿½mero de tuplas eliminadas
 	 */
 	public long eliminarEsporadicoPorId (long idEsporadico)
 	{
@@ -333,8 +333,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Esporadico en Alohandes
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos Esporadico, llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos Esporadico, llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<Esporadico> darEsporadicos ()
 	{
@@ -346,8 +346,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Esporadico en Alohandes y los devuelve como una lista de VOEsporadico
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos VOEsporadico llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos VOEsporadico llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<VOEsporadico> darVOEsporadico ()
 	{
@@ -362,16 +362,16 @@ public class Alohandes
 	}
 
 	/* ****************************************************************
-	 * 			Métodos para manejar los(as) SEGURO
+	 * 			Mï¿½todos para manejar los(as) SEGURO
 	 *****************************************************************/
 	/**
 	 * Adiciona de manera persistente un Seguro
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param empresa - empresa del Seguro
 	 * @param monto - monto del Seguro
 	 * @param inicioSeguro - inicioSeguro del Seguro
 	 * @param finSeguro - finSeguro del Seguro
-	 * @return El objeto Seguro adicionado. null si ocurre alguna Excepción
+	 * @return El objeto Seguro adicionado. null si ocurre alguna Excepciï¿½n
 	 */
 	public Seguro adicionarSeguro ( String empresa, int monto, Timestamp inicioSeguro, Timestamp finSeguro)
 	{
@@ -383,9 +383,9 @@ public class Alohandes
 
 	/**
 	 * Elimina un Seguro por su id
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param id - El id del Seguro a eliminar
-	 * @return El número de tuplas eliminadas
+	 * @return El nï¿½mero de tuplas eliminadas
 	 */
 	public long eliminarSeguroPorId (long idSeguro)
 	{
@@ -397,8 +397,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Seguro en Alohandes
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos Seguro, llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos Seguro, llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<Seguro> darSeguros ()
 	{
@@ -410,8 +410,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Seguro en Alohandes y los devuelve como una lista de VOSeguro
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos VOSeguro llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos VOSeguro llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<VOSeguro> darVOSeguro ()
 	{
@@ -426,11 +426,11 @@ public class Alohandes
 	}
 
 	/* ****************************************************************
-	 * 			Métodos para manejar los(as) CUARTO
+	 * 			Mï¿½todos para manejar los(as) CUARTO
 	 *****************************************************************/
 	/**
 	 * Adiciona de manera persistente un Cuarto
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param direccion - direccion del Cuarto
 	 * @param cupos - cupos del Cuarto
 	 * @param idOperador - idOperador del Cuarto
@@ -438,7 +438,7 @@ public class Alohandes
 	 * @param cuartoPrivado - cuartoPrivado del Cuarto
 	 * @param esquema - esquema del Cuarto
 	 * @param menaje - mensaje del Cuarto
-	 * @return El objeto Cuarto adicionado. null si ocurre alguna Excepción
+	 * @return El objeto Cuarto adicionado. null si ocurre alguna Excepciï¿½n
 	 */
 	public Cuarto adicionarCuarto (String direccion, int cupos, long idOperador, int banio_privado, int cuarto_privado, String esquema, String menaje)
 	{
@@ -450,9 +450,9 @@ public class Alohandes
 
 	/**
 	 * Elimina un Cuarto por su id
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param id - El id del Cuarto a eliminar
-	 * @return El número de tuplas eliminadas
+	 * @return El nï¿½mero de tuplas eliminadas
 	 */
 	public long eliminarCuartoPorId (long idCuarto)
 	{
@@ -464,8 +464,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Cuarto en Alohandes
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos Cuarto, llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos Cuarto, llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<Cuarto> darCuartos ()
 	{
@@ -477,8 +477,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Cuarto en Alohandes y los devuelve como una lista de VOCuarto
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos VOCuarto llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos VOCuarto llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<VOCuarto> darVOCuarto ()
 	{
@@ -493,15 +493,15 @@ public class Alohandes
 	}
 
 	/* ****************************************************************
-	 * 			Métodos para manejar los(as) OPERADOR
+	 * 			Mï¿½todos para manejar los(as) OPERADOR
 	 *****************************************************************/
 	/**
 	 * Adiciona de manera persistente un Operador
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param nombre - nombre del Operador
 	 * @param email - email del Operador
 	 * @param numero - numero del Operador
-	 * @return El objeto Operador adicionado. null si ocurre alguna Excepción
+	 * @return El objeto Operador adicionado. null si ocurre alguna Excepciï¿½n
 	 */
 	public Operador adicionarOperador (String nombre, String email, String numero, String tipoOperador)
 	{
@@ -514,9 +514,9 @@ public class Alohandes
 
 	/**
 	 * Elimina un Operador por su id
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param id - El id del Operador a eliminar
-	 * @return El número de tuplas eliminadas
+	 * @return El nï¿½mero de tuplas eliminadas
 	 */
 	public long eliminarOperadorPorId (long idOperador)
 	{
@@ -528,8 +528,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Operador en Alohandes
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos Operador, llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos Operador, llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<Operador> darOperadores ()
 	{
@@ -541,8 +541,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Operador en Alohandes y los devuelve como una lista de VOOperador
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos VOOperador llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos VOOperador llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<VOOperador> darVOOperador ()
 	{
@@ -569,15 +569,15 @@ public class Alohandes
 	}
 
 	/* ****************************************************************
-	 * 			Métodos para manejar los(as) VIVIENDA_UNIVERSITARIA
+	 * 			Mï¿½todos para manejar los(as) VIVIENDA_UNIVERSITARIA
 	 *****************************************************************/
 	/**
 	 * Adiciona de manera persistente un ViviendaUniversitaria
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param nombre - nombre del Operador
 	 * @param email - email del Operador
 	 * @param numero - numero del Operador
-	 * @return El objeto Operador adicionado. null si ocurre alguna Excepción
+	 * @return El objeto Operador adicionado. null si ocurre alguna Excepciï¿½n
 	 */
 	public ViviendaUniversitaria adicionarViviendaUniversitaria (String nombre, String email, String numero)
 	{
@@ -589,9 +589,9 @@ public class Alohandes
 
 	/**
 	 * Elimina un ViviendaUniversitaria por su id
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param id - El id de la ViviendaUniversitaria a eliminar
-	 * @return El número de tuplas eliminadas
+	 * @return El nï¿½mero de tuplas eliminadas
 	 */
 	public long eliminarViviendaUniversitariaPorId (long idViviendaUniversitaria)
 	{
@@ -603,8 +603,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los ViviendaUniversitaria en Alohandes
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos ViviendaUniversitaria, llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos ViviendaUniversitaria, llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<ViviendaUniversitaria> darViviendasUniversitarias ()
 	{
@@ -616,8 +616,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Operador en Alohandes y los devuelve como una lista de VOOperador
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos VOOperador llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos VOOperador llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<VOViviendaUniversitaria> darVOViviendaUniversitaria ()
 	{
@@ -632,18 +632,18 @@ public class Alohandes
 	}
 
 	/* ****************************************************************
-	 * 			Métodos para manejar los(as) HOTELERIA
+	 * 			Mï¿½todos para manejar los(as) HOTELERIA
 	 *****************************************************************/
 	/**
 	 * Adiciona de manera persistente un Hoteleria
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param nombre - nombre del Hoteleria
 	 * @param email - email del Hoteleria
 	 * @param numero - numero del Hoteleria
 	 * @param tipoHoteleria - tipoHoteleria del Hoteleria
 	 * @param horaApertura - horaApertura del Hoteleria
 	 * @param horaCierre - horaCierre del Hoteleria
-	 * @return El objeto Hoteleria adicionado. null si ocurre alguna Excepción
+	 * @return El objeto Hoteleria adicionado. null si ocurre alguna Excepciï¿½n
 	 */
 	public Hoteleria adicionarHoteleria (String nombre, String email, String numero, String tipoHoteleria, Timestamp horaApertura, Timestamp horaCierre)
 	{
@@ -655,9 +655,9 @@ public class Alohandes
 
 	/**
 	 * Elimina un Hoteleria por su id
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param id - El id del Hoteleria a eliminar
-	 * @return El número de tuplas eliminadas
+	 * @return El nï¿½mero de tuplas eliminadas
 	 */
 	public long eliminarHoteleriaPorId (long idHoteleria)
 	{
@@ -669,8 +669,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Hoteleria en Alohandes
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos Hoteleria, llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos Hoteleria, llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<Hoteleria> darHotelerias ()
 	{
@@ -682,8 +682,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Hoteleria en Alohandes y los devuelve como una lista de VOHoteleria
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos VOHoteleria llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos VOHoteleria llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<VOHoteleria> darVOHoteleria ()
 	{
@@ -698,17 +698,17 @@ public class Alohandes
 	}
 
 	/* ****************************************************************
-	 * 			Métodos para manejar los(as) PERSONA_NATURAL
+	 * 			Mï¿½todos para manejar los(as) PERSONA_NATURAL
 	 *****************************************************************/
 	/**
 	 * Adiciona de manera persistente un Persona_Natural
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param nombre - nombre del Persona_Natural
 	 * @param email - email del Persona_Natural
 	 * @param numero - numero del Persona_Natural
 	 * @param documento - documento del Persona_Natural
 	 * @param tipoPersona - tipoPersona del Persona_Natural
-	 * @return El objeto Persona_Natural adicionado. null si ocurre alguna Excepción
+	 * @return El objeto Persona_Natural adicionado. null si ocurre alguna Excepciï¿½n
 	 */
 	public Persona_Natural adicionarPersona_Natural (String nombre, String email, String numero, String documento, String tipoPersona)
 	{
@@ -720,9 +720,9 @@ public class Alohandes
 
 	/**
 	 * Elimina un Persona_Natural por su id
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param id - El id del Persona_Natural a eliminar
-	 * @return El número de tuplas eliminadas
+	 * @return El nï¿½mero de tuplas eliminadas
 	 */
 	public long eliminarPersona_NaturalPorId (long idPersona_Natural)
 	{
@@ -734,8 +734,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Persona_Natural en Alohandes
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos Persona_Natural, llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos Persona_Natural, llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<Persona_Natural> darPersona_Naturales ()
 	{
@@ -747,8 +747,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Persona_Natural en Alohandes y los devuelve como una lista de VOPersona_Natural
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos VOPersona_Natural llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos VOPersona_Natural llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<VOPersona_Natural> darVOPersona_Natural ()
 	{
@@ -763,16 +763,16 @@ public class Alohandes
 	}
 
 	/* ****************************************************************
-	 * 			Métodos para manejar los(as) GANANCIAS
+	 * 			Mï¿½todos para manejar los(as) GANANCIAS
 	 *****************************************************************/
 	/**
 	 * Adiciona de manera persistente un Ganancias
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param cantidad - cantidad del Ganancias
 	 * @param mes - mes del Ganancias
 	 * @param anio - anio del Ganancias
 	 * @param idOperador - idOperador del Ganancias
-	 * @return El objeto Ganancias adicionado. null si ocurre alguna Excepción
+	 * @return El objeto Ganancias adicionado. null si ocurre alguna Excepciï¿½n
 	 */
 	public Ganancias adicionarGanancias (long cantidad, Timestamp fecha, long idOperador)
 	{
@@ -784,9 +784,9 @@ public class Alohandes
 
 	/**
 	 * Elimina un Ganancias por su id
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param id - El id del Ganancias a eliminar
-	 * @return El número de tuplas eliminadas
+	 * @return El nï¿½mero de tuplas eliminadas
 	 */
 	public long eliminarGananciasPorId (long idGanancias)
 	{
@@ -798,8 +798,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Ganancias en Alohandes
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos Ganancias, llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos Ganancias, llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<Ganancias> darGanancias ()
 	{
@@ -811,8 +811,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Ganancias en Alohandes y los devuelve como una lista de VOGanancias
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos VOGanancias llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos VOGanancias llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<VOGanancias> darVOGanancias ()
 	{
@@ -834,17 +834,17 @@ public class Alohandes
 	}
 
 	/* ****************************************************************
-	 * 			Métodos para manejar los(as) CLIENTE
+	 * 			Mï¿½todos para manejar los(as) CLIENTE
 	 *****************************************************************/
 	/**
 	 * Adiciona de manera persistente un Cliente
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param nombre - nombre del Cliente
 	 * @param email - email del Cliente
 	 * @param numero - numero del Cliente
 	 * @param documento - documento del Cliente
 	 * @param tipoCliente - tipoCliente del Cliente
-	 * @return El objeto Cliente adicionado. null si ocurre alguna Excepción
+	 * @return El objeto Cliente adicionado. null si ocurre alguna Excepciï¿½n
 	 */
 	public Cliente adicionarCliente ( String nombre, String email, String numero, String documento, String tipoCliente)
 	{
@@ -856,9 +856,9 @@ public class Alohandes
 
 	/**
 	 * Elimina un Cliente por su id
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param id - El id del Cliente a eliminar
-	 * @return El número de tuplas eliminadas
+	 * @return El nï¿½mero de tuplas eliminadas
 	 */
 	public long eliminarClientePorId (long idCliente)
 	{
@@ -870,8 +870,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Cliente en Alohandes
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos Cliente, llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos Cliente, llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<Cliente> darClientes ()
 	{
@@ -883,8 +883,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Cliente en Alohandes y los devuelve como una lista de VOCliente
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos VOCliente llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos VOCliente llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<VOCliente> darVOCliente ()
 	{
@@ -900,7 +900,7 @@ public class Alohandes
 	
 	/**
 	 * Encuentra un Cliente por su nombre
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @return Objeto Cliente con el nombre buscado
 	 */
 	public Cliente darClientePorNombre( String nombreCliente ) {
@@ -909,19 +909,31 @@ public class Alohandes
 		log.info("Encontrade el Cliente: " + cliente);
 		return cliente;
 	}
+	
+	/**
+	 * Encuentra un Cliente por su nombre
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Objeto Cliente con el nombre buscado
+	 */
+	public Cliente darClientePorId( long idCliente ) {
+		log.info("Buscando el cliente con id: " + idCliente);
+		Cliente cliente = pa.buscarClientePorId(idCliente);
+		log.info("Encontrade el Cliente: " + cliente);
+		return cliente;
+	}
 
 	/* ****************************************************************
-	 * 			Métodos para manejar los(as) RESERVA
+	 * 			Mï¿½todos para manejar los(as) RESERVA
 	 *****************************************************************/
 	/**
 	 * Adiciona de manera persistente un Reserva
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param inicio - inicio del Reserva
 	 * @param duracion - duracion del Reserva
 	 * @param periodoArrendamiento - periodoArrendamiento del Reserva
 	 * @param idOferta - idOferta del Reserva
 	 * @param idUsuario - idUsuario del Reserva
-	 * @return El objeto Reserva adicionado. null si ocurre alguna Excepción
+	 * @return El objeto Reserva adicionado. null si ocurre alguna Excepciï¿½n
 	 */
 	public Reserva adicionarReserva (Timestamp inicio, Timestamp fin, String periodoArrendamiento, long idOferta, long idUsuario, long idColectiva)
 	{
@@ -933,9 +945,9 @@ public class Alohandes
 
 	/**
 	 * Elimina un Reserva por su id
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param id - El id del Reserva a eliminar
-	 * @return El número de tuplas eliminadas
+	 * @return El nï¿½mero de tuplas eliminadas
 	 */
 	public long eliminarReservaPorId (long idReserva)
 	{
@@ -947,7 +959,7 @@ public class Alohandes
 	
 	/**
 	 * Retorna un Reserva por su id
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param id - El id del Reserva a eliminar
 	 * @return La reserva
 	 */
@@ -961,8 +973,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Reserva en Alohandes
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos Reserva, llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos Reserva, llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<Reserva> darReservas ()
 	{
@@ -974,8 +986,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Reserva en Alohandes y los devuelve como una lista de VOReserva
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos VOReserva llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos VOReserva llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<VOReserva> darVOReserva ()
 	{
@@ -1001,16 +1013,51 @@ public class Alohandes
 		return reservas;
 	}
 
+
 	/* ****************************************************************
-	 * 			Métodos para manejar los(as) OFERTA
+	 * 			Mï¿½todos para manejar los(as) RESERVA
+	 *****************************************************************/
+
+	/**
+	 * 	 * Adiciona de manera persistente un Reserva
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @param fechaRealizacion
+	 * @param cantidad
+	 * @param idCliente
+	 * @return
+	 */
+	public ReservaColectiva adicionarReservaColectiva(Timestamp fechaRealizacion, int cantidad, long idCliente)
+	{
+		log.info ("Adicionando nuevo(a) Reserva ");
+		ReservaColectiva reserva = pa.adicionarReservaColectiva(fechaRealizacion, cantidad, idCliente);
+		log.info ("Adicionando Reserva: " + reserva);
+		return reserva;
+	}
+
+	/**
+	 * Elimina un Reserva por su id
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @param id - El id del Reserva a eliminar
+	 * @return El nï¿½mero de tuplas eliminadas
+	 */
+	public long eliminarReservaColectivaPorId (long idReserva)
+	{
+		log.info ("Eliminando Reserva por id: " + idReserva);
+		long resp = pa.eliminarReservaColectivaPorId(idReserva);
+		log.info ("Eliminando Reserva por id: " + resp + " tuplas eliminadas");
+		return resp;
+	}
+	
+	/* ****************************************************************
+	 * 			Mï¿½todos para manejar los(as) OFERTA
 	 *****************************************************************/
 	/**
 	 * Adiciona de manera persistente un Oferta
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param precio - precio del Oferta
 	 * @param periodo - periodo del Oferta
 	 * @param idVivienda - idVivienda del Oferta
-	 * @return El objeto Oferta adicionado. null si ocurre alguna Excepción
+	 * @return El objeto Oferta adicionado. null si ocurre alguna Excepciï¿½n
 	 */
 	public Oferta adicionarOferta ( long precio, String periodo, long idVivienda, Timestamp fechaInicio, Timestamp fechaFin)
 	{
@@ -1022,9 +1069,9 @@ public class Alohandes
 
 	/**
 	 * Elimina un Oferta por su id
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param id - El id del Oferta a eliminar
-	 * @return El número de tuplas eliminadas
+	 * @return El nï¿½mero de tuplas eliminadas
 	 */
 	public long eliminarOfertaPorId (long idOferta)
 	{
@@ -1036,8 +1083,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Oferta en Alohandes
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos Oferta, llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos Oferta, llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<Oferta> darOfertas ()
 	{
@@ -1049,8 +1096,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Oferta en Alohandes y los devuelve como una lista de VOOferta
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos VOOferta llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos VOOferta llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<VOOferta> darVOOferta ()
 	{
@@ -1065,8 +1112,8 @@ public class Alohandes
 	}
 	
 	/**
-	 * Encuentra una oferta según su id en Alohandes
-	 * Adiciona entradas al log de la aplicación
+	 * Encuentra una oferta segï¿½n su id en Alohandes
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @return un objeto tipo Oferta con el id buscado
 	 */
 	public Oferta darOfertaPorId(long idOferta) {
@@ -1115,14 +1162,14 @@ public class Alohandes
 	}
 
 	/* ****************************************************************
-	 * 			Métodos para manejar los(as) SERVICIO
+	 * 			Mï¿½todos para manejar los(as) SERVICIO
 	 *****************************************************************/
 	/**
 	 * Adiciona de manera persistente un Servicio
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param nombre - nombre del Servicio
 	 * @param costo - costo del Servicio
-	 * @return El objeto Servicio adicionado. null si ocurre alguna Excepción
+	 * @return El objeto Servicio adicionado. null si ocurre alguna Excepciï¿½n
 	 */
 	public Servicio adicionarServicio (String nombre, long costo)
 	{
@@ -1134,9 +1181,9 @@ public class Alohandes
 
 	/**
 	 * Elimina un Servicio por su id
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param id - El id del Servicio a eliminar
-	 * @return El número de tuplas eliminadas
+	 * @return El nï¿½mero de tuplas eliminadas
 	 */
 	public long eliminarServicioPorId (long idServicio)
 	{
@@ -1148,8 +1195,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Servicio en Alohandes
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos Servicio, llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos Servicio, llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<Servicio> darServicios ()
 	{
@@ -1161,8 +1208,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Servicio en Alohandes y los devuelve como una lista de VOServicio
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos VOServicio llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos VOServicio llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<VOServicio> darVOServicio ()
 	{
@@ -1177,15 +1224,15 @@ public class Alohandes
 	}
 
 	/* ****************************************************************
-	 * 			Métodos para manejar los(as) INCLUYE
+	 * 			Mï¿½todos para manejar los(as) INCLUYE
 	 *****************************************************************/
 	/**
 	 * Adiciona de manera persistente un Incluye
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param idOferta - idOferta del Incluye
 	 * @param idServicio - idServicio del Incluye
 	 * @param incluido - incluido del Incluye
-	 * @return El objeto Incluye adicionado. null si ocurre alguna Excepción
+	 * @return El objeto Incluye adicionado. null si ocurre alguna Excepciï¿½n
 	 */
 	public Incluye adicionarIncluye (long idServicio, long idOferta, int incluido)
 	{
@@ -1197,11 +1244,11 @@ public class Alohandes
 
 	/**
 	 * Elimina un Incluye por su id
-	 * Adiciona entradas al log de la aplicación
+	 * Adiciona entradas al log de la aplicaciï¿½n
 	 * @param idServicio 
 	 * @param idOferta 
 	 * @param id - El id del Incluye a eliminar
-	 * @return El número de tuplas eliminadas
+	 * @return El nï¿½mero de tuplas eliminadas
 	 */
 	public long eliminarIncluyePorId (long idServicio, long idOferta)
 	{
@@ -1213,8 +1260,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Incluye en Alohandes
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos Incluye, llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos Incluye, llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<Incluye> darIncluye ()
 	{
@@ -1226,8 +1273,8 @@ public class Alohandes
 
 	/**
 	 * Encuentra todos los Incluye en Alohandes y los devuelve como una lista de VOIncluye
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de objetos VOIncluye llenos con su información bÃ¡sica
+	 * Adiciona entradas al log de la aplicaciï¿½n
+	 * @return Una lista de objetos VOIncluye llenos con su informaciï¿½n bÃ¡sica
 	 */
 	public List<VOIncluye> darVOIncluye ()
 	{
@@ -1242,7 +1289,7 @@ public class Alohandes
 	}
 
 	/* ****************************************************************
-	 * 			Métodos para manejar las consultas
+	 * 			Mï¿½todos para manejar las consultas
 	 *****************************************************************/
 
 	public long reqc1Actual(long idOperador) {
@@ -1267,12 +1314,12 @@ public class Alohandes
 		}
 
 	/* ****************************************************************
-	 * 			Métodos para administración
+	 * 			Mï¿½todos para administraciï¿½n
 	 *****************************************************************/
 
 	/**
 	 * Elimina todas las tuplas de todas las tablas de la base de datos de Alohandes
-	 * @return Un arreglo con 7 números que indican el número de tuplas borradas en las tablas GUSTAN, SIRVEN, VISITAN, BEBIDA,
+	 * @return Un arreglo con 7 nï¿½meros que indican el nï¿½mero de tuplas borradas en las tablas GUSTAN, SIRVEN, VISITAN, BEBIDA,
 	 * TIPOBEBIDA, BEBEDOR y BAR, respectivamente
 	 */
 	public long [] limpiarAlohandes ()

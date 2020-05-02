@@ -81,7 +81,6 @@ class SQLReservaColectiva
 		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaReservaColectiva() + "(id, fecha_realizacion, cantidad, cliente) values (? ,? ,? ,?)");
 		q.setParameters( idReserva, fechaRealizacion, cantidad, idCliente );
 		return (long) q.executeUnique();
-
 	}
 
 	/**
