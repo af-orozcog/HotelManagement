@@ -382,7 +382,7 @@ public class Controller {
 
 	public void req7(Scanner sc) {
 
-		interfaz.printMessage("Ingrese el tipo de alojamiento (PERSONA_NATURAL, HOTELERIA, VIVIENDA_UNIVERSITARIA)");
+		interfaz.printMessage("Ingrese el tipo de alojamiento (HABITACION, CUARTO, ESPORADICO, APARTAMENTO)");
 		String tipo = sc.next();
 		interfaz.printMessage("Ingrese el número de reservas requeridas");
 		int n = sc.nextInt();
