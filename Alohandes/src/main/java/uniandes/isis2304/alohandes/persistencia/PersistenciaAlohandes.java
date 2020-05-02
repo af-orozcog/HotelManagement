@@ -48,6 +48,7 @@ import uniandes.isis2304.alohandes.negocio.Oferta;
 import uniandes.isis2304.alohandes.negocio.Operador;
 import uniandes.isis2304.alohandes.negocio.Persona_Natural;
 import uniandes.isis2304.alohandes.negocio.Reserva;
+import uniandes.isis2304.alohandes.negocio.ReservaColectiva;
 import uniandes.isis2304.alohandes.negocio.Seguro;
 import uniandes.isis2304.alohandes.negocio.Servicio;
 import uniandes.isis2304.alohandes.negocio.Usuario;
@@ -1558,6 +1559,14 @@ public class PersistenciaAlohandes
 		return sqlCliente.darClientePorNombre(pmf.getPersistenceManager(), nombreCliente);
 	}
 
+	/**
+	 * M閠odo que busca una tupla en Cliente seg煤n su nombre
+	 * @return El objeto Cliente con el nombre buscado
+	 */
+	public Cliente buscarClientePorId(long idCliente) {
+		return sqlCliente.darClientePorId(pmf.getPersistenceManager(), idCliente);
+	}
+
 	/* ****************************************************************
 	 * 			M閠odos para manejar los(as) RESERVAS
 	 *****************************************************************/
@@ -1659,6 +1668,85 @@ public class PersistenciaAlohandes
 	 */
 	public List<Reserva> darReservasPorCliente(long idCliente) {
 		return sqlReserva.darReservasPorCliente(pmf.getPersistenceManager(), idCliente);
+	}
+
+	/* ****************************************************************
+	 * 			M閠odos para manejar los(as) RESERVAS_COLECTIVAS
+	 *****************************************************************/
+
+	/**
+	 * M閠odo que inserta, de manera transaccional, una tupla en la tabla Reserva
+	 * Adiciona entradas al log de la aplicaci贸n
+	 * @param fechaRealizacion 
+	 * @param cantidad 
+	 * @param idCliente 
+	 * @param x - x de Reserva
+	 * @return El objeto Reserva adicionado. null si ocurre alguna Excepci贸n
+	 */
+	public ReservaColectiva adicionarReservaColectiva(Timestamp fechaRealizacion, int cantidad, long idCliente)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			long idReserva = nextval ();
+			if(modoPerron)
+				idReserva = idPerron;
+			long tuplasInsertadas = sqlReservaColectiva.adicionarReservaColectiva(pm, idReserva, fechaRealizacion, cantidad, idCliente);
+			tx.commit();
+
+			log.trace ("Inserci贸n de vivienda: " + idReserva + ": " + tuplasInsertadas + " tuplas insertadas");
+
+			return new ReservaColectiva(idReserva, cantidad, fechaRealizacion, idCliente);
+		}
+		catch (Exception e)
+		{
+			//	  	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+
+	/**
+	 * M閠odo que elimina, de manera transaccional, una tupla en la tabla Reserva, dado el id
+	 * Adiciona entradas al log de la aplicaci贸n
+	 * @param idReserva - el id
+	 * @return El n煤mero de tuplas eliminadas. -1 si ocurre alguna Excepci贸n
+	 */
+	public long eliminarReservaColectivaPorId (long idReserva)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			long resp = sqlReservaColectiva.eliminarReservaColectivaPorId(pm, idReserva);
+			tx.commit();
+			return resp;
+		}
+		catch (Exception e)
+		{
+			//	    	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return -1;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
 	}
 
 	/* ****************************************************************

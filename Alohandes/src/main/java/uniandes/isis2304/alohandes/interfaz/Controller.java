@@ -191,7 +191,7 @@ public class Controller {
 			interfaz.printMessage("Escriba el id de la vivienda ya creada");
 			idVivienda = sc.nextLong();
 			interfaz.printMessage("La vivienda es esporadica? (1/0) 1 para verdadero, 0 para falso");
-			es = sc.next().equalsIgnoreCase("Y");
+			es = sc.next().equalsIgnoreCase("1");
 		}
 
 		interfaz.printMessage("Ingrese el precio de la propuesta");
@@ -220,10 +220,10 @@ public class Controller {
 
 			Oferta oferta = mundo.adicionarOferta(precio, periodo, idVivienda, fechaInicio, fechaFin);
 
-			interfaz.printMessage("Desea adicionar servicios? (1/0) 1 para verdadero, 0 para falso"); 
+			interfaz.printMessage("Desea adicionar servicios? (Y/N) Y para verdadero, N para falso"); 
 			boolean servicio = sc.next().equalsIgnoreCase("Y");
 			while(servicio) {
-				interfaz.printMessage("El servicio ya existe está registrado? (1/0) 1 para verdadero, 0 para falso)");
+				interfaz.printMessage("El servicio ya existe está registrado? (Y/N) Y para verdadero, N para falso)");
 				boolean reg = sc.next().equalsIgnoreCase("Y");
 
 				long idServicio;
@@ -240,7 +240,7 @@ public class Controller {
 				mundo.adicionarIncluye(oferta.getId(), idServicio, incluido);
 
 				interfaz.printMessage("Desea seguir adicionando servicios? (1/0) 1 para verdadero, 0 para falso"); 
-				servicio = sc.next().equalsIgnoreCase("Y");
+				servicio = sc.next().equalsIgnoreCase("1");
 			}
 		}
 	}
@@ -283,21 +283,21 @@ public class Controller {
 		Cliente usuario = mundo.darClientePorNombre(sc.next());
 
 		interfaz.printMessage("Ya sabe con que oferta quiere realizar la reserva? (1/0) 1 para verdadero, 0 para falso");
-		boolean sabe = sc.next().equalsIgnoreCase("Y");
+		boolean sabe = sc.next().equalsIgnoreCase("1");
 
 		if(sabe) {
 			interfaz.printMessage("Ingrese el id de la oferta que se quiere reservar");
 		}
 		else {
 			interfaz.printMessage("Algún servicio en específico? (1/0) 1 para verdadero, 0 para falso");
-			boolean servicios = sc.next().equalsIgnoreCase("Y");
+			boolean servicios = sc.next().equalsIgnoreCase("1");
 
 			ArrayList<String> lista = new ArrayList<String>();
 			while(servicios) {
 				interfaz.printMessage("Escriba el servicio que desea");
 				lista.add(sc.next());
 				interfaz.printMessage("Desea más servicios? (Y/N");
-				servicios = sc.next().equalsIgnoreCase("Y");
+				servicios = sc.next().equalsIgnoreCase("1");
 			}
 
 			List<Oferta> ofertas = mundo.darOfertasConServicios(lista);
@@ -384,14 +384,14 @@ public class Controller {
 		int n = sc.nextInt();
 		
 		interfaz.printMessage("Algún servicio en específico? (1/0) 1 para verdadero, 0 para falso");
-		boolean servicios = sc.next().equalsIgnoreCase("Y");
+		boolean servicios = sc.next().equalsIgnoreCase("1");
 
 		ArrayList<String> lista = new ArrayList<String>();
 		while(servicios) {
 			interfaz.printMessage("Escriba el servicio que desea");
 			lista.add(sc.next());
 			interfaz.printMessage("Desea más servicios? (Y/N");
-			servicios = sc.next().equalsIgnoreCase("Y");
+			servicios = sc.next().equalsIgnoreCase("1");
 		}
 		
 		interfaz.printMessage("Ingrese el período deseado");
@@ -420,13 +420,14 @@ public class Controller {
 			Timestamp inicio = new Timestamp(anioIn, mesIn, diaIn, 0, 0, 0, 0);
 			Timestamp fin = new Timestamp(anioFin, mesFin, diaFin, 0, 0, 0, 0);
 
-			interfaz.printMessage("Ingrese el nombre del usuario que va a realizar la reserva");
-			Cliente usuario = mundo.darClientePorNombre(sc.next());
+			interfaz.printMessage("Ingrese el id del usuario que va a realizar la reserva");
+			Cliente usuario = mundo.darClientePorId(sc.nextInt());
 			
 			interfaz.printMessage("Reservando ofertas");
-			
+
+			long colectiva = mundo.adicionarReservaColectiva(new Timestamp(System.currentTimeMillis()), n, usuario.getId()).getId();
 			for (Oferta oferta : ofertas) {
-				mundo.adicionarReserva(inicio, fin, periodo, oferta.getId(), usuario.getId(), -1);	
+				mundo.adicionarReserva(inicio, fin, periodo, oferta.getId(), usuario.getId(), colectiva);	
 			}
 			
 			interfaz.printMessage("Reservas finalizadas, muchas gracias");
@@ -508,7 +509,7 @@ public class Controller {
 				int numeroHabitaciones = sc.nextInt();
 
 				interfaz.printMessage("Va a ser esporadico? (1/0) 1 para verdadero, 0 para falso");
-				es = sc.next().equalsIgnoreCase("Y");
+				es = sc.next().equalsIgnoreCase("1");
 				if(es) {
 					Seguro seg = registrarSeguro(sc);
 					return mundo.adicionarEsporadico(direccion, cupos, operador.getId(), area, amoblado, numeroHabitaciones, 0, seg.getId());
