@@ -1670,6 +1670,10 @@ public class PersistenciaAlohandes
 		return sqlReserva.darReservasPorCliente(pmf.getPersistenceManager(), idCliente);
 	}
 
+	public List<Reserva> darReservasColectiva(long idReserva){
+		return sqlReserva.darReservasColectiva(pmf.getPersistenceManager(), idReserva);
+	}
+	
 	/* ****************************************************************
 	 * 			Métodos para manejar los(as) RESERVAS_COLECTIVAS
 	 *****************************************************************/

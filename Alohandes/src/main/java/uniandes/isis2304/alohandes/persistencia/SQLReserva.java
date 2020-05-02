@@ -128,10 +128,25 @@ class SQLReserva
 		q.setResultClass(Reserva.class);
 		return (List<Reserva>) q.executeList();
 	}
+	
+	/**
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de LOS(AS) Reservas de la
+	 * base de datos de Alohandes
+	 * @param pm - El manejador de persistencia
+	 * @return Una lista de objetos Reserva
+	 */
+	public List<Reserva> darReservasColectiva(PersistenceManager pm, long idReserva)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaReserva ()
+				+ " WHERE colectiva = ?");
+		q.setParameters(idReserva);
+		q.setResultClass(Reserva.class);
+		return (List<Reserva>) q.executeList();
+	}
 
 	/**
-	 * Crea y ejecuta la sentencia SQL para encontrar la informacion de todas las Reservas de un
-	 * cliente en la base de datos Alohandes
+	 * Crea y ejecuta la sentencia SQL para encontrar la informacion de todas las Reservas de una
+	 * reserva colectiva en la base de datos Alohandes
 	 * @param pm - El manejador de persistencia
 	 * @param idCliente Identificador del cliente
 	 * @return Lista con todas las reservas del cliente buscado

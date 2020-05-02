@@ -75,28 +75,20 @@ public class Controller {
 			switch(option){
 
 			case 1:
-				interfaz.printMessage("Seleccione el tipo de operador");
-				interfaz.printMessage("(0) PersonaNatural");
-				interfaz.printMessage("(1) Hoteleria");
-				interfaz.printMessage("(2) ViviendaUniversitaria");
-
 				req1(sc);
+
 				break;
 			case 2:
-				interfaz.printMessage("Escriba el tipo de operador al que ser va a hacer la propuesta IGUAL que alguna de las opciones:\n PERSONA_NATURAL, HOTELERIA, VIVIENDA_UNIVERSITARIA");
-
 				req2(sc);
+
 				break;
 			case 3:
-				interfaz.printMessage("Es un operador o un cliente? (1 o 2)");
-				int t2 = sc.nextInt();
-				if(t2 == 1)
-					req1(sc);
-				else if(t2 == 2)
-					req3(sc);
+				req3(sc);
+
 				break;
 			case 4:
 				req4(sc);
+
 				break;
 			case 5:
 				req5(sc);
@@ -108,6 +100,10 @@ public class Controller {
 				break;
 			case 7:
 				req7(sc);
+
+				break;
+			case 8:
+				req8(sc);
 
 				break;
 			case 11:
@@ -128,6 +124,11 @@ public class Controller {
 
 	@SuppressWarnings("deprecation")
 	public void req1(Scanner sc) {
+
+		interfaz.printMessage("Seleccione el tipo de operador");
+		interfaz.printMessage("(0) PersonaNatural");
+		interfaz.printMessage("(1) Hoteleria");
+		interfaz.printMessage("(2) ViviendaUniversitaria");
 		int op = sc.nextInt();
 
 		interfaz.printMessage("Escriba el nombre");
@@ -173,6 +174,7 @@ public class Controller {
 	}
 
 	public void req2(Scanner sc) {
+		interfaz.printMessage("Escriba el tipo de operador al que ser va a hacer la propuesta IGUAL que alguna de las opciones:\n PERSONA_NATURAL, HOTELERIA, VIVIENDA_UNIVERSITARIA");
 		String tipoOperador = sc.next();
 		interfaz.printMessage("Escriba el nombre del operador");
 		String nombre = sc.next();
@@ -244,7 +246,7 @@ public class Controller {
 			}
 		}
 	}
-	
+
 	public void req3(Scanner sc) {
 		interfaz.printMessage("Escriba el nombre");
 		String nombre = sc.next();
@@ -309,10 +311,12 @@ public class Controller {
 		}
 		long idOferta = sc.nextLong();
 		String periodoArrendamiento = mundo.darOfertaPorId(idOferta).getPeriodo();
-
-		mundo.adicionarReserva(inicio, fin, periodoArrendamiento, idOferta, usuario.getId(), -1);
+		if(mundo.darOfertaPorId(idOferta).getHabilitada() == 1)	
+			mundo.adicionarReserva(inicio, fin, periodoArrendamiento, idOferta, usuario.getId(), -1);
+		else
+			interfaz.printMessage("La oferta está deshabilitada");
 	}
-	
+
 	public void req5(Scanner sc) {
 		interfaz.printMessage("Ingrese el nombre del cliente a eliminar una reserva");
 		Cliente cliente = mundo.darClientePorNombre(sc.next());
@@ -353,11 +357,11 @@ public class Controller {
 		Oferta oferta = mundo.darOfertaPorId(reserva.getOferta());
 		Vivienda vivienda = mundo.darViviendaPorId(oferta.getVivienda());
 		Long aumento = (new Double (oferta.getPrecio()*porcentaje)).longValue();
-		
+
 		mundo.aumentarGanancias(aumento, vivienda.getOperador(), hoy.getMonth(), hoy.getYear());
 		mundo.eliminarReservaPorId(reserva.getId());
 	}
-	
+
 	public void req6(Scanner sc) {
 		interfaz.printMessage("Ingrese el nombre del operador a eliminar una propuesta");
 		String nombre = sc.next();
@@ -375,14 +379,14 @@ public class Controller {
 		interfaz.printMessage("Ingrese el id de la oferta a eliminar");
 		mundo.eliminarOfertaPorId(sc.nextLong());
 	}
-	
+
 	public void req7(Scanner sc) {
-		
+
 		interfaz.printMessage("Ingrese el tipo de alojamiento (PERSONA_NATURAL, HOTELERIA, VIVIENDA_UNIVERSITARIA)");
 		String tipo = sc.next();
 		interfaz.printMessage("Ingrese el número de reservas requeridas");
 		int n = sc.nextInt();
-		
+
 		interfaz.printMessage("Algún servicio en específico? (1/0) 1 para verdadero, 0 para falso");
 		boolean servicios = sc.next().equalsIgnoreCase("1");
 
@@ -393,16 +397,16 @@ public class Controller {
 			interfaz.printMessage("Desea más servicios? (Y/N");
 			servicios = sc.next().equalsIgnoreCase("1");
 		}
-		
+
 		interfaz.printMessage("Ingrese el período deseado");
 		String periodo = sc.next();
 
 		List<Oferta> ofertas = mundo.darOfertasConServiciosYTipo(lista, tipo, periodo);
-		
+
 		interfaz.printMessage("Hay " + ofertas.size() + " ofertas disponibles");
 		if(n <= ofertas.size()) {
 			interfaz.printMessage("Es posible hacer las reservas");
-			
+
 			interfaz.printMessage("Ingrese el anio de inicio de la reserva");
 			int anioIn = sc.nextInt();
 			interfaz.printMessage("Ingrese el mes de inicio de la reserva");
@@ -422,16 +426,16 @@ public class Controller {
 
 			interfaz.printMessage("Ingrese el id del usuario que va a realizar la reserva");
 			Cliente usuario = mundo.darClientePorId(sc.nextInt());
-			
+
 			interfaz.printMessage("Reservando ofertas");
 
 			long colectiva = mundo.adicionarReservaColectiva(new Timestamp(System.currentTimeMillis()), n, usuario.getId()).getId();
 			for (Oferta oferta : ofertas) {
 				mundo.adicionarReserva(inicio, fin, periodo, oferta.getId(), usuario.getId(), colectiva);	
 			}
-			
+
 			interfaz.printMessage("Reservas finalizadas, muchas gracias");
-			
+
 		}
 		else
 		{
@@ -439,7 +443,19 @@ public class Controller {
 		}
 	}
 
-	
+	public void req8(Scanner sc) {
+		interfaz.printMessage("Ingresa el id de la reserva colectiva a eliminar");
+		long idReserva = sc.nextLong();
+		interfaz.printMessage("Eliminado reserva colectiva");
+		List<Reserva> reservas = mundo.darReservasColectiva(idReserva);
+		for (Reserva reserva : reservas) {
+			mundo.eliminarReservaPorId(reserva.getId());
+		}
+		mundo.eliminarReservaColectivaPorId(idReserva);
+		interfaz.printMessage("Eliminada reserva colectiva");
+	}
+
+
 	public void reqC1(Scanner sc) {
 		interfaz.printMessage("Lista de los operadores con su nombre y el dinero ganado en el anio actual y corrido");
 		List<Operador> operadores = mundo.darOperadores();
@@ -454,7 +470,7 @@ public class Controller {
 		for(String va : mensajes) 
 			interfaz.printMessage(va);
 	}
-	
+
 	public void reqC2(Scanner sc) {
 		interfaz.printMessage("Lista de las 20 ofertas más populares");
 		List<Oferta> ofertas = mundo.reqc2();
