@@ -179,8 +179,8 @@ class SQLOferta
 			Query q = pm.newQuery(SQL, "SELECT DISTINCT o.id, o.precio, o.periodo, o.vivienda, o.fechainicio, o.fechafin, o.habilitada "+
 					"FROM "+pa.darTablaOferta()+" o, "+pa.darTablaIncluye()+" i, "+pa.darTablaServicio()+" s, "+pa.darTablaVivienda()+" v, "+pa.darTablaOperador()+" op "+
 					"WHERE o.id = i.oferta AND i.servicio = s.id AND v.operador = op.id AND o.vivienda = v.id AND "+
-					"(o.habilitada = 0 OR s.nombre <> 'Internet' OR op.tipo_operador <> 'HOTELERIA' OR o.periodo <> 'SEMANAS' "+
-					"OR o.fechaInicio > ? OR fechaFin < ?"+
+					"(o.habilitada = 0 OR s.nombre <> ? OR op.tipo_operador <> ? OR o.periodo <> ? "+
+					"OR o.fechaInicio > ? OR fechaFin < ? "+
 					"OR o.id IN( "+
 					    "SELECT o.id FROM "+pa.darTablaOferta()+" o, "+pa.darTablaReserva()+" r WHERE o.id = r.oferta AND "+
 					        "(  (r.inicio >= ?  AND r.inicio <= ?) "+
