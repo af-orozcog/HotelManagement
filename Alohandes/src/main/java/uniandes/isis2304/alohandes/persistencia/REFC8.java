@@ -7,7 +7,7 @@ import javax.jdo.Query;
 
 import uniandes.isis2304.alohandes.negocio.VOVivienda;
 import uniandes.isis2304.alohandes.negocio.Vivienda;
-import uniandes.isis2304.alohandes.persistencia.REFC7.Respuesta;
+
 
 public class REFC8 {
 	/* ****************************************************************
