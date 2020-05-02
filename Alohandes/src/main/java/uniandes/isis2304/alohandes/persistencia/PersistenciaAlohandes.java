@@ -2121,14 +2121,10 @@ public class PersistenciaAlohandes
 	}
 	
 	public String reqC7MayorDemanda(String tiempo, String alojamiento	) {
-		switch (tiempo) {
-		case "SEMANA":
+		if(alojamiento.equals("SEMANA"))
 			return reqc7.respuestaSemanaMayorDemanda(pmf.getPersistenceManager(), alojamiento);
-		case "MES":
+		else
 			return reqc7.respuestaMesMayorDemanda(pmf.getPersistenceManager(), alojamiento);
-	default:
-			return null;
-		}
 	}
 	
 	public String reqC7MenorDemanda(String tiempo, String alojamiento) {

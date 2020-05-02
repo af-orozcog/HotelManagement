@@ -66,7 +66,7 @@ public class REQC9 {
 				"		) IS NOT NULL\r\n" + 
 				"\r\n" + 
 				"	GROUP BY re1.oferta\r\n" + 
-				");");
+				")");
 		q.setResultClass(Oferta.class);
 		return (List<Oferta>) q.executeList();
 	}
