@@ -199,7 +199,7 @@ public List<Oferta> darOfertasConServiciosYTipo(PersistenceManager pm, ArrayList
 				+ "SELECT * FROM " + pa.darTablaOferta()
 				+ " WHERE fechaInicio <= ? AND fechaFin >= ? AND habilitado = 1 AND id NOT IN"
 				+ "("
-				+ "SELECT o.id,o.precio, o.periodo,o.vivienda,o.fechaInicio,o.fechaFin FROM "
+				+ "SELECT o.id FROM "
 				+ pa.darTablaOferta() + " o, " + pa.darTablaReserva()+ " r"
 				+" WHERE o.id = r.oferta AND ((r.inicio >= ?  AND r.inicio <= ?) OR (r.inicio <= ? AND r.fin >= ?))"
 				+ ")"
