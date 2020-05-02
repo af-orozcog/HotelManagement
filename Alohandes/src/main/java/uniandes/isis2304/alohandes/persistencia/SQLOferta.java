@@ -189,7 +189,6 @@ public List<Oferta> darOfertasConServiciosYTipo(PersistenceManager pm, ArrayList
 			q.setParameters(servicio, tipo, periodo, inicio,fin,inicio,fin,inicio,inicio);
 			List<Oferta> eliminar = q.executeList();
 			for (Oferta el : eliminar) {
-				if(ofertas.contains(el))
 				ofertas.remove(el);
 			}
 		}

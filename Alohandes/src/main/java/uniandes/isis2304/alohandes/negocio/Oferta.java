@@ -4,37 +4,37 @@ import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Oferta implements VOOferta{
-	
+public class Oferta implements Comparable<Oferta>, VOOferta{
+
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
-	
+
 	/**
 	 * el identificador de la oferta
 	 */
 	private long id;
-	
+
 	/**
 	 * el precio que tiene la oferta
 	 */
 	private long precio;
-	
+
 	/**
 	 * el periodo de la oferta (DIAS,SEMANAS,MESES,SEMESTRES)
 	 */
 	private String periodo;
-	
+
 	/**
 	 * las reservas que se le han hecho a la oferta
 	 */
 	private List<Object []> reservas;
-	
+
 	/**
 	 * los servicios que tiene la oferta
 	 */
 	private List<Object []> servicios;
-	
+
 	/**
 	 * vivienda que ofrece la oferta
 	 */
@@ -44,21 +44,21 @@ public class Oferta implements VOOferta{
 	 * la fecha de inicio de la oferta
 	 */
 	private Timestamp fechainicio;
-	
+
 	/**
 	 * fecha final de la oferta
 	 */
 	private Timestamp fechafin;
-	
+
 	/**
 	 * si la oferta esta habilitada
 	 */
 	private Integer habilitada;
-	
+
 	/* ****************************************************************
 	 * 			Métodos 
 	 *****************************************************************/
-	
+
 	/**
 	 * Constructor por defecto
 	 */
@@ -164,14 +164,14 @@ public class Oferta implements VOOferta{
 	public void setServicios(List<Object[]> servicios) {
 		this.servicios = servicios;
 	}
-	
+
 	/**
 	 * @return idVivienda
 	 */
 	public long getVivienda() {
 		return vivienda;
 	}
-	
+
 	/**
 	 * @param idVivienda - id de la vivienda de la oferta
 	 */
@@ -179,7 +179,7 @@ public class Oferta implements VOOferta{
 		this.vivienda = vivienda;
 	}
 
-	
+
 	/**
 	 * @return fechaInicio
 	 */
@@ -207,19 +207,27 @@ public class Oferta implements VOOferta{
 	public void setFechafin(Timestamp fechafin) {
 		this.fechafin = fechafin;
 	}
-	
+
 	/**
 	 * @return habilitada
 	 */
 	public Integer getHabilitada() {
 		return habilitada;
 	}
-	
+
 	/**
 	 * @param habilitada - si la oferta est� habilitada
 	 */
 	public void setHabilitada(Integer habilitada) {
 		this.habilitada = habilitada;
 	}
-	
+
+	@Override
+	public int compareTo(Oferta o) {
+		if(id == o.id)
+			return 1;
+		else
+			return 0;
+	}
+
 }
