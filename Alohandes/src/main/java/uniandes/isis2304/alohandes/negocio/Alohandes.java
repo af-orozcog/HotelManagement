@@ -1353,7 +1353,7 @@ public class Alohandes
 	
 	public String reqC7MenorDemanda(String tiempo, String alojamiento	) {
 		log.info("Analizando menor demanda para tiempo: " + tiempo + " y alojamiento " + alojamiento);
-		String ans = pa.reqC7MayorDemanda(tiempo, alojamiento);
+		String ans = pa.reqC7MenorDemanda(tiempo, alojamiento);
 		log.info("Analizado");
 		return ans;
 	}

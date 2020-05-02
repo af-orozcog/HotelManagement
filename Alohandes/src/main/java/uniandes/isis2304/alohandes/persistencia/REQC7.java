@@ -45,19 +45,18 @@ public class REQC7 {
 		long va = 0;
 		int semana = 0;
 		for(int i = 1; i < 53;++i) {
-			Query q = pm.newQuery(SQL, "SELECT to_char(fecha, 'iw') as numero, SUM(cantidad) as monto FROM "
+			Query q = pm.newQuery(SQL, "SELECT SUM(cantidad) as monto FROM "
 					+ ""
 					+ ""
-					+ "( " + pa.darTablaGanancias() + " g INNER JOIN " + pa.darTablaVivienda() + " v ON g.operador = v.opeador ) " 
-					+ " WHERE v.tipo = ?  AND to_number(to_char(g.fecha, 'iw')) = ? "
-					+ " GROUP BY to_char(g.fecha, 'iw') "
+					+ "( " + pa.darTablaGanancias() + " g INNER JOIN " + pa.darTablaVivienda() + " vi ON g.operador = vi.operador ) " 
+					+ " WHERE vi.tipo = ?  AND to_number(to_char(g.fecha, 'iw')) = ? "
 					);
 			q.setParameters(tipoAlojamiento,i);
 			q.setResultClass(Long.class);
 			Long ans = (Long)q.executeUnique();
 			if(ans == null) ans = new Long(0);
 			if(va < ans) {
-				ans = va;
+				va = ans;
 				semana = i;
 			}
 		}
@@ -74,12 +73,11 @@ public class REQC7 {
 		long va = 0;
 		int mes = 0;
 		for(int i = 1; i < 13;++i) {
-			Query q = pm.newQuery(SQL, "SELECT SUM(cantidad) as monto FROM "
+			Query q = pm.newQuery(SQL, "SELECT SUM(g.cantidad) as monto FROM "
 					+ ""
 					+ ""
-					+ "( " + pa.darTablaGanancias() + " g INNER JOIN " + pa.darTablaVivienda() + " v ON g.operador = v.opeador ) " 
-					+ "WHERE v.tipo = ?  AND to_number(to_char(g.fecha, 'MM')) = ? "
-					+ " GROUP BY to_char(g.fecha, 'MM') "
+					+ "( " + pa.darTablaGanancias() + " g INNER JOIN " + pa.darTablaVivienda() + " vi ON g.operador = vi.operador ) " 
+					+ "WHERE vi.tipo = ?  AND to_number(to_char(g.fecha, 'MM')) = ? "
 					);
 			q.setParameters(tipoAlojamiento,i);
 			q.setResultClass(Long.class);
@@ -105,15 +103,15 @@ public class REQC7 {
 			Query q = pm.newQuery(SQL, "SELECT COUNT(re.id) as monto FROM "
 					+ ""
 					+ ""
-					+ "((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) aux1 INNER JOIN VIVIENDA vi ON vi.id = aux1.vivienda)" 
-					+ "WHERE vi.tipo = ?  AND TO_NUMBER(to_char(re.inicio, 'iw')) <= ? AND ? <= TO_NUMBER(to_char(re.inicio, 'iw')) "
+					+ "((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) INNER JOIN VIVIENDA vi ON vi.id = o.vivienda) " 
+					+ "WHERE (vi.tipo = ?  AND TO_NUMBER(to_char(re.inicio, 'iw')) <= ? AND ? <= TO_NUMBER(to_char(re.fin, 'iw')))"
 					);
-			q.setParameters(tipoAlojamiento,i);
+			q.setParameters(tipoAlojamiento,i,i);
 			q.setResultClass(Long.class);
 			Long ans = (Long)q.executeUnique();
 			if(ans == null) ans = new Long(0);
 			if(va < ans) {
-				ans = va;
+				va = ans;
 				semana = i;
 			}
 		}
@@ -133,15 +131,15 @@ public class REQC7 {
 			Query q = pm.newQuery(SQL, "SELECT COUNT(re.id) as monto FROM "
 					+ ""
 					+ ""
-					+ "((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) aux1 INNER JOIN VIVIENDA vi ON vi.id = aux1.vivienda) " 
-					+ "WHERE v.tipo = ?  AND to_number(to_char(re.fecha, 'MM')) <= ? AND ? <= to_number(to_char(re.fecha, 'MM'))"
+					+ "((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) INNER JOIN VIVIENDA vi ON vi.id = o.vivienda) " 
+					+ "WHERE vi.tipo = ?  AND (to_number(to_char(re.inicio, 'MM')) <= ?) AND (? <= to_number(to_char(re.fin, 'MM')))"
 					);
-			q.setParameters(tipoAlojamiento,i);
+			q.setParameters(tipoAlojamiento,i,i);
 			q.setResultClass(Long.class);
 			Long ans = (Long)q.executeUnique();
 			if(ans == null) ans = new Long(0);
 			if(va < ans) {
-				ans = va;
+				va = ans;
 				mes = i;
 			}
 		}
@@ -160,15 +158,15 @@ public class REQC7 {
 			Query q = pm.newQuery(SQL, "SELECT COUNT(re.id) as monto FROM "
 					+ ""
 					+ ""
-					+ "((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) aux1 INNER JOIN VIVIENDA vi ON vi.id = aux1.vivienda) " 
-					+ "WHERE vi.tipo = ?  AND TO_NUMBER(to_char(re.inicio, 'iw')) <= ? AND ? <= TO_NUMBER(to_char(re.inicio, 'iw')) "
+					+ "((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) INNER JOIN VIVIENDA vi ON vi.id = o.vivienda) " 
+					+ "WHERE (vi.tipo = ?  AND TO_NUMBER(to_char(re.inicio, 'iw')) <= ? AND ? <= TO_NUMBER(to_char(re.fin, 'iw')))"
 					);
-			q.setParameters(tipoAlojamiento,i);
+			q.setParameters(tipoAlojamiento,i,i);
 			q.setResultClass(Long.class);
 			Long ans = (Long)q.executeUnique();
 			if(ans == null) ans = new Long(0);
 			if(va > ans) {
-				ans = va;
+				va = ans;
 				semana = i;
 			}
 		}
@@ -188,15 +186,16 @@ public class REQC7 {
 			Query q = pm.newQuery(SQL, "SELECT COUNT(re.id) as monto FROM "
 					+ ""
 					+ ""
-					+ "((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) aux1 INNER JOIN VIVIENDA vi ON vi.id = aux1.vivienda) " 
-					+ "WHERE v.tipo = ?  AND to_number(to_char(re.fecha, 'MM')) <= ? AND ? <= to_number(to_char(re.fecha, 'MM'))"
+					+ "((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) INNER JOIN VIVIENDA vi ON vi.id = o.vivienda) " 
+					+ "WHERE vi.tipo = ?  AND (to_number(to_char(re.inicio, 'MM')) <= ?) AND (? <= to_number(to_char(re.fin, 'MM')))"
 					);
-			q.setParameters(tipoAlojamiento,i);
+			q.setParameters(tipoAlojamiento,i,i);
 			q.setResultClass(Long.class);
 			Long ans = (Long)q.executeUnique();
 			if(ans == null) ans = new Long(0);
+			//System.out.println("QUE ES ANS EN MES : "+ ans);
 			if(va > ans) {
-				ans = va;
+				va = ans;
 				mes = i;
 			}
 		}
