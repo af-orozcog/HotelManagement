@@ -339,6 +339,9 @@ public class PersistenciaAlohandes
 		sqlUtil = new SQLUtil(this);
 		reqc1 = new REQC1(this);
 		reqc2 = new REQC2(this);
+		reqc7 = new REQC7(this);
+		reqc8 = new REQC8(this);
+		reqc9 = new REQC9(this);
 	}
 
 	/**
