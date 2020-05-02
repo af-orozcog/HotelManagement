@@ -82,7 +82,7 @@ public class REQCC1 {
 					+ ""
 					+ ""
 					+ "( " + pa.darTablaGanancias() + " g INNER JOIN " + pa.darTablaVivienda() + " v ON g.operador = v.opeador ) " 
-					+ "WHERE v.tipo = ?  AND to_char(re.fecha, 'iw') = ? "
+					+ " WHERE v.tipo = ?  AND to_char(g.fecha, 'iw') = ? "
 					+ " GROUP BY to_char(g.fecha, 'iw') "
 					);
 			q.setParameters(tipoAlojamiento,i);
@@ -108,7 +108,7 @@ public class REQCC1 {
 					+ ""
 					+ ""
 					+ "( " + pa.darTablaGanancias() + " g INNER JOIN " + pa.darTablaVivienda() + " v ON g.operador = v.opeador ) " 
-					+ "WHERE v.tipo = ?  AND to_char(re.fecha, 'MM') = ? "
+					+ "WHERE v.tipo = ?  AND to_char(g.fecha, 'MM') = ? "
 					+ " GROUP BY to_char(g.fecha, 'MM') "
 					);
 			q.setParameters(tipoAlojamiento,months[i]);
@@ -130,12 +130,11 @@ public class REQCC1 {
 	public String respuestaSemanaMayorDemanda(PersistenceManager pm, String tipoAlojamiento) {
 		Respuesta def = null;
 		for(int i = 1; i < 53;++i) {
-			Query q = pm.newQuery(SQL, "SELECT to_char(fecha, 'iw') as numero, SUM(*) as monto FROM "
+			Query q = pm.newQuery(SQL, "SELECT to_char(fecha, 'iw') as numero, SUM(re.id) as monto FROM "
 					+ ""
 					+ ""
 					+ "((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) aux1 INNER JOIN VIVIENDA vi ON vi.id = aux1.vivienda)" 
-					+ "WHERE vi.tipo = ?  AND to_char(re.fecha, 'iw') = ? "
-					+ " GROUP BY to_char(g.fecha, 'iw') "
+					+ "WHERE vi.tipo = ?  AND TO_NUMBER(to_char(re.inicio, 'iw')) <= ? AND ? <= TO_NUMBER(to_char(re.inicio, 'iw')) "
 					);
 			q.setParameters(tipoAlojamiento,i);
 			q.setResultClass(Respuesta.class);
@@ -155,15 +154,14 @@ public class REQCC1 {
 	 */
 	public String respuestaMesMayorDemanda(PersistenceManager pm, String tipoAlojamiento) {
 		Respuesta def = null;
-		for(int i = 0; i < 12;++i) {
+		for(int i = 1; i < 13;++i) {
 			Query q = pm.newQuery(SQL, "SELECT to_char(fecha, 'MM') as numero, SUM(*) as monto FROM "
 					+ ""
 					+ ""
 					+ "((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) aux1 INNER JOIN VIVIENDA vi ON vi.id = aux1.vivienda)" 
-					+ "WHERE v.tipo = ?  AND to_char(re.fecha, 'MM') = ? "
-					+ " GROUP BY to_char(g.fecha, 'MM')"
+					+ "WHERE v.tipo = ?  AND to_number(to_char(re.fecha, 'MM')) <= ? AND ? <= to_number(to_char(re.fecha, 'MM'))"
 					);
-			q.setParameters(tipoAlojamiento,months[i]);
+			q.setParameters(tipoAlojamiento,i);
 			q.setResultClass(Respuesta.class);
 			Respuesta ans = (Respuesta)q.executeUnique();
 			if(ans != null) {
@@ -182,12 +180,11 @@ public class REQCC1 {
 	public String respuestaSemanaMenorDemanda(PersistenceManager pm, String tipoAlojamiento) {
 		Respuesta def = null;
 		for(int i = 1; i < 53;++i) {
-			Query q = pm.newQuery(SQL, "SELECT to_char(fecha, 'iw') as numero, SUM(*) as monto FROM "
+			Query q = pm.newQuery(SQL, "SELECT to_char(fecha, 'iw') as numero, SUM(re.id) as monto FROM "
 					+ ""
 					+ ""
 					+ "((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) aux1 INNER JOIN VIVIENDA vi ON vi.id = aux1.vivienda)" 
-					+ "WHERE vi.tipo = ?  AND to_char(re.fecha, 'iw') = ? "
-					+ " GROUP BY to_char(g.fecha, 'iw') "
+					+ "WHERE vi.tipo = ?  AND TO_NUMBER(to_char(re.inicio, 'iw')) <= ? AND ? <= TO_NUMBER(to_char(re.inicio, 'iw')) "
 					);
 			q.setParameters(tipoAlojamiento,i);
 			q.setResultClass(Respuesta.class);
@@ -207,14 +204,14 @@ public class REQCC1 {
 	 */
 	public String respuestaMesMenorDemanda(PersistenceManager pm, String tipoAlojamiento) {
 		Respuesta def = null;
-		for(int i = 0; i < 12;++i) {
+		for(int i = 1; i < 13;++i) {
 			Query q = pm.newQuery(SQL, "SELECT to_char(fecha, 'MM') as numero, SUM(*) as monto FROM "
 					+ ""
 					+ ""
 					+ "((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) aux1 INNER JOIN VIVIENDA vi ON vi.id = aux1.vivienda)" 
-					+ "WHERE v.tipo = ?  AND to_char(re.fecha, 'MM') = ? "
-					+ " GROUP BY to_char(g.fecha, 'MM')"
+					+ "WHERE v.tipo = ?  AND to_number(to_char(re.fecha, 'MM')) <= ? AND ? <= to_number(to_char(re.fecha, 'MM'))"
 					);
+			q.setParameters(tipoAlojamiento,i);
 			q.setParameters(tipoAlojamiento,months[i]);
 			q.setResultClass(Respuesta.class);
 			Respuesta ans = (Respuesta)q.executeUnique();
