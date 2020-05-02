@@ -72,7 +72,61 @@ public class REQCC1 {
 	 * @param pm
 	 * @return
 	 */
-	public String respuestaSemana(PersistenceManager pm, String tipoAlojamiento) {
+	public String respuestaSemanaGanancias(PersistenceManager pm, String tipoAlojamiento) {
+		Query q = pm.newQuery(SQL, "SELECT to_char(fecha, 'iw') as numero, SUM(cantidad) as monto FROM "
+				+ ""
+				+ ""
+				+ "(" + pa.darTablaGanancias() + " g INNER JOIN " + pa.darTablaVivienda() + " v ON g.operador = v.opeador)" 
+				+ "WHERE v.tipo = ?  AND monto in "
+				+ "("
+				+ "SELECT MAX(suma) "
+				+ "FROM ("
+				+ "SELECT SUM(cantidad) as suma FROM "
+				+ "(" + pa.darTablaGanancias() + " g INNER JOIN " + pa.darTablaVivienda() + " v ON g.operador = v.opeador)"
+				+ "WHERE v.tipo = ? " 
+				+ " GROUP BY to_char(fecha, 'iw') "
+				+ ")"
+				+ ")"
+				+ " GROUP BY to_char(g.fecha, 'iw') ");
+		q.setParameters(tipoAlojamiento,tipoAlojamiento);
+		q.setResultClass(Respuesta.class);
+		Respuesta ans = (Respuesta)q.executeUnique();
+		return "semana: " + ans.getNumero()+ " ganancias obtenidas:" + ans.getMonto();
+	}
+	
+	/**
+	 * 
+	 * @param pm
+	 * @return
+	 */
+	public String respuestaMesGanacias(PersistenceManager pm, String tipoAlojamiento) {
+		Query q = pm.newQuery(SQL, "SELECT to_char(fecha, 'MM') as numero, SUM(cantidad) as monto FROM "
+				+ ""
+				+ ""
+				+ "( " + pa.darTablaGanancias() + " g INNER JOIN " + pa.darTablaVivienda() + " v ON g.operador = v.opeador )" 
+				+ "WHERE v.tipo = ?  AND monto in "
+				+ "("
+				+ "SELECT MAX(suma) "
+				+ "FROM ("
+				+ "SELECT SUM(cantidad) as suma FROM "
+				+ "(" + pa.darTablaGanancias() + " g INNER JOIN " + pa.darTablaVivienda() + " v ON g.operador = v.opeador)"
+				+ "WHERE v.tipo = ?" 
+				+ " GROUP BY to_char(fecha, 'MM') "
+				+ ")"
+				+ ")"
+				+ " GROUP BY to_char(g.fecha, 'MM') ");
+		q.setParameters(tipoAlojamiento,tipoAlojamiento);
+		q.setResultClass(Respuesta.class);
+		Respuesta ans = (Respuesta)q.executeUnique();
+		return "mes: " + ans.getNumero()+ " ganancias obtenidas:" + ans.getMonto();
+	}
+	
+	/**
+	 * 
+	 * @param pm
+	 * @return
+	 */
+	public String respuestaSemanaMayorDemanda(PersistenceManager pm, String tipoAlojamiento) {
 		Query q = pm.newQuery(SQL, "SELECT to_char(fecha, 'iw') as numero, SUM(cantidad) as monto FROM "
 				+ ""
 				+ ""
@@ -99,7 +153,7 @@ public class REQCC1 {
 	 * @param pm
 	 * @return
 	 */
-	public String respuestaMes(PersistenceManager pm, String tipoAlojamiento) {
+	public String respuestaMesMayorDemanda(PersistenceManager pm, String tipoAlojamiento) {
 		Query q = pm.newQuery(SQL, "SELECT to_char(fecha, 'MM') as numero, SUM(cantidad) as monto FROM "
 				+ ""
 				+ ""
@@ -115,6 +169,53 @@ public class REQCC1 {
 				+ "WHERE v.tipo = ?" 
 				+ ")"
 				+ ")");
+		q.setParameters(tipoAlojamiento,tipoAlojamiento);
+		q.setResultClass(Respuesta.class);
+		Respuesta ans = (Respuesta)q.executeUnique();
+		return "mes: " + ans.getNumero()+ " ganancias obtenidas:" + ans.getMonto();
+	}
+	
+	/**
+	 * 
+	 * @param pm
+	 * @return
+	 */
+	public String respuestaSemanaMenorDemanda(PersistenceManager pm, String tipoAlojamiento) {
+		Query q = pm.newQuery(SQL, "SELECT to_char(fecha, 'iw') as numero, SUM(cantidad) as monto FROM "
+				+ ""
+				+ ""
+				+ "(" + pa.darTablaGanancias() + " g INNER JOIN " + pa.darTablaVivienda() + " v ON g.operador = v.opeador)" 
+				+ " GROUP BY to_char(g.fecha, 'iw') "
+				+ "WHERE v.tipo = ?  AND monto in "
+				+ "("
+				+ "SELECT MAX(suma) "
+				+ "FROM ("
+				+ "SELECT SUM(cantidad) as suma FROM "
+				+ "(" + pa.darTablaGanancias() + " g INNER JOIN " + pa.darTablaVivienda() + " v ON g.operador = v.opeador)"
+				+ " GROUP BY to_char(fecha, 'iw') "
+				+ "WHERE v.tipo = ?" 
+				+ ")"
+				+ ")");
+		q.setParameters(tipoAlojamiento,tipoAlojamiento);
+		q.setResultClass(Respuesta.class);
+		Respuesta ans = (Respuesta)q.executeUnique();
+		return "semana: " + ans.getNumero()+ " ganancias obtenidas:" + ans.getMonto();
+	}
+	
+	/**
+	 * 
+	 * @param pm
+	 * @return
+	 */
+	public String respuestaMesMenorDemanda(PersistenceManager pm, String tipoAlojamiento) {
+		
+		Query q = pm.newQuery(SQL, "SELECT to_char(fecha, 'MM') as numero, COUNT(*) as monto FROM "
+				+ ""
+				+ ""
+				+ "((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) aux1 INNER JOIN VIVIENDA vi ON vi.id = aux1.vivienda)" 
+				+ "WHERE v.tipo = ?  AND to_char(fecha, 'MM') = ? "
+				+ " GROUP BY to_char(g.fecha, 'MM') "
+				);
 		q.setParameters(tipoAlojamiento,tipoAlojamiento);
 		q.setResultClass(Respuesta.class);
 		Respuesta ans = (Respuesta)q.executeUnique();

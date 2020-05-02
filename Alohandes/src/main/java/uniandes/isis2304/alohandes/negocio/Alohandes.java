@@ -91,10 +91,10 @@ public class Alohandes
 	 * @param idOperador - idOperador del Vivienda
 	 * @return El objeto Vivienda adicionado. null si ocurre alguna Excepción
 	 */
-	public Vivienda adicionarVivienda (String direccion, int cupos, long idOperador)
+	public Vivienda adicionarVivienda (String direccion, int cupos, long idOperador, String tipo)
 	{
 		log.info ("Adicionando nuevo(a) Vivienda ");
-		Vivienda vivienda = pa.adicionarVivienda(direccion, cupos, idOperador);	
+		Vivienda vivienda = pa.adicionarVivienda(direccion, cupos, idOperador,tipo);	
 		log.info ("Adicionando Vivienda: " + vivienda);
 		return vivienda;
 	}

@@ -81,7 +81,7 @@ public class IncluyeTest {
     	try
 		{
     		Operador op = pm.adicionarOperador("..", "..", "..", "PERSONA_NATURAL");
-    		Vivienda vi = pm.adicionarVivienda("..", 10, op.getId());
+    		Vivienda vi = pm.adicionarVivienda("..", 10, op.getId(),"HABITACION");
 			    		
     		// Lectura de los tipos de bebida con la tabla vacía
     		Oferta of1 = pm.adicionarOferta(500, "SEMESTRES", vi.getId(), new Timestamp(2000, 1, 1, 0, 0, 0, 0), new Timestamp(2001, 12, 30, 0, 0, 0, 0));
@@ -166,7 +166,7 @@ public class IncluyeTest {
 		{
 			pm.limpiarAlohandes();
 			Operador op = pm.adicionarOperador("..", "..", "..", "PERSONA_NATURAL");
-    		Vivienda vi = pm.adicionarVivienda("..", 10, op.getId());
+    		Vivienda vi = pm.adicionarVivienda("..", 10, op.getId(),"HABITACION");
 			    		
     		// Lectura de los tipos de bebida con la tabla vacía
     		Oferta of1 = pm.adicionarOferta(500, "SEMESTRES", vi.getId(), new Timestamp(2000, 1, 1, 0, 0, 0, 0), new Timestamp(2001, 12, 30, 0, 0, 0, 0));
