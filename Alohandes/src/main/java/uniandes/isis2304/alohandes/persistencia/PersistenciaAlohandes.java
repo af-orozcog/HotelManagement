@@ -2180,7 +2180,11 @@ public class PersistenciaAlohandes
 		}
 	}
 
-
+	/**
+	 * 
+	 * @param idOferta
+	 * @return
+	 */
 	public long habilitarOferta(long idOferta) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
