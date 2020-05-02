@@ -118,7 +118,7 @@ public class Controller {
 				reqC2(sc);
 
 				break;
-			case 13:
+			case 16:
 				fin = true;
 				sc.close();
 				break;
