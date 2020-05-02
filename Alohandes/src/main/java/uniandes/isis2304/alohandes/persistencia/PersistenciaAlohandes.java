@@ -22,6 +22,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -2138,7 +2139,11 @@ public class PersistenciaAlohandes
 			tx.begin();
 			sqlOferta.deshabilitarOferta(pm, idOferta);
 			List<Reserva> reservasACancelar = sqlReserva.darReservasPorOferta(pm, idOferta);
+			Calendar calendar = Calendar.getInstance();
+			java.util.Date now = calendar.getTime();
+			java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());
 			for(Reserva va: reservasACancelar) {
+				if(!va.getFin().after(currentTimestamp)) continue;
 				eliminarReservaPorId(va.getId());
 				Timestamp ini = va.getInicio(), fin = va.getFin();
 				Oferta of = sqlOferta.darOfertasPorRangoFechaDisponibles(pm, ini, fin);
