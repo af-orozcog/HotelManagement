@@ -20,8 +20,12 @@ public class InterfazAlohandes {
 		System.out.println("---------------------------------------------------");
 		System.out.println("(11) RFC1.MOSTRAR EL DINERO RECIBIDO POR CADA PROVEEDOR DE ALOJAMIENTO DURANTE EL AÃ‘O ACTUAL Y EL AÃ‘O CORRIDO");
 		System.out.println("(12) RFC2.MOSTRAR LAS 20 OFERTAS MÁS POPULARES");		
+		System.out.println("(13) RFC2.MOSTRAR LAS 20 OFERTAS MÁS POPULARES");		
+		System.out.println("(14) RFC2.MOSTRAR LAS 20 OFERTAS MÁS POPULARES");		
+		System.out.println("(15) RFC2.MOSTRAR LAS 20 OFERTAS MÁS POPULARES");		
+
 		System.out.println("---------------------------------------------------");
-		System.out.println("(13) Salir");
+		System.out.println("(16) Salir");
 	}
 	
 	public void printMessage(String mensaje) {
