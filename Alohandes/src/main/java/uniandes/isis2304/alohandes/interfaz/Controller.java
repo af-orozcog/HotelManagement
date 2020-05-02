@@ -114,6 +114,18 @@ public class Controller {
 				reqC2(sc);
 
 				break;
+			case 13:
+				reqC7(sc);
+
+				break;
+			case 14:
+				reqC8(sc);
+
+				break;
+			case 15:
+				reqC9(sc);
+
+				break;
 			case 16:
 				fin = true;
 				sc.close();
@@ -400,7 +412,7 @@ public class Controller {
 
 		interfaz.printMessage("Ingrese el período deseado");
 		String periodo = sc.next();
-		
+
 		interfaz.printMessage("Ingrese el anio de inicio de la reserva");
 		int anioIn = sc.nextInt();
 		interfaz.printMessage("Ingrese el mes de inicio de la reserva");
@@ -454,13 +466,13 @@ public class Controller {
 		mundo.eliminarReservaColectivaPorId(idReserva);
 		interfaz.printMessage("Eliminada reserva colectiva");
 	}
-	
+
 	public void req9(Scanner sc) {
 		interfaz.printMessage("Ingresa el id de la oferta a deshabilitar");
 		long idOferta = sc.nextLong();
 		interfaz.printMessage("Revisando las reservas asociadas");
 		List<Reserva> eliminadas = mundo.deshabilitarOferta(idOferta);
-		
+
 		interfaz.printMessage("Hubo " + eliminadas.size() + " reservas eliminadas");
 		for (Reserva reserva : eliminadas) {
 			interfaz.printMessage("La reserva " + reserva.getId() +" no pudo reubicarse");
@@ -474,7 +486,7 @@ public class Controller {
 		mundo.rehabilitarOferta(idOferta);
 		interfaz.printMessage("La oferta quedo habilitada");
 	}
-	
+
 	public void reqC1(Scanner sc) {
 		interfaz.printMessage("Lista de los operadores con su nombre y el dinero ganado en el anio actual y corrido");
 		List<Operador> operadores = mundo.darOperadores();
@@ -495,6 +507,42 @@ public class Controller {
 		List<Oferta> ofertas = mundo.reqc2();
 		for (Oferta oferta : ofertas) {
 			interfaz.printMessage("Id oferta: " + oferta.getId() + " Precio oferta: " + oferta.getPrecio());
+		}
+	}
+
+	public void reqC7(Scanner sc) {
+		interfaz.printMessage("Indica la undiad de teimpo deseada: (MES, SEMANA)");
+		String tiempo = sc.next();
+		interfaz.printMessage("Ingrese el tipo de alojamiento: (CUARTO, HABITACION, APARTAMENTO, ESPORADICO)");
+		String alojamiento = sc.next();
+
+
+		String mayorDemanda = mundo.reqC7MayorDemanda(tiempo, alojamiento);
+		String menorDemanda = mundo.reqC7MenorDemanda(tiempo, alojamiento);
+		String ganancias = mundo.reqC7Ganancia(tiempo, alojamiento);
+
+		interfaz.printMessage("El(La) MES(SEMANA) con mayor demanda fue: "+ mayorDemanda);
+		interfaz.printMessage("El(La) MES(SEMANA) con menor demanda fue: "+ menorDemanda);
+		interfaz.printMessage("El(La) MES(SEMANA) con mayor ganancia fue: "+ ganancias);
+
+	}
+
+	public void reqC8(Scanner sc) {
+		interfaz.printMessage("Ingrese el id de la vivienda a buscar los clientes frecuentes");
+		Long vivienda = sc.nextLong();
+		List<Cliente> clientes = mundo.reqC8(vivienda);
+		interfaz.printMessage("Los clientes frecuentes son:");
+		for (Cliente cliente : clientes) {
+			interfaz.printMessage("Id: " + cliente.getId() + " - Nombre: " + cliente.getNombre());
+		}
+	}
+
+	public void reqC9(Scanner sc) {
+		interfaz.printMessage("Buscando las ofertas de alojamiento con poca demanda");
+		List<Oferta> ofertas = mundo.reqC9();
+		interfaz.printMessage("Las ofertas con poca  demanda son: ");
+		for (Oferta oferta : ofertas) {
+			interfaz.printMessage("Oferta id: " + oferta.getId());
 		}
 	}
 

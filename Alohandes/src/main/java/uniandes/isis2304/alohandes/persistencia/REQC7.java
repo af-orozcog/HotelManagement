@@ -3,7 +3,7 @@ import java.util.Calendar;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-public class REFC7 {
+public class REQC7 {
 	/* ****************************************************************
 	 * 			Constantes
 	 *****************************************************************/
@@ -30,7 +30,7 @@ public class REFC7 {
 	* Constructor
 	* @param pa - El Manejador de persistencia de la aplicación
 	*/
-	public REFC7 (PersistenciaAlohandes pa)
+	public REQC7 (PersistenciaAlohandes pa)
 	{
 	   this.pa = pa;
 	}
@@ -70,7 +70,7 @@ public class REFC7 {
 	 * @param pm
 	 * @return
 	 */
-	public String respuestaMesGanacias(PersistenceManager pm, String tipoAlojamiento) {
+	public String respuestaMesGanancias(PersistenceManager pm, String tipoAlojamiento) {
 		long va = 0;
 		int mes = 0;
 		for(int i = 1; i < 13;++i) {

@@ -1344,6 +1344,41 @@ public class Alohandes
 		return ofertas;
 		}
 
+	public String reqC7MayorDemanda(String tiempo, String alojamiento	) {
+		log.info("Analizando mayor demanda para tiempo: " + tiempo + " y alojamiento " + alojamiento);
+		String ans = pa.reqC7MayorDemanda(tiempo, alojamiento);
+		log.info("Analizado");
+		return ans;
+	}
+	
+	public String reqC7MenorDemanda(String tiempo, String alojamiento	) {
+		log.info("Analizando menor demanda para tiempo: " + tiempo + " y alojamiento " + alojamiento);
+		String ans = pa.reqC7MayorDemanda(tiempo, alojamiento);
+		log.info("Analizado");
+		return ans;
+	}
+	
+	public String reqC7Ganancia(String tiempo, String alojamiento) {
+		log.info("Analizando mayor ganancia para tiempo: " + tiempo + " y alojamiento " + alojamiento);
+		String ans = pa.reqC7Ganancia(tiempo, alojamiento);
+		log.info("Analizado");
+		return ans;
+	}
+	
+	public List<Cliente> reqC8(long vivienda) {
+		log.info("Encontrando clientes frecuentes de la vivienda: " + vivienda);
+		List<Cliente> clientes = pa.reqC8(vivienda);
+		log.info("Encontrado los clientes");
+		return clientes;
+	}
+	
+	public List<Oferta> reqC9(){
+		log.info("Buscando ofertas con poca demanda");
+		List<Oferta> ofertas = pa.reqC9();
+		log.info("Encontradas");
+		return ofertas;
+	}
+	
 	/* ****************************************************************
 	 * 			Métodos para administracién
 	 *****************************************************************/
