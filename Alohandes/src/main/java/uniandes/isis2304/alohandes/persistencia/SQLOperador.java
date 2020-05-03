@@ -128,7 +128,6 @@ class SQLOperador
 	public List<ViviendaUniversitaria> darViviendasUniversitarias (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaOperador () + " WHERE tipo_operador = 'VIVIENDA_UNIVERSITARIA' ");
-		q.setResultClass(Operador.class);
 		List<Object[]> objects = q.executeList();
 		List<ViviendaUniversitaria> viviendas = new LinkedList<ViviendaUniversitaria>();
 		for (Object[] viv : objects) {

@@ -711,7 +711,7 @@ public class PersistenciaAlohandes
 			long idApartamento = nextval ();
 			if(modoPerron) 
 				idApartamento = idPerron;
-			System.out.println("el modo esta activado? " + modoPerron);
+			//System.out.println("el modo esta activado? " + modoPerron);
 			long tuplasInsertadas = sqlApartamento.adicionarApartamento(pm, idApartamento, direccion, cupos, idOperador, area, amoblado, numeroHabitaciones);
 			tx.commit();
 
@@ -918,7 +918,7 @@ public class PersistenciaAlohandes
 		try
 		{
 			tx.begin();
-			System.out.println("intenta borrar el seguro?");
+			//System.out.println("intenta borrar el seguro?");
 			long resp = sqlSeguro.eliminarSeguroPorId(pm, idSeguro);
 			tx.commit();
 			return resp;
@@ -2119,10 +2119,10 @@ public class PersistenciaAlohandes
 		try
 		{
 			tx.begin();
-			System.out.println("funciono???ñolool");
+			//System.out.println("funciono???ñolool");
 			long [] resp = sqlUtil.limpiarAlohandes(pm);
 			tx.commit ();
-			System.out.println("funciono???");
+			//System.out.println("funciono???");
 			log.info ("Borrada la base de datos");
 			return resp;
 		}
@@ -2225,23 +2225,22 @@ public class PersistenciaAlohandes
 	 * @return
 	 */
 	public List<Reserva> deshabilitarOferta(long idOferta){
-		System.out.println("Entra aqui??????");
+		//System.out.println("Entra aqui??????");
 		LinkedList<Reserva> ans = new LinkedList<Reserva>();
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
 		try
 		{
 			tx.begin();
-			System.out.println("wtf is happeningGGGGG");
+			//System.out.println("wtf is happeningGGGGG");
 			sqlOferta.deshabilitarOferta(pm, idOferta);
-			System.out.println("wtf is happening");
+			//System.out.println("wtf is happening");
 			List<Reserva> reservasACancelar = sqlReserva.darReservasPorOferta(pm, idOferta);
-			System.out.println("tama�o de esa chimbada: " + reservasACancelar.size());
+			//System.out.println("tama�o de esa chimbada: " + reservasACancelar.size());
 			Calendar calendar = Calendar.getInstance();
-			Date now = (Date) calendar.getTime();
-			TIMESTAMP currentTimestamp = new TIMESTAMP( new Timestamp(now.getTime()));
+			TIMESTAMP currentTimestamp = new TIMESTAMP( new Timestamp(calendar.getTimeInMillis()));
+			//System.out.println("here??");
 			for(Reserva va: reservasACancelar) {
-				if(va.getFin() == null) System.out.println("WTF cual es la re puta joda" + va.getId());
                 if(!va.getFin().dateValue().after(currentTimestamp.dateValue())) continue;
 				long idColectiva =va.getColectiva();
 				if(va.getColectiva() != null) {
