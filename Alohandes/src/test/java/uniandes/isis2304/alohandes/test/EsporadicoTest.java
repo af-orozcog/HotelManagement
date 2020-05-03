@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
+import oracle.sql.TIMESTAMP;
 import uniandes.isis2304.alohandes.negocio.Esporadico;
 import uniandes.isis2304.alohandes.negocio.Operador;
 import uniandes.isis2304.alohandes.negocio.Seguro;
@@ -66,8 +67,8 @@ public class EsporadicoTest {
 			assertEquals ("No debe haber tipos de bebida creados!!", 0, lista.size ());
 			String empresa1 = "elSAPOINC";
 			int monto1 = 1000;
-			Timestamp inicio1 = new Timestamp(10000);
-			Timestamp fin1 = new Timestamp(100000);
+			TIMESTAMP inicio1 = new TIMESTAMP(new Timestamp(10000));
+			TIMESTAMP fin1 = new TIMESTAMP(new Timestamp(100000));
 			Seguro seguro1 = pm.adicionarSeguro(empresa1, monto1, inicio1, fin1);
 			
 			// Lectura de los tipos de bebida con un esporadico adicionado
@@ -161,8 +162,8 @@ public class EsporadicoTest {
 			assertEquals ("No debe haber tipos de bebida creados!!", 0, lista.size ());
 			String empresa1 = "elSAPOINC";
 			int monto1 = 1000;
-			Timestamp inicio1 = new Timestamp(10000);
-			Timestamp fin1 = new Timestamp(100000);
+			TIMESTAMP inicio1 = new TIMESTAMP(new Timestamp(10000));
+			TIMESTAMP fin1 = new TIMESTAMP(new Timestamp(100000));
 			Seguro seguro1 = pm.adicionarSeguro(empresa1, monto1, inicio1, fin1);
 			
 			

@@ -929,17 +929,17 @@ public class Alohandes
 	/**
 	 * Adiciona de manera persistente un Reserva
 	 * Adiciona entradas al log de la aplicacién
-	 * @param inicio - inicio del Reserva
+	 * @param inicio1 - inicio del Reserva
 	 * @param duracion - duracion del Reserva
 	 * @param periodoArrendamiento - periodoArrendamiento del Reserva
 	 * @param idOferta - idOferta del Reserva
 	 * @param idUsuario - idUsuario del Reserva
 	 * @return El objeto Reserva adicionado. null si ocurre alguna Excepcién
 	 */
-	public Reserva adicionarReserva (TIMESTAMP inicio, TIMESTAMP fin, String periodoArrendamiento, long idOferta, long idUsuario, long idColectiva)
+	public Reserva adicionarReserva (TIMESTAMP inicio1, TIMESTAMP fin1, String periodoArrendamiento, long idOferta, long idUsuario, long idColectiva)
 	{
 		log.info ("Adicionando nuevo(a) Reserva ");
-		Reserva reserva = pa.adicionarReserva(inicio, fin, periodoArrendamiento, idUsuario, idOferta, idColectiva);
+		Reserva reserva = pa.adicionarReserva(inicio1, fin1, periodoArrendamiento, idUsuario, idOferta, idColectiva);
 		log.info ("Adicionando Reserva: " + reserva);
 		return reserva;
 	}

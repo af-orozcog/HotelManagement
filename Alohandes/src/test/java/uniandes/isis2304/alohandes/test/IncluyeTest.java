@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
+import oracle.sql.TIMESTAMP;
 import uniandes.isis2304.alohandes.negocio.Alohandes;
 import uniandes.isis2304.alohandes.negocio.Incluye;
 import uniandes.isis2304.alohandes.negocio.Oferta;
@@ -84,7 +85,7 @@ public class IncluyeTest {
     		Vivienda vi = pm.adicionarVivienda("..", 10, op.getId(),"HABITACION");
 			    		
     		// Lectura de los tipos de bebida con la tabla vacía
-    		Oferta of1 = pm.adicionarOferta(500, "SEMESTRES", vi.getId(), new Timestamp(2000, 1, 1, 0, 0, 0, 0), new Timestamp(2001, 12, 30, 0, 0, 0, 0));
+    		Oferta of1 = pm.adicionarOferta(500, "SEMESTRES", vi.getId(), new TIMESTAMP(new Timestamp(2000, 1, 1, 0, 0, 0, 0)), new TIMESTAMP(new Timestamp(2001, 12, 30, 0, 0, 0, 0)));
     		Servicio se1 = pm.adicionarServicio("Ser1", 100);
     	
 			List <Incluye> lista = pm.darIncluye();
@@ -102,7 +103,7 @@ public class IncluyeTest {
 
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
 			
-			Oferta of2 = pm.adicionarOferta(1500, "MESES", vi.getId(), new Timestamp(2001, 1, 1, 0, 0, 0, 0), new Timestamp(2002, 12, 30, 0, 0, 0, 0));
+			Oferta of2 = pm.adicionarOferta(1500, "MESES", vi.getId(),new TIMESTAMP(new Timestamp(2001, 1, 1, 0, 0, 0, 0)), new TIMESTAMP(new Timestamp(2002, 12, 30, 0, 0, 0, 0)));
     		Servicio se2 = pm.adicionarServicio("Ser2", 1100);
 			
 			Incluye incluye2 = pm.adicionarIncluye(se2.getId(),of2.getId(), 0);
@@ -169,7 +170,7 @@ public class IncluyeTest {
     		Vivienda vi = pm.adicionarVivienda("..", 10, op.getId(),"HABITACION");
 			    		
     		// Lectura de los tipos de bebida con la tabla vacía
-    		Oferta of1 = pm.adicionarOferta(500, "SEMESTRES", vi.getId(), new Timestamp(2000, 1, 1, 0, 0, 0, 0), new Timestamp(2001, 12, 30, 0, 0, 0, 0));
+    		Oferta of1 = pm.adicionarOferta(500, "SEMESTRES", vi.getId(), new TIMESTAMP(new Timestamp(2000, 1, 1, 0, 0, 0, 0)), new TIMESTAMP(new Timestamp(2001, 12, 30, 0, 0, 0, 0)));
     		Servicio se1 = pm.adicionarServicio("Ser1", 100);
     		
 			List <Incluye> lista = pm.darIncluye();
@@ -181,7 +182,7 @@ public class IncluyeTest {
 			lista = pm.darIncluye();
 			assertEquals ("Debe haber un incluye creado !!", 1, lista.size ());
 			
-			Oferta of2 = pm.adicionarOferta(1500, "MESES", vi.getId(), new Timestamp(2001, 1, 1, 0, 0, 0, 0), new Timestamp(2002, 12, 30, 0, 0, 0, 0));
+			Oferta of2 = pm.adicionarOferta(1500, "MESES", vi.getId(), new TIMESTAMP(new Timestamp(2001, 1, 1, 0, 0, 0, 0)), new TIMESTAMP(new Timestamp(2002, 12, 30, 0, 0, 0, 0)));
     		Servicio se2 = pm.adicionarServicio("Ser2", 1100);
 			
 			Incluye incluye2 = pm.adicionarIncluye(se2.getId(),of2.getId(), 0);
