@@ -57,51 +57,51 @@ class SQLOferta
 	 *****************************************************************/
 
 	/** 
-	* Constructor
-	* @param pa - El Manejador de persistencia de la aplicación
-	*/
+	 * Constructor
+	 * @param pa - El Manejador de persistencia de la aplicación
+	 */
 	public SQLOferta (PersistenciaAlohandes pa)
 	{
-	   this.pa = pa;
+		this.pa = pa;
 	}
 
 	/**
-	* Crea y ejecuta la sentencia SQL para adicionar un OFERTA a la base de datos de Alohandes
-	* @param idOferta - 
-	* @param precio - 
-	* @param periodo - 
-	* @param idVivienda - 
-	* @param fechaInicio - 
-	* @param fechaFin - 
-	* @return El número de tuplas insertadas 
-	*/
+	 * Crea y ejecuta la sentencia SQL para adicionar un OFERTA a la base de datos de Alohandes
+	 * @param idOferta - 
+	 * @param precio - 
+	 * @param periodo - 
+	 * @param idVivienda - 
+	 * @param fechaInicio - 
+	 * @param fechaFin - 
+	 * @return El número de tuplas insertadas 
+	 */
 	public long adicionarOferta (PersistenceManager pm, long idOferta, long precio, String periodo, long idVivienda, Timestamp fechaInicio, Timestamp fechaFin)
 	{
-	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaOferta () + "(id, precio, periodo, vivienda, fechainicio, fechafin, habilitada) values (? ,? ,? ,? ,? ,? ,?)");
-	   q.setParameters( idOferta, precio, periodo, idVivienda, fechaInicio, fechaFin, 1 );
-	    return (long) q.executeUnique();
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaOferta () + "(id, precio, periodo, vivienda, fechainicio, fechafin, habilitada) values (? ,? ,? ,? ,? ,? ,?)");
+		q.setParameters( idOferta, precio, periodo, idVivienda, fechaInicio, fechaFin, 1 );
+		return (long) q.executeUnique();
 	}
 
 	/**
-	* Crea y ejecuta la sentencia SQL para eliminar un OFERTA de la base de datos de Alohandes, por su identificador
-	* @param pm - El manejador de persistencia
-	* @param idOferta - El identificador de la Oferta
-	* @return EL número de tuplas eliminadas
-	*/
+	 * Crea y ejecuta la sentencia SQL para eliminar un OFERTA de la base de datos de Alohandes, por su identificador
+	 * @param pm - El manejador de persistencia
+	 * @param idOferta - El identificador de la Oferta
+	 * @return EL número de tuplas eliminadas
+	 */
 	public long eliminarOfertaPorId (PersistenceManager pm, long idOferta)
 	{
-	    Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaOferta () + " WHERE id = ?");
-	    q.setParameters(idOferta);
-	    return (long) q.executeUnique();
+		Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaOferta () + " WHERE id = ?");
+		q.setParameters(idOferta);
+		return (long) q.executeUnique();
 	}
 
 	/**
-	* Crea y ejecuta la sentencia SQL para encontrar la información de un OFERTA de la 
-	* base de datos de Alohandes, por su identificador
-	* @param pm - El manejador de persistencia
-	* @param idOferta - El identificador de la Oferta
-	* @return El objeto OFERTA que tiene el identificador dado
-	*/
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de un OFERTA de la 
+	 * base de datos de Alohandes, por su identificador
+	 * @param pm - El manejador de persistencia
+	 * @param idOferta - El identificador de la Oferta
+	 * @return El objeto OFERTA que tiene el identificador dado
+	 */
 	public Oferta darOfertaPorId (PersistenceManager pm, long idOferta)
 	{
 		System.out.println("cual es el re puto ID " + idOferta);
@@ -116,11 +116,11 @@ class SQLOferta
 
 
 	/**
-	* Crea y ejecuta la sentencia SQL para encontrar la información de LOS(AS) Ofertas de la
-	* base de datos de Alohandes
-	* @param pm - El manejador de persistencia
-	* @return Una lista de objetos Oferta
-	*/
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de LOS(AS) Ofertas de la
+	 * base de datos de Alohandes
+	 * @param pm - El manejador de persistencia
+	 * @return Una lista de objetos Oferta
+	 */
 	public List<Oferta> darOfertas (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaOferta ());
@@ -129,7 +129,7 @@ class SQLOferta
 	}
 
 	public List<Oferta> darOfertasConServicios(PersistenceManager pm, ArrayList<String> lista, Timestamp inicio, Timestamp fin) {
-		
+
 		List<Oferta> ofertas = darOfertas(pm);
 		for (String servicio : lista) {
 			Query q = pm.newQuery(SQL, "SELECT DISTINCT o.id, o.precio, o.periodo, o.vivienda, o.fechainicio, o.fechafin, o.habilitada "
@@ -158,10 +158,10 @@ class SQLOferta
 				ofertas.remove(el);
 			}
 		}
-		
+
 		return ofertas;
 	}
-	
+
 	/**
 	 * 
 	 * @param pm
@@ -173,30 +173,59 @@ class SQLOferta
 	 * @return
 	 */
 	public List<Oferta> darOfertasConServiciosYTipo(PersistenceManager pm, ArrayList<String> lista, String tipo, String periodo, Timestamp inicio, Timestamp fin) {
-		
-		List<Oferta> ofertas = darOfertas(pm);
-		for (String servicio : lista) {
+		List<Oferta> ofertas;
+		if(lista.size() > 0) {
+			ofertas = darOfertasConIncluye(pm);
+
+			for (String servicio : lista) {
+				Query q = pm.newQuery(SQL, "SELECT DISTINCT o.id, o.precio, o.periodo, o.vivienda, o.fechainicio, o.fechafin, o.habilitada "+
+						"FROM "+pa.darTablaOferta()+" o, "+pa.darTablaIncluye()+" i, "+pa.darTablaServicio()+" s, "+pa.darTablaVivienda()+" v, "+pa.darTablaOperador()+" op "+
+						"WHERE o.id = i.oferta AND i.servicio = s.id AND v.operador = op.id AND o.vivienda = v.id AND "+
+						"(o.habilitada = 0 OR s.nombre <> ? OR op.tipo_operador <> ? OR o.periodo <> ? "+
+						"OR o.fechaInicio > ? OR fechaFin < ? "+
+						"OR o.id IN( "+
+						"SELECT o.id FROM "+pa.darTablaOferta()+" o, "+pa.darTablaReserva()+" r WHERE o.id = r.oferta AND "+
+						"(  (r.inicio >= ?  AND r.inicio <= ?) "+
+						"OR (r.inicio <= ? AND r.fin >= ?) "+
+						")"
+						+ ")"
+						+ ")"
+						);
+				q.setResultClass(Oferta.class);
+				q.setParameters(servicio, tipo, periodo, inicio,fin,inicio,fin,inicio,inicio);
+				List<Oferta> eliminar = q.executeList();
+				for (Oferta el : eliminar) {
+					ofertas.remove(el);
+				}
+			}
+		}
+		else {
 			Query q = pm.newQuery(SQL, "SELECT DISTINCT o.id, o.precio, o.periodo, o.vivienda, o.fechainicio, o.fechafin, o.habilitada "+
 					"FROM "+pa.darTablaOferta()+" o, "+pa.darTablaIncluye()+" i, "+pa.darTablaServicio()+" s, "+pa.darTablaVivienda()+" v, "+pa.darTablaOperador()+" op "+
 					"WHERE o.id = i.oferta AND i.servicio = s.id AND v.operador = op.id AND o.vivienda = v.id AND "+
-					"(o.habilitada = 0 OR s.nombre <> ? OR op.tipo_operador <> ? OR o.periodo <> ? "+
-					"OR o.fechaInicio > ? OR fechaFin < ? "+
-					"OR o.id IN( "+
-					    "SELECT o.id FROM "+pa.darTablaOferta()+" o, "+pa.darTablaReserva()+" r WHERE o.id = r.oferta AND "+
-					        "(  (r.inicio >= ?  AND r.inicio <= ?) "+
-					        "OR (r.inicio <= ? AND r.fin >= ?) "+
-					        ")"
-					       + ")"
-				 + ")"
-			);
+					"(o.habilitada = 1 AND op.tipo_operador = ? AND o.periodo = ? "+
+					"AND o.fechaInicio <= ? AND fechaFin >= ? "+
+					"AND o.id NOT IN( "+
+					"SELECT o.id FROM "+pa.darTablaOferta()+" o, "+pa.darTablaReserva()+" r WHERE o.id = r.oferta AND "+
+					"(  (r.inicio >= ?  AND r.inicio <= ?) "+
+					"OR (r.inicio <= ? AND r.fin >= ?) "+
+					")"
+					+ ")"
+					+ ")"
+					);
 			q.setResultClass(Oferta.class);
-			q.setParameters(servicio, tipo, periodo, inicio,fin,inicio,fin,inicio,inicio);
-			List<Oferta> eliminar = q.executeList();
-			for (Oferta el : eliminar) {
-				ofertas.remove(el);
-			}
+			q.setParameters(tipo, periodo, inicio,fin,inicio,fin,inicio,inicio);
+			ofertas = q.executeList();
 		}
 		return ofertas;
+	}
+
+	public List<Oferta> darOfertasConIncluye(PersistenceManager pm){
+		Query q = pm.newQuery(SQL, "SELECT DISTINCT o.id, o.precio, o.periodo, o.vivienda, o.fechainicio, o.fechafin, o.habilitada "
+				+ "FROM " + pa.darTablaOferta() + " o, " + pa.darTablaIncluye() + " i "
+				+ "WHERE o.id = i.oferta");
+		q.setResultClass(Oferta.class);
+		return q.executeList();
 	}
 
 
@@ -238,7 +267,7 @@ class SQLOferta
 			return ans.get(0);
 		return null;
 	}
-	
+
 	/**
 	 * M�todo que cambia el atributo de habilitado de una oferta
 	 * @param pm
@@ -250,9 +279,9 @@ class SQLOferta
 				+ "SET habilitada = 0"
 				+ " WHERE id = ?");
 		q.setParameters(idOferta);
-	    return (long) q.executeUnique();
+		return (long) q.executeUnique();
 	}
-	
+
 	/**
 	 * M�todo que cambia el atributo de habilitado de una oferta
 	 * @param pm
@@ -264,6 +293,6 @@ class SQLOferta
 				+ "SET habilitada = 1"
 				+ " WHERE id = ?");
 		q.setParameters(idOferta);
-	    return (long) q.executeUnique();
+		return (long) q.executeUnique();
 	}
 }
