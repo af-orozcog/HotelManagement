@@ -14,7 +14,6 @@
  */
 
 package uniandes.isis2304.alohandes.persistencia;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 

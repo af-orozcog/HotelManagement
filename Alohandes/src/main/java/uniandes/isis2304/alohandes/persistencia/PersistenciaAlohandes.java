@@ -17,6 +17,7 @@ package uniandes.isis2304.alohandes.persistencia;
 
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -1222,7 +1223,7 @@ public class PersistenciaAlohandes
 	 * @param x - x de Hoteleria
 	 * @return El objeto Hoteleria adicionado. null si ocurre alguna Excepción
 	 */
-	public Hoteleria adicionarHoteleria(String nombre, String email, String numero, String tipoHoteleria, Timestamp horaApertura, Timestamp horaCierre)
+	public Hoteleria adicionarHoteleria(String nombre, String email, String numero, String tipoHoteleria, TIMESTAMP horaApertura, TIMESTAMP horaCierre)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -1397,7 +1398,7 @@ public class PersistenciaAlohandes
 	 * @param x - x de Ganancias
 	 * @return El objeto Ganancias adicionado. null si ocurre alguna Excepción
 	 */
-	public Ganancias adicionarGanancias(long cantidad, TIMESTAMP timestamp ,long idOperador)
+	public Ganancias adicionarGanancias(long cantidad, TIMESTAMP fecha ,long idOperador)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -1407,12 +1408,12 @@ public class PersistenciaAlohandes
 			long idGanancias = nextval ();
 			if(modoPerron)
 				idGanancias = idPerron;
-			long tuplasInsertadas = sqlGanancias.adicionarGanancias(pm, idGanancias, cantidad, timestamp, idOperador);
+			long tuplasInsertadas = sqlGanancias.adicionarGanancias(pm, idGanancias, cantidad, fecha, idOperador);
 			tx.commit();
 
 			log.trace ("Inserción de vivienda: " + idGanancias + ": " + tuplasInsertadas + " tuplas insertadas");
 
-			return new Ganancias(idGanancias, cantidad, timestamp, idOperador);
+			return new Ganancias(idGanancias, cantidad, fecha, idOperador);
 		}
 		catch (Exception e)
 		{
@@ -1481,7 +1482,7 @@ public class PersistenciaAlohandes
 	 */
 	public void aumentarGanancias(Long aumento, long idOperador, int mes, int anio) {
 		if(sqlGanancias.darGananciasPorFechaOperador(pmf.getPersistenceManager(), idOperador, mes, anio) == null)
-			adicionarGanancias(aumento, new TIMESTAMP(new Timestamp(anio, mes, 0, 0, 0, 0, 0)), idOperador);
+			adicionarGanancias(aumento, new Timestamp(anio, mes, 0, 0, 0, 0, 0), idOperador);
 		else
 			sqlGanancias.aumentarGanancias(pmf.getPersistenceManager(), aumento, idOperador, mes, anio);
 	}
@@ -1873,7 +1874,7 @@ public class PersistenciaAlohandes
 	 * @param lista Servicios requeridos
 	 * @return lista de Ofertas con los servicios requeridos
 	 */
-	public List<Oferta> darOfertasConServicios(ArrayList<String> lista, Timestamp inicio, Timestamp fin) {
+	public List<Oferta> darOfertasConServicios(ArrayList<String> lista, TIMESTAMP inicio, TIMESTAMP fin) {
 		return sqlOferta.darOfertasConServicios(pmf.getPersistenceManager(), lista, inicio, fin);
 	}
 
@@ -1883,7 +1884,7 @@ public class PersistenciaAlohandes
 	 * @param tipo Tipo de operador
 	 * @return lista de Ofertas con los servicios requeridos
 	 */
-	public List<Oferta> darOfertasConServiciosYTipo(ArrayList<String> lista, String tipo, String periodo, Timestamp inicio, Timestamp fin) {
+	public List<Oferta> darOfertasConServiciosYTipo(ArrayList<String> lista, String tipo, String periodo, TIMESTAMP inicio, TIMESTAMP fin) {
 	
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -2230,13 +2231,13 @@ public class PersistenciaAlohandes
 			sqlOferta.deshabilitarOferta(pm, idOferta);
 			System.out.println("wtf is happening");
 			List<Reserva> reservasACancelar = sqlReserva.darReservasPorOferta(pm, idOferta);
-			System.out.println("tama�o de esa chimbada: " + reservasACancelar.size());
+			System.out.println("tama�o de esa chimbada: " + reservasACancelar.size());
 			Calendar calendar = Calendar.getInstance();
 			java.util.Date now = calendar.getTime();
-			TIMESTAMP currentTimestamp = new TIMESTAMP(new java.sql.Timestamp(now.getTime()));
+			java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());
 			for(Reserva va: reservasACancelar) {
 				if(va.getFin() == null) System.out.println("WTF cual es la re puta joda" + va.getId());
-                if(!va.getFin().timestampValue().after(currentTimestamp.timestampValue())) continue;
+                if(!va.getFin().after(currentTimestamp)) continue;
 				long idColectiva =va.getColectiva();
 				if(va.getColectiva() != null) {
 					sqlReservaColectiva.disminuirCantidadColectiva(pm,idColectiva);

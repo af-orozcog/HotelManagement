@@ -646,7 +646,7 @@ public class Alohandes
 	 * @param horaCierre - horaCierre del Hoteleria
 	 * @return El objeto Hoteleria adicionado. null si ocurre alguna Excepcién
 	 */
-	public Hoteleria adicionarHoteleria (String nombre, String email, String numero, String tipoHoteleria, Timestamp horaApertura, Timestamp horaCierre)
+	public Hoteleria adicionarHoteleria (String nombre, String email, String numero, String tipoHoteleria, TIMESTAMP horaApertura, TIMESTAMP horaCierre)
 	{
 		log.info ("Adicionando nuevo(a) Hoteleria ");
 		Hoteleria hoteleria = pa.adicionarHoteleria(nombre, email, numero, tipoHoteleria, horaApertura, horaCierre);	
@@ -1136,7 +1136,7 @@ public class Alohandes
 	 * @param lista Servicios requeridos
 	 * @return lista de Ofertas con los servicios requeridos
 	 */
-	public List<Oferta> darOfertasConServicios(ArrayList<String> lista, Timestamp inicio, Timestamp fin) {
+	public List<Oferta> darOfertasConServicios(ArrayList<String> lista, TIMESTAMP inicio, TIMESTAMP fin) {
 		log.info("Buscando ofertas con servicos");
 		List<Oferta> ofertas = pa.darOfertasConServicios(lista, inicio, fin);
 		log.info("Encontrado ofertas");
@@ -1149,7 +1149,7 @@ public class Alohandes
 	 * @param tipo Tipo de operador requerido
 	 * @return lista de Ofertas con los servicios requeridos
 	 */
-	public List<Oferta> darOfertasConServiciosYTipo(ArrayList<String> lista, String tipo, String periodo, Timestamp inicio, Timestamp fin) {
+	public List<Oferta> darOfertasConServiciosYTipo(ArrayList<String> lista, String tipo, String periodo, TIMESTAMP inicio, TIMESTAMP fin) {
 		log.info("Buscando ofertas con servicos");
 		List<Oferta> ofertas = pa.darOfertasConServiciosYTipo(lista, tipo, periodo, inicio, fin);
 		log.info("Encontrado ofertas");

@@ -1,12 +1,14 @@
 package uniandes.isis2304.alohandes.interfaz;
 
 import java.io.FileReader;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
@@ -36,7 +38,7 @@ import uniandes.isis2304.alohandes.negocio.Vivienda;
 
 public class Controller {
 
-	/** Logger para escribir la traza de la ejecución. */
+	/** Logger para escribir la traza de la ejecuciï¿½n. */
 
 	private static Logger log = Logger.getLogger(InterfazAlohandes.class.getName());
 
@@ -67,85 +69,85 @@ public class Controller {
 	 */
 	public void run(){
 
-		long startTime;
-		long endTime;
-		long duration;
-
 		Scanner sc = new Scanner(System.in);
 		boolean fin = false;
-		Controller controller = new Controller();
+		try {
+			while(!fin){
+				interfaz.printMenu();
+				int option = sc.nextInt();
 
-		while(!fin){
-			interfaz.printMenu();
-			int option = sc.nextInt();
+				switch(option){
 
-			switch(option){
+				case 1:
+					req1(sc);
 
-			case 1:
-				req1(sc);
+					break;
+				case 2:
+					req2(sc);
 
-				break;
-			case 2:
-				req2(sc);
+					break;
+				case 3:
+					req3(sc);
 
-				break;
-			case 3:
-				req3(sc);
+					break;
+				case 4:
+					req4(sc);
 
-				break;
-			case 4:
-				req4(sc);
+					break;
+				case 5:
+					req5(sc);
 
-				break;
-			case 5:
-				req5(sc);
+					break;
+				case 6:
+					req6(sc);
 
-				break;
-			case 6:
-				req6(sc);
+					break;
+				case 7:
+					req7(sc);
 
-				break;
-			case 7:
-				req7(sc);
+					break;
+				case 8:
+					req8(sc);
 
-				break;
-			case 8:
-				req8(sc);
+					break;
+				case 9:
+					req9(sc);
 
-				break;
-			case 9:
-				req9(sc);
+					break;
+				case 10:
+					req10(sc);
 
-				break;
-			case 10:
-				req10(sc);
+					break;
+				case 11:
+					reqC1(sc);
 
-				break;
-			case 11:
-				reqC1(sc);
+					break;
+				case 12:
+					reqC2(sc);
 
-				break;
-			case 12:
-				reqC2(sc);
+					break;
+				case 13:
+					reqC7(sc);
 
-				break;
-			case 13:
-				reqC7(sc);
+					break;
+				case 14:
+					reqC8(sc);
 
-				break;
-			case 14:
-				reqC8(sc);
+					break;
+				case 15:
+					reqC9(sc);
 
-				break;
-			case 15:
-				reqC9(sc);
-
-				break;
-			case 16:
-				fin = true;
-				sc.close();
-				break;
+					break;
+				case 16:
+					fin = true;
+					sc.close();
+					break;
+				}
 			}
+		}
+		catch (Exception e) {
+			System.out.println("Fallï¿½ el sistema");
+			System.out.println("Error: " + e.getMessage());
 		}
 	}
 
@@ -188,10 +190,13 @@ public class Controller {
 				interfaz.printMessage("Escriba minuto de cierre");
 				minFin = sc.nextInt();
 			}
-
-
-			Timestamp horaApertura = new Timestamp(2000, 1, 1, horaIn, minIn, 0, 0);
-			Timestamp horaCierre = new Timestamp(2000, 1, 1, horaFin, minFin, 0, 0);
+			Calendar cal = Calendar.getInstance();
+			cal.setTimeInMillis(0);
+			cal.set(2000, 1, 1, horaIn, minIn, 0);
+			TIMESTAMP horaApertura = new TIMESTAMP(new Timestamp(cal.getTime().getTime()));
+			cal.setTimeInMillis(0);
+			cal.set(2000, 1, 1, horaFin, minFin, 0);
+			TIMESTAMP horaCierre = new TIMESTAMP(new Timestamp(cal.getTime().getTime()));
 			mundo.adicionarHoteleria(nombre, email, numero, tipoHoteleria, horaApertura, horaCierre);
 			break;
 		case 2:
@@ -205,7 +210,7 @@ public class Controller {
 		String tipoOperador = sc.next();
 		interfaz.printMessage("Escriba el nombre del operador");
 		String nombre = sc.next();
-		interfaz.printMessage("La vivienda de la que piensa crear una propuesta ya está registrada? (Responer Y/N)");
+		interfaz.printMessage("La vivienda de la que piensa crear una propuesta ya estï¿½ registrada? (Responer Y/N)");
 		String ans = sc.next();
 
 		Operador op = mundo.darOperadorPorNombre(nombre, tipoOperador);
@@ -241,7 +246,7 @@ public class Controller {
 				return;
 			}
 			long time = date.getTime();
-			Timestamp inicio = new Timestamp(time);
+			TIMESTAMP inicio = new TIMESTAMP(new Timestamp(time));
 
 			interfaz.printMessage("Ingrese la fecha de fin de la propuesta (dd/MM/yyyy)");
 			try {
@@ -252,7 +257,7 @@ public class Controller {
 				return;
 			}
 			time = date.getTime();
-			Timestamp fin = new Timestamp(time);
+			TIMESTAMP fin = new TIMESTAMP(new Timestamp(time));
 
 
 			Oferta oferta = mundo.adicionarOferta(precio, periodo, idVivienda, inicio, fin);
@@ -260,7 +265,7 @@ public class Controller {
 			interfaz.printMessage("Desea adicionar servicios? (Y/N) Y para verdadero, N para falso"); 
 			boolean servicio = sc.next().equalsIgnoreCase("Y");
 			while(servicio) {
-				interfaz.printMessage("El servicio ya existe está registrado? (Y/N) Y para verdadero, N para falso)");
+				interfaz.printMessage("El servicio ya existe estï¿½ registrado? (Y/N) Y para verdadero, N para falso)");
 				boolean reg = sc.next().equalsIgnoreCase("Y");
 
 				long idServicio;
@@ -272,7 +277,7 @@ public class Controller {
 					idServicio = registrarServicio(sc).getId();
 				}
 
-				interfaz.printMessage("El precio del servicio ya está incluido en la oferta? (1/0) 1 para verdadero, 0 para falso");
+				interfaz.printMessage("El precio del servicio ya estï¿½ incluido en la oferta? (1/0) 1 para verdadero, 0 para falso");
 				int incluido = sc.nextInt();
 				mundo.adicionarIncluye(oferta.getId(), idServicio, incluido);
 
@@ -310,7 +315,7 @@ public class Controller {
 			return;
 		}
 		long time = date.getTime();
-		Timestamp inicio = new Timestamp(time);
+		TIMESTAMP inicio = new TIMESTAMP(new Timestamp(time));
 
 		interfaz.printMessage("Ingrese la fecha de fin de la reserva (dd/MM/yyyy)");
 		try {
@@ -321,7 +326,7 @@ public class Controller {
 			return;
 		}
 		time = date.getTime();
-		Timestamp fin = new Timestamp(time);
+		TIMESTAMP fin = new TIMESTAMP(new Timestamp(time));
 
 
 		interfaz.printMessage("Ingrese el nombre del usuario que va a realizar la reserva");
@@ -334,19 +339,19 @@ public class Controller {
 			interfaz.printMessage("Ingrese el id de la oferta que se quiere reservar");
 		}
 		else {
-			interfaz.printMessage("Algún servicio en específico? (1/0) 1 para verdadero, 0 para falso");
+			interfaz.printMessage("Algï¿½n servicio en especï¿½fico? (1/0) 1 para verdadero, 0 para falso");
 			boolean servicios = sc.next().equalsIgnoreCase("1");
 
 			ArrayList<String> lista = new ArrayList<String>();
 			while(servicios) {
 				interfaz.printMessage("Escriba el servicio que desea");
 				lista.add(sc.next());
-				interfaz.printMessage("Desea más servicios? (Y/N");
+				interfaz.printMessage("Desea mï¿½s servicios? (Y/N");
 				servicios = sc.next().equalsIgnoreCase("1");
 			}
 
 			List<Oferta> ofertas = mundo.darOfertasConServicios(lista, inicio, fin);
-			interfaz.printMessage("Las siguientes ofertas están disponibles: ");
+			interfaz.printMessage("Las siguientes ofertas estï¿½n disponibles: ");
 			for (Oferta oferta : ofertas) {
 				interfaz.printMessage(oferta.toString() + "ID OFERTA: " + oferta.getId());
 			}
@@ -357,10 +362,10 @@ public class Controller {
 		if(mundo.darOfertaPorId(idOferta).getHabilitada() == 1)	
 			mundo.adicionarReserva(inicio, fin, periodoArrendamiento, idOferta, usuario.getId(), -1);
 		else
-			interfaz.printMessage("La oferta está deshabilitada");
+			interfaz.printMessage("La oferta estï¿½ deshabilitada");
 	}
 
-	public void req5(Scanner sc) {
+	public void req5(Scanner sc) throws SQLException {
 		interfaz.printMessage("Ingrese el nombre del cliente a eliminar una reserva");
 		Cliente cliente = mundo.darClientePorNombre(sc.next());
 
@@ -375,11 +380,11 @@ public class Controller {
 
 		TIMESTAMP inicio = reserva.getInicio();
 		TIMESTAMP fin = reserva.getFin();
-		T hoy = new Timestamp(System.currentTimeMillis());
+		TIMESTAMP hoy = new TIMESTAMP(new Timestamp(System.currentTimeMillis()));
 
 		double porcentaje = 0;
 
-		if(hoy.before(inicio)) {
+		if(hoy.dateValue().before(fin.dateValue())) {
 			boolean limite = false;
 			long dias = compareDays(hoy, inicio);
 			switch (reserva.getPeriodo_arrendamiento()) {
@@ -394,7 +399,7 @@ public class Controller {
 			}
 			porcentaje = limite?0.3:0.1;
 		}
-		else if(hoy.before(fin)) {
+		else if(hoy.dateValue().before(fin.dateValue())) {
 			porcentaje = 0.5;
 		}
 		Oferta oferta = mundo.darOfertaPorId(reserva.getOferta());
@@ -402,14 +407,14 @@ public class Controller {
 		Double temp = oferta.getPrecio()*porcentaje;
 		Long aumento = (temp).longValue();
 
-		mundo.aumentarGanancias(aumento, vivienda.getOperador(), hoy.getMonth(), hoy.getYear());
+		mundo.aumentarGanancias(aumento, vivienda.getOperador(), hoy.dateValue().getMonth(), hoy.dateValue().getYear());
 		mundo.eliminarReservaPorId(reserva.getId());
 	}
 
 	public void req6(Scanner sc) {
 		interfaz.printMessage("Ingrese el nombre del operador a eliminar una propuesta");
 		String nombre = sc.next();
-		interfaz.printMessage("Ingrese el tipo de operador a eliminar una propuesta (Escriba HOTELERIA o VIVIENDA_UNIVERSITARIA o PERSONA_NATURAL según sea el caso)");
+		interfaz.printMessage("Ingrese el tipo de operador a eliminar una propuesta (Escriba HOTELERIA o VIVIENDA_UNIVERSITARIA o PERSONA_NATURAL segï¿½n sea el caso)");
 		String tipo = sc.next();
 
 		Operador operador = mundo.darOperadorPorNombre(nombre, tipo);
@@ -428,21 +433,21 @@ public class Controller {
 
 		interfaz.printMessage("Ingrese el tipo de alojamiento (HABITACION, CUARTO, ESPORADICO, APARTAMENTO)");
 		String tipo = sc.next();
-		interfaz.printMessage("Ingrese el número de reservas requeridas");
+		interfaz.printMessage("Ingrese el nï¿½mero de reservas requeridas");
 		int n = sc.nextInt();
 
-		interfaz.printMessage("Algún servicio en específico? (1/0) 1 para verdadero, 0 para falso");
+		interfaz.printMessage("Algï¿½n servicio en especï¿½fico? (1/0) 1 para verdadero, 0 para falso");
 		boolean servicios = sc.next().equalsIgnoreCase("1");
 
 		ArrayList<String> lista = new ArrayList<String>();
 		while(servicios) {
 			interfaz.printMessage("Escriba el servicio que desea");
 			lista.add(sc.next());
-			interfaz.printMessage("Desea más servicios? (Y/N)");
+			interfaz.printMessage("Desea mï¿½s servicios? (Y/N)");
 			servicios = sc.next().equalsIgnoreCase("Y");
 		}
 
-		interfaz.printMessage("Ingrese el período deseado");
+		interfaz.printMessage("Ingrese el perï¿½odo deseado");
 		String periodo = sc.next();
 
 		interfaz.printMessage("Ingrese la fecha de inicio de la reserva (dd/MM/yyyy)");
@@ -456,7 +461,7 @@ public class Controller {
 			return;
 		}
 		long time = date.getTime();
-		Timestamp inicio = new Timestamp(time);
+		TIMESTAMP inicio = new TIMESTAMP(new Timestamp(time));
 
 		interfaz.printMessage("Ingrese la fecha de fin de la reserva (dd/MM/yyyy)");
 		try {
@@ -467,7 +472,7 @@ public class Controller {
 			return;
 		}
 		time = date.getTime();
-		Timestamp fin = new Timestamp(time);
+		TIMESTAMP fin = new TIMESTAMP(new Timestamp(time));
 
 		List<Oferta> ofertas = mundo.darOfertasConServiciosYTipo(lista, tipo, periodo, inicio, fin);
 
@@ -480,7 +485,7 @@ public class Controller {
 
 			interfaz.printMessage("Reservando ofertas");
 
-			ReservaColectiva colectiva = mundo.adicionarReservaColectiva(new Timestamp(System.currentTimeMillis()), n, usuario.getId());
+			ReservaColectiva colectiva = mundo.adicionarReservaColectiva(new TIMESTAMP(new Timestamp(System.currentTimeMillis())), n, usuario.getId());
 			for (Oferta oferta : ofertas) {
 				mundo.adicionarReserva(inicio, fin, periodo, oferta.getId(), usuario.getId(), colectiva.getId());	
 			}
@@ -542,7 +547,7 @@ public class Controller {
 	}
 
 	public void reqC2(Scanner sc) {
-		interfaz.printMessage("Lista de las 20 ofertas más populares");
+		interfaz.printMessage("Lista de las 20 ofertas mï¿½s populares");
 		List<Oferta> ofertas = mundo.reqc2();
 		for (Oferta oferta : ofertas) {
 			interfaz.printMessage("Id oferta: " + oferta.getId() + " Precio oferta: " + oferta.getPrecio());
@@ -594,9 +599,9 @@ public class Controller {
 	}
 
 	private Vivienda crearVivienda(Scanner sc, Operador operador, boolean es) {
-		interfaz.printMessage("Indroduzca la dirección");
+		interfaz.printMessage("Indroduzca la direcciï¿½n");
 		String direccion = sc.next();
-		interfaz.printMessage("Introduzca los cupos que tiene está vivienda");
+		interfaz.printMessage("Introduzca los cupos que tiene estï¿½ vivienda");
 		int cupos = sc.nextInt();
 
 		switch (operador.getTipo_operador()) {
@@ -613,7 +618,7 @@ public class Controller {
 			String categoria = sc.next();
 			interfaz.printMessage("Introduzca capacidad (Numero entero)");
 			int capacidad = sc.nextInt();
-			interfaz.printMessage("Introduzca número de habitación (Numero entero)");
+			interfaz.printMessage("Introduzca nï¿½mero de habitaciï¿½n (Numero entero)");
 			int numero = sc.nextInt();
 
 			return mundo.adicionarHabitacion(direccion, cupos, operador.getId(), tipoHabitacion, categoria, capacidad, numero);
@@ -627,7 +632,7 @@ public class Controller {
 				double area = sc.nextDouble();
 				interfaz.printMessage("El apartamento esta amoblado? (1/0) 1 para verdadero, 0 para falso");
 				int amoblado = sc.nextInt();
-				interfaz.printMessage("Ingrese el número de habitaciones (en número entero)");
+				interfaz.printMessage("Ingrese el nï¿½mero de habitaciones (en nï¿½mero entero)");
 				int numeroHabitaciones = sc.nextInt();
 
 				interfaz.printMessage("Va a ser esporadico? (1/0) 1 para verdadero, 0 para falso");
@@ -664,7 +669,7 @@ public class Controller {
 			return null;
 		}
 		long time = date.getTime();
-		Timestamp inicio = new Timestamp(time);
+		TIMESTAMP inicio = new TIMESTAMP(new Timestamp(time));
 
 		interfaz.printMessage("Ingrese la fecha de fin del seguro (dd/MM/yyyy)");
 		try {
@@ -675,7 +680,7 @@ public class Controller {
 			return null;
 		}
 		time = date.getTime();
-		Timestamp fin = new Timestamp(time);
+		TIMESTAMP fin = new TIMESTAMP(new Timestamp(time));
 		return mundo.adicionarSeguro(empresa, monto, inicio, fin	);
 	}
 
@@ -694,10 +699,10 @@ public class Controller {
 
 	}
 
-	public long compareDays (Timestamp in, Timestamp fi) {
+	public long compareDays (TIMESTAMP in, TIMESTAMP fi) throws SQLException {
 		final long MILLIS_PER_DAY = 1000*60*60*24;
-		long time1 = in.getTime();
-		long time2 = fi.getTime();
+		long time1 = in.timestampValue().getTime();
+		long time2 = fi.timestampValue().getTime();
 
 		// Set both times to 0:00:00
 		time1 -= time1 % MILLIS_PER_DAY;

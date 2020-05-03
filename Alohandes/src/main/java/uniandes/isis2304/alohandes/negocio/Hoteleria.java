@@ -3,6 +3,8 @@ package uniandes.isis2304.alohandes.negocio;
 import java.sql.Timestamp;
 import java.util.List;
 
+import oracle.sql.TIMESTAMP;
+
 public class Hoteleria extends Operador implements VOHoteleria{
 	
 	/* ****************************************************************
@@ -17,12 +19,12 @@ public class Hoteleria extends Operador implements VOHoteleria{
 	/**
 	 * hora de apertura del hotel
 	 */
-	private Timestamp hora_apertura;
+	private TIMESTAMP hora_apertura;
 	
 	/**
 	 * hora de cierre del hotel
 	 */
-	private Timestamp hora_cierre;
+	private TIMESTAMP hora_cierre;
 	
 	/* ****************************************************************
 	 * 			Métodos 
@@ -49,7 +51,7 @@ public class Hoteleria extends Operador implements VOHoteleria{
 	 * @param horaCierre - la hora de cierre
 	 */
 	public Hoteleria(long id, String nombre, String email, String numero, String tipoHoteleria,
-			Timestamp horaApertura, Timestamp horaCierre) {
+			TIMESTAMP horaApertura, TIMESTAMP horaCierre) {
 		super(id,nombre,email,numero,"HOTELERIA");
 		this.tipo_hoteleria = tipoHoteleria;
 		this.hora_apertura = horaApertura;
@@ -73,28 +75,28 @@ public class Hoteleria extends Operador implements VOHoteleria{
 	/**
 	 * @return horaApertura
 	 */
-	public Timestamp getHora_apertura() {
+	public TIMESTAMP getHora_apertura() {
 		return hora_apertura;
 	}
 
 	/**
 	 * @param horaApertura - la nueva hora de apertura
 	 */
-	public void setHora_apertura(Timestamp horaApertura) {
+	public void setHora_apertura(TIMESTAMP horaApertura) {
 		this.hora_apertura = horaApertura;
 	}
 
 	/**
 	 * @return horaCierre
 	 */
-	public Timestamp getHora_cierre() {
+	public TIMESTAMP getHora_cierre() {
 		return hora_cierre;
 	}
 
 	/**
 	 * @param horaCierre - la nueva hora de cierre
 	 */
-	public void setHora_cierre(Timestamp horaCierre) {
+	public void setHora_cierre(TIMESTAMP horaCierre) {
 		this.hora_cierre = horaCierre;
 	}
 	
