@@ -44,7 +44,7 @@ public class REQC1 {
 	public long gananciasAnioActual(PersistenceManager pm,long idOperador) {
 		int year = Calendar.getInstance().get(Calendar.YEAR);
 		//System.out.println("cual es el gran sapo id " + idOperador + " cual es el gran sapo anio "+ year);
-		Query q = pm.newQuery(SQL, "SELECT  SUM(cantidad) FROM " + pa.darTablaGanancias() + " WHERE operador = ? AND anio = ?");
+		Query q = pm.newQuery(SQL, "SELECT  SUM(cantidad) FROM " + pa.darTablaGanancias() + " WHERE operador = ? AND to_number(to_char(fecha, 'YYYY')) = ?");
 		q.setParameters(idOperador,year);
 		q.setResultClass(Long.class);
 		return (long)q.executeUnique();
@@ -67,7 +67,7 @@ public class REQC1 {
 			ar[i] = ar[i-1]-1;
 			if(ar[i] == 0) ar[i]+= 12;
 		}
-		Query q = pm.newQuery(SQL, "SELECT SUM(cantidad) FROM " + pa.darTablaGanancias() + " WHERE operador = ? AND ((anio = ? AND mes >= ?) OR (anio = ? AND mes <= ?))");
+		Query q = pm.newQuery(SQL, "SELECT SUM(cantidad) FROM " + pa.darTablaGanancias() + " WHERE operador = ? AND ((to_number(to_char(fecha, 'YYYY')) = ? AND to_number(to_char(fecha, 'MM')) >= ?) OR (to_number(to_char(fecha, 'YYYY')) = ? AND to_number(to_char(fecha, 'MM')) <= ?))");
 		q.setParameters(idOperador, year-1,ar[11],year,ar[0]);
 		q.setResultClass(Long.class);
 		return (long)q.executeUnique();

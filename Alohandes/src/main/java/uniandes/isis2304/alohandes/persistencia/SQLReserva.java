@@ -169,26 +169,10 @@ class SQLReserva
 	 * @return
 	 */
 	public List<Reserva> darReservasPorOferta(PersistenceManager pm, long idOferta) {
-		System.out.println("entrosss");
 		Query q = pm.newQuery(SQL, "SELECT id, inicio, fin, periodo_arrendamiento, cliente, oferta, colectiva FROM " + pa.darTablaReserva () +" WHERE oferta = ?");
 		q.setParameters(idOferta);
-		List<Reserva> resp = new LinkedList<>();
-		List results = q.executeList();
-		for (Object obj : results)
-		{
-			Object [] datos = (Object []) obj;
-			System.out.println("wtf is happening "+ datos[1] + " " + datos[0]);
-			long id =  ((BigDecimal) datos [0]).longValue ();
-			TIMESTAMP inicio = (TIMESTAMP)datos [1];
-			TIMESTAMP fin = (TIMESTAMP) datos [2];
-			String periodo = ((String) datos [3]);
-			long cliente = ((BigDecimal) datos [4]).intValue();
-			long oferta = ((BigDecimal) datos [5]).longValue();
-			long colectiva = ((BigDecimal) datos [6]).intValue();
-			resp.add (new Reserva(id, inicio, fin, periodo, cliente, oferta, colectiva));
-		}
-		System.out.println("wutttt");
-		return resp;
+		q.setResultClass(Reserva.class);
+		return (List<Reserva>) q.executeList();
 	}
 	
 	/**
