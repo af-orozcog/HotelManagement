@@ -2218,18 +2218,23 @@ public class PersistenciaAlohandes
 	 * @return
 	 */
 	public List<Reserva> deshabilitarOferta(long idOferta){
+		System.out.println("Entra aqui??????");
 		LinkedList<Reserva> ans = new LinkedList<Reserva>();
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
 		try
 		{
 			tx.begin();
+			System.out.println("wtf is happeningGGGGG");
 			sqlOferta.deshabilitarOferta(pm, idOferta);
+			System.out.println("wtf is happening");
 			List<Reserva> reservasACancelar = sqlReserva.darReservasPorOferta(pm, idOferta);
+			System.out.println("tamaño de esa chimbada: " + reservasACancelar.size());
 			Calendar calendar = Calendar.getInstance();
 			java.util.Date now = calendar.getTime();
 			java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());
 			for(Reserva va: reservasACancelar) {
+				if(va.getFin() == null) System.out.println("WTF cual es la re puta joda" + va.getId());
                 if(!va.getFin().after(currentTimestamp)) continue;
 				long idColectiva =va.getColectiva();
 				if(va.getColectiva() != null) {

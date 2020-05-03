@@ -15,8 +15,11 @@
 
 package uniandes.isis2304.alohandes.persistencia;
 import java.sql.Timestamp;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -180,9 +183,22 @@ class SQLOferta
 	public List<Oferta> darOfertasPorOperador(PersistenceManager pm, long idOperador) {
 		Query q = pm.newQuery(SQL, "SELECT o.id,o.precio, o.periodo,o.vivienda,o.fechaInicio,o.fechaFin  FROM " + pa.darTablaOferta () +" o, "+ pa.darTablaVivienda() +" v "
 				+ " WHERE o.vivienda = v.id AND v.operador = ?");
-		q.setResultClass(Oferta.class);
 		q.setParameters(idOperador);
-		return (List<Oferta>) q.executeList();
+		List<Oferta> resp = new LinkedList<>();
+		List results = q.executeList();
+		for (Object obj : results)
+		{
+			Object [] datos = (Object []) obj;
+			long idoferta =  ((BigDecimal) datos [0]).longValue ();
+			int precio = ((BigDecimal) datos [1]).intValue();
+			String periodo = ((String) datos [2]);
+			long vivienda = ((BigDecimal) datos [3]).longValue();
+			Timestamp fechaInicio = (Timestamp) datos [4];
+			System.out.println("veamos esa fecha que gonorrea es: "+ fechaInicio);
+			Timestamp fechaFin = (Timestamp) datos [5];
+			resp.add (new Oferta(idoferta, precio, periodo, fechaInicio, fechaFin, vivienda));
+		}
+		return resp;
 	}
 
 	/**

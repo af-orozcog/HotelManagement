@@ -14,12 +14,17 @@
  */
 
 package uniandes.isis2304.alohandes.persistencia;
+import java.math.BigDecimal;
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import oracle.sql.TIMESTAMP;
+import uniandes.isis2304.alohandes.negocio.Oferta;
 import uniandes.isis2304.alohandes.negocio.Reserva;
 
 /**
@@ -165,10 +170,29 @@ class SQLReserva
 	 * @return
 	 */
 	public List<Reserva> darReservasPorOferta(PersistenceManager pm, long idOferta) {
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaReserva () +" WHERE oferta = ?");
-		q.setResultClass(Reserva.class);
+		System.out.println("entrosss");
+		Query q = pm.newQuery(SQL, "SELECT id, inicio, fin, periodo_arrendamiento, cliente, oferta, colectiva FROM " + pa.darTablaReserva () +" WHERE oferta = ?");
 		q.setParameters(idOferta);
-		return (List<Reserva>) q.executeList();
+		List<Reserva> resp = new LinkedList<>();
+		List results = q.executeList();
+		for (Object obj : results)
+		{
+			Object [] datos = (Object []) obj;
+			System.out.println("wtf is happening "+ datos[1] + " " + datos[0]);
+			long id =  ((BigDecimal) datos [0]).longValue ();
+			System.out.println("good the rat? ");
+			TIMESTAMP inicio = (TIMESTAMP)datos [1];
+			System.out.println("wtf is inicio " + inicio);
+			TIMESTAMP fin = (TIMESTAMP) datos [2];
+			String periodo = ((String) datos [3]);
+			long cliente = ((BigDecimal) datos [4]).intValue();
+			long oferta = ((BigDecimal) datos [5]).longValue();
+			long colectiva = ((BigDecimal) datos [6]).intValue();
+			//System.out.println("veamos esa fecha que gonorrea es: "+ inicio);
+			resp.add (new Reserva(id, inicio, fin, periodo, cliente, oferta, colectiva));
+		}
+		System.out.println("wutttt");
+		return resp;
 	}
 	
 	/**
