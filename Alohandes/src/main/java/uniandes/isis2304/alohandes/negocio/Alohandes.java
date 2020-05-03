@@ -26,6 +26,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import com.google.gson.JsonObject;
 
+import oracle.sql.TIMESTAMP;
 import uniandes.isis2304.alohandes.persistencia.PersistenciaAlohandes;
 
 /**
@@ -373,7 +374,7 @@ public class Alohandes
 	 * @param finSeguro - finSeguro del Seguro
 	 * @return El objeto Seguro adicionado. null si ocurre alguna Excepcién
 	 */
-	public Seguro adicionarSeguro ( String empresa, int monto, Timestamp inicioSeguro, Timestamp finSeguro)
+	public Seguro adicionarSeguro ( String empresa, int monto, TIMESTAMP inicioSeguro, TIMESTAMP finSeguro)
 	{
 		log.info ("Adicionando nuevo(a) Seguro ");
 		Seguro seguro = pa.adicionarSeguro(empresa, monto, inicioSeguro, finSeguro);	
@@ -774,7 +775,7 @@ public class Alohandes
 	 * @param idOperador - idOperador del Ganancias
 	 * @return El objeto Ganancias adicionado. null si ocurre alguna Excepcién
 	 */
-	public Ganancias adicionarGanancias (long cantidad, Timestamp fecha, long idOperador)
+	public Ganancias adicionarGanancias (long cantidad, TIMESTAMP fecha, long idOperador)
 	{
 		log.info ("Adicionando nuevo(a) Ganancias ");
 		Ganancias ganancias = pa.adicionarGanancias(cantidad, fecha, idOperador);	
@@ -935,7 +936,7 @@ public class Alohandes
 	 * @param idUsuario - idUsuario del Reserva
 	 * @return El objeto Reserva adicionado. null si ocurre alguna Excepcién
 	 */
-	public Reserva adicionarReserva (Timestamp inicio, Timestamp fin, String periodoArrendamiento, long idOferta, long idUsuario, long idColectiva)
+	public Reserva adicionarReserva (TIMESTAMP inicio, TIMESTAMP fin, String periodoArrendamiento, long idOferta, long idUsuario, long idColectiva)
 	{
 		log.info ("Adicionando nuevo(a) Reserva ");
 		Reserva reserva = pa.adicionarReserva(inicio, fin, periodoArrendamiento, idUsuario, idOferta, idColectiva);
@@ -1033,7 +1034,7 @@ public class Alohandes
 	 * @param idCliente
 	 * @return
 	 */
-	public ReservaColectiva adicionarReservaColectiva(Timestamp fechaRealizacion, int cantidad, long idCliente)
+	public ReservaColectiva adicionarReservaColectiva(TIMESTAMP fechaRealizacion, int cantidad, long idCliente)
 	{
 		log.info ("Adicionando nuevo(a) Reserva ");
 		ReservaColectiva reserva = pa.adicionarReservaColectiva(fechaRealizacion, cantidad, idCliente);
@@ -1066,7 +1067,7 @@ public class Alohandes
 	 * @param idVivienda - idVivienda del Oferta
 	 * @return El objeto Oferta adicionado. null si ocurre alguna Excepcién
 	 */
-	public Oferta adicionarOferta ( long precio, String periodo, long idVivienda, Timestamp fechaInicio, Timestamp fechaFin)
+	public Oferta adicionarOferta ( long precio, String periodo, long idVivienda, TIMESTAMP fechaInicio, TIMESTAMP fechaFin)
 	{
 		log.info ("Adicionando nuevo(a) Oferta ");
 		Oferta oferta = pa.adicionarOferta(precio, periodo, idVivienda, fechaInicio, fechaFin);

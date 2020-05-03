@@ -25,6 +25,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import oracle.sql.TIMESTAMP;
 import uniandes.isis2304.alohandes.negocio.Ganancias;
 import uniandes.isis2304.alohandes.negocio.Oferta;
 import uniandes.isis2304.alohandes.negocio.Operador;
@@ -78,7 +79,7 @@ class SQLOferta
 	 * @param fechaFin - 
 	 * @return El número de tuplas insertadas 
 	 */
-	public long adicionarOferta (PersistenceManager pm, long idOferta, long precio, String periodo, long idVivienda, Timestamp fechaInicio, Timestamp fechaFin)
+	public long adicionarOferta (PersistenceManager pm, long idOferta, long precio, String periodo, long idVivienda, TIMESTAMP fechaInicio, TIMESTAMP fechaFin)
 	{
 		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaOferta () + "(id, precio, periodo, vivienda, fechainicio, fechafin, habilitada) values (? ,? ,? ,? ,? ,? ,?)");
 		q.setParameters( idOferta, precio, periodo, idVivienda, fechaInicio, fechaFin, 1 );
@@ -193,9 +194,9 @@ class SQLOferta
 			int precio = ((BigDecimal) datos [1]).intValue();
 			String periodo = ((String) datos [2]);
 			long vivienda = ((BigDecimal) datos [3]).longValue();
-			Timestamp fechaInicio = (Timestamp) datos [4];
+			TIMESTAMP fechaInicio = (TIMESTAMP) datos [4];
 			System.out.println("veamos esa fecha que gonorrea es: "+ fechaInicio);
-			Timestamp fechaFin = (Timestamp) datos [5];
+			TIMESTAMP fechaFin = (TIMESTAMP) datos [5];
 			resp.add (new Oferta(idoferta, precio, periodo, fechaInicio, fechaFin, vivienda));
 		}
 		return resp;
@@ -204,11 +205,11 @@ class SQLOferta
 	/**
 	 * M�todo que devuelve las ofertas por rangos de fechas
 	 * @param pm
-	 * @param inicio
+	 * @param ini
 	 * @param fin
 	 * @return
 	 */
-	public Oferta darOfertasPorRangoFechaDisponibles(PersistenceManager pm, Timestamp inicio, Timestamp fin){
+	public Oferta darOfertasPorRangoFechaDisponibles(PersistenceManager pm, TIMESTAMP ini, TIMESTAMP fin){
 		Query q = pm.newQuery(SQL, ""
 				+ "SELECT * FROM " + pa.darTablaOferta()
 				+ " WHERE fechaInicio <= ? AND fechaFin >= ? AND habilitado = 1 AND id NOT IN"
@@ -218,7 +219,7 @@ class SQLOferta
 				+" WHERE o.id = r.oferta AND ((r.inicio >= ?  AND r.inicio <= ?) OR (r.inicio <= ? AND r.fin >= ?))"
 				+ ")"
 				);
-		q.setParameters(inicio,fin,inicio,fin,inicio,inicio);
+		q.setParameters(ini,fin,ini,fin,ini,ini);
 		List<Oferta> ans = (List<Oferta>)q.executeList();
 		if(ans.size() > 0)
 			return ans.get(0);

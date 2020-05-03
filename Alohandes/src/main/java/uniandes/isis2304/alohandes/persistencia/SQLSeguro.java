@@ -22,6 +22,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import oracle.sql.TIMESTAMP;
 import uniandes.isis2304.alohandes.negocio.Seguro;
 
 /**
@@ -70,7 +71,7 @@ class SQLSeguro
 	* @param finSeguro - 
 	* @return El número de tuplas insertadas 
 	*/
-	public long adicionarSeguro (PersistenceManager pm, long idSeguro, String empresa, int monto, Timestamp inicioSeguro, Timestamp finSeguro)
+	public long adicionarSeguro (PersistenceManager pm, long idSeguro, String empresa, int monto, TIMESTAMP inicioSeguro, TIMESTAMP finSeguro)
 	{
 	   Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaSeguro () + "(id, empresa, monto, inicio_seguro, fin_seguro) values (? ,? ,? ,? ,?)");
 	   q.setParameters(idSeguro,empresa, monto, inicioSeguro, finSeguro );

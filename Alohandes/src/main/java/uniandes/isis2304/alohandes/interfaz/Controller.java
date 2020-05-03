@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
+import oracle.sql.TIMESTAMP;
 import uniandes.isis2304.alohandes.negocio.Alohandes;
 import uniandes.isis2304.alohandes.negocio.Cliente;
 import uniandes.isis2304.alohandes.negocio.Cuarto;
@@ -372,9 +373,9 @@ public class Controller {
 		interfaz.printMessage("Ingrese el id de la reserva a eliminar");
 		Reserva reserva = mundo.darReservaPorId(sc.nextLong());
 
-		Timestamp inicio = reserva.getInicio();
-		Timestamp fin = reserva.getFin();
-		Timestamp hoy = new Timestamp(System.currentTimeMillis());
+		TIMESTAMP inicio = reserva.getInicio();
+		TIMESTAMP fin = reserva.getFin();
+		T hoy = new Timestamp(System.currentTimeMillis());
 
 		double porcentaje = 0;
 
