@@ -75,7 +75,7 @@ class SQLGanancias
 	public long adicionarGanancias (PersistenceManager pm, long idGanancias, long cantidad,TIMESTAMP fecha, long idOperador)
 	{
 		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaGanancias () + "(id, cantidad, fecha, operador) values (? ,? ,? ,?)");
-		q.setParameters( idGanancias,cantidad ,timestamp ,idOperador );
+		q.setParameters( idGanancias,cantidad ,fecha ,idOperador );
 		return (long) q.executeUnique();
 	}
 

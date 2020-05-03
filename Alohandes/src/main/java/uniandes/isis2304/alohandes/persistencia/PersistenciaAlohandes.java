@@ -1481,8 +1481,13 @@ public class PersistenciaAlohandes
 	 * @param anio
 	 */
 	public void aumentarGanancias(Long aumento, long idOperador, int mes, int anio) {
-		if(sqlGanancias.darGananciasPorFechaOperador(pmf.getPersistenceManager(), idOperador, mes, anio) == null)
-			adicionarGanancias(aumento, new Timestamp(anio, mes, 0, 0, 0, 0, 0), idOperador);
+		if(sqlGanancias.darGananciasPorFechaOperador(pmf.getPersistenceManager(), idOperador, mes, anio) == null) {
+			Calendar cal = Calendar.getInstance();
+			cal.setTimeInMillis(0);
+			cal.set(anio, mes, 0, 0, 0, 0 );
+
+			adicionarGanancias(aumento, new TIMESTAMP(new Timestamp(cal.getTime().getTime())), idOperador);
+			}
 		else
 			sqlGanancias.aumentarGanancias(pmf.getPersistenceManager(), aumento, idOperador, mes, anio);
 	}
@@ -2233,11 +2238,11 @@ public class PersistenciaAlohandes
 			List<Reserva> reservasACancelar = sqlReserva.darReservasPorOferta(pm, idOferta);
 			System.out.println("tama�o de esa chimbada: " + reservasACancelar.size());
 			Calendar calendar = Calendar.getInstance();
-			java.util.Date now = calendar.getTime();
-			java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());
+			Date now = (Date) calendar.getTime();
+			TIMESTAMP currentTimestamp = new TIMESTAMP( new Timestamp(now.getTime()));
 			for(Reserva va: reservasACancelar) {
 				if(va.getFin() == null) System.out.println("WTF cual es la re puta joda" + va.getId());
-                if(!va.getFin().after(currentTimestamp)) continue;
+                if(!va.getFin().dateValue().after(currentTimestamp.dateValue())) continue;
 				long idColectiva =va.getColectiva();
 				if(va.getColectiva() != null) {
 					sqlReservaColectiva.disminuirCantidadColectiva(pm,idColectiva);

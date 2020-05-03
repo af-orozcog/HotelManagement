@@ -218,7 +218,7 @@ class SQLOferta
 				+" WHERE o.id = r.oferta AND ((r.inicio >= ?  AND r.inicio <= ?) OR (r.inicio <= ? AND r.fin >= ?))"
 				+ ")"
 				);
-		q.setParameters(ini,fin,ini,fin,ini,ini);
+		q.setParameters(inicio,fin,inicio,fin,inicio,inicio);
 		List<Oferta> ans = (List<Oferta>)q.executeList();
 		if(ans.size() > 0)
 			return ans.get(0);
