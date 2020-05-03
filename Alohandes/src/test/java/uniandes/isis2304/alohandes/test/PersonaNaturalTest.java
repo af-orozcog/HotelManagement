@@ -74,10 +74,10 @@ public class PersonaNaturalTest {
 			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", Persona_Natural1.getEmail(), lista.get (0).getEmail());
 
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
-			String nombre2 = "zeuss";
-			String email2 = "zeuss@gmail.com";
-			String numero2 = "3246765434";
-			String documento2 = "23434543sf45";
+			String nombre2 = "zeushs";
+			String email2 = "zeuss@klgmail.com";
+			String numero2 = "3246765jkk434";
+			String documento2 = "23434543sf4885";
 			String tipo2 = "PROFESOR";
 			Persona_Natural Persona_Natural2 = pm.adicionarPersona_Natural(nombre2, email2, documento2, numero2, tipo2);
 			lista = pm.darPersona_Naturales();

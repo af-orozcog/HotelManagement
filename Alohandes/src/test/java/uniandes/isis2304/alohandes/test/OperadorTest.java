@@ -64,10 +64,10 @@ public class OperadorTest {
 			assertEquals ("No debe haber tipos de bebida creados!!", 0, lista.size ());
 
 			// Lectura de los tipos de bebida con un operador adicionado
-			String nombre1 = "zeus";
-			String email1 = "zeus@gmail.com";
-			String numero1 = "3246765434";
-			String documento1 = "3545654456";
+			String nombre1 = "zeuasdasdas";
+			String email1 = "zeusasdasd@gmail.com";
+			String numero1 = "asdasdasdad";
+			String documento1 = "354asd5654456";
 			String tipoOp1 = "PERSONA_NATURAL";
 			String tipo1 = "PROFESOR";
 			Persona_Natural operador1 = pm.adicionarPersona_Natural(nombre1, email1, documento1, numero1, tipo1);
@@ -79,11 +79,11 @@ public class OperadorTest {
 			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", operador1.getNombre(), lista1.get(0).getNombre());
 
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
-			String nombre2 = "zeuss";
+			String nombre2 = "zeussfaass";
 			String email2 = "zeusss@gmail.com";
-			String numero2 = "324676543445";
+			String numero2 = "3246765434asdfaf45";
 			String tipo2 = "PERSONA_NATURAL";
-			String documento2 = "45676576534";
+			String documento2 = "45676xcvx576534";
 			Persona_Natural operador2 = pm.adicionarPersona_Natural(nombre2, email2, documento2, numero2, tipo2);
 			lista1 = pm.darPersona_Naturales();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista1.size ());
