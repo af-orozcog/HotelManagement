@@ -2,7 +2,12 @@ package uniandes.isis2304.alohandes.interfaz;
 
 import java.io.FileReader;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.util.List;
@@ -23,6 +28,7 @@ import uniandes.isis2304.alohandes.negocio.Cuarto;
 import uniandes.isis2304.alohandes.negocio.Oferta;
 import uniandes.isis2304.alohandes.negocio.Operador;
 import uniandes.isis2304.alohandes.negocio.Reserva;
+import uniandes.isis2304.alohandes.negocio.ReservaColectiva;
 import uniandes.isis2304.alohandes.negocio.Seguro;
 import uniandes.isis2304.alohandes.negocio.Servicio;
 import uniandes.isis2304.alohandes.negocio.Vivienda;
@@ -104,6 +110,14 @@ public class Controller {
 				break;
 			case 8:
 				req8(sc);
+
+				break;
+			case 9:
+				req9(sc);
+
+				break;
+			case 10:
+				req10(sc);
 
 				break;
 			case 11:
@@ -213,26 +227,34 @@ public class Controller {
 		interfaz.printMessage("Escriba el periodo de la propuesta (DIAS, SEMANAS, MESES, SEMESTRES)");
 		String periodo = sc.next();
 		if(periodo.equalsIgnoreCase("DIAS") && !es)
-			interfaz.printMessage("ERROR DE PERIDO, No se puede elegir DIAS si no es esporadico");
+			interfaz.printMessage("ERROR DE PERIODO, No se puede elegir DIAS si no es esporadico");
 		else {
-			interfaz.printMessage("Ingrese el anio de inicio de la propuesta");
-			int anioIn = sc.nextInt();
-			interfaz.printMessage("Ingrese el mes de inicio de la propuesta");
-			int mesIn = sc.nextInt();
-			interfaz.printMessage("Ingrese el dia de inicio de la propuesta");
-			int diaIn = sc.nextInt();
+			interfaz.printMessage("Ingrese la fecha de inicio de la propuesta (dd/MM/yyyy)");
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+			Date date;
+			try {
+				date = dateFormat.parse(sc.next());
 
-			interfaz.printMessage("Ingrese el anio de fin de la propuesta");
-			int anioFin = sc.nextInt();
-			interfaz.printMessage("Ingrese el mes de fin de la propuesta");
-			int mesFin = sc.nextInt();
-			interfaz.printMessage("Ingrese el dia de fin de la propuesta");
-			int diaFin = sc.nextInt();
+			} catch (ParseException e) {
+				interfaz.printMessage("Error en la escritura de la fecha");
+				return;
+			}
+			long time = date.getTime();
+			Timestamp inicio = new Timestamp(time);
 
-			Timestamp fechaInicio = new Timestamp(anioIn, mesIn, diaIn, 0, 0, 0, 0);
-			Timestamp fechaFin = new Timestamp(anioFin, mesFin, diaFin, 0, 0, 0, 0);
+			interfaz.printMessage("Ingrese la fecha de fin de la propuesta (dd/MM/yyyy)");
+			try {
+				date = dateFormat.parse(sc.next());
 
-			Oferta oferta = mundo.adicionarOferta(precio, periodo, idVivienda, fechaInicio, fechaFin);
+			} catch (ParseException e) {
+				interfaz.printMessage("Error en la escritura de la fecha");
+				return;
+			}
+			time = date.getTime();
+			Timestamp fin = new Timestamp(time);
+
+
+			Oferta oferta = mundo.adicionarOferta(precio, periodo, idVivienda, inicio, fin);
 
 			interfaz.printMessage("Desea adicionar servicios? (Y/N) Y para verdadero, N para falso"); 
 			boolean servicio = sc.next().equalsIgnoreCase("Y");
@@ -276,22 +298,30 @@ public class Controller {
 
 	public void req4(Scanner sc) {
 
-		interfaz.printMessage("Ingrese el anio de inicio de la reserva");
-		int anioIn = sc.nextInt();
-		interfaz.printMessage("Ingrese el mes de inicio de la reserva");
-		int mesIn = sc.nextInt();
-		interfaz.printMessage("Ingrese el dia de inicio de la reserva");
-		int diaIn = sc.nextInt();
+		interfaz.printMessage("Ingrese la fecha de inicio de la reserva (dd/MM/yyyy)");
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		Date date;
+		try {
+			date = dateFormat.parse(sc.next());
 
-		interfaz.printMessage("Ingrese el anio de fin de la reserva");
-		int anioFin = sc.nextInt();
-		interfaz.printMessage("Ingrese el mes de fin de la reserva");
-		int mesFin = sc.nextInt();
-		interfaz.printMessage("Ingrese el dia de fin de la reserva");
-		int diaFin = sc.nextInt();
+		} catch (ParseException e) {
+			interfaz.printMessage("Error en la escritura de la fecha");
+			return;
+		}
+		long time = date.getTime();
+		Timestamp inicio = new Timestamp(time);
 
-		Timestamp inicio = new Timestamp(anioIn, mesIn, diaIn, 0, 0, 0, 0);
-		Timestamp fin = new Timestamp(anioFin, mesFin, diaFin, 0, 0, 0, 0);
+		interfaz.printMessage("Ingrese la fecha de fin de la reserva (dd/MM/yyyy)");
+		try {
+			date = dateFormat.parse(sc.next());
+
+		} catch (ParseException e) {
+			interfaz.printMessage("Error en la escritura de la fecha");
+			return;
+		}
+		time = date.getTime();
+		Timestamp fin = new Timestamp(time);
+
 
 		interfaz.printMessage("Ingrese el nombre del usuario que va a realizar la reserva");
 		Cliente usuario = mundo.darClientePorNombre(sc.next());
@@ -368,7 +398,8 @@ public class Controller {
 		}
 		Oferta oferta = mundo.darOfertaPorId(reserva.getOferta());
 		Vivienda vivienda = mundo.darViviendaPorId(oferta.getVivienda());
-		Long aumento = (new Double (oferta.getPrecio()*porcentaje)).longValue();
+		Double temp = oferta.getPrecio()*porcentaje;
+		Long aumento = (temp).longValue();
 
 		mundo.aumentarGanancias(aumento, vivienda.getOperador(), hoy.getMonth(), hoy.getYear());
 		mundo.eliminarReservaPorId(reserva.getId());
@@ -413,22 +444,29 @@ public class Controller {
 		interfaz.printMessage("Ingrese el período deseado");
 		String periodo = sc.next();
 
-		interfaz.printMessage("Ingrese el anio de inicio de la reserva");
-		int anioIn = sc.nextInt();
-		interfaz.printMessage("Ingrese el mes de inicio de la reserva");
-		int mesIn = sc.nextInt();
-		interfaz.printMessage("Ingrese el dia de inicio de la reserva");
-		int diaIn = sc.nextInt();
+		interfaz.printMessage("Ingrese la fecha de inicio de la reserva (dd/MM/yyyy)");
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		Date date;
+		try {
+			date = dateFormat.parse(sc.next());
 
-		interfaz.printMessage("Ingrese el anio de fin de la reserva");
-		int anioFin = sc.nextInt();
-		interfaz.printMessage("Ingrese el mes de fin de la reserva");
-		int mesFin = sc.nextInt();
-		interfaz.printMessage("Ingrese el dia de fin de la reserva");
-		int diaFin = sc.nextInt();
+		} catch (ParseException e) {
+			interfaz.printMessage("Error en la escritura de la fecha");
+			return;
+		}
+		long time = date.getTime();
+		Timestamp inicio = new Timestamp(time);
 
-		Timestamp inicio = new Timestamp(anioIn, mesIn, diaIn, 0, 0, 0, 0);
-		Timestamp fin = new Timestamp(anioFin, mesFin, diaFin, 0, 0, 0, 0);
+		interfaz.printMessage("Ingrese la fecha de fin de la reserva (dd/MM/yyyy)");
+		try {
+			date = dateFormat.parse(sc.next());
+
+		} catch (ParseException e) {
+			interfaz.printMessage("Error en la escritura de la fecha");
+			return;
+		}
+		time = date.getTime();
+		Timestamp fin = new Timestamp(time);
 
 		List<Oferta> ofertas = mundo.darOfertasConServiciosYTipo(lista, tipo, periodo, inicio, fin);
 
@@ -441,9 +479,9 @@ public class Controller {
 
 			interfaz.printMessage("Reservando ofertas");
 
-			long colectiva = mundo.adicionarReservaColectiva(new Timestamp(System.currentTimeMillis()), n, usuario.getId()).getId();
+			ReservaColectiva colectiva = mundo.adicionarReservaColectiva(new Timestamp(System.currentTimeMillis()), n, usuario.getId());
 			for (Oferta oferta : ofertas) {
-				mundo.adicionarReserva(inicio, fin, periodo, oferta.getId(), usuario.getId(), colectiva);	
+				mundo.adicionarReserva(inicio, fin, periodo, oferta.getId(), usuario.getId(), colectiva.getId());	
 			}
 
 			interfaz.printMessage("Reservas finalizadas, muchas gracias");
@@ -614,24 +652,30 @@ public class Controller {
 		interfaz.printMessage("Ingrese el monto por el que se quiere asegurar la vivienda");
 		int monto = sc.nextInt();
 
-		interfaz.printMessage("Ingrese el anio de inicio del seguro");
-		int anioIn = sc.nextInt();
-		interfaz.printMessage("Ingrese el mes de inicio del seguro");
-		int mesIn = sc.nextInt();
-		interfaz.printMessage("Ingrese el dia de inicio del seguro");
-		int diaIn = sc.nextInt();
+		interfaz.printMessage("Ingrese la fecha de inicio del seguro (dd/MM/yyyy)");
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		Date date;
+		try {
+			date = dateFormat.parse(sc.next());
 
-		interfaz.printMessage("Ingrese el anio de fin del seguro");
-		int anioFin = sc.nextInt();
-		interfaz.printMessage("Ingrese el mes de fin del seguro");
-		int mesFin = sc.nextInt();
-		interfaz.printMessage("Ingrese el dia de fin del seguro");
-		int diaFin = sc.nextInt();
+		} catch (ParseException e) {
+			interfaz.printMessage("Error en la escritura de la fecha");
+			return null;
+		}
+		long time = date.getTime();
+		Timestamp inicio = new Timestamp(time);
 
-		Timestamp inicioSeguro = new Timestamp(anioIn, mesIn, diaIn, 0, 0, 0, 0);
-		Timestamp finSeguro = new Timestamp(anioFin, mesFin, diaFin, 0, 0, 0, 0);
+		interfaz.printMessage("Ingrese la fecha de fin del seguro (dd/MM/yyyy)");
+		try {
+			date = dateFormat.parse(sc.next());
 
-		return mundo.adicionarSeguro(empresa, monto, inicioSeguro, finSeguro);
+		} catch (ParseException e) {
+			interfaz.printMessage("Error en la escritura de la fecha");
+			return null;
+		}
+		time = date.getTime();
+		Timestamp fin = new Timestamp(time);
+		return mundo.adicionarSeguro(empresa, monto, inicio, fin	);
 	}
 
 	public Cuarto registrarCuarto(Operador operador, Scanner sc, String direccion, int cupos) {
