@@ -14,7 +14,9 @@
  */
 
 package uniandes.isis2304.alohandes.persistencia;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -166,9 +168,21 @@ class SQLReserva
 	 */
 	public List<Reserva> darReservasPorOferta(PersistenceManager pm, long idOferta) {
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaReserva () +" WHERE oferta = ?");
-		q.setResultClass(Reserva.class);
 		q.setParameters(idOferta);
-		return (List<Reserva>) q.executeList();
+		List<Object[]> objects = q.executeList();
+		List<Reserva> reservas = new LinkedList<Reserva>();
+		for (Object[] reserva : objects) {
+			long id = ((BigDecimal) reserva[0]).longValue();
+			Timestamp inicio = (Timestamp) reserva[1];
+			Timestamp fin = (Timestamp) reserva[2];
+			String periodo = (String) reserva[5];
+			long oferta = ((BigDecimal) reserva[4]).longValue();
+			long cliente = ((BigDecimal) reserva[5]).longValue();
+			long colectiva = ((BigDecimal) reserva[6]).longValue();
+			Reserva re = new Reserva(id, inicio, fin, periodo, cliente, oferta, colectiva);
+			reservas.add(re);
+		}
+		return reservas;
 	}
 	
 	/**
