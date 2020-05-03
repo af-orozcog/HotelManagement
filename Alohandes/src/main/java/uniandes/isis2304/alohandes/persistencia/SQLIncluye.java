@@ -16,7 +16,6 @@
 package uniandes.isis2304.alohandes.persistencia;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -27,6 +26,7 @@ import javax.jdo.Query;
 import org.junit.internal.runners.model.EachTestNotifier;
 
 import oracle.net.aso.i;
+import oracle.sql.TIMESTAMP;
 import uniandes.isis2304.alohandes.negocio.Incluye;
 import uniandes.isis2304.alohandes.negocio.Oferta;
 
@@ -159,7 +159,7 @@ class SQLIncluye
 		return ofertas;
 	}
 
-	public List<Long> darOfertasConServiciosYTipo(PersistenceManager pm, ArrayList<String> lista, String tipo, String periodo, Timestamp inicio, Timestamp fin) {
+	public List<Long> darOfertasConServiciosYTipo(PersistenceManager pm, ArrayList<String> lista, String tipo, String periodo, TIMESTAMP inicio, TIMESTAMP fin) {
 		Query q = pm.newQuery(SQL, "SELECT i.oferta, s.nombre"
 				+ " FROM " + pa.darTablaIncluye() + " i, " + pa.darTablaServicio() + " s, " + pa.darTablaOferta() + " o, " + pa.darTablaVivienda() + " v"
 				+ " WHERE i.servicio = s.id AND i.oferta = o.id AND o.vivienda = v.id AND o.habilitada = 1"

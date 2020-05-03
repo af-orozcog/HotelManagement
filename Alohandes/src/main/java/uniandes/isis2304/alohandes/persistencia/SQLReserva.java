@@ -16,7 +16,6 @@
 package uniandes.isis2304.alohandes.persistencia;
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -180,15 +179,12 @@ class SQLReserva
 			Object [] datos = (Object []) obj;
 			System.out.println("wtf is happening "+ datos[1] + " " + datos[0]);
 			long id =  ((BigDecimal) datos [0]).longValue ();
-			System.out.println("good the rat? ");
 			TIMESTAMP inicio = (TIMESTAMP)datos [1];
-			System.out.println("wtf is inicio " + inicio);
 			TIMESTAMP fin = (TIMESTAMP) datos [2];
 			String periodo = ((String) datos [3]);
 			long cliente = ((BigDecimal) datos [4]).intValue();
 			long oferta = ((BigDecimal) datos [5]).longValue();
 			long colectiva = ((BigDecimal) datos [6]).intValue();
-			//System.out.println("veamos esa fecha que gonorrea es: "+ inicio);
 			resp.add (new Reserva(id, inicio, fin, periodo, cliente, oferta, colectiva));
 		}
 		System.out.println("wutttt");

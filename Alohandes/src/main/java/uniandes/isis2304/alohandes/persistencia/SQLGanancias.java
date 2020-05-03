@@ -15,6 +15,7 @@
 
 package uniandes.isis2304.alohandes.persistencia;
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -71,10 +72,10 @@ class SQLGanancias
 	 * @param idOperador - 
 	 * @return El nÃºmero de tuplas insertadas 
 	 */
-	public long adicionarGanancias (PersistenceManager pm, long idGanancias, long cantidad,TIMESTAMP timestamp, long idOperador)
+	public long adicionarGanancias (PersistenceManager pm, long idGanancias, long cantidad,TIMESTAMP fecha, long idOperador)
 	{
 		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaGanancias () + "(id, cantidad, fecha, operador) values (? ,? ,? ,?)");
-		q.setParameters( idGanancias,cantidad ,timestamp ,idOperador );
+		q.setParameters( idGanancias,cantidad ,fecha ,idOperador );
 		return (long) q.executeUnique();
 	}
 
@@ -117,7 +118,12 @@ class SQLGanancias
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaGanancias () + " WHERE fecha = ? AND operador = ?");
 		q.setResultClass(Ganancias.class);
-		q.setParameters(new Timestamp(anio, mes, 0, 0, 0, 0, 0), idOperador);
+		
+		Calendar cal = Calendar.getInstance();
+		cal.setTimeInMillis(0);
+		cal.set(anio, mes, 0, 0, 0, 0);
+		
+		q.setParameters(new TIMESTAMP(new Timestamp(cal.getTime().getTime())), idOperador);
 		return (Ganancias) q.executeUnique();
 	}
 
@@ -135,7 +141,7 @@ class SQLGanancias
 	}
 	
 	/**
-	 * Aumenta el número de ganancias respectivo
+	 * Aumenta el nï¿½mero de ganancias respectivo
 	 * @param pm - El manejador de persistencia
 	 * @param aumento de ganancias
 	 * @param idGanancias - El identificador de la Ganancias

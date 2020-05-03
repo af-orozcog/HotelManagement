@@ -14,7 +14,6 @@
  */
 
 package uniandes.isis2304.alohandes.persistencia;
-import java.sql.Timestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -132,7 +131,7 @@ class SQLOferta
 		return (List<Oferta>) q.executeList();
 	}
 
-	public List<Oferta> darOfertasConServicios(PersistenceManager pm, ArrayList<String> lista, Timestamp inicio, Timestamp fin) {
+	public List<Oferta> darOfertasConServicios(PersistenceManager pm, ArrayList<String> lista, TIMESTAMP inicio, TIMESTAMP fin) {
 		List<Oferta> ofertas = darOfertas(pm);
 		for (String servicio : lista) {
 			Query q = pm.newQuery(SQL, "SELECT DISTINCT o.id, o.precio, o.periodo, o.vivienda, o.fechainicio, o.fechafin, o.habilitada "
@@ -209,7 +208,7 @@ class SQLOferta
 	 * @param fin
 	 * @return
 	 */
-	public Oferta darOfertasPorRangoFechaDisponibles(PersistenceManager pm, TIMESTAMP ini, TIMESTAMP fin){
+	public Oferta darOfertasPorRangoFechaDisponibles(PersistenceManager pm, TIMESTAMP inicio, TIMESTAMP fin){
 		Query q = pm.newQuery(SQL, ""
 				+ "SELECT * FROM " + pa.darTablaOferta()
 				+ " WHERE fechaInicio <= ? AND fechaFin >= ? AND habilitado = 1 AND id NOT IN"
@@ -219,7 +218,7 @@ class SQLOferta
 				+" WHERE o.id = r.oferta AND ((r.inicio >= ?  AND r.inicio <= ?) OR (r.inicio <= ? AND r.fin >= ?))"
 				+ ")"
 				);
-		q.setParameters(ini,fin,ini,fin,ini,ini);
+		q.setParameters(inicio,fin,inicio,fin,inicio,inicio);
 		List<Oferta> ans = (List<Oferta>)q.executeList();
 		if(ans.size() > 0)
 			return ans.get(0);

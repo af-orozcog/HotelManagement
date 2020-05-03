@@ -14,6 +14,8 @@
  */
 
 package uniandes.isis2304.alohandes.persistencia;
+import java.math.BigDecimal;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -127,7 +129,16 @@ class SQLOperador
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaOperador () + " WHERE tipo_operador = 'VIVIENDA_UNIVERSITARIA' ");
 		q.setResultClass(Operador.class);
-		return (List<ViviendaUniversitaria>) q.executeList();
+		List<Object[]> objects = q.executeList();
+		List<ViviendaUniversitaria> viviendas = new LinkedList<ViviendaUniversitaria>();
+		for (Object[] viv : objects) {
+			long id = ((BigDecimal) viv[0]).longValue();
+			String nombre = viv[1].toString();
+			String email = viv[2].toString();
+			String numero = viv[3].toString();
+			viviendas.add(new ViviendaUniversitaria(id, nombre, email, numero));
+		}
+		return viviendas;
 	}
 	
 	/**

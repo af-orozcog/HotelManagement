@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
+import oracle.sql.TIMESTAMP;
 import uniandes.isis2304.alohandes.negocio.Hoteleria;
 import uniandes.isis2304.alohandes.negocio.Operador;
 import uniandes.isis2304.alohandes.persistencia.PersistenciaAlohandes;
@@ -69,8 +70,8 @@ public class HoteleriaTest {
 			String email1 = "sapo@gmail.com";
 			String numero1 = "345654323456";
 			String tipoHoteleria1 = "HOTEL";
-			Timestamp horaInicio1 = new Timestamp(1000);
-			Timestamp horaFin1 = new Timestamp(100000);
+			TIMESTAMP horaInicio1 =  new TIMESTAMP (new Timestamp(1000));
+			TIMESTAMP horaFin1 =  new TIMESTAMP (new Timestamp(100000));
 			Hoteleria Hoteleria1 = pm.adicionarHoteleria(nombre1, email1, numero1, tipoHoteleria1, horaInicio1, horaFin1);
 			lista = pm.darHotelerias();
 			
@@ -82,8 +83,8 @@ public class HoteleriaTest {
 			String email2 = "sapo2@gmail.com";
 			String numero2 = "345654323456";
 			String tipoHoteleria2 = "HOTEL";
-			Timestamp horaInicio2 = new Timestamp(1000);
-			Timestamp horaFin2 = new Timestamp(100000);
+			TIMESTAMP horaInicio2 = new TIMESTAMP (new Timestamp(1000));
+			TIMESTAMP horaFin2 =  new TIMESTAMP (new Timestamp(100000));
 			Hoteleria Hoteleria2 = pm.adicionarHoteleria(nombre2, email2, numero2, tipoHoteleria2, horaInicio2, horaFin2);
 			lista = pm.darHotelerias();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
@@ -153,8 +154,8 @@ public class HoteleriaTest {
 			String email1 = "sapo@gmail.com";
 			String numero1 = "345654323456";
 			String tipoHoteleria1 = "HOTEL";
-			Timestamp horaInicio1 = new Timestamp(1000);
-			Timestamp horaFin1 = new Timestamp(100000);
+			TIMESTAMP horaInicio1 = new TIMESTAMP(new Timestamp(1000));
+			TIMESTAMP horaFin1 = new TIMESTAMP(new Timestamp(100000));
 			Hoteleria Hoteleria1 = pm.adicionarHoteleria(nombre1, email1, numero1, tipoHoteleria1, horaInicio1, horaFin1);
 			lista = pm.darHotelerias();
 			assertEquals ("Debe haber un Hoteleria creado !!", 1, lista.size ());
@@ -163,8 +164,8 @@ public class HoteleriaTest {
 			String email2 = "sapo@gmail.com";
 			String numero2 = "345654323456";
 			String tipoHoteleria2 = "HOTEL";
-			Timestamp horaInicio2 = new Timestamp(1000);
-			Timestamp horaFin2 = new Timestamp(100000);
+			TIMESTAMP horaInicio2 = new TIMESTAMP(new Timestamp(1000));
+			TIMESTAMP horaFin2 = new TIMESTAMP(new Timestamp(100000));
 			Hoteleria Hoteleria2 = pm.adicionarHoteleria(nombre2, email2, numero2, tipoHoteleria2, horaInicio2, horaFin2);
 			lista = pm.darHotelerias();
 			assertNull ("No puede adicionar dos Hotelerias con el mismo id !!", Hoteleria2);
