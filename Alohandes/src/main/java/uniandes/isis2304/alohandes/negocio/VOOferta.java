@@ -3,6 +3,8 @@ package uniandes.isis2304.alohandes.negocio;
 import java.sql.Timestamp;
 import java.util.List;
 
+import oracle.sql.TIMESTAMP;
+
 public interface VOOferta {
 	public long getId() ;
 
@@ -62,12 +64,12 @@ public interface VOOferta {
 	public void setVivienda(long vivienda);
 
 	
-	public Timestamp getFechainicio();
+	public TIMESTAMP getFechainicio();
 
-	public void setFechainicio(Timestamp fechainicio);
+	public void setFechainicio(TIMESTAMP fechainicio);
 
-	public Timestamp getFechafin();
+	public TIMESTAMP getFechafin();
 
-	public void setFechafin(Timestamp fechafin);
+	public void setFechafin(TIMESTAMP fechafin);
 	
 }
