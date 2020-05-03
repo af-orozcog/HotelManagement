@@ -129,7 +129,6 @@ class SQLOferta
 	}
 
 	public List<Oferta> darOfertasConServicios(PersistenceManager pm, ArrayList<String> lista, Timestamp inicio, Timestamp fin) {
-
 		List<Oferta> ofertas = darOfertas(pm);
 		for (String servicio : lista) {
 			Query q = pm.newQuery(SQL, "SELECT DISTINCT o.id, o.precio, o.periodo, o.vivienda, o.fechainicio, o.fechafin, o.habilitada "
@@ -159,64 +158,6 @@ class SQLOferta
 			}
 		}
 
-		return ofertas;
-	}
-
-	/**
-	 * 
-	 * @param pm
-	 * @param lista
-	 * @param tipo
-	 * @param periodo
-	 * @param inicio
-	 * @param fin
-	 * @return
-	 */
-	public List<Oferta> darOfertasConServiciosYTipo(PersistenceManager pm, ArrayList<String> lista, String tipo, String periodo, Timestamp inicio, Timestamp fin) {
-		List<Oferta> ofertas;
-		if(lista.size() > 0) {
-			ofertas = darOfertasConIncluye(pm);
-
-			for (String servicio : lista) {
-				Query q = pm.newQuery(SQL, "SELECT DISTINCT o.id, o.precio, o.periodo, o.vivienda, o.fechainicio, o.fechafin, o.habilitada "+
-						"FROM "+pa.darTablaOferta()+" o, "+pa.darTablaIncluye()+" i, "+pa.darTablaServicio()+" s, "+pa.darTablaVivienda()+" v, "+pa.darTablaOperador()+" op "+
-						"WHERE o.id = i.oferta AND i.servicio = s.id AND v.operador = op.id AND o.vivienda = v.id AND "+
-						"(o.habilitada = 0 OR s.nombre <> ? OR op.tipo_operador <> ? OR o.periodo <> ? "+
-						"OR o.fechaInicio > ? OR fechaFin < ? "+
-						"OR o.id IN( "+
-						"SELECT o.id FROM "+pa.darTablaOferta()+" o, "+pa.darTablaReserva()+" r WHERE o.id = r.oferta AND "+
-						"(  (r.inicio >= ?  AND r.inicio <= ?) "+
-						"OR (r.inicio <= ? AND r.fin >= ?) "+
-						")"
-						+ ")"
-						+ ")"
-						);
-				q.setResultClass(Oferta.class);
-				q.setParameters(servicio, tipo, periodo, inicio,fin,inicio,fin,inicio,inicio);
-				List<Oferta> eliminar = q.executeList();
-				for (Oferta el : eliminar) {
-					ofertas.remove(el);
-				}
-			}
-		}
-		else {
-			Query q = pm.newQuery(SQL, "SELECT DISTINCT o.id, o.precio, o.periodo, o.vivienda, o.fechainicio, o.fechafin, o.habilitada "+
-					"FROM "+pa.darTablaOferta()+" o, "+pa.darTablaIncluye()+" i, "+pa.darTablaServicio()+" s, "+pa.darTablaVivienda()+" v, "+pa.darTablaOperador()+" op "+
-					"WHERE o.id = i.oferta AND i.servicio = s.id AND v.operador = op.id AND o.vivienda = v.id AND "+
-					"(o.habilitada = 1 AND op.tipo_operador = ? AND o.periodo = ? "+
-					"AND o.fechaInicio <= ? AND fechaFin >= ? "+
-					"AND o.id NOT IN( "+
-					"SELECT o.id FROM "+pa.darTablaOferta()+" o, "+pa.darTablaReserva()+" r WHERE o.id = r.oferta AND "+
-					"(  (r.inicio >= ?  AND r.inicio <= ?) "+
-					"OR (r.inicio <= ? AND r.fin >= ?) "+
-					")"
-					+ ")"
-					+ ")"
-					);
-			q.setResultClass(Oferta.class);
-			q.setParameters(tipo, periodo, inicio,fin,inicio,fin,inicio,inicio);
-			ofertas = q.executeList();
-		}
 		return ofertas;
 	}
 

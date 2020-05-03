@@ -1883,7 +1883,39 @@ public class PersistenciaAlohandes
 	 * @return lista de Ofertas con los servicios requeridos
 	 */
 	public List<Oferta> darOfertasConServiciosYTipo(ArrayList<String> lista, String tipo, String periodo, Timestamp inicio, Timestamp fin) {
-		return sqlOferta.darOfertasConServiciosYTipo(pmf.getPersistenceManager(), lista, tipo, periodo, inicio, fin);
+	
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			List<Long> ids = sqlIncluye.darOfertasConServiciosYTipo(pm, lista, tipo, periodo, inicio, fin);			
+			
+			List<Oferta> ofertas = new LinkedList<Oferta>();
+			if(ids == null)
+				return ofertas;
+			for (Long id : ids) {
+				ofertas.add(darOfertaPorId(id));
+			}
+			
+			tx.commit();
+			return ofertas;
+		}
+		catch (Exception e)
+		{
+			//	    	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+	
 	}
 
 	/**

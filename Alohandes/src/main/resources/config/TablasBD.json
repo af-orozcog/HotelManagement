@@ -19,6 +19,7 @@
 		"RESERVA",
 		"OFERTA",
 		"SERVICIO",
-		"INCLUYE"
+		"INCLUYE",
+		"RESERVA_COLECTIVA"
 	]
 }

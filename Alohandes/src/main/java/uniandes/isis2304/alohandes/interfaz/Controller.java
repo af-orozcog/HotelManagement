@@ -23,6 +23,7 @@ import uniandes.isis2304.alohandes.negocio.Cuarto;
 import uniandes.isis2304.alohandes.negocio.Oferta;
 import uniandes.isis2304.alohandes.negocio.Operador;
 import uniandes.isis2304.alohandes.negocio.Reserva;
+import uniandes.isis2304.alohandes.negocio.ReservaColectiva;
 import uniandes.isis2304.alohandes.negocio.Seguro;
 import uniandes.isis2304.alohandes.negocio.Servicio;
 import uniandes.isis2304.alohandes.negocio.Vivienda;
@@ -213,7 +214,7 @@ public class Controller {
 		interfaz.printMessage("Escriba el periodo de la propuesta (DIAS, SEMANAS, MESES, SEMESTRES)");
 		String periodo = sc.next();
 		if(periodo.equalsIgnoreCase("DIAS") && !es)
-			interfaz.printMessage("ERROR DE PERIDO, No se puede elegir DIAS si no es esporadico");
+			interfaz.printMessage("ERROR DE PERIODO, No se puede elegir DIAS si no es esporadico");
 		else {
 			interfaz.printMessage("Ingrese el anio de inicio de la propuesta");
 			int anioIn = sc.nextInt();
@@ -431,7 +432,7 @@ public class Controller {
 		Timestamp fin = new Timestamp(anioFin, mesFin, diaFin, 0, 0, 0, 0);
 
 		List<Oferta> ofertas = mundo.darOfertasConServiciosYTipo(lista, tipo, periodo, inicio, fin);
-
+		
 		interfaz.printMessage("Hay " + ofertas.size() + " ofertas disponibles");
 		if(n <= ofertas.size()) {
 			interfaz.printMessage("Es posible hacer las reservas");
@@ -441,9 +442,9 @@ public class Controller {
 
 			interfaz.printMessage("Reservando ofertas");
 
-			long colectiva = mundo.adicionarReservaColectiva(new Timestamp(System.currentTimeMillis()), n, usuario.getId()).getId();
+			ReservaColectiva colectiva = mundo.adicionarReservaColectiva(new Timestamp(System.currentTimeMillis()), n, usuario.getId());
 			for (Oferta oferta : ofertas) {
-				mundo.adicionarReserva(inicio, fin, periodo, oferta.getId(), usuario.getId(), colectiva);	
+				mundo.adicionarReserva(inicio, fin, periodo, oferta.getId(), usuario.getId(), colectiva.getId());	
 			}
 
 			interfaz.printMessage("Reservas finalizadas, muchas gracias");

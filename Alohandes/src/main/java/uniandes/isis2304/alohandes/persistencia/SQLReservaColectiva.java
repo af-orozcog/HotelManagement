@@ -78,7 +78,7 @@ class SQLReservaColectiva
 	 */
 	public long adicionarReservaColectiva (PersistenceManager pm, long idReserva, Timestamp fechaRealizacion, int cantidad, long idCliente)
 	{
-		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaReservaColectiva() + "(id, fecha_realizacion, cantidad, cliente) values (? ,? ,? ,?)");
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaReservaColectiva() + " (id, fecha_realizacion, cantidad, cliente) values (? ,? ,? ,?)");
 		q.setParameters( idReserva, fechaRealizacion, cantidad, idCliente );
 		return (long) q.executeUnique();
 	}

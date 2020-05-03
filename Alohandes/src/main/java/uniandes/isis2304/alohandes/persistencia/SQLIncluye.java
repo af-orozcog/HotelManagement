@@ -15,12 +15,20 @@
 
 package uniandes.isis2304.alohandes.persistencia;
 
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import org.junit.internal.runners.model.EachTestNotifier;
+
+import oracle.net.aso.i;
 import uniandes.isis2304.alohandes.negocio.Incluye;
+import uniandes.isis2304.alohandes.negocio.Oferta;
 
 /**
  * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto SIRVEN de Parranderos
@@ -58,7 +66,7 @@ class SQLIncluye
 	{
 		this.pa = pa;
 	}
-	
+
 	/**
 	 * Crea y ejecuta la sentencia SQL para adicionar un SIRVEN a la base de datos de Parranderos
 	 * @param pm - El manejador de persistencia
@@ -69,9 +77,9 @@ class SQLIncluye
 	 */
 	public long adicionarIncluye (PersistenceManager pm, long idServicio, long idOferta, int incluido) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaIncluye () + "(servicio, oferta, incluido) values (?, ?, ?)");
-        q.setParameters(idServicio, idOferta, incluido);
-        return (long)q.executeUnique();            
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaIncluye () + "(servicio, oferta, incluido) values (?, ?, ?)");
+		q.setParameters(idOferta, idServicio, incluido);
+		return (long)q.executeUnique();            
 	}
 
 	/**
@@ -83,9 +91,9 @@ class SQLIncluye
 	 */
 	public long eliminarIncluye (PersistenceManager pm, long idServicio, long idOferta) 
 	{
-        Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaIncluye () + " WHERE servicio = ? AND oferta = ?");
-        q.setParameters(idServicio, idOferta);
-        return (long) q.executeUnique();            
+		Query q = pm.newQuery(SQL, "DELETE FROM " + pa.darTablaIncluye () + " WHERE servicio = ? AND oferta = ?");
+		q.setParameters(idServicio, idOferta);
+		return (long) q.executeUnique();            
 	}
 
 	/**
@@ -100,7 +108,7 @@ class SQLIncluye
 		q.setResultClass(Incluye.class);
 		return (List<Incluye>) q.execute();
 	}
- 
+
 	/**
 	 * Crea y ejecuta la sentencia SQL para encontrar el identificador y el número de ofertas que inlcuye los servicioes de la 
 	 * base de datos de Parranderos
@@ -110,11 +118,105 @@ class SQLIncluye
 	 */
 	public List<Object []> darServiciosYCantidadOfertasIncluye (PersistenceManager pm)
 	{
-        String sql = "SELECT servicio, count (*) as numOfertas";
-        sql += " FROM " + pa.darTablaIncluye ();
-       	sql	+= " GROUP BY servicio";
+		String sql = "SELECT servicio, count (*) as numOfertas";
+		sql += " FROM " + pa.darTablaIncluye ();
+		sql	+= " GROUP BY servicio";
 		Query q = pm.newQuery(SQL, sql);
 		return q.executeList();
 	}
 
+	public List<Long> darOfertasConServicios(PersistenceManager pm, ArrayList<String> lista) {
+		Query q = pm.newQuery(SQL, "SELECT i.oferta, s.nombre"
+				+ " FROM " + pa.darTablaIncluye() + " i, " + pa.darTablaServicio() + " s, "
+				+ " WHERE i.servicio = s.id"
+				+ " ORDER BY oferta");
+		List<Object[]> ans = q.executeList();
+
+		List<Long> ofertas = new LinkedList<Long>();
+
+		Long act = ((BigDecimal) ans.get(0)[0]).longValue();
+		boolean valid = true;
+		List<String> servicios = new LinkedList<String>();
+
+		for (Object[] objects: ans) {
+			Long read = ((BigDecimal) objects[0]).longValue();
+			if(read == act) 
+				servicios.add( objects[1].toString() );
+			else {
+				for (String servicio : lista) {
+					if(!listaContieneString(servicio, servicios)) {
+						valid = false;
+						break;
+					}
+				}
+				if(valid)
+					ofertas.add(read);
+				act = read;
+				servicios = new LinkedList<String>();
+				servicios.add( objects[1].toString() );
+			}
+		}
+		return ofertas;
+	}
+
+	public List<Long> darOfertasConServiciosYTipo(PersistenceManager pm, ArrayList<String> lista, String tipo, String periodo, Timestamp inicio, Timestamp fin) {
+		Query q = pm.newQuery(SQL, "SELECT i.oferta, s.nombre"
+				+ " FROM " + pa.darTablaIncluye() + " i, " + pa.darTablaServicio() + " s, " + pa.darTablaOferta() + " o, " + pa.darTablaVivienda() + " v"
+				+ " WHERE i.servicio = s.id AND i.oferta = o.id AND o.vivienda = v.id AND o.habilitada = 1"
+				+ " AND v.tipo = ? AND o.periodo = ? AND fechaInicio <= ? AND fechaFin >= ? AND o.id NOT IN" 
+				+ " ("
+				+ " SELECT o.id FROM "+ pa.darTablaOferta() + " o, " + pa.darTablaReserva()+ " r"
+				+ " WHERE o.id = r.oferta AND ((r.inicio >= ?  AND r.inicio <= ?) OR (r.inicio <= ? AND r.fin >= ?))"
+				+ " )"
+				+ " ORDER BY oferta");
+		q.setParameters(tipo, periodo, inicio,fin,inicio,fin,inicio,inicio);
+		List<Object[]> ans = q.executeList();
+
+		List<Long> ofertas = new LinkedList<Long>();
+
+		if(ans == null || ans.size() == 0)
+			return null;
+		Long act = ((BigDecimal) ans.get(0)[0]).longValue();
+		boolean valid = true;
+		List<String> servicios = new LinkedList<String>();
+
+		for (Object[] objects: ans) {
+			Long read = ((BigDecimal) objects[0]).longValue();
+			if(read == act) 
+				servicios.add( objects[1].toString() );
+			else {
+				if(lista != null)
+					for (String servicio : lista) {
+						if(!listaContieneString(servicio, servicios)) {
+							valid = false;
+							break;
+						}
+					}
+				if(valid)
+					ofertas.add(read);
+				act = read;
+				servicios = new LinkedList<String>();
+				servicios.add( objects[1].toString() );
+			}
+		}
+		if(lista !=null)
+			for (String servicio : lista) {
+				if(!listaContieneString(servicio, servicios)) {
+					valid = false;
+					break;
+				}
+			}
+		if(valid)
+			ofertas.add(act);
+		return ofertas;
+	}
+
+	
+	
+	private boolean listaContieneString (String buscado, List<String> servicios) {
+		for (String string : servicios)
+			if(string.contains(buscado))
+				return true;
+		return false;
+	}
 }
