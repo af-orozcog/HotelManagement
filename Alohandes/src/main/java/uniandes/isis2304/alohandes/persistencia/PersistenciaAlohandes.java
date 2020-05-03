@@ -2232,16 +2232,10 @@ public class PersistenciaAlohandes
 		try
 		{
 			tx.begin();
-			System.out.println("wtf is happeningGGGGG");
 			sqlOferta.deshabilitarOferta(pm, idOferta);
-			System.out.println("wtf is happening");
 			List<Reserva> reservasACancelar = sqlReserva.darReservasPorOferta(pm, idOferta);
-			System.out.println("tama�o de esa chimbada: " + reservasACancelar.size());
-			Calendar calendar = Calendar.getInstance();
-			Date now = (Date) calendar.getTime();
-			TIMESTAMP currentTimestamp = new TIMESTAMP( new Timestamp(now.getTime()));
+			TIMESTAMP currentTimestamp = new TIMESTAMP( new Timestamp(System.currentTimeMillis()));
 			for(Reserva va: reservasACancelar) {
-				if(va.getFin() == null) System.out.println("WTF cual es la re puta joda" + va.getId());
                 if(!va.getFin().dateValue().after(currentTimestamp.dateValue())) continue;
 				long idColectiva =va.getColectiva();
 				if(va.getColectiva() != null) {
