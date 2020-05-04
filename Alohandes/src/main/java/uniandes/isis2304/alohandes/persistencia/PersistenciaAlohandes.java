@@ -196,7 +196,7 @@ public class PersistenciaAlohandes
 	 * Atributo para la clase que maneja la consutla 2
 	 */
 	private REQC2 reqc2;
-	
+
 	/**
 	 * Atributo para la clase que maneja la consutla 7
 	 */
@@ -206,12 +206,12 @@ public class PersistenciaAlohandes
 	 * Atributo para la clase que maneja la consutla 7
 	 */
 	private REQC8 reqc8;
-	
+
 	/**
 	 * Atributo para la clase que maneja la consutla 7
 	 */
 	private REQC9 reqc9;
-	
+
 	private boolean modoPerron = false;
 
 	private long idPerron;
@@ -1487,7 +1487,7 @@ public class PersistenciaAlohandes
 			cal.set(anio, mes, 0, 0, 0, 0 );
 
 			adicionarGanancias(aumento, new TIMESTAMP(new Timestamp(cal.getTime().getTime())), idOperador);
-			}
+		}
 		else
 			sqlGanancias.aumentarGanancias(pmf.getPersistenceManager(), aumento, idOperador, mes, anio);
 	}
@@ -1699,7 +1699,7 @@ public class PersistenciaAlohandes
 	public List<Reserva> darReservasColectiva(long idReserva){
 		return sqlReserva.darReservasColectiva(pmf.getPersistenceManager(), idReserva);
 	}
-	
+
 	/* ****************************************************************
 	 * 			M�todos para manejar los(as) RESERVAS_COLECTIVAS
 	 *****************************************************************/
@@ -1722,19 +1722,19 @@ public class PersistenciaAlohandes
 		{
 			tx.begin();
 			long idReserva = nextval ();
-			
+
 			List<Oferta> ofertas = darOfertasConServiciosYTipo(lista, tipo, periodo, inicio, fin);
 
 			System.out.println("Hay " + ofertas.size() + " ofertas disponibles");
 			long tuplasInsertadas; ReservaColectiva colectiva;
-			
+
 			if(cantidad <= ofertas.size()) {
 				System.out.println("Es posible hacer las reservas");
 				System.out.println("Reservando ofertas");
 
 				tuplasInsertadas = sqlReservaColectiva.adicionarReservaColectiva(pm, idReserva, fechaRealizacion, cantidad, idCliente);
 				colectiva = new ReservaColectiva(idReserva, cantidad, fechaRealizacion, idCliente);
-				
+
 				for (Oferta oferta : ofertas) {
 					adicionarReserva(inicio, fin, periodo, oferta.getId(), idCliente, colectiva.getId());	
 				}
@@ -1745,7 +1745,7 @@ public class PersistenciaAlohandes
 				tuplasInsertadas = 0;
 				colectiva = null;
 			}
-			
+
 			tx.commit();
 
 			log.trace ("Inserción de vivienda: " + idReserva + ": " + tuplasInsertadas + " tuplas insertadas");
@@ -1906,31 +1906,19 @@ public class PersistenciaAlohandes
 	 * @return lista de Ofertas con los servicios requeridos
 	 */
 	public List<Oferta> darOfertasConServicios(ArrayList<String> lista, TIMESTAMP inicio, TIMESTAMP fin) {
-		return sqlOferta.darOfertasConServicios(pmf.getPersistenceManager(), lista, inicio, fin);
-	}
 
-	/**
-	 * Retorna un grupo de ofertas que cumplan con los servicios pedidos
-	 * @param lista Servicios requeridos
-	 * @param tipo Tipo de operador
-	 * @return lista de Ofertas con los servicios requeridos
-	 */
-	public List<Oferta> darOfertasConServiciosYTipo(ArrayList<String> lista, String tipo, String periodo, TIMESTAMP inicio, TIMESTAMP fin) {
-	
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
 		try
 		{
 			tx.begin();
-			List<Long> ids = sqlIncluye.darOfertasConServiciosYTipo(pm, lista, tipo, periodo, inicio, fin);			
-			
+			List<Long> ids = sqlIncluye.darOfertasConServicios(pmf.getPersistenceManager(), lista, inicio, fin);
 			List<Oferta> ofertas = new LinkedList<Oferta>();
-			if(ids == null)
-				return ofertas;
+
 			for (Long id : ids) {
 				ofertas.add(darOfertaPorId(id));
 			}
-			
+
 			tx.commit();
 			return ofertas;
 		}
@@ -1948,7 +1936,55 @@ public class PersistenciaAlohandes
 			}
 			pm.close();
 		}
-	
+	}
+
+	/**
+	 * Retorna un grupo de ofertas que cumplan con los servicios pedidos
+	 * @param lista Servicios requeridos
+	 * @param tipo Tipo de operador
+	 * @return lista de Ofertas con los servicios requeridos
+	 */
+	public List<Oferta> darOfertasConServiciosYTipo(ArrayList<String> lista, String tipo, String periodo, TIMESTAMP inicio, TIMESTAMP fin) {
+
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			List<Oferta> ofertas;
+			if(lista != null || lista.size() == 0) {
+				ofertas = sqlIncluye.darOfertasConServiciosYTipo(pm, tipo, periodo, inicio, fin);
+			}
+			else {
+				List<Long> ids = sqlIncluye.darOfertasConServiciosYTipo(pm, lista, tipo, periodo, inicio, fin);			
+
+				ofertas = new LinkedList<Oferta>();
+				if(ids == null)
+					return ofertas;
+				for (Long id : ids) {
+					ofertas.add(darOfertaPorId(id));
+				}
+			}
+				
+
+			tx.commit();
+			return ofertas;
+		}
+		catch (Exception e)
+		{
+			//	    	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+
 	}
 
 	/**
@@ -2184,14 +2220,14 @@ public class PersistenciaAlohandes
 	public List<Oferta> reqc2(){
 		return reqc2.ofertasPopulares(pmf.getPersistenceManager());
 	}
-	
+
 	public String reqC7MayorDemanda(String tiempo, String alojamiento	) {
 		if(alojamiento.equals("SEMANA"))
 			return reqc7.respuestaSemanaMayorDemanda(pmf.getPersistenceManager(), alojamiento);
 		else
 			return reqc7.respuestaMesMayorDemanda(pmf.getPersistenceManager(), alojamiento);
 	}
-	
+
 	public String reqC7MenorDemanda(String tiempo, String alojamiento) {
 		switch (tiempo) {
 		case "SEMANA":
@@ -2202,7 +2238,7 @@ public class PersistenciaAlohandes
 			return null;
 		}
 	}
-	
+
 	public String reqC7Ganancia(String tiempo, String alojamiento) {
 		switch (tiempo) {
 		case "SEMANA":
@@ -2213,15 +2249,15 @@ public class PersistenciaAlohandes
 			return null;
 		}
 	}
-	
+
 	public List<Cliente> reqC8(long vivienda) {
 		return reqc8.clientesFrecuentes(pmf.getPersistenceManager(), vivienda);	
 	}
-	
+
 	public List<Oferta> reqC9(){
 		return reqc9.ofertasConPocaDemanda(pmf.getPersistenceManager());
 	}
-	
+
 	/* ****************************************************************
 	 * 			M�todos para activar el modo perron pruebas :v
 	 *****************************************************************/
@@ -2262,7 +2298,7 @@ public class PersistenciaAlohandes
 			List<Reserva> reservasACancelar = sqlReserva.darReservasPorOferta(pm, idOferta);
 			TIMESTAMP currentTimestamp = new TIMESTAMP( new Timestamp(System.currentTimeMillis()));
 			for(Reserva va: reservasACancelar) {
-                if(!va.getFin().dateValue().after(currentTimestamp.dateValue())) continue;
+				if(!va.getFin().dateValue().after(currentTimestamp.dateValue())) continue;
 				long idColectiva =va.getColectiva();
 				if(va.getColectiva() != null) {
 					sqlReservaColectiva.disminuirCantidadColectiva(pm,idColectiva);
