@@ -125,51 +125,17 @@ class SQLIncluye
 		return q.executeList();
 	}
 
-	public List<Long> darOfertasConServicios(PersistenceManager pm, ArrayList<String> lista) {
+	public List<Long> darOfertasConServicios(PersistenceManager pm, ArrayList<String> lista, TIMESTAMP inicio, TIMESTAMP fin) {
 		Query q = pm.newQuery(SQL, "SELECT i.oferta, s.nombre"
-				+ " FROM " + pa.darTablaIncluye() + " i, " + pa.darTablaServicio() + " s, "
-				+ " WHERE i.servicio = s.id"
-				+ " ORDER BY oferta");
-		List<Object[]> ans = q.executeList();
-
-		List<Long> ofertas = new LinkedList<Long>();
-
-		Long act = ((BigDecimal) ans.get(0)[0]).longValue();
-		boolean valid = true;
-		List<String> servicios = new LinkedList<String>();
-
-		for (Object[] objects: ans) {
-			Long read = ((BigDecimal) objects[0]).longValue();
-			if(read == act) 
-				servicios.add( objects[1].toString() );
-			else {
-				for (String servicio : lista) {
-					if(!listaContieneString(servicio, servicios)) {
-						valid = false;
-						break;
-					}
-				}
-				if(valid)
-					ofertas.add(read);
-				act = read;
-				servicios = new LinkedList<String>();
-				servicios.add( objects[1].toString() );
-			}
-		}
-		return ofertas;
-	}
-
-	public List<Long> darOfertasConServiciosYTipo(PersistenceManager pm, ArrayList<String> lista, String tipo, String periodo, TIMESTAMP inicio, TIMESTAMP fin) {
-		Query q = pm.newQuery(SQL, "SELECT i.oferta, s.nombre"
-				+ " FROM " + pa.darTablaIncluye() + " i, " + pa.darTablaServicio() + " s, " + pa.darTablaOferta() + " o, " + pa.darTablaVivienda() + " v"
-				+ " WHERE i.servicio = s.id AND i.oferta = o.id AND o.vivienda = v.id AND o.habilitada = 1"
-				+ " AND v.tipo = ? AND o.periodo = ? AND fechaInicio <= ? AND fechaFin >= ? AND o.id NOT IN" 
+				+ " FROM " + pa.darTablaIncluye() + " i, " + pa.darTablaServicio() + " s, " + pa.darTablaOferta() + " o"
+				+ " WHERE i.servicio = s.id AND i.oferta = o.id AND o.habilitada = 1"
+				+ " AND o.fechaInicio <= ? AND o.fechaFin >= ? AND o.id NOT IN" 
 				+ " ("
 				+ " SELECT o.id FROM "+ pa.darTablaOferta() + " o, " + pa.darTablaReserva()+ " r"
 				+ " WHERE o.id = r.oferta AND ((r.inicio >= ?  AND r.inicio <= ?) OR (r.inicio <= ? AND r.fin >= ?))"
 				+ " )"
-				+ " ORDER BY oferta");
-		q.setParameters(tipo, periodo, inicio,fin,inicio,fin,inicio,inicio);
+				+ " ORDER BY i.oferta");
+		q.setParameters( inicio,fin,inicio,fin,inicio,inicio);
 		List<Object[]> ans = q.executeList();
 
 		List<Long> ofertas = new LinkedList<Long>();
@@ -208,6 +174,73 @@ class SQLIncluye
 			}
 		if(valid)
 			ofertas.add(act);
+		return ofertas;
+	}
+
+	public List<Long> darOfertasConServiciosYTipo(PersistenceManager pm, ArrayList<String> lista, String tipo, String periodo, TIMESTAMP inicio, TIMESTAMP fin) {
+		Query q = pm.newQuery(SQL, "SELECT i.oferta, s.nombre"
+				+ " FROM " + pa.darTablaIncluye() + " i, " + pa.darTablaServicio() + " s, " + pa.darTablaOferta() + " o, " + pa.darTablaVivienda() + " v"
+				+ " WHERE i.servicio = s.id AND i.oferta = o.id AND o.vivienda = v.id AND o.habilitada = 1"
+				+ " AND v.tipo = ? AND o.periodo = ? AND o.fechaInicio <= ? AND o.fechaFin >= ? AND o.id NOT IN" 
+				+ " ("
+				+ " SELECT o.id FROM "+ pa.darTablaOferta() + " o, " + pa.darTablaReserva()+ " r"
+				+ " WHERE o.id = r.oferta AND ((r.inicio >= ?  AND r.inicio <= ?) OR (r.inicio <= ? AND r.fin >= ?))"
+				+ " )"
+				+ " ORDER BY i.oferta");
+		q.setParameters(tipo, periodo, inicio,fin,inicio,fin,inicio,inicio);
+		List<Object[]> ans = q.executeList();
+
+		List<Long> ofertas = new LinkedList<Long>();
+
+		
+		Long act = ((BigDecimal) ans.get(0)[0]).longValue();
+		boolean valid = true;
+		List<String> servicios = new LinkedList<String>();
+
+		for (Object[] objects: ans) {
+			Long read = ((BigDecimal) objects[0]).longValue();
+			if(read == act) 
+				servicios.add( objects[1].toString() );
+			else {
+				if(lista != null)
+					for (String servicio : lista) {
+						if(!listaContieneString(servicio, servicios)) {
+							valid = false;
+							break;
+						}
+					}
+				if(valid)
+					ofertas.add(read);
+				act = read;
+				servicios = new LinkedList<String>();
+				servicios.add( objects[1].toString() );
+			}
+		}
+		if(lista !=null)
+			for (String servicio : lista) {
+				if(!listaContieneString(servicio, servicios)) {
+					valid = false;
+					break;
+				}
+			}
+		if(valid)
+			ofertas.add(act);
+		return ofertas;
+	}
+	
+	public List<Oferta> darOfertasConServiciosYTipo(PersistenceManager pm, String tipo, String periodo, TIMESTAMP inicio, TIMESTAMP fin) {
+		Query q = pm.newQuery(SQL, "SELECT o.id, o.PRECIO, o.PERIODO, o.VIVIENDA, o.FECHAINICIO, o.FECHAFIN, o.HABILITADA"
+				+ " FROM " + pa.darTablaOferta() + " o, " + pa.darTablaVivienda() + " v"
+				+ " WHERE o.vivienda = v.id AND o.habilitada = 1"
+				+ " AND v.tipo = ? AND o.periodo = ? AND o.fechaInicio <= ? AND o.fechaFin >= ? AND o.id NOT IN" 
+				+ " ("
+				+ " SELECT o.id FROM "+ pa.darTablaOferta() + " o, " + pa.darTablaReserva()+ " r"
+				+ " WHERE o.id = r.oferta AND ((r.inicio >= ?  AND r.inicio <= ?) OR (r.inicio <= ? AND r.fin >= ?))"
+				+ " )"
+				+ " ORDER BY o.id");
+		q.setParameters(tipo, periodo, inicio,fin,inicio,fin,inicio,inicio);
+		q.setClass(Oferta.class);
+		List<Oferta> ofertas = q.executeList();
 		return ofertas;
 	}
 

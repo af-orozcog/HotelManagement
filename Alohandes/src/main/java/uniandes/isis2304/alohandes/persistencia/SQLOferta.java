@@ -131,48 +131,6 @@ class SQLOferta
 		return (List<Oferta>) q.executeList();
 	}
 
-	public List<Oferta> darOfertasConServicios(PersistenceManager pm, ArrayList<String> lista, TIMESTAMP inicio, TIMESTAMP fin) {
-		List<Oferta> ofertas = darOfertas(pm);
-		for (String servicio : lista) {
-			Query q = pm.newQuery(SQL, "SELECT DISTINCT o.id, o.precio, o.periodo, o.vivienda, o.fechainicio, o.fechafin, o.habilitada "
-					+"FROM "+pa.darTablaOferta()+" o, "+pa.darTablaIncluye()+" i, "+pa.darTablaServicio()+" s, "+pa.darTablaVivienda()+" v"
-					+"WHERE o.id = i.oferta AND i.servicio = s.id AND o.vivienda = v.id AND "
-					+"(o.habilitada = 0 OR s.nombre <> ?"
-					+"OR o.fechaInicio > ? OR fechaFin < ? "
-					+"OR o.id IN( "
-					+"    SELECT o.id FROM OFERTA o, RESERVA r WHERE o.id = r.oferta AND "
-					+"    ( "
-					+"        ( "
-					+"        r.inicio >= ? AND r.inicio <= ?"
-					+"        ) "
-					+"        OR "
-					+"        ( "
-					+"        r.inicio <= ? AND r.fin >= ? "
-					+"        ) "
-					+"    ) "
-					+"    ) "
-					+"    ) "
-					);
-			q.setResultClass(Oferta.class);
-			q.setParameters(servicio, inicio,fin,inicio,fin,inicio,inicio);
-			List<Oferta> eliminar = q.executeList();
-			for (Oferta el : eliminar) {
-				ofertas.remove(el);
-			}
-		}
-
-		return ofertas;
-	}
-
-	public List<Oferta> darOfertasConIncluye(PersistenceManager pm){
-		Query q = pm.newQuery(SQL, "SELECT DISTINCT o.id, o.precio, o.periodo, o.vivienda, o.fechainicio, o.fechafin, o.habilitada "
-				+ "FROM " + pa.darTablaOferta() + " o, " + pa.darTablaIncluye() + " i "
-				+ "WHERE o.id = i.oferta");
-		q.setResultClass(Oferta.class);
-		return q.executeList();
-	}
-
-
 	/**
 	 * Crea y ejecuta la sentencia SQL para encontrar la informacion de todas las Ofertas de un
 	 * operador en la base de datos Alohandes

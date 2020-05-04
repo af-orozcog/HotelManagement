@@ -1034,10 +1034,11 @@ public class Alohandes
 	 * @param idCliente
 	 * @return
 	 */
-	public ReservaColectiva adicionarReservaColectiva(TIMESTAMP fechaRealizacion, int cantidad, long idCliente)
+	public ReservaColectiva adicionarReservaColectiva(TIMESTAMP fechaRealizacion, int cantidad, long idCliente, ArrayList<String> lista,
+			String tipo, String periodo, TIMESTAMP inicio, TIMESTAMP fin)
 	{
 		log.info ("Adicionando nuevo(a) Reserva ");
-		ReservaColectiva reserva = pa.adicionarReservaColectiva(fechaRealizacion, cantidad, idCliente);
+		ReservaColectiva reserva = pa.adicionarReservaColectiva(fechaRealizacion, cantidad, idCliente, lista, tipo, periodo, inicio, fin);
 		log.info ("Adicionando Reserva: " + reserva);
 		return reserva;
 	}
