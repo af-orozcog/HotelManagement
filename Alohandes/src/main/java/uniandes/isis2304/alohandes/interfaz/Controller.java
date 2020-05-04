@@ -474,39 +474,19 @@ public class Controller {
 		time = date.getTime();
 		TIMESTAMP fin = new TIMESTAMP(new Timestamp(time));
 
-		List<Oferta> ofertas = mundo.darOfertasConServiciosYTipo(lista, tipo, periodo, inicio, fin);
+		interfaz.printMessage("Ingrese el id del usuario que va a realizar la reserva");
+		Cliente usuario = mundo.darClientePorId(sc.nextInt());
 
-		interfaz.printMessage("Hay " + ofertas.size() + " ofertas disponibles");
-		if(n <= ofertas.size()) {
-			interfaz.printMessage("Es posible hacer las reservas");
-
-			interfaz.printMessage("Ingrese el id del usuario que va a realizar la reserva");
-			Cliente usuario = mundo.darClientePorId(sc.nextInt());
-
-			interfaz.printMessage("Reservando ofertas");
-
-			ReservaColectiva colectiva = mundo.adicionarReservaColectiva(new TIMESTAMP(new Timestamp(System.currentTimeMillis())), n, usuario.getId());
-			for (Oferta oferta : ofertas) {
-				mundo.adicionarReserva(inicio, fin, periodo, oferta.getId(), usuario.getId(), colectiva.getId());	
-			}
-
-			interfaz.printMessage("Reservas finalizadas, muchas gracias");
-
-		}
-		else
-		{
-			interfaz.printMessage("Lo sentimos, no hay suficientes reservas");
-		}
+		ReservaColectiva colectiva = mundo.adicionarReservaColectiva(new TIMESTAMP(new Timestamp(System.currentTimeMillis())), n, usuario.getId(),
+				lista, tipo, periodo, inicio, fin);
+		interfaz.printMessage("Reservas finalizadas, muchas gracias, la reserva colectiva quedo guardada con id: "+colectiva.getId());
 	}
 
 	public void req8(Scanner sc) {
 		interfaz.printMessage("Ingresa el id de la reserva colectiva a eliminar");
 		long idReserva = sc.nextLong();
 		interfaz.printMessage("Eliminado reserva colectiva");
-		List<Reserva> reservas = mundo.darReservasColectiva(idReserva);
-		for (Reserva reserva : reservas) {
-			mundo.eliminarReservaPorId(reserva.getId());
-		}
+
 		mundo.eliminarReservaColectivaPorId(idReserva);
 		interfaz.printMessage("Eliminada reserva colectiva");
 	}

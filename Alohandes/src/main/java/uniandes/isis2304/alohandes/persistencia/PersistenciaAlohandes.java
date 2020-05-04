@@ -1713,7 +1713,8 @@ public class PersistenciaAlohandes
 	 * @param x - x de Reserva
 	 * @return El objeto Reserva adicionado. null si ocurre alguna Excepción
 	 */
-	public ReservaColectiva adicionarReservaColectiva(TIMESTAMP fechaRealizacion, int cantidad, long idCliente)
+	public ReservaColectiva adicionarReservaColectiva(TIMESTAMP fechaRealizacion, int cantidad, long idCliente, ArrayList<String> lista, String tipo, 
+			String periodo, TIMESTAMP inicio, TIMESTAMP fin)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -1721,14 +1722,35 @@ public class PersistenciaAlohandes
 		{
 			tx.begin();
 			long idReserva = nextval ();
-			if(modoPerron)
-				idReserva = idPerron;
-			long tuplasInsertadas = sqlReservaColectiva.adicionarReservaColectiva(pm, idReserva, fechaRealizacion, cantidad, idCliente);
+			
+			List<Oferta> ofertas = darOfertasConServiciosYTipo(lista, tipo, periodo, inicio, fin);
+
+			System.out.println("Hay " + ofertas.size() + " ofertas disponibles");
+			long tuplasInsertadas; ReservaColectiva colectiva;
+			
+			if(cantidad <= ofertas.size()) {
+				System.out.println("Es posible hacer las reservas");
+				System.out.println("Reservando ofertas");
+
+				tuplasInsertadas = sqlReservaColectiva.adicionarReservaColectiva(pm, idReserva, fechaRealizacion, cantidad, idCliente);
+				colectiva = new ReservaColectiva(idReserva, cantidad, fechaRealizacion, idCliente);
+				
+				for (Oferta oferta : ofertas) {
+					adicionarReserva(inicio, fin, periodo, oferta.getId(), idCliente, colectiva.getId());	
+				}
+			}
+			else
+			{
+				System.out.println("Lo sentimos, no hay suficientes reservas");
+				tuplasInsertadas = 0;
+				colectiva = null;
+			}
+			
 			tx.commit();
 
 			log.trace ("Inserción de vivienda: " + idReserva + ": " + tuplasInsertadas + " tuplas insertadas");
 
-			return new ReservaColectiva(idReserva, cantidad, fechaRealizacion, idCliente);
+			return colectiva;
 		}
 		catch (Exception e)
 		{
@@ -1759,6 +1781,10 @@ public class PersistenciaAlohandes
 		try
 		{
 			tx.begin();
+			List<Reserva> reservas = darReservasColectiva(idReserva);
+			for (Reserva reserva : reservas) {
+				eliminarReservaPorId(reserva.getId());
+			}
 			long resp = sqlReservaColectiva.eliminarReservaColectivaPorId(pm, idReserva);
 			tx.commit();
 			return resp;
