@@ -2,13 +2,17 @@ package uniandes.isis2304.alohandes.interfaz;
 
 import java.io.FileReader;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.ParseException;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.text.ParseException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.util.List;
@@ -228,11 +232,11 @@ public class Controller {
 			interfaz.printMessage("ERROR DE PERIODO, No se puede elegir DIAS si no es esporadico");
 		else {
 			interfaz.printMessage("Ingrese la fecha de inicio de la propuesta (dd/MM/yyyy)");
-			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 			Date date; DATE inicio;
 			try {
 				date = dateFormat.parse(sc.next());
-				inicio = new DATE(date);
+				inicio = new DATE(date.getTime());
 
 			} catch (Exception e) {
 				interfaz.printMessage("Error en la escritura de la fecha");
@@ -243,7 +247,7 @@ public class Controller {
 			DATE fin;
 			try {
 				date = dateFormat.parse(sc.next());
-				fin = new DATE(date);
+				fin = new DATE(date.getTime());
 			} catch (Exception e) {
 				interfaz.printMessage("Error en la escritura de la fecha");
 				return;
@@ -294,11 +298,11 @@ public class Controller {
 	public void req4(Scanner sc) {
 
 		interfaz.printMessage("Ingrese la fecha de inicio de la reserva (dd/MM/yyyy)");
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date date; DATE inicio;
 		try {
 			date = dateFormat.parse(sc.next());
-			inicio = new DATE(date);
+			inicio = new DATE(date.getTime());
 		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
 			return;
@@ -308,7 +312,7 @@ public class Controller {
 		DATE fin;
 		try {
 			date = dateFormat.parse(sc.next());
-			fin = new DATE(date);
+			fin = new DATE(date.getTime());
 			
 		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
@@ -436,22 +440,31 @@ public class Controller {
 		interfaz.printMessage("Ingrese el perï¿½odo deseado");
 		String periodo = sc.next();
 
-		interfaz.printMessage("Ingrese la fecha de inicio de la reserva (dd/MM/yyyy)");
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		Date date; DATE inicio;
+		interfaz.printMessage("Ingrese el año de inicio");
+		int anio = sc.nextInt();
+		interfaz.printMessage("Ingrese el mes de inicio");
+		int mes = sc.nextInt();
+		interfaz.printMessage("Ingrese el dia de inicio");
+		int dia = sc.nextInt();
+		
+		DATE inicio;
 		try {
-			date = dateFormat.parse(sc.next());
-			inicio = new DATE(date);
+			Time temp = new Time(new GregorianCalendar(anio,mes,dia).getTimeInMillis());
+			inicio = new DATE(temp);
 		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
 			return;
 		}
 
-		interfaz.printMessage("Ingrese la fecha de fin de la reserva (dd/MM/yyyy)");
+		interfaz.printMessage("Ingrese el año de fin");
+		anio = sc.nextInt();
+		interfaz.printMessage("Ingrese el mes de fin");
+		mes = sc.nextInt();
+		interfaz.printMessage("Ingrese el dia de fin");
+		dia = sc.nextInt();
 		DATE fin;
 		try {
-			date = dateFormat.parse(sc.next());
-			fin = new DATE(date);
+			fin = new DATE(new GregorianCalendar(anio, mes, dia));
 			
 		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
@@ -629,11 +642,11 @@ public class Controller {
 		int monto = sc.nextInt();
 
 		interfaz.printMessage("Ingrese la fecha de inicio del seguro (dd/MM/yyyy)");
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date date; DATE inicio;
 		try {
 			date = dateFormat.parse(sc.next());
-			inicio = new DATE(date);
+			inicio = new DATE(date.getTime());
 		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
 			return null;
@@ -643,7 +656,7 @@ public class Controller {
 		DATE fin;
 		try {
 			date = dateFormat.parse(sc.next());
-			fin = new DATE(date);
+			fin = new DATE(date.getTime());
 			
 		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
