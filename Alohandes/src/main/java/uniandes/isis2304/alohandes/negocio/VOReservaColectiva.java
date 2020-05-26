@@ -3,7 +3,7 @@ package uniandes.isis2304.alohandes.negocio;
 import java.sql.Timestamp;
 import java.util.List;
 
-import oracle.sql.TIMESTAMP;
+import oracle.sql.DATE;
 
 public interface VOReservaColectiva {
 
@@ -20,12 +20,12 @@ public interface VOReservaColectiva {
 	/**
 	 * @return fechaRealizacion
 	 */
-	public TIMESTAMP getFechaRealizacion();
+	public DATE getFechaRealizacion();
 	
 	/**
 	 * @param fechaRealizacion - fecha de realizacion de la reserva
 	 */
-	public void setFechaRealizacion(TIMESTAMP fechaRealizacion);
+	public void setFechaRealizacion(DATE fechaRealizacion);
 	
 	/**
 	 * @return idCliente

@@ -2,7 +2,7 @@ package uniandes.isis2304.alohandes.negocio;
 
 import java.sql.Timestamp;
 
-import oracle.sql.TIMESTAMP;
+import oracle.sql.DATE;
 
 public interface VOGanancias {
 	/**
@@ -18,12 +18,12 @@ public interface VOGanancias {
 	/**
 	 * @return the fecha
 	 */
-	public TIMESTAMP getFecha();
+	public DATE getFecha();
 
 	/**
 	 * @param fecha the fecha to set
 	 */
-	public void setFecha(TIMESTAMP fecha);
+	public void setFecha(DATE fecha);
 
 	/**
 	 * @return idOperador

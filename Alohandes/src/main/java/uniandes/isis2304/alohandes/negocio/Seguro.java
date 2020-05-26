@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
 
-import oracle.sql.TIMESTAMP;
+import oracle.sql.DATE;
 
 public class Seguro implements VOSeguro{
 	
@@ -30,12 +30,12 @@ public class Seguro implements VOSeguro{
 	/**
 	 * fecha de inicio del seguro
 	 */
-	private TIMESTAMP inicio_seguro;
+	private DATE inicio_seguro;
 	
 	/**
 	 * fecha de finalización del seguro
 	 */
-	private TIMESTAMP fin_seguro;
+	private DATE fin_seguro;
 	
 	/**
 	 * la lista de asegurados
@@ -66,7 +66,7 @@ public class Seguro implements VOSeguro{
 	 * @param inicioSeguro - la fecha de inicio del seguro
 	 * @param finSeguro - la fecha de finalización del seguro
 	 */
-	public Seguro(long id, String empresa, int monto, TIMESTAMP inicioSeguro, TIMESTAMP finSeguro) {
+	public Seguro(long id, String empresa, int monto, DATE inicioSeguro, DATE finSeguro) {
 		this.id = id;
 		this.empresa = empresa;
 		this.monto = monto;
@@ -120,28 +120,28 @@ public class Seguro implements VOSeguro{
 	/**
 	 * @return inicioSeguro
 	 */
-	public TIMESTAMP getInicio_seguro() {
+	public DATE getInicio_seguro() {
 		return inicio_seguro;
 	}
 
 	/**
 	 * @param inicioSeguro - fecha de inicio del seguro
 	 */
-	public void setInicio_seguro(TIMESTAMP inicioSeguro) {
+	public void setInicio_seguro(DATE inicioSeguro) {
 		this.inicio_seguro = inicioSeguro;
 	}
 
 	/**
 	 * @return finSeguro
 	 */
-	public TIMESTAMP getFin_seguro() {
+	public DATE getFin_seguro() {
 		return fin_seguro;
 	}
 
 	/**
 	 * @param finSeguro - fecha de finalización del seguro
 	 */
-	public void setFin_seguro(TIMESTAMP finSeguro) {
+	public void setFin_seguro(DATE finSeguro) {
 		this.fin_seguro = finSeguro;
 	}
 

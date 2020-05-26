@@ -38,7 +38,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import oracle.sql.TIMESTAMP;
+import oracle.sql.DATE;
+import oracle.sql.DATE;
 import uniandes.isis2304.alohandes.negocio.Apartamento;
 import uniandes.isis2304.alohandes.negocio.Cliente;
 import uniandes.isis2304.alohandes.negocio.Cuarto;
@@ -872,7 +873,7 @@ public class PersistenciaAlohandes
 	 * @param x - x de Seguro
 	 * @return El objeto Seguro adicionado. null si ocurre alguna Excepción
 	 */
-	public Seguro adicionarSeguro(String empresa, int monto, TIMESTAMP inicioSeguro, TIMESTAMP finSeguro)
+	public Seguro adicionarSeguro(String empresa, int monto, DATE inicioSeguro, DATE finSeguro)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -1223,7 +1224,7 @@ public class PersistenciaAlohandes
 	 * @param x - x de Hoteleria
 	 * @return El objeto Hoteleria adicionado. null si ocurre alguna Excepción
 	 */
-	public Hoteleria adicionarHoteleria(String nombre, String email, String numero, String tipoHoteleria, TIMESTAMP horaApertura, TIMESTAMP horaCierre)
+	public Hoteleria adicionarHoteleria(String nombre, String email, String numero, String tipoHoteleria, String horaApertura, String horaCierre)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -1398,7 +1399,7 @@ public class PersistenciaAlohandes
 	 * @param x - x de Ganancias
 	 * @return El objeto Ganancias adicionado. null si ocurre alguna Excepción
 	 */
-	public Ganancias adicionarGanancias(long cantidad, TIMESTAMP fecha ,long idOperador)
+	public Ganancias adicionarGanancias(long cantidad, DATE fecha ,long idOperador)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -1486,7 +1487,7 @@ public class PersistenciaAlohandes
 			cal.setTimeInMillis(0);
 			cal.set(anio, mes, 0, 0, 0, 0 );
 
-			adicionarGanancias(aumento, new TIMESTAMP(new Timestamp(cal.getTime().getTime())), idOperador);
+			adicionarGanancias(aumento, new DATE(new Timestamp(cal.getTime().getTime())), idOperador);
 		}
 		else
 			sqlGanancias.aumentarGanancias(pmf.getPersistenceManager(), aumento, idOperador, mes, anio);
@@ -1603,7 +1604,7 @@ public class PersistenciaAlohandes
 	 * @param x - x de Reserva
 	 * @return El objeto Reserva adicionado. null si ocurre alguna Excepción
 	 */
-	public Reserva adicionarReserva(TIMESTAMP inicio, TIMESTAMP fin, String periodoArrendamiento, long idUsuario, long idOferta, long idColectiva)
+	public Reserva adicionarReserva(DATE inicio, DATE fin, String periodoArrendamiento, long idUsuario, long idOferta, long idColectiva)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -1713,8 +1714,8 @@ public class PersistenciaAlohandes
 	 * @param x - x de Reserva
 	 * @return El objeto Reserva adicionado. null si ocurre alguna Excepción
 	 */
-	public ReservaColectiva adicionarReservaColectiva(TIMESTAMP fechaRealizacion, int cantidad, long idCliente, ArrayList<String> lista, String tipo, 
-			String periodo, TIMESTAMP inicio, TIMESTAMP fin)
+	public ReservaColectiva adicionarReservaColectiva(DATE fechaRealizacion, int cantidad, long idCliente, ArrayList<String> lista, String tipo, 
+			String periodo, DATE inicio, DATE fin)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -1815,7 +1816,7 @@ public class PersistenciaAlohandes
 	 * @param x - x de Oferta
 	 * @return El objeto Oferta adicionado. null si ocurre alguna Excepción
 	 */
-	public Oferta adicionarOferta(long precio, String periodo, long vivienda, TIMESTAMP fechaInicio, TIMESTAMP fechaFin)
+	public Oferta adicionarOferta(long precio, String periodo, long vivienda, DATE fechaInicio, DATE fechaFin)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -1905,7 +1906,7 @@ public class PersistenciaAlohandes
 	 * @param lista Servicios requeridos
 	 * @return lista de Ofertas con los servicios requeridos
 	 */
-	public List<Oferta> darOfertasConServicios(ArrayList<String> lista, TIMESTAMP inicio, TIMESTAMP fin) {
+	public List<Oferta> darOfertasConServicios(ArrayList<String> lista, DATE inicio, DATE fin) {
 
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -1944,7 +1945,7 @@ public class PersistenciaAlohandes
 	 * @param tipo Tipo de operador
 	 * @return lista de Ofertas con los servicios requeridos
 	 */
-	public List<Oferta> darOfertasConServiciosYTipo(ArrayList<String> lista, String tipo, String periodo, TIMESTAMP inicio, TIMESTAMP fin) {
+	public List<Oferta> darOfertasConServiciosYTipo(ArrayList<String> lista, String tipo, String periodo, DATE inicio, DATE fin) {
 
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -2296,7 +2297,7 @@ public class PersistenciaAlohandes
 			tx.begin();
 			sqlOferta.deshabilitarOferta(pm, idOferta);
 			List<Reserva> reservasACancelar = sqlReserva.darReservasPorOferta(pm, idOferta);
-			TIMESTAMP currentTimestamp = new TIMESTAMP( new Timestamp(System.currentTimeMillis()));
+			DATE currentTimestamp = new DATE( new Timestamp(System.currentTimeMillis()));
 			for(Reserva va: reservasACancelar) {
 				if(!va.getFin().dateValue().after(currentTimestamp.dateValue())) continue;
 				long idColectiva =va.getColectiva();
@@ -2305,7 +2306,7 @@ public class PersistenciaAlohandes
 					System.out.println("La reserva " + va.getId() + " queda desligada de la reserva colectiva: " + idColectiva);
 				}
 				eliminarReservaPorId(va.getId());
-				TIMESTAMP ini = va.getInicio(), fin = va.getFin();
+				DATE ini = va.getInicio(), fin = va.getFin();
 				Oferta of = sqlOferta.darOfertasPorRangoFechaDisponibles(pm, ini, fin);
 				if(of == null)
 					ans.add(va);

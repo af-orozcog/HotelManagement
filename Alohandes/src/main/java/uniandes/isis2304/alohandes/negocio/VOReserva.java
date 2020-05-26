@@ -2,7 +2,7 @@ package uniandes.isis2304.alohandes.negocio;
 
 import java.sql.Timestamp;
 
-import oracle.sql.TIMESTAMP;
+import oracle.sql.DATE;
 
 public interface VOReserva {
 	/**
@@ -18,22 +18,22 @@ public interface VOReserva {
 	/**
 	 * @return inicio
 	 */
-	public TIMESTAMP getInicio();
+	public DATE getInicio();
 
 	/**
 	 * @param inicio - el inicio de la reserva
 	 */
-	public void setInicio(TIMESTAMP inicio);
+	public void setInicio(DATE inicio);
 
 	/**
 	 * @return duracion
 	 */
-	public TIMESTAMP getFin();
+	public DATE getFin();
 
 	/**
 	 * @param duracion - la duracion de la reserva
 	 */
-	public void setFin(TIMESTAMP fin);
+	public void setFin(DATE fin);
 
 	/**
 	 * @return periodoArrendamiento

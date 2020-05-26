@@ -24,7 +24,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import oracle.sql.TIMESTAMP;
+import oracle.sql.DATE;
 import uniandes.isis2304.alohandes.negocio.Ganancias;
 import uniandes.isis2304.alohandes.negocio.Oferta;
 import uniandes.isis2304.alohandes.negocio.Operador;
@@ -78,7 +78,7 @@ class SQLOferta
 	 * @param fechaFin - 
 	 * @return El número de tuplas insertadas 
 	 */
-	public long adicionarOferta (PersistenceManager pm, long idOferta, long precio, String periodo, long idVivienda, TIMESTAMP fechaInicio, TIMESTAMP fechaFin)
+	public long adicionarOferta (PersistenceManager pm, long idOferta, long precio, String periodo, long idVivienda, DATE fechaInicio, DATE fechaFin)
 	{
 		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaOferta () + "(id, precio, periodo, vivienda, fechainicio, fechafin, habilitada) values (? ,? ,? ,? ,? ,? ,?)");
 		q.setParameters( idOferta, precio, periodo, idVivienda, fechaInicio, fechaFin, 1 );
@@ -151,9 +151,9 @@ class SQLOferta
 			int precio = ((BigDecimal) datos [1]).intValue();
 			String periodo = ((String) datos [2]);
 			long vivienda = ((BigDecimal) datos [3]).longValue();
-			TIMESTAMP fechaInicio = (TIMESTAMP) datos [4];
+			DATE fechaInicio = (DATE) datos [4];
 			System.out.println("veamos esa fecha que gonorrea es: "+ fechaInicio);
-			TIMESTAMP fechaFin = (TIMESTAMP) datos [5];
+			DATE fechaFin = (DATE) datos [5];
 			resp.add (new Oferta(idoferta, precio, periodo, fechaInicio, fechaFin, vivienda));
 		}
 		return resp;
@@ -166,7 +166,7 @@ class SQLOferta
 	 * @param fin
 	 * @return
 	 */
-	public Oferta darOfertasPorRangoFechaDisponibles(PersistenceManager pm, TIMESTAMP inicio, TIMESTAMP fin){
+	public Oferta darOfertasPorRangoFechaDisponibles(PersistenceManager pm, DATE inicio, DATE fin){
 		Query q = pm.newQuery(SQL, ""
 				+ "SELECT * FROM " + pa.darTablaOferta()
 				+ " WHERE fechaInicio <= ? AND fechaFin >= ? AND habilitado = 1 AND id NOT IN"

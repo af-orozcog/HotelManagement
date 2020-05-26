@@ -21,7 +21,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import oracle.sql.TIMESTAMP;
+import oracle.sql.DATE;
 import uniandes.isis2304.alohandes.negocio.Ganancias;
 import uniandes.isis2304.alohandes.negocio.Operador;
 
@@ -72,7 +72,7 @@ class SQLGanancias
 	 * @param idOperador - 
 	 * @return El número de tuplas insertadas 
 	 */
-	public long adicionarGanancias (PersistenceManager pm, long idGanancias, long cantidad,TIMESTAMP fecha, long idOperador)
+	public long adicionarGanancias (PersistenceManager pm, long idGanancias, long cantidad,DATE fecha, long idOperador)
 	{
 		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaGanancias () + "(id, cantidad, fecha, operador) values (? ,? ,? ,?)");
 		q.setParameters( idGanancias,cantidad ,fecha ,idOperador );
@@ -123,7 +123,7 @@ class SQLGanancias
 		cal.setTimeInMillis(0);
 		cal.set(anio, mes, 0, 0, 0, 0);
 		
-		q.setParameters(new TIMESTAMP(new Timestamp(cal.getTime().getTime())), idOperador);
+		q.setParameters(new DATE(new Timestamp(cal.getTime().getTime())), idOperador);
 		return (Ganancias) q.executeUnique();
 	}
 

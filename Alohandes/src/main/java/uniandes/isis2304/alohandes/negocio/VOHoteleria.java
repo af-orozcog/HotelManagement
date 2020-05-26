@@ -2,7 +2,7 @@ package uniandes.isis2304.alohandes.negocio;
 
 import java.sql.Timestamp;
 
-import oracle.sql.TIMESTAMP;
+import oracle.sql.DATE;
 
 public interface VOHoteleria {
 	/**
@@ -18,20 +18,20 @@ public interface VOHoteleria {
 	/**
 	 * @return horaApertura
 	 */
-	public TIMESTAMP getHora_apertura();
+	public String getHora_apertura();
 
 	/**
 	 * @param horaApertura - la nueva hora de apertura
 	 */
-	public void setHora_apertura(TIMESTAMP horaApertura);
+	public void setHora_apertura(String horaApertura);
 
 	/**
 	 * @return horaCierre
 	 */
-	public TIMESTAMP getHora_cierre();
+	public String getHora_cierre();
 
 	/**
 	 * @param horaCierre - la nueva hora de cierre
 	 */
-	public void setHora_cierre(TIMESTAMP horaCierre);
+	public void setHora_cierre(String horaCierre);
 }

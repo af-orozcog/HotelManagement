@@ -26,7 +26,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import com.google.gson.JsonObject;
 
-import oracle.sql.TIMESTAMP;
+import oracle.sql.DATE;
 import uniandes.isis2304.alohandes.persistencia.PersistenciaAlohandes;
 
 /**
@@ -374,7 +374,7 @@ public class Alohandes
 	 * @param finSeguro - finSeguro del Seguro
 	 * @return El objeto Seguro adicionado. null si ocurre alguna Excepcién
 	 */
-	public Seguro adicionarSeguro ( String empresa, int monto, TIMESTAMP inicioSeguro, TIMESTAMP finSeguro)
+	public Seguro adicionarSeguro ( String empresa, int monto, DATE inicioSeguro, DATE finSeguro)
 	{
 		log.info ("Adicionando nuevo(a) Seguro ");
 		Seguro seguro = pa.adicionarSeguro(empresa, monto, inicioSeguro, finSeguro);	
@@ -646,7 +646,7 @@ public class Alohandes
 	 * @param horaCierre - horaCierre del Hoteleria
 	 * @return El objeto Hoteleria adicionado. null si ocurre alguna Excepcién
 	 */
-	public Hoteleria adicionarHoteleria (String nombre, String email, String numero, String tipoHoteleria, TIMESTAMP horaApertura, TIMESTAMP horaCierre)
+	public Hoteleria adicionarHoteleria (String nombre, String email, String numero, String tipoHoteleria, String horaApertura, String horaCierre)
 	{
 		log.info ("Adicionando nuevo(a) Hoteleria ");
 		Hoteleria hoteleria = pa.adicionarHoteleria(nombre, email, numero, tipoHoteleria, horaApertura, horaCierre);	
@@ -775,7 +775,7 @@ public class Alohandes
 	 * @param idOperador - idOperador del Ganancias
 	 * @return El objeto Ganancias adicionado. null si ocurre alguna Excepcién
 	 */
-	public Ganancias adicionarGanancias (long cantidad, TIMESTAMP fecha, long idOperador)
+	public Ganancias adicionarGanancias (long cantidad, DATE fecha, long idOperador)
 	{
 		log.info ("Adicionando nuevo(a) Ganancias ");
 		Ganancias ganancias = pa.adicionarGanancias(cantidad, fecha, idOperador);	
@@ -936,7 +936,7 @@ public class Alohandes
 	 * @param idUsuario - idUsuario del Reserva
 	 * @return El objeto Reserva adicionado. null si ocurre alguna Excepcién
 	 */
-	public Reserva adicionarReserva (TIMESTAMP inicio1, TIMESTAMP fin1, String periodoArrendamiento, long idOferta, long idUsuario, long idColectiva)
+	public Reserva adicionarReserva (DATE inicio1, DATE fin1, String periodoArrendamiento, long idOferta, long idUsuario, long idColectiva)
 	{
 		log.info ("Adicionando nuevo(a) Reserva ");
 		Reserva reserva = pa.adicionarReserva(inicio1, fin1, periodoArrendamiento, idUsuario, idOferta, idColectiva);
@@ -1034,8 +1034,8 @@ public class Alohandes
 	 * @param idCliente
 	 * @return
 	 */
-	public ReservaColectiva adicionarReservaColectiva(TIMESTAMP fechaRealizacion, int cantidad, long idCliente, ArrayList<String> lista,
-			String tipo, String periodo, TIMESTAMP inicio, TIMESTAMP fin)
+	public ReservaColectiva adicionarReservaColectiva(DATE fechaRealizacion, int cantidad, long idCliente, ArrayList<String> lista,
+			String tipo, String periodo, DATE inicio, DATE fin)
 	{
 		log.info ("Adicionando nuevo(a) Reserva ");
 		ReservaColectiva reserva = pa.adicionarReservaColectiva(fechaRealizacion, cantidad, idCliente, lista, tipo, periodo, inicio, fin);
@@ -1068,7 +1068,7 @@ public class Alohandes
 	 * @param idVivienda - idVivienda del Oferta
 	 * @return El objeto Oferta adicionado. null si ocurre alguna Excepcién
 	 */
-	public Oferta adicionarOferta ( long precio, String periodo, long idVivienda, TIMESTAMP fechaInicio, TIMESTAMP fechaFin)
+	public Oferta adicionarOferta ( long precio, String periodo, long idVivienda, DATE fechaInicio, DATE fechaFin)
 	{
 		log.info ("Adicionando nuevo(a) Oferta ");
 		Oferta oferta = pa.adicionarOferta(precio, periodo, idVivienda, fechaInicio, fechaFin);
@@ -1137,7 +1137,7 @@ public class Alohandes
 	 * @param lista Servicios requeridos
 	 * @return lista de Ofertas con los servicios requeridos
 	 */
-	public List<Oferta> darOfertasConServicios(ArrayList<String> lista, TIMESTAMP inicio, TIMESTAMP fin) {
+	public List<Oferta> darOfertasConServicios(ArrayList<String> lista, DATE inicio, DATE fin) {
 		log.info("Buscando ofertas con servicos");
 		List<Oferta> ofertas = pa.darOfertasConServicios(lista, inicio, fin);
 		log.info("Encontrado ofertas");
@@ -1150,7 +1150,7 @@ public class Alohandes
 	 * @param tipo Tipo de operador requerido
 	 * @return lista de Ofertas con los servicios requeridos
 	 */
-	public List<Oferta> darOfertasConServiciosYTipo(ArrayList<String> lista, String tipo, String periodo, TIMESTAMP inicio, TIMESTAMP fin) {
+	public List<Oferta> darOfertasConServiciosYTipo(ArrayList<String> lista, String tipo, String periodo, DATE inicio, DATE fin) {
 		log.info("Buscando ofertas con servicos");
 		List<Oferta> ofertas = pa.darOfertasConServiciosYTipo(lista, tipo, periodo, inicio, fin);
 		log.info("Encontrado ofertas");

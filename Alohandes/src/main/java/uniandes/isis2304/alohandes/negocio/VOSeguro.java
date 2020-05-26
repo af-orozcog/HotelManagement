@@ -3,7 +3,7 @@ package uniandes.isis2304.alohandes.negocio;
 import java.sql.Timestamp;
 import java.util.List;
 
-import oracle.sql.TIMESTAMP;
+import oracle.sql.DATE;
 
 public interface VOSeguro {
 	/**
@@ -39,22 +39,22 @@ public interface VOSeguro {
 	/**
 	 * @return inicioSeguro
 	 */
-	public TIMESTAMP getInicio_seguro();
+	public DATE getInicio_seguro();
 
 	/**
 	 * @param inicioSeguro - fecha de inicio del seguro
 	 */
-	public void setInicio_seguro(TIMESTAMP inicioSeguro);
+	public void setInicio_seguro(DATE inicioSeguro);
 
 	/**
 	 * @return finSeguro
 	 */
-	public TIMESTAMP getFin_seguro();
+	public DATE getFin_seguro();
 
 	/**
 	 * @param finSeguro - fecha de finalización del seguro
 	 */
-	public void setFin_seguro(TIMESTAMP finSeguro);
+	public void setFin_seguro(DATE finSeguro);
 
 	/**
 	 * @return asegurados

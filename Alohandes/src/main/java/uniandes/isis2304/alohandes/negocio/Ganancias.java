@@ -2,7 +2,7 @@ package uniandes.isis2304.alohandes.negocio;
 
 import java.sql.Timestamp;
 
-import oracle.sql.TIMESTAMP;
+import oracle.sql.DATE;
 
 public class Ganancias implements VOGanancias{
 	
@@ -23,7 +23,7 @@ public class Ganancias implements VOGanancias{
 	/**
 	 * 
 	 */
-	private TIMESTAMP fecha;
+	private DATE fecha;
 
 	/**
 	 * el id del operador 
@@ -51,7 +51,7 @@ public class Ganancias implements VOGanancias{
 	 * @param año - el año de la ganacia
 	 * @param idOperador - el id del operador
 	 */
-	public Ganancias(long id, long cantidad, TIMESTAMP fecha, long operador) {
+	public Ganancias(long id, long cantidad, DATE fecha, long operador) {
 		this.id = id;
 		this.cantidad = cantidad;
 		this.fecha = fecha;
@@ -65,14 +65,14 @@ public class Ganancias implements VOGanancias{
 	/**
 	 * @return the fecha
 	 */
-	public TIMESTAMP getFecha() {
+	public DATE getFecha() {
 		return fecha;
 	}
 
 	/**
 	 * @param fecha the fecha to set
 	 */
-	public void setFecha(TIMESTAMP fecha) {
+	public void setFecha(DATE fecha) {
 		this.fecha = fecha;
 	}
 

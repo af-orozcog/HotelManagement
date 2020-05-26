@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
 
-import oracle.sql.TIMESTAMP;
+import oracle.sql.DATE;
 
 public class Oferta implements Comparable<Oferta>, VOOferta{
 
@@ -45,12 +45,12 @@ public class Oferta implements Comparable<Oferta>, VOOferta{
 	/**
 	 * la fecha de inicio de la oferta
 	 */
-	private TIMESTAMP fechainicio;
+	private DATE fechainicio;
 
 	/**
 	 * fecha final de la oferta
 	 */
-	private TIMESTAMP fechafin;
+	private DATE fechafin;
 
 	/**
 	 * si la oferta esta habilitada
@@ -84,7 +84,7 @@ public class Oferta implements Comparable<Oferta>, VOOferta{
 	 * @param vivienda - id de la vivienda de la oferta
 	 */
 	public Oferta(long id, long precio, String periodo,
-			TIMESTAMP fechaInicio, TIMESTAMP fechaFin, long vivienda) {
+			DATE fechaInicio, DATE fechaFin, long vivienda) {
 		super();
 		this.id = id;
 		this.precio = precio;
@@ -185,28 +185,28 @@ public class Oferta implements Comparable<Oferta>, VOOferta{
 	/**
 	 * @return fechaInicio
 	 */
-	public TIMESTAMP getFechainicio() {
+	public DATE getFechainicio() {
 		return fechainicio;
 	}
 
 	/**
 	 * @param fechaInicio - fecha de inicio de la oferta
 	 */
-	public void setFechainicio(TIMESTAMP fechainicio) {
+	public void setFechainicio(DATE fechainicio) {
 		this.fechainicio = fechainicio;
 	}
 
 	/**
 	 * @return fechaFin
 	 */
-	public TIMESTAMP getFechafin() {
+	public DATE getFechafin() {
 		return fechafin;
 	}
 
 	/**
 	 * @param fechaFin - fecha de fin de la oferta
 	 */
-	public void setFechafin(TIMESTAMP fechafin) {
+	public void setFechafin(DATE fechafin) {
 		this.fechafin = fechafin;
 	}
 

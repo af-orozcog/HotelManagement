@@ -19,12 +19,12 @@ public class Hoteleria extends Operador implements VOHoteleria{
 	/**
 	 * hora de apertura del hotel
 	 */
-	private TIMESTAMP hora_apertura;
+	private String hora_apertura;
 	
 	/**
 	 * hora de cierre del hotel
 	 */
-	private TIMESTAMP hora_cierre;
+	private String hora_cierre;
 	
 	/* ****************************************************************
 	 * 			Métodos 
@@ -51,7 +51,7 @@ public class Hoteleria extends Operador implements VOHoteleria{
 	 * @param horaCierre - la hora de cierre
 	 */
 	public Hoteleria(long id, String nombre, String email, String numero, String tipoHoteleria,
-			TIMESTAMP horaApertura, TIMESTAMP horaCierre) {
+			String horaApertura, String horaCierre) {
 		super(id,nombre,email,numero,"HOTELERIA");
 		this.tipo_hoteleria = tipoHoteleria;
 		this.hora_apertura = horaApertura;
@@ -75,28 +75,28 @@ public class Hoteleria extends Operador implements VOHoteleria{
 	/**
 	 * @return horaApertura
 	 */
-	public TIMESTAMP getHora_apertura() {
+	public String getHora_apertura() {
 		return hora_apertura;
 	}
 
 	/**
 	 * @param horaApertura - la nueva hora de apertura
 	 */
-	public void setHora_apertura(TIMESTAMP horaApertura) {
+	public void setHora_apertura(String horaApertura) {
 		this.hora_apertura = horaApertura;
 	}
 
 	/**
 	 * @return horaCierre
 	 */
-	public TIMESTAMP getHora_cierre() {
+	public String getHora_cierre() {
 		return hora_cierre;
 	}
 
 	/**
 	 * @param horaCierre - la nueva hora de cierre
 	 */
-	public void setHora_cierre(TIMESTAMP horaCierre) {
+	public void setHora_cierre(String horaCierre) {
 		this.hora_cierre = horaCierre;
 	}
 	
