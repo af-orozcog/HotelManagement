@@ -237,8 +237,7 @@ public class Controller {
 			//inicio = new Date(date)
 			try {
 				date = dateFormat.parse(sc.next());
-				inicio = new DATE(date.getTime());
-
+				inicio = new DATE();
 			} catch (Exception e) {
 				interfaz.printMessage("Error en la escritura de la fecha");
 				return;
