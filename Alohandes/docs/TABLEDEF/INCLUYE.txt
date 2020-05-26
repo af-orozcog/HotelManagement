@@ -1,0 +1,3 @@
+oferta,Numbers,Sequence,2|1|2|0
+servicio,Numbers,Sequence,1|7|1|1
+incluido,Numbers,Integer,0|1

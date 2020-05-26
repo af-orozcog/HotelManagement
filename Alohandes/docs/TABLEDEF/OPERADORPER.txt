@@ -1,0 +1,5 @@
+id,Numbers,Sequence,60001|0|1|0
+nombre,Text,Fixed-length String,10|10|True|False|False|False
+email,Human,E-Mail Address (name@domain.tld)
+numero,Human,Phone Number (###-###-####)
+tipo_operador,Set,From Fixed List,0,0,PERSONA_NATURAL

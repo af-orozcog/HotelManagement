@@ -1,0 +1,5 @@
+id,Numbers,Sequence,1|0|1|1
+direccion,Text,Fixed-length String,10|10|True|True|True|False
+cupos,Numbers,Integer,1|4
+operador,Numbers,Sequence,1|1|1|0
+tipo,Set,From Fixed List,0,0,HABITACION

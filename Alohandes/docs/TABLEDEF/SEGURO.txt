@@ -1,0 +1,5 @@
+id,Numbers,Sequence,1|0|1|1
+empresa,Text,Fixed Number of Words,1|1
+monto,Numbers,Integer,500|10000
+inicio_seguro,Time,Date,43862|43922|3|False|yyyy/MM/d|h:nn:ss
+fin_seguro,Time,Date,43983|44044|3|False|yyyy/MM/d|h:nn:ss

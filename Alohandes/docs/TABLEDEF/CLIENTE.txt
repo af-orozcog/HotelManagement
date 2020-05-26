@@ -1,0 +1,6 @@
+id,Numbers,Sequence,1|0|1|1
+nombre,Human,Full Name,True|True
+email,Human,E-Mail Address (name@domain.tld)
+numero,Human,Phone Number (###-###-####)
+documento,Text,Masked String,99999-9999
+tipo_cliente,Set,From Fixed List,0,0,PROFESOR|EMPLEADO|EGRESADO|ESTUDIANTE|PADRE|NO_RELACIONADO|VECINO

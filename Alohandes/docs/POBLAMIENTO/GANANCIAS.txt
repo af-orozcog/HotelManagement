@@ -1,0 +1,4 @@
+id,Numbers,Sequence,1|0|1|1
+cantidad,Numbers,Integer,10|2000
+fecha,Time,Date,43952|43952|3|False|yyyy/MM/d|h:nn:ss
+operador,Numbers,Sequence,1|0|1|0

@@ -1,0 +1,3 @@
+id,Numbers,Sequence,60001|0|1|1
+documento,Text,Masked String,99999-9999
+tipo_persona,Set,From Fixed List,0,0,PROFESOR|EMPLEADO|EGRESADO|ESTUDIANTE|PADRE|NO_RELACIONADO|VECINO

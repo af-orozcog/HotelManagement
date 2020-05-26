@@ -1,0 +1,8 @@
+id,nombre,costo
+1,Gas,408
+2,Alcantarillado,473
+3,Limpieza,211
+4,Calentador,458
+5,Almuerzo,488
+6,Internet,381
+7,Cocina,170

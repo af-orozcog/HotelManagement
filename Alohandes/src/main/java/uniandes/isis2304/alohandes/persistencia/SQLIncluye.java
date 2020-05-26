@@ -16,6 +16,7 @@
 package uniandes.isis2304.alohandes.persistencia;
 
 import java.math.BigDecimal;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -189,7 +190,6 @@ class SQLIncluye
 				+ " ORDER BY i.oferta");
 		q.setParameters(tipo, periodo, inicio,fin,inicio,fin,inicio,inicio);
 		List<Object[]> ans = q.executeList();
-
 		List<Long> ofertas = new LinkedList<Long>();
 
 		

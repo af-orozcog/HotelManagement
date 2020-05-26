@@ -1953,7 +1953,7 @@ public class PersistenciaAlohandes
 		{
 			tx.begin();
 			List<Oferta> ofertas;
-			if(lista != null || lista.size() == 0) {
+			if(lista == null || lista.size() == 0) {
 				ofertas = sqlIncluye.darOfertasConServiciosYTipo(pm, tipo, periodo, inicio, fin);
 			}
 			else {
