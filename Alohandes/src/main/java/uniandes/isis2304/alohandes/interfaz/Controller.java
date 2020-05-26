@@ -2,7 +2,6 @@ package uniandes.isis2304.alohandes.interfaz;
 
 import java.io.FileReader;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
@@ -202,14 +201,12 @@ public class Controller {
 	}
 
 	public void req2(Scanner sc) {
-		interfaz.printMessage("Escriba el tipo de operador al que ser va a hacer la propuesta IGUAL que alguna de las opciones:\n PERSONA_NATURAL, HOTELERIA, VIVIENDA_UNIVERSITARIA");
-		String tipoOperador = sc.next();
-		interfaz.printMessage("Escriba el nombre del operador");
-		String nombre = sc.next();
+		interfaz.printMessage("Escriba el id del operador");
+		long id = sc.nextLong();
 		interfaz.printMessage("La vivienda de la que piensa crear una propuesta ya est� registrada? (Responer Y/N)");
 		String ans = sc.next();
 
-		Operador op = mundo.darOperadorPorNombre(nombre, tipoOperador);
+		Operador op = mundo.darOperadorPorId(id);
 
 		long idVivienda;
 		boolean es = false;
@@ -449,7 +446,7 @@ public class Controller {
 		
 		DATE inicio;
 		try {
-			Time temp = new Time(new GregorianCalendar(anio,mes,dia).getTimeInMillis());
+			Date temp = new Date(new GregorianCalendar(anio,mes,dia).getTimeInMillis());
 			inicio = new DATE(temp);
 		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
