@@ -2,19 +2,24 @@ package uniandes.isis2304.alohandes.interfaz;
 
 import java.io.FileReader;
 import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.Time;
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.Month;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.util.List;
+import java.util.Locale;
 
 import javax.swing.JOptionPane;
 
@@ -230,13 +235,21 @@ public class Controller {
 		else {
 			interfaz.printMessage("Ingrese la fecha de inicio de la propuesta (dd/MM/yyyy)");
 			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-			Date date; DATE inicio;
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
+			DATE inicio = null;
 			//inicio = new Date(date)
 			try {
-				date = dateFormat.parse(sc.next());
-				inicio = new DATE();
+				LocalDate date = LocalDate.parse(sc.next(), formatter);
+				Instant instant;
+
+				instant = date.atTime(LocalTime.MIDNIGHT).atZone(ZoneId.systemDefault()).toInstant();
+				long timeInMillis = instant.toEpochMilli(); 
+				Date dat = new Date(timeInMillis); 
+				
+				inicio = new DATE(dat);
+
 			} catch (Exception e) {
-				interfaz.printMessage("Error en la escritura de la fecha");
+				e.printStackTrace();
 				return;
 			}
 
@@ -437,7 +450,7 @@ public class Controller {
 		interfaz.printMessage("Ingrese el perï¿½odo deseado");
 		String periodo = sc.next();
 
-		interfaz.printMessage("Ingrese el año de inicio");
+		interfaz.printMessage("Ingrese el aï¿½o de inicio");
 		int anio = sc.nextInt();
 		interfaz.printMessage("Ingrese el mes de inicio");
 		int mes = sc.nextInt();
@@ -453,7 +466,7 @@ public class Controller {
 			return;
 		}
 
-		interfaz.printMessage("Ingrese el año de fin");
+		interfaz.printMessage("Ingrese el aï¿½o de fin");
 		anio = sc.nextInt();
 		interfaz.printMessage("Ingrese el mes de fin");
 		mes = sc.nextInt();
