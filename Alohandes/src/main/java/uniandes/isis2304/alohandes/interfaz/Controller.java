@@ -2,7 +2,6 @@ package uniandes.isis2304.alohandes.interfaz;
 
 import java.io.FileReader;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,7 +23,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
-import oracle.sql.TIMESTAMP;
+import oracle.sql.DATE;
 import uniandes.isis2304.alohandes.negocio.Alohandes;
 import uniandes.isis2304.alohandes.negocio.Cliente;
 import uniandes.isis2304.alohandes.negocio.Cuarto;
@@ -179,24 +178,17 @@ public class Controller {
 			interfaz.printMessage("Escriba el tipo de hoteleria IGUAL  que alguna de las opciones:\n HOSTAL, HOTEL");
 			String tipoHoteleria = sc.next();
 
-			int horaIn = 0, minIn = 0, horaFin = 0, minFin = 0;
+			String horaApertura = "", horaCierre = "";
 			if(tipoHoteleria.equalsIgnoreCase("HOSTAL")) {
-				interfaz.printMessage("Esriba hora de inicio (0-24)");
-				horaIn = sc.nextInt();
-				interfaz.printMessage("Escriba minuto de inicio");
-				minIn = sc.nextInt();
-				interfaz.printMessage("Esriba hora de cierre (0-24)");
-				horaFin = sc.nextInt();
-				interfaz.printMessage("Escriba minuto de cierre");
-				minFin = sc.nextInt();
+				interfaz.printMessage("Esriba hora de inicio (00-23) (EJ: 09)");
+				horaApertura = sc.next();
+				interfaz.printMessage("Escriba minuto de inicio (00-59) (EJ: 09)");
+				horaApertura += ":" +sc.next() +":00";
+				interfaz.printMessage("Esriba hora de cierre (00-23) (EJ: 09)");
+				horaCierre = sc.next();
+				interfaz.printMessage("Escriba minuto de cierre (00-59) (EJ: 09)");
+				horaCierre += ":" +sc.next() +":00";
 			}
-			Calendar cal = Calendar.getInstance();
-			cal.setTimeInMillis(0);
-			cal.set(2000, 1, 1, horaIn, minIn, 0);
-			TIMESTAMP horaApertura = new TIMESTAMP(new Timestamp(cal.getTime().getTime()));
-			cal.setTimeInMillis(0);
-			cal.set(2000, 1, 1, horaFin, minFin, 0);
-			TIMESTAMP horaCierre = new TIMESTAMP(new Timestamp(cal.getTime().getTime()));
 			mundo.adicionarHoteleria(nombre, email, numero, tipoHoteleria, horaApertura, horaCierre);
 			break;
 		case 2:
@@ -237,28 +229,25 @@ public class Controller {
 		else {
 			interfaz.printMessage("Ingrese la fecha de inicio de la propuesta (dd/MM/yyyy)");
 			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-			Date date;
+			Date date; DATE inicio;
 			try {
 				date = dateFormat.parse(sc.next());
+				inicio = new DATE(date);
 
-			} catch (ParseException e) {
+			} catch (Exception e) {
 				interfaz.printMessage("Error en la escritura de la fecha");
 				return;
 			}
-			long time = date.getTime();
-			TIMESTAMP inicio = new TIMESTAMP(new Timestamp(time));
 
 			interfaz.printMessage("Ingrese la fecha de fin de la propuesta (dd/MM/yyyy)");
+			DATE fin;
 			try {
 				date = dateFormat.parse(sc.next());
-
-			} catch (ParseException e) {
+				fin = new DATE(date);
+			} catch (Exception e) {
 				interfaz.printMessage("Error en la escritura de la fecha");
 				return;
 			}
-			time = date.getTime();
-			TIMESTAMP fin = new TIMESTAMP(new Timestamp(time));
-
 
 			Oferta oferta = mundo.adicionarOferta(precio, periodo, idVivienda, inicio, fin);
 
@@ -306,28 +295,25 @@ public class Controller {
 
 		interfaz.printMessage("Ingrese la fecha de inicio de la reserva (dd/MM/yyyy)");
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		Date date;
+		Date date; DATE inicio;
 		try {
 			date = dateFormat.parse(sc.next());
-
-		} catch (ParseException e) {
+			inicio = new DATE(date);
+		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
 			return;
 		}
-		long time = date.getTime();
-		TIMESTAMP inicio = new TIMESTAMP(new Timestamp(time));
 
 		interfaz.printMessage("Ingrese la fecha de fin de la reserva (dd/MM/yyyy)");
+		DATE fin;
 		try {
 			date = dateFormat.parse(sc.next());
-
-		} catch (ParseException e) {
+			fin = new DATE(date);
+			
+		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
 			return;
 		}
-		time = date.getTime();
-		TIMESTAMP fin = new TIMESTAMP(new Timestamp(time));
-
 
 		interfaz.printMessage("Ingrese el nombre del usuario que va a realizar la reserva");
 		Cliente usuario = mundo.darClientePorNombre(sc.next());
@@ -378,9 +364,9 @@ public class Controller {
 		interfaz.printMessage("Ingrese el id de la reserva a eliminar");
 		Reserva reserva = mundo.darReservaPorId(sc.nextLong());
 
-		TIMESTAMP inicio = reserva.getInicio();
-		TIMESTAMP fin = reserva.getFin();
-		TIMESTAMP hoy = new TIMESTAMP(new Timestamp(System.currentTimeMillis()));
+		DATE inicio = reserva.getInicio();
+		DATE fin = reserva.getFin();
+		DATE hoy = new DATE(new DATE(System.currentTimeMillis()));
 
 		double porcentaje = 0;
 
@@ -407,7 +393,7 @@ public class Controller {
 		Double temp = oferta.getPrecio()*porcentaje;
 		Long aumento = (temp).longValue();
 
-		mundo.aumentarGanancias(aumento, vivienda.getOperador(), hoy.dateValue().getMonth(), hoy.dateValue().getYear());
+		mundo.aumentarGanancias(aumento, vivienda.getOperador(), hoy.dateValue().toLocalDate().getMonthValue(), hoy.dateValue().toLocalDate().getYear());
 		mundo.eliminarReservaPorId(reserva.getId());
 	}
 
@@ -452,34 +438,38 @@ public class Controller {
 
 		interfaz.printMessage("Ingrese la fecha de inicio de la reserva (dd/MM/yyyy)");
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		Date date;
+		Date date; DATE inicio;
 		try {
 			date = dateFormat.parse(sc.next());
-
-		} catch (ParseException e) {
+			inicio = new DATE(date);
+		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
 			return;
 		}
-		long time = date.getTime();
-		TIMESTAMP inicio = new TIMESTAMP(new Timestamp(time));
 
 		interfaz.printMessage("Ingrese la fecha de fin de la reserva (dd/MM/yyyy)");
+		DATE fin;
 		try {
 			date = dateFormat.parse(sc.next());
-
-		} catch (ParseException e) {
+			fin = new DATE(date);
+			
+		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
 			return;
 		}
-		time = date.getTime();
-		TIMESTAMP fin = new TIMESTAMP(new Timestamp(time));
 
 		interfaz.printMessage("Ingrese el id del usuario que va a realizar la reserva");
 		Cliente usuario = mundo.darClientePorId(sc.nextInt());
 
-		ReservaColectiva colectiva = mundo.adicionarReservaColectiva(new TIMESTAMP(new Timestamp(System.currentTimeMillis())), n, usuario.getId(),
-				lista, tipo, periodo, inicio, fin);
-		interfaz.printMessage("Reservas finalizadas, muchas gracias, la reserva colectiva quedo guardada con id: "+colectiva.getId());
+		ReservaColectiva colectiva;
+		try {
+			colectiva = mundo.adicionarReservaColectiva(new DATE(System.currentTimeMillis()), n, usuario.getId(),
+					lista, tipo, periodo, inicio, fin);
+			interfaz.printMessage("Reservas finalizadas, muchas gracias, la reserva colectiva quedo guardada con id: "+colectiva.getId());
+		} catch (Exception e) {
+			interfaz.printMessage("Error ocurrido");
+			interfaz.printMessage(e.getMessage());
+		}
 	}
 
 	public void req8(Scanner sc) {
@@ -640,27 +630,25 @@ public class Controller {
 
 		interfaz.printMessage("Ingrese la fecha de inicio del seguro (dd/MM/yyyy)");
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		Date date;
+		Date date; DATE inicio;
 		try {
 			date = dateFormat.parse(sc.next());
-
-		} catch (ParseException e) {
+			inicio = new DATE(date);
+		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
 			return null;
 		}
-		long time = date.getTime();
-		TIMESTAMP inicio = new TIMESTAMP(new Timestamp(time));
 
-		interfaz.printMessage("Ingrese la fecha de fin del seguro (dd/MM/yyyy)");
+		interfaz.printMessage("Ingrese la fecha de fin de la reserva (dd/MM/yyyy)");
+		DATE fin;
 		try {
 			date = dateFormat.parse(sc.next());
-
-		} catch (ParseException e) {
+			fin = new DATE(date);
+			
+		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
 			return null;
 		}
-		time = date.getTime();
-		TIMESTAMP fin = new TIMESTAMP(new Timestamp(time));
 		return mundo.adicionarSeguro(empresa, monto, inicio, fin	);
 	}
 
@@ -679,10 +667,10 @@ public class Controller {
 
 	}
 
-	public long compareDays (TIMESTAMP in, TIMESTAMP fi) throws SQLException {
+	public long compareDays (DATE in, DATE fi) throws SQLException {
 		final long MILLIS_PER_DAY = 1000*60*60*24;
-		long time1 = in.timestampValue().getTime();
-		long time2 = fi.timestampValue().getTime();
+		long time1 = in.dateValue().getTime();
+		long time2 = fi.dateValue().getTime();
 
 		// Set both times to 0:00:00
 		time1 -= time1 % MILLIS_PER_DAY;

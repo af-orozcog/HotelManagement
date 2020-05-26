@@ -16,7 +16,6 @@
 package uniandes.isis2304.alohandes.negocio;
 
 import java.sql.Time;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
