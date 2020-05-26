@@ -3,7 +3,7 @@ package uniandes.isis2304.alohandes.interfaz;
 import java.io.FileReader;
 import java.sql.SQLException;
 import java.sql.Time;
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
@@ -233,14 +232,16 @@ public class Controller {
 		else {
 			interfaz.printMessage("Ingrese la fecha de inicio de la propuesta (dd/MM/yyyy)");
 			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-			Date date; DATE inicio;
+			Date date;
+			DATE inicio = null;
 			//inicio = new Date(date)
 			try {
-				date = dateFormat.parse(sc.next());
-				inicio = new DATE(date.getTime());
+				date = new Date();
+				
+				inicio = new DATE(new );
 
 			} catch (Exception e) {
-				interfaz.printMessage("Error en la escritura de la fecha");
+				e.printStackTrace();
 				return;
 			}
 
