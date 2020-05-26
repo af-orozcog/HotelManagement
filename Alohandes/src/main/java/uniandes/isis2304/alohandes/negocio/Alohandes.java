@@ -568,6 +568,18 @@ public class Alohandes
 		return operador;
 	}
 
+	/**
+	 * Encuentra un Operador en Alohandes y lo devuelve como un Operador
+	 * Adiciona entradas al log de la aplicacion
+	 * @return Un objeto Operador que coincida con el id
+	 */
+	public Operador darOperadorPorId(long id){
+		log.info("Buscando Operador con id: " + id);
+		Operador operador = pa.darOperadorPorId(id);
+		log.info("Encontrado Operador: " + operador);
+		return operador;
+	}
+	
 	/* ****************************************************************
 	 * 			Métodos para manejar los(as) VIVIENDA_UNIVERSITARIA
 	 *****************************************************************/

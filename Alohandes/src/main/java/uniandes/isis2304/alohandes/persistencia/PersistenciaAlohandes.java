@@ -1127,6 +1127,14 @@ public class PersistenciaAlohandes
 	public Operador darOperadorPorNombre(String nombre, String tipoOperador) {
 		return sqlOperador.darOperadorPorNombre(pmf.getPersistenceManager(), nombre, tipoOperador);
 	}
+	
+	/**
+	 * M�todo que retorna el operador con el id y tipo buscados
+	 * @return Objeto Operador con el id y tipo buscados
+	 */
+	public Operador darOperadorPorId(long id) {
+		return sqlOperador.darOperadorPorId(pmf.getPersistenceManager(), id);
+	}
 
 
 	/* ****************************************************************

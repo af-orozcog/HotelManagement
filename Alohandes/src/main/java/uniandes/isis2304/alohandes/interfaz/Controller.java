@@ -201,14 +201,12 @@ public class Controller {
 	}
 
 	public void req2(Scanner sc) {
-		interfaz.printMessage("Escriba el tipo de operador al que ser va a hacer la propuesta IGUAL que alguna de las opciones:\n PERSONA_NATURAL, HOTELERIA, VIVIENDA_UNIVERSITARIA");
-		String tipoOperador = sc.next();
-		interfaz.printMessage("Escriba el nombre del operador");
-		String nombre = sc.next();
+		interfaz.printMessage("Escriba el id del operador");
+		long id = sc.nextLong();
 		interfaz.printMessage("La vivienda de la que piensa crear una propuesta ya estï¿½ registrada? (Responer Y/N)");
 		String ans = sc.next();
 
-		Operador op = mundo.darOperadorPorNombre(nombre, tipoOperador);
+		Operador op = mundo.darOperadorPorId(id);
 
 		long idVivienda;
 		boolean es = false;
@@ -442,7 +440,7 @@ public class Controller {
 		interfaz.printMessage("Ingrese el perï¿½odo deseado");
 		String periodo = sc.next();
 
-		interfaz.printMessage("Ingrese el año de inicio");
+		interfaz.printMessage("Ingrese el aï¿½o de inicio");
 		int anio = sc.nextInt();
 		interfaz.printMessage("Ingrese el mes de inicio");
 		int mes = sc.nextInt();
@@ -451,14 +449,14 @@ public class Controller {
 		
 		DATE inicio;
 		try {
-			Time temp = new Time(new GregorianCalendar(anio,mes,dia).getTimeInMillis());
+			Date temp = new Date(new GregorianCalendar(anio,mes,dia).getTimeInMillis());
 			inicio = new DATE(temp);
 		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
 			return;
 		}
 
-		interfaz.printMessage("Ingrese el año de fin");
+		interfaz.printMessage("Ingrese el aï¿½o de fin");
 		anio = sc.nextInt();
 		interfaz.printMessage("Ingrese el mes de fin");
 		mes = sc.nextInt();
