@@ -1224,7 +1224,7 @@ public class PersistenciaAlohandes
 	 * @param x - x de Hoteleria
 	 * @return El objeto Hoteleria adicionado. null si ocurre alguna Excepción
 	 */
-	public Hoteleria adicionarHoteleria(String nombre, String email, String numero, String tipoHoteleria, DATE horaApertura, DATE horaCierre)
+	public Hoteleria adicionarHoteleria(String nombre, String email, String numero, String tipoHoteleria, String horaApertura, String horaCierre)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();

@@ -26,7 +26,7 @@ import javax.jdo.Query;
 import org.junit.internal.runners.model.EachTestNotifier;
 
 import oracle.net.aso.i;
-import oracle.sql.TIMESTAMP;
+import oracle.sql.DATE;
 import uniandes.isis2304.alohandes.negocio.Incluye;
 import uniandes.isis2304.alohandes.negocio.Oferta;
 
@@ -125,7 +125,7 @@ class SQLIncluye
 		return q.executeList();
 	}
 
-	public List<Long> darOfertasConServicios(PersistenceManager pm, ArrayList<String> lista, TIMESTAMP inicio, TIMESTAMP fin) {
+	public List<Long> darOfertasConServicios(PersistenceManager pm, ArrayList<String> lista, DATE inicio, DATE fin) {
 		Query q = pm.newQuery(SQL, "SELECT i.oferta, s.nombre"
 				+ " FROM " + pa.darTablaIncluye() + " i, " + pa.darTablaServicio() + " s, " + pa.darTablaOferta() + " o"
 				+ " WHERE i.servicio = s.id AND i.oferta = o.id AND o.habilitada = 1"
@@ -177,7 +177,7 @@ class SQLIncluye
 		return ofertas;
 	}
 
-	public List<Long> darOfertasConServiciosYTipo(PersistenceManager pm, ArrayList<String> lista, String tipo, String periodo, TIMESTAMP inicio, TIMESTAMP fin) {
+	public List<Long> darOfertasConServiciosYTipo(PersistenceManager pm, ArrayList<String> lista, String tipo, String periodo, DATE inicio, DATE fin) {
 		Query q = pm.newQuery(SQL, "SELECT i.oferta, s.nombre"
 				+ " FROM " + pa.darTablaIncluye() + " i, " + pa.darTablaServicio() + " s, " + pa.darTablaOferta() + " o, " + pa.darTablaVivienda() + " v"
 				+ " WHERE i.servicio = s.id AND i.oferta = o.id AND o.vivienda = v.id AND o.habilitada = 1"
@@ -228,7 +228,7 @@ class SQLIncluye
 		return ofertas;
 	}
 	
-	public List<Oferta> darOfertasConServiciosYTipo(PersistenceManager pm, String tipo, String periodo, TIMESTAMP inicio, TIMESTAMP fin) {
+	public List<Oferta> darOfertasConServiciosYTipo(PersistenceManager pm, String tipo, String periodo, DATE inicio, DATE fin) {
 		Query q = pm.newQuery(SQL, "SELECT o.id, o.PRECIO, o.PERIODO, o.VIVIENDA, o.FECHAINICIO, o.FECHAFIN, o.HABILITADA"
 				+ " FROM " + pa.darTablaOferta() + " o, " + pa.darTablaVivienda() + " v"
 				+ " WHERE o.vivienda = v.id AND o.habilitada = 1"

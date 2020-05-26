@@ -20,7 +20,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import oracle.sql.TIMESTAMP;
+import oracle.sql.DATE;
 import uniandes.isis2304.alohandes.negocio.Ganancias;
 import uniandes.isis2304.alohandes.negocio.Operador;
 import uniandes.isis2304.alohandes.negocio.Reserva;
@@ -76,7 +76,7 @@ class SQLReservaColectiva
 	 * @param idColectiva 
 	 * @return El número de tuplas insertadas 
 	 */
-	public long adicionarReservaColectiva (PersistenceManager pm, long idReserva, TIMESTAMP fechaRealizacion, int cantidad, long idCliente)
+	public long adicionarReservaColectiva (PersistenceManager pm, long idReserva, DATE fechaRealizacion, int cantidad, long idCliente)
 	{
 		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaReservaColectiva() + " (id, fecha_realizacion, cantidad, cliente) values (? ,? ,? ,?)");
 		q.setParameters( idReserva, fechaRealizacion, cantidad, idCliente );

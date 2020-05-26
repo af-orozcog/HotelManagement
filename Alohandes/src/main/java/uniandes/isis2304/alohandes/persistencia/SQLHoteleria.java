@@ -22,7 +22,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import oracle.sql.TIMESTAMP;
+import oracle.sql.DATE;
 import uniandes.isis2304.alohandes.negocio.Habitacion;
 import uniandes.isis2304.alohandes.negocio.Hoteleria;
 
@@ -68,7 +68,7 @@ class SQLHoteleria extends SQLOperador
 	 * @param horaCierre - 
 	 * @return El número de tuplas insertadas 
 	 */
-	public long adicionarHoteleria (PersistenceManager pm, long idHoteleria, String nombre, String email, String numero, String tipoHoteleria, TIMESTAMP horaApertura, TIMESTAMP horaCierre)
+	public long adicionarHoteleria (PersistenceManager pm, long idHoteleria, String nombre, String email, String numero, String tipoHoteleria, String horaApertura, String horaCierre)
 	{
 		super.adicionarOperador(pm, idHoteleria, nombre, email, numero, "HOTELERIA");
 		Query q = pm.newQuery(SQL, "INSERT INTO " + pa.darTablaHoteleria () + "(id, tipo_hoteleria, hora_apertura, hora_cierre) values (? ,? ,? ,?)");
