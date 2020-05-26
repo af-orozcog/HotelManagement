@@ -1,0 +1,7 @@
+id,Numbers,Sequence,1|0|1|1
+inicio,Time,Date/Time,43922|43983|1|False|yyyy/MM/d|h:nn:ss
+fin,Time,Date/Time,43946|44013|1|False|yyyy/MM/d|h:nn:ss
+periodo_arrendamiento,Set,From Fixed List,0,0,DIAS|SEMANAS|MESES|SEMESTRES
+oferta,Numbers,Sequence,1|0|1|1
+cliente,Numbers,Sequence,1|0|1|1
+colectiva,Set,From Fixed List,0,0,NULL

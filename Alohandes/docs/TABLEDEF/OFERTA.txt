@@ -1,0 +1,7 @@
+id,Numbers,Sequence,1|0|1|1
+precio,Numbers,Integer,1000|50000
+periodo,Set,From Fixed List,0,0,DIAS|SEMANAS|MESES|SEMESTRES
+vivienda,Numbers,Sequence,1|0|1|1
+fechainicio,Time,Date,43862|43922|3|False|yyyy/MM/d|h:nn:ss
+fechafin,Time,Date,43983|44044|3|False|yyyy/MM/d|h:nn:ss
+habilitada,Numbers,Integer,1|1

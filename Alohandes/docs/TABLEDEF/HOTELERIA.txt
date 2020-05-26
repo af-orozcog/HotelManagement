@@ -1,0 +1,4 @@
+id,Numbers,Sequence,1|0|1|0
+tipo_hoteleria,Set,From Fixed List,0,0,HOSTAL|HOTEL
+hora_apertura,Time,Time,43976|43976,5|3|False|d/MM/yyyy|h:nn:ss
+hora_cierre,Time,Time,43976,5416666667|43976,9999884259|3|False|d/MM/yyyy|h:nn:ss

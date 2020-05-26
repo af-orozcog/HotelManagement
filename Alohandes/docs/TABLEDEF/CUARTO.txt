@@ -1,0 +1,5 @@
+id,Numbers,Sequence,60001|0|1|1
+banio_privado,Numbers,Integer,0|1
+cuarto_privado,Numbers,Integer,0|1
+esquema,Text,Fixed Number of Words,10|10
+menaje,Text,Fixed Number of Words,10|10

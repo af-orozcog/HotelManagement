@@ -1,0 +1,4 @@
+id,Numbers,Sequence,1|0|1|1
+tipo_habitacion,Set,From Fixed List,0,0,ESTANDAR|SEMISUITE|SUITE
+numero,Numbers,Integer,100|900
+capacidad,Numbers,Integer,1|4

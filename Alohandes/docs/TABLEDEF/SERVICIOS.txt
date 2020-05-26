@@ -1,0 +1,3 @@
+id,Numbers,Sequence,1|0|1|1
+nombre,Set,From Fixed List,0,0,Internet|Cocina|Almuerzo|Gas|Alcantarillado|Calentador|Limpieza
+costo,Numbers,Integer,100|500
