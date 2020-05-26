@@ -6,15 +6,20 @@ import java.sql.Time;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.Month;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.util.List;
+import java.util.Locale;
 
 import javax.swing.JOptionPane;
 
@@ -230,13 +235,18 @@ public class Controller {
 		else {
 			interfaz.printMessage("Ingrese la fecha de inicio de la propuesta (dd/MM/yyyy)");
 			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-			Date date;
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
 			DATE inicio = null;
 			//inicio = new Date(date)
 			try {
-				date = new Date();
+				LocalDate date = LocalDate.parse(sc.next(), formatter);
+				Instant instant;
+
+				instant = date.atTime(LocalTime.MIDNIGHT).atZone(ZoneId.systemDefault()).toInstant();
+				long timeInMillis = instant.toEpochMilli(); 
+				Date dat = new Date(timeInMillis); 
 				
-				inicio = new DATE(new );
+				inicio = new DATE(dat);
 
 			} catch (Exception e) {
 				e.printStackTrace();
