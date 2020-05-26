@@ -2,7 +2,8 @@ package uniandes.isis2304.alohandes.negocio;
 
 import java.sql.Timestamp;
 
-import oracle.sql.TIMESTAMP;
+import oracle.sql.DATE;
+
 
 
 public class Reserva implements VOReserva{
@@ -19,12 +20,12 @@ public class Reserva implements VOReserva{
 	/**
 	 * inicio de la reserva
 	 */
-	private TIMESTAMP inicio;
+	private DATE inicio;
 	
 	/**
 	 * fin de la reserva
 	 */
-	private TIMESTAMP fin;
+	private DATE fin;
 	
 	/**
 	 * tipo de periodo de arrendamiento (DIAS, SEMANAS, MESES, SEMESTRES)
@@ -71,7 +72,7 @@ public class Reserva implements VOReserva{
 	 * @param idOferta - la oferta de la reserva
 	 * @param idColectiva - la reserva colectiva a la que puede pertenecer
 	 */
-	public Reserva(long id, TIMESTAMP inicio, TIMESTAMP fin, String periodoArrendamiento, long usuario,
+	public Reserva(long id, DATE inicio, DATE fin, String periodoArrendamiento, long usuario,
 			long oferta, Long colectiva) {
 		super();
 		this.id = id;
@@ -100,28 +101,28 @@ public class Reserva implements VOReserva{
 	/**
 	 * @return inicio
 	 */
-	public TIMESTAMP getInicio() {
+	public DATE getInicio() {
 		return inicio;
 	}
 
 	/**
 	 * @param inicio - el inicio de la reserva
 	 */
-	public void setInicio(TIMESTAMP inicio) {
+	public void setInicio(DATE inicio) {
 		this.inicio = inicio;
 	}
 
 	/**
 	 * @return duracion
 	 */
-	public TIMESTAMP getFin() {
+	public DATE getFin() {
 		return fin;
 	}
 
 	/**
 	 * @param duracion - la duracion de la reserva
 	 */
-	public void setFin(TIMESTAMP fin) {
+	public void setFin(DATE fin) {
 		this.fin = fin;
 	}
 

@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
-import oracle.sql.TIMESTAMP;
+import oracle.sql.DATE;
 
 public class ReservaColectiva implements VOReservaColectiva{
 
@@ -26,7 +26,7 @@ public class ReservaColectiva implements VOReservaColectiva{
 	/**
 	 * fecha realización de la reserva colectiva
 	 */
-	private TIMESTAMP fechaRealizacion;
+	private DATE fechaRealizacion;
 	
 	/**
 	 * el identificador del usuario.
@@ -58,7 +58,7 @@ public class ReservaColectiva implements VOReservaColectiva{
 	 * @param fechaRealizacion - fecha de realización de la reserva
 	 * @param idCliente - el cliente dueño de la reserva
 	 */
-	public ReservaColectiva(long id, Integer cantidad, TIMESTAMP fechaRealizacion, long idCliente) {
+	public ReservaColectiva(long id, Integer cantidad, DATE fechaRealizacion, long idCliente) {
 		super();
 		this.id = id;
 		this.cantidad = cantidad;
@@ -97,14 +97,14 @@ public class ReservaColectiva implements VOReservaColectiva{
 	/**
 	 * @return fechaRealizacion
 	 */
-	public TIMESTAMP getFechaRealizacion() {
+	public DATE getFechaRealizacion() {
 		return fechaRealizacion;
 	}
 
 	/**
 	 * @param fechaRealizacion - fecha de realizacion de la reserva
 	 */
-	public void setFechaRealizacion(TIMESTAMP fechaRealizacion) {
+	public void setFechaRealizacion(DATE fechaRealizacion) {
 		this.fechaRealizacion = fechaRealizacion;
 	}
 
