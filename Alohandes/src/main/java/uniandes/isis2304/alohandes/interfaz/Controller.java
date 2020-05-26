@@ -256,8 +256,13 @@ public class Controller {
 			interfaz.printMessage("Ingrese la fecha de fin de la propuesta (dd/MM/yyyy)");
 			DATE fin;
 			try {
-				date = dateFormat.parse(sc.next());
-				fin = new DATE(date.getTime());
+				LocalDate date = LocalDate.parse(sc.next(), formatter);
+				Instant instant;
+
+				instant = date.atTime(LocalTime.MIDNIGHT).atZone(ZoneId.systemDefault()).toInstant();
+				long timeInMillis = instant.toEpochMilli(); 
+				Date dat = new Date(timeInMillis); 
+				fin = new DATE(dat);
 			} catch (Exception e) {
 				interfaz.printMessage("Error en la escritura de la fecha");
 				return;
@@ -309,10 +314,16 @@ public class Controller {
 
 		interfaz.printMessage("Ingrese la fecha de inicio de la reserva (dd/MM/yyyy)");
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		Date date; DATE inicio;
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
+		DATE inicio;
 		try {
-			date = dateFormat.parse(sc.next());
-			inicio = new DATE(date.getTime());
+			LocalDate date = LocalDate.parse(sc.next(), formatter);
+			Instant instant;
+
+			instant = date.atTime(LocalTime.MIDNIGHT).atZone(ZoneId.systemDefault()).toInstant();
+			long timeInMillis = instant.toEpochMilli(); 
+			Date dat = new Date(timeInMillis); 
+			inicio = new DATE(dat);
 		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
 			return;
@@ -321,8 +332,13 @@ public class Controller {
 		interfaz.printMessage("Ingrese la fecha de fin de la reserva (dd/MM/yyyy)");
 		DATE fin;
 		try {
-			date = dateFormat.parse(sc.next());
-			fin = new DATE(date.getTime());
+			LocalDate date = LocalDate.parse(sc.next(), formatter);
+			Instant instant;
+
+			instant = date.atTime(LocalTime.MIDNIGHT).atZone(ZoneId.systemDefault()).toInstant();
+			long timeInMillis = instant.toEpochMilli(); 
+			Date dat = new Date(timeInMillis); 
+			fin = new DATE(dat);
 			
 		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
@@ -653,10 +669,16 @@ public class Controller {
 
 		interfaz.printMessage("Ingrese la fecha de inicio del seguro (dd/MM/yyyy)");
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		Date date; DATE inicio;
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
+		DATE inicio;
 		try {
-			date = dateFormat.parse(sc.next());
-			inicio = new DATE(date.getTime());
+			LocalDate date = LocalDate.parse(sc.next(), formatter);
+			Instant instant;
+
+			instant = date.atTime(LocalTime.MIDNIGHT).atZone(ZoneId.systemDefault()).toInstant();
+			long timeInMillis = instant.toEpochMilli(); 
+			Date dat = new Date(timeInMillis); 
+			inicio = new DATE(dat);
 		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
 			return null;
@@ -665,8 +687,13 @@ public class Controller {
 		interfaz.printMessage("Ingrese la fecha de fin de la reserva (dd/MM/yyyy)");
 		DATE fin;
 		try {
-			date = dateFormat.parse(sc.next());
-			fin = new DATE(date.getTime());
+			LocalDate date = LocalDate.parse(sc.next(), formatter);
+			Instant instant;
+
+			instant = date.atTime(LocalTime.MIDNIGHT).atZone(ZoneId.systemDefault()).toInstant();
+			long timeInMillis = instant.toEpochMilli(); 
+			Date dat = new Date(timeInMillis); 
+			fin = new DATE(dat);
 			
 		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
