@@ -10,6 +10,14 @@ SELECT COUNT(re.id) as monto FROM
 ((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) INNER JOIN VIVIENDA vi ON vi.id = o.vivienda)
 WHERE (vi.tipo = ?  AND TO_NUMBER(to_char(re.inicio, 'iw')) <= ? AND ? <= TO_NUMBER(to_char(re.fin, 'iw')))
 
+
+SELECT TOP (53) n FROM dbo.Numbers ORDER BY n;
+
+select 
+  select count(id)
+  from reservas
+  group by oferta;
+
 SELECT COUNT(re.id) as monto FROM
 ((RESERVA re INNER JOIN OFERTA o ON re.oferta = o.id) INNER JOIN VIVIENDA vi ON vi.id = o.vivienda)
 WHERE vi.tipo = ?  AND (to_number(to_char(re.inicio, 'MM')) <= ?) AND (? <= to_number(to_char(re.fin, 'MM')))
