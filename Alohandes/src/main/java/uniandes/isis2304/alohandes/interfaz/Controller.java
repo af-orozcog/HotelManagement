@@ -447,7 +447,7 @@ public class Controller {
 		DATE inicio;
 		try {
 			Date temp = new Date(new GregorianCalendar(anio,mes,dia).getTimeInMillis());
-			inicio = new DATE(temp);
+			inicio = new DATE();
 		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
 			return;
