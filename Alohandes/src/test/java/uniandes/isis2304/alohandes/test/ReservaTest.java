@@ -19,7 +19,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
-import oracle.sql.TIMESTAMP;
+import oracle.sql.DATE;
 import uniandes.isis2304.alohandes.negocio.Alohandes;
 import uniandes.isis2304.alohandes.negocio.Cliente;
 import uniandes.isis2304.alohandes.negocio.Oferta;
@@ -85,7 +85,7 @@ public class ReservaTest {
     		Vivienda vi = pm.adicionarCuarto("..", 10, op.getId(), 1, 1, "..", "..");
     		long precio1 = 1000;
     		String tipo1 = "MESES";
-    		Oferta of = pm.adicionarOferta(precio1, tipo1, vi.getId(), new TIMESTAMP(new Timestamp(2000, 1, 1, 1, 0, 0, 0)), new TIMESTAMP(new Timestamp(2001, 1, 1, 1, 0, 0, 0)));
+    		Oferta of = pm.adicionarOferta(precio1, tipo1, vi.getId(), new DATE(new Timestamp(2000, 1, 1, 1, 0, 0, 0)), new DATE(new Timestamp(2001, 1, 1, 1, 0, 0, 0)));
     		Cliente us = pm.adicionarCliente("nom", "correo", "320", "100", "ESTUDIANTE");
 			// Lectura de los tipos de bebida con la tabla vacía
 			List <Reserva> lista = pm.darReservas();
@@ -94,8 +94,8 @@ public class ReservaTest {
 
 			// Lectura de los tipos de bebida con un reserva adicionado
 			
-			TIMESTAMP inicio1 = new TIMESTAMP(new Timestamp(2010, 1, 1, 1, 0, 0, 0));
-			TIMESTAMP fin1 = new TIMESTAMP(new Timestamp(2011, 1, 1, 1, 0, 0, 0));
+			DATE inicio1 = new DATE(new Timestamp(2010, 1, 1, 1, 0, 0, 0));
+			DATE fin1 = new DATE(new Timestamp(2011, 1, 1, 1, 0, 0, 0));
 			//int duracion1 = 10;
 			String periodoArrendamiento1 = "SEMESTRES";
 			
@@ -106,8 +106,8 @@ public class ReservaTest {
 
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
 			
-			TIMESTAMP inicio2 = new TIMESTAMP(new Timestamp(2011, 1, 1, 1, 0, 0, 0));
-			TIMESTAMP fin2 = new TIMESTAMP(new Timestamp(2012, 1, 1, 1, 0, 0, 0));
+			DATE inicio2 = new DATE(new Timestamp(2011, 1, 1, 1, 0, 0, 0));
+			DATE fin2 = new DATE(new Timestamp(2012, 1, 1, 1, 0, 0, 0));
 			//int duracion2 = 9;
 			String periodoArrendamiento2 = "MESES";
 
@@ -176,7 +176,7 @@ public class ReservaTest {
     		Vivienda vi = pm.adicionarCuarto("..", 10, op.getId(), 1, 1, "..", "..");
     		long precio1 = 1000;
     		String tipo1 = "MESES";
-    		Oferta of = pm.adicionarOferta(precio1, tipo1, vi.getId(), new TIMESTAMP(new Timestamp(2000, 1, 1, 1, 0, 0, 0)), new TIMESTAMP(new Timestamp(2001, 1, 1, 1, 0, 0, 0)));
+    		Oferta of = pm.adicionarOferta(precio1, tipo1, vi.getId(), new DATE(new Timestamp(2000, 1, 1, 1, 0, 0, 0)), new DATE(new Timestamp(2001, 1, 1, 1, 0, 0, 0)));
     		Cliente us = pm.adicionarCliente("nom", "correo", "320", "100", "ESTUDIANTE");
 						
 			// Lectura de los tipos de bebida con la tabla vacía
@@ -185,8 +185,8 @@ public class ReservaTest {
 			pm.modoPruebas();
 			pm.asignarID(1000);
 			
-			TIMESTAMP inicio1 = new TIMESTAMP(new Timestamp(2010, 1, 1, 1, 0, 0, 0));
-			TIMESTAMP fin1 = new TIMESTAMP(new Timestamp(2011, 1, 1, 1, 0, 0, 0));
+			DATE inicio1 = new DATE(new Timestamp(2010, 1, 1, 1, 0, 0, 0));
+			DATE fin1 = new DATE(new Timestamp(2011, 1, 1, 1, 0, 0, 0));
 			//int duracion1 = 10;
 			String periodoArrendamiento1 = "SEMESTRES";
 			
@@ -195,8 +195,8 @@ public class ReservaTest {
 			assertEquals ("Debe haber un reserva creado !!", 1, lista.size ());
 			
 			
-			TIMESTAMP inicio2 = new TIMESTAMP(new Timestamp(2011, 1, 1, 1, 0, 0, 0));
-			TIMESTAMP fin2 = new TIMESTAMP(new Timestamp(2012, 1, 1, 1, 0, 0, 0));
+			DATE inicio2 = new DATE(new Timestamp(2011, 1, 1, 1, 0, 0, 0));
+			DATE fin2 = new DATE(new Timestamp(2012, 1, 1, 1, 0, 0, 0));
 			//int duracion2 = 9;
 			String periodoArrendamiento2 = "MESES";
 

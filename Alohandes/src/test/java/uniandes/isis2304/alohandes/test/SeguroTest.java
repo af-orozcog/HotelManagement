@@ -8,7 +8,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
-import oracle.sql.TIMESTAMP;
+import oracle.sql.DATE;
 import uniandes.isis2304.alohandes.negocio.Operador;
 import uniandes.isis2304.alohandes.negocio.Seguro;
 import uniandes.isis2304.alohandes.persistencia.PersistenciaAlohandes;
@@ -68,8 +68,8 @@ public class SeguroTest {
 			// Lectura de los tipos de bebida con un seguro adicionado
 			String empresa1 = "elSAPOINC";
 			int monto1 = 1000;
-			TIMESTAMP  inicio1 = new TIMESTAMP(new Timestamp(10000));
-			TIMESTAMP fin1 = new TIMESTAMP(new Timestamp(100000));
+			DATE  inicio1 = new DATE(new Timestamp(10000));
+			DATE fin1 = new DATE(new Timestamp(100000));
 			Seguro seguro1 = pm.adicionarSeguro(empresa1, monto1, inicio1, fin1);
 			lista = pm.darSeguros();
 			
@@ -79,8 +79,8 @@ public class SeguroTest {
 			// Lectura de los tipos de bebida con dos tipos de bebida adicionados
 			String empresa2 = "elSAPOINCC";
 			int monto2 = 1000;
-			TIMESTAMP inicio2 = new TIMESTAMP(new Timestamp(10000));
-			TIMESTAMP fin2 = new TIMESTAMP(new Timestamp(100000));
+			DATE inicio2 = new DATE(new Timestamp(10000));
+			DATE fin2 = new DATE(new Timestamp(100000));
 			Seguro seguro2 = pm.adicionarSeguro(empresa2, monto2, inicio2, fin2);
 			lista = pm.darSeguros();
 			assertEquals ("Debe haber dos tipos de bebida creados !!", 2, lista.size ());
@@ -149,8 +149,8 @@ public class SeguroTest {
 			pm.asignarID(1000);
 			String empresa1 = "elSAPOINC";
 			int monto1 = 1000;
-			TIMESTAMP inicio1 = new TIMESTAMP(new Timestamp(10000));
-			TIMESTAMP fin1 = new TIMESTAMP(new Timestamp(100000));
+			DATE inicio1 = new DATE(new Timestamp(10000));
+			DATE fin1 = new DATE(new Timestamp(100000));
 			Seguro seguro1 = pm.adicionarSeguro(empresa1, monto1, inicio1, fin1);
 			lista = pm.darSeguros();
 			assertEquals ("Debe haber un seguro creado !!", 1, lista.size ());
@@ -158,8 +158,8 @@ public class SeguroTest {
 			
 			String empresa2 = "elSAPOINC";
 			int monto2 = 1000;
-			TIMESTAMP inicio2 = new TIMESTAMP(new Timestamp(10000));
-			TIMESTAMP fin2 = new TIMESTAMP(new Timestamp(100000));
+			DATE inicio2 = new DATE(new Timestamp(10000));
+			DATE fin2 = new DATE(new Timestamp(100000));
 			Seguro seguro2 = pm.adicionarSeguro(empresa2, monto2, inicio2, fin2);
 			assertNull ("No puede adicionar dos seguros con el mismo id !!", seguro2);
 		}

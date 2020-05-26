@@ -234,6 +234,7 @@ public class Controller {
 			interfaz.printMessage("Ingrese la fecha de inicio de la propuesta (dd/MM/yyyy)");
 			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 			Date date; DATE inicio;
+			//inicio = new Date(date)
 			try {
 				date = dateFormat.parse(sc.next());
 				inicio = new DATE(date.getTime());
