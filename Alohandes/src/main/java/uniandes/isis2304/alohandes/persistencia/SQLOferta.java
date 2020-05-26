@@ -107,13 +107,10 @@ class SQLOferta
 	 */
 	public Oferta darOfertaPorId (PersistenceManager pm, long idOferta)
 	{
-		System.out.println("cual es el re puto ID " + idOferta);
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pa.darTablaOferta () + " WHERE id = ?");
-		List<Oferta> ofe = darOfertas(pm);
 		q.setResultClass(Oferta.class);
 		q.setParameters(idOferta);
 		Oferta what = (Oferta)q.executeUnique();
-		//if(what == null) System.out.println("WTDDDDFDFDFDD");
 		return what;
 	}
 

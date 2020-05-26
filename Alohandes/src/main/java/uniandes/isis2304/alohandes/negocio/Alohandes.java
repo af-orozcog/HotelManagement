@@ -1392,6 +1392,21 @@ public class Alohandes
 		return ofertas;
 	}
 	
+	// -- REQC10 --
+	public List<Cliente> reqC10(DATE inicio, DATE fin, long tipo, String ad) {
+		log.info("Encontrando clientes con reserva en un rango");
+		List<Cliente> clientes = pa.reqC10(inicio, fin ,tipo, ad);
+		log.info("Encontrado los clientes");
+		return clientes;
+	}
+	
+	public List<Object []> reqC11(DATE inicio, DATE fin, long tipo, String ad) {
+		log.info("Encontrando clientes con reserva en un rango");
+		List<Object []> clientes = pa.reqC11(inicio, fin ,tipo, ad);
+		log.info("Encontrado los clientes");
+		return clientes;
+	}
+	
 	/* ****************************************************************
 	 * 			Métodos para administracién
 	 *****************************************************************/
@@ -1424,5 +1439,6 @@ public class Alohandes
 	public void asignarID(long id) {
 		pa.asignarID(id);
 	}
+
 	
 }

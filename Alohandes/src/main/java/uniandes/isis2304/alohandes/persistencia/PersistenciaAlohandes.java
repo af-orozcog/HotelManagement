@@ -209,10 +209,20 @@ public class PersistenciaAlohandes
 	private REQC8 reqc8;
 
 	/**
-	 * Atributo para la clase que maneja la consutla 7
+	 * Atributo para la clase que maneja la consutla 9
 	 */
 	private REQC9 reqc9;
 
+	/**
+	 * Atributo para la clase que maneja la consutla 10
+	 */
+	private REQC10 reqc10;
+	
+	/**
+	 * Atributo para la clase que maneja la consutla 11
+	 */
+	private REQC11 reqc11;
+	
 	private boolean modoPerron = false;
 
 	private long idPerron;
@@ -345,6 +355,8 @@ public class PersistenciaAlohandes
 		reqc7 = new REQC7(this);
 		reqc8 = new REQC8(this);
 		reqc9 = new REQC9(this);
+		reqc10 = new REQC10(this);
+		reqc11 = new REQC11(this);
 	}
 
 	/**
@@ -2267,6 +2279,14 @@ public class PersistenciaAlohandes
 		return reqc9.ofertasConPocaDemanda(pmf.getPersistenceManager());
 	}
 
+	public List<Cliente> reqC10(DATE inicio, DATE fin, long tipo, String ad) {
+		return reqc10.darClientesReservaFechas(pmf.getPersistenceManager(), inicio, fin, tipo, ad);
+	}
+	
+	public List<Object []> reqC11(DATE inicio, DATE fin, long tipo, String ad) {
+		return reqc11.darClientesReservaFechas(pmf.getPersistenceManager(), inicio, fin, tipo, ad);
+	}
+	
 	/* ****************************************************************
 	 * 			M�todos para activar el modo perron pruebas :v
 	 *****************************************************************/

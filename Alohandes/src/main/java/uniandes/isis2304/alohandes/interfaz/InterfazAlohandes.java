@@ -23,9 +23,11 @@ public class InterfazAlohandes {
 		System.out.println("(13) RFC7.ANALIZAR OPERACIÓN ALOHANDES");		
 		System.out.println("(14) RFC8.ENCONTRAR LOS CLIENTES MÁS FRECUENTES");		
 		System.out.println("(15) RFC9.ENCONTRAR LAS OFERTAS DE ALOJAMIENTO QUE NO TIENEN MUCHA DEMANDA");		
-
+		System.out.println("(16) RFC10.CONSULTAR CONSUMO ALOHANDES");
+		System.out.println("(17) RFC11.CONSULTAR CONSUMO ALOHANDES V2");
+		
 		System.out.println("---------------------------------------------------");
-		System.out.println("(16) Salir");
+		System.out.println("(20) Salir");
 	}
 	
 	public void printMessage(String mensaje) {
