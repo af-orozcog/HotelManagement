@@ -1440,5 +1440,10 @@ public class Alohandes
 		pa.asignarID(id);
 	}
 
+	public void extra() {
+		pa.extra();
+		
+	}
+
 	
 }

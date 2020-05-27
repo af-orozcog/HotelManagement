@@ -2396,4 +2396,9 @@ public class PersistenciaAlohandes
 		}
 	}
 
+	public void extra() {
+		REQCEX extra = new REQCEX(this);
+		extra.extraOfertasHabilitadas(pmf.getPersistenceManager());
+	}
+
 }

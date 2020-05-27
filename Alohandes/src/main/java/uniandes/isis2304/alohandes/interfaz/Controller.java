@@ -158,6 +158,9 @@ public class Controller {
 					fin = true;
 					sc.close();
 					break;
+				case -1:
+					mundo.extra();
+					break;
 				}
 			}
 		}
