@@ -76,6 +76,6 @@ public class REQCEX {
 	    }   
 	    
 	    long time_end = System.currentTimeMillis();
-	    System.out.println("Tomó:" +(time_start - time_end)+ " milisegundos");
+	    System.out.println("Tomó:" +(time_end - time_start)+ " milisegundos");
 	}
 }
