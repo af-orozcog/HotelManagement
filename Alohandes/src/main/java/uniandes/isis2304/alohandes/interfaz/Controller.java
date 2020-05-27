@@ -1,6 +1,7 @@
 package uniandes.isis2304.alohandes.interfaz;
 
 import java.io.FileReader;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.sql.Date;
@@ -146,6 +147,14 @@ public class Controller {
 
 					break;
 				case 16:
+					reqC10(sc);
+
+					break;
+				case 17:
+					reqC11(sc);
+
+					break;
+				case 20:
 					fin = true;
 					sc.close();
 					break;
@@ -245,7 +254,7 @@ public class Controller {
 				instant = date.atTime(LocalTime.MIDNIGHT).atZone(ZoneId.systemDefault()).toInstant();
 				long timeInMillis = instant.toEpochMilli(); 
 				Date dat = new Date(timeInMillis); 
-				
+
 				inicio = new DATE(dat);
 
 			} catch (Exception e) {
@@ -313,7 +322,6 @@ public class Controller {
 	public void req4(Scanner sc) {
 
 		interfaz.printMessage("Ingrese la fecha de inicio de la reserva (dd/MM/yyyy)");
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
 		DATE inicio;
 		try {
@@ -339,14 +347,14 @@ public class Controller {
 			long timeInMillis = instant.toEpochMilli(); 
 			Date dat = new Date(timeInMillis); 
 			fin = new DATE(dat);
-			
+
 		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
 			return;
 		}
 
-		interfaz.printMessage("Ingrese el nombre del usuario que va a realizar la reserva");
-		Cliente usuario = mundo.darClientePorNombre(sc.next());
+		interfaz.printMessage("Ingrese el id del usuario que va a realizar la reserva");
+		Cliente usuario = mundo.darClientePorId(sc.nextLong());
 
 		interfaz.printMessage("Ya sabe con que oferta quiere realizar la reserva? (1/0) 1 para verdadero, 0 para falso");
 		boolean sabe = sc.next().equalsIgnoreCase("1");
@@ -379,10 +387,11 @@ public class Controller {
 			mundo.adicionarReserva(inicio, fin, periodoArrendamiento, idOferta, usuario.getId(), -1);
 		else
 			interfaz.printMessage("La oferta est� deshabilitada");
+		interfaz.printMessage("La reserva fue creada exitosamente");
 	}
 
 	public void req5(Scanner sc) throws SQLException {
-		interfaz.printMessage("Ingrese el nombre del cliente a eliminar una reserva");
+		interfaz.printMessage("Ingrese el  del cliente a eliminar una reserva");
 		Cliente cliente = mundo.darClientePorNombre(sc.next());
 
 		interfaz.printMessage("Las reservas del cliente son:");
@@ -428,12 +437,10 @@ public class Controller {
 	}
 
 	public void req6(Scanner sc) {
-		interfaz.printMessage("Ingrese el nombre del operador a eliminar una propuesta");
-		String nombre = sc.next();
-		interfaz.printMessage("Ingrese el tipo de operador a eliminar una propuesta (Escriba HOTELERIA o VIVIENDA_UNIVERSITARIA o PERSONA_NATURAL seg�n sea el caso)");
-		String tipo = sc.next();
+		interfaz.printMessage("Ingrese el id del operador a eliminar una propuesta");
+		long id = sc.nextLong();
 
-		Operador operador = mundo.darOperadorPorNombre(nombre, tipo);
+		Operador operador = mundo.darOperadorPorId(id);
 
 		interfaz.printMessage("Las ofertas del operador son:");
 		List<Oferta> ofertas = mundo.darOfertasPorOperador(operador.getId());
@@ -446,7 +453,7 @@ public class Controller {
 	}
 
 	public void req7(Scanner sc) {
-		
+
 		interfaz.printMessage("Ingrese el tipo de alojamiento (HABITACION, CUARTO, ESPORADICO, APARTAMENTO)");
 		String tipo = sc.next();
 		interfaz.printMessage("Ingrese el n�mero de reservas requeridas");
@@ -466,32 +473,33 @@ public class Controller {
 		interfaz.printMessage("Ingrese el per�odo deseado");
 		String periodo = sc.next();
 
-		interfaz.printMessage("Ingrese el a�o de inicio");
-		int anio = sc.nextInt();
-		interfaz.printMessage("Ingrese el mes de inicio");
-		int mes = sc.nextInt();
-		interfaz.printMessage("Ingrese el dia de inicio");
-		int dia = sc.nextInt();
-		
+		interfaz.printMessage("Ingrese la fecha de inicio de la reserva (dd/MM/yyyy)");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
 		DATE inicio;
 		try {
-			Date temp = new Date(new GregorianCalendar(anio,mes,dia).getTimeInMillis());
-			inicio = new DATE(temp);
+			LocalDate date = LocalDate.parse(sc.next(), formatter);
+			Instant instant;
+
+			instant = date.atTime(LocalTime.MIDNIGHT).atZone(ZoneId.systemDefault()).toInstant();
+			long timeInMillis = instant.toEpochMilli(); 
+			Date dat = new Date(timeInMillis); 
+			inicio = new DATE(dat);
 		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
 			return;
 		}
 
-		interfaz.printMessage("Ingrese el a�o de fin");
-		anio = sc.nextInt();
-		interfaz.printMessage("Ingrese el mes de fin");
-		mes = sc.nextInt();
-		interfaz.printMessage("Ingrese el dia de fin");
-		dia = sc.nextInt();
+		interfaz.printMessage("Ingrese la fecha de fin de la reserva (dd/MM/yyyy)");
 		DATE fin;
 		try {
-			fin = new DATE(new GregorianCalendar(anio, mes, dia));
-			
+			LocalDate date = LocalDate.parse(sc.next(), formatter);
+			Instant instant;
+
+			instant = date.atTime(LocalTime.MIDNIGHT).atZone(ZoneId.systemDefault()).toInstant();
+			long timeInMillis = instant.toEpochMilli(); 
+			Date dat = new Date(timeInMillis); 
+			fin = new DATE(dat);
+
 		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
 			return;
@@ -599,6 +607,128 @@ public class Controller {
 		}
 	}
 
+	public void reqC10(Scanner sc) {
+		interfaz.printMessage("Escriba el inicio del rango de fechas en formato dd/MM/yyyy");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
+		DATE inicio;
+		try {
+			LocalDate date = LocalDate.parse(sc.next(), formatter);
+			Instant instant;
+
+			instant = date.atTime(LocalTime.MIDNIGHT).atZone(ZoneId.systemDefault()).toInstant();
+			long timeInMillis = instant.toEpochMilli(); 
+			Date dat = new Date(timeInMillis); 
+			inicio = new DATE(dat);
+		} catch (Exception e) {
+			interfaz.printMessage("Error en la escritura de la fecha");
+			return;
+		}
+
+		interfaz.printMessage("Ingrese el fin del rango de fechas en formato dd/MM/yyyy");
+		DATE fin;
+		try {
+			LocalDate date = LocalDate.parse(sc.next(), formatter);
+			Instant instant;
+
+			instant = date.atTime(LocalTime.MIDNIGHT).atZone(ZoneId.systemDefault()).toInstant();
+			long timeInMillis = instant.toEpochMilli(); 
+			Date dat = new Date(timeInMillis); 
+			fin = new DATE(dat);
+
+		} catch (Exception e) {
+			interfaz.printMessage("Error en la escritura de la fecha");
+			return;
+		}
+
+		interfaz.printMessage("Ingrese el id de la oferta a consultar");
+		long tipo = sc.nextLong();
+
+		String ad = "";
+		interfaz.printMessage("Desea ordenarlo por tipo de persona (PROFESOR, ESTUDIANTE, etc) ? (Y, cualquier cosa en caso contrario)");
+		if(sc.next().equalsIgnoreCase("Y"))
+			ad += "c.tipo_cliente";
+		interfaz.printMessage("Desea ordenarlo por nombre? (Y, cualquier cosa en caso contrario)");
+		if(sc.next().equalsIgnoreCase("Y"))
+			if(ad == "")
+				ad += "ORDER BY c.nombre ASC";
+			else
+				ad = "ORDER BY " + ad + ", c.nombre ASC";
+
+		List<Cliente> clientes = mundo.reqC10(inicio, fin, tipo, ad);
+		interfaz.printMessage("ID -- NOMBRE -- EMAIL -- NUMERO -- DOCUMENTO -- TIPO_CLIENTE");
+		for (Cliente cliente : clientes) {
+			interfaz.printMessage(cliente.getId() + " -- " + cliente.getNombre() + " -- " + cliente.getEmail() + " -- " + cliente.getNumero() + " -- " + cliente.getDocumento() + " -- " + cliente.getTipo_cliente());
+		}
+	}
+	
+	public void reqC11(Scanner sc) {
+		interfaz.printMessage("Escriba el inicio del rango de fechas en formato dd/MM/yyyy");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
+		DATE inicio;
+		try {
+			LocalDate date = LocalDate.parse(sc.next(), formatter);
+			Instant instant;
+
+			instant = date.atTime(LocalTime.MIDNIGHT).atZone(ZoneId.systemDefault()).toInstant();
+			long timeInMillis = instant.toEpochMilli(); 
+			Date dat = new Date(timeInMillis); 
+			inicio = new DATE(dat);
+		} catch (Exception e) {
+			interfaz.printMessage("Error en la escritura de la fecha");
+			return;
+		}
+
+		interfaz.printMessage("Ingrese el fin del rango de fechas en formato dd/MM/yyyy");
+		DATE fin;
+		try {
+			LocalDate date = LocalDate.parse(sc.next(), formatter);
+			Instant instant;
+
+			instant = date.atTime(LocalTime.MIDNIGHT).atZone(ZoneId.systemDefault()).toInstant();
+			long timeInMillis = instant.toEpochMilli(); 
+			Date dat = new Date(timeInMillis); 
+			fin = new DATE(dat);
+
+		} catch (Exception e) {
+			interfaz.printMessage("Error en la escritura de la fecha");
+			return;
+		}
+
+		interfaz.printMessage("Ingrese el id de la oferta a consultar");
+		long tipo = sc.nextLong();
+
+		String ad = "";
+		interfaz.printMessage("Desea ordenarlo por tipo de alojamiento? (Y, cualquier cosa en caso contrario)");
+		if(sc.next().equalsIgnoreCase("Y"))
+			ad = "v.tipo";
+		interfaz.printMessage("Desea ordenarlo por tipo de persona (PROFESOR, ESTUDIANTE, etc) ? (Y, cualquier cosa en caso contrario)");
+		if(sc.next().equalsIgnoreCase("Y"))
+			if(ad == "")
+				ad = "c.tipo_cliente";
+			else
+				ad += ", c.tipo_cliente";
+		interfaz.printMessage("Desea ordenarlo por nombre? (Y, cualquier cosa en caso contrario)");
+		if(sc.next().equalsIgnoreCase("Y"))
+			if(ad == "")
+				ad = "ORDER BY c.nombre ASC";
+			else
+				ad = "ORDER BY "+ad+", c.nombre ASC";
+		
+		
+		List<Object []> clientes = mundo.reqC11(inicio, fin, tipo, ad);
+		interfaz.printMessage("ID -- NOMBRE -- EMAIL -- NUMERO -- DOCUMENTO -- TIPO_CLIENTE -- TIPO_ALOJAMIENTO");
+		for (Object[] tupla : clientes) {
+			long id = ((BigDecimal)tupla[0]).longValue();
+			String nombre = tupla[1].toString();
+			String email = tupla[2].toString();
+			String numero = tupla[3].toString();
+			String documento = tupla[4].toString();
+			String tipocliente = tupla[5].toString();
+			String tipoalojamiento = tupla[6].toString();
+			interfaz.printMessage(id + " -- " + nombre + " -- " + email + " -- " + numero + " -- " + documento + " -- " + tipocliente + " -- " + tipoalojamiento);
+		}
+	}
+
 	private Servicio registrarServicio(Scanner sc) {
 		interfaz.printMessage("Ingrese el nombre del servicio");
 		String nombre = sc.next();
@@ -694,7 +824,7 @@ public class Controller {
 			long timeInMillis = instant.toEpochMilli(); 
 			Date dat = new Date(timeInMillis); 
 			fin = new DATE(dat);
-			
+
 		} catch (Exception e) {
 			interfaz.printMessage("Error en la escritura de la fecha");
 			return null;
